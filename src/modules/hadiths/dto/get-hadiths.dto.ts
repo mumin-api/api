@@ -30,6 +30,12 @@ export class GetHadithsDto {
 
     @ApiProperty({ required: false })
     @IsOptional()
+    @Type(() => Number)
+    @IsInt()
+    hadithNumber?: number;
+
+    @ApiProperty({ required: false })
+    @IsOptional()
     @IsString()
     language?: string = 'en';
 }

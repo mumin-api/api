@@ -7,12 +7,13 @@ export class HadithsService {
     constructor(private prisma: PrismaService) { }
 
     async findAll(dto: GetHadithsDto) {
-        const { page = 1, limit = 20, collection, bookNumber, language = 'en' } = dto;
+        const { page = 1, limit = 20, collection, bookNumber, hadithNumber, language = 'en' } = dto;
         const skip = (page - 1) * limit;
 
         const where: any = {};
         if (collection) where.collection = collection;
         if (bookNumber) where.bookNumber = bookNumber;
+        if (hadithNumber) where.hadithNumber = hadithNumber;
 
         const [hadiths, total] = await Promise.all([
             this.prisma.hadith.findMany({
