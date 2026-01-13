@@ -38,4 +38,9 @@ export class GetHadithsDto {
     @IsOptional()
     @IsString()
     language?: string = 'en';
+
+    @ApiProperty({ required: false })
+    @IsOptional()
+    @IsString()
+    grade?: string;
 }

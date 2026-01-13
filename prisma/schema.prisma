@@ -12,9 +12,25 @@ datasource db {
 // CORE HADITH DATA
 // ============================================
 
+model Collection {
+  id              Int      @id @default(autoincrement())
+  nameEnglish     String   @map("name_english") @db.VarChar(100)
+  nameArabic      String?  @map("name_arabic") @db.VarChar(100)
+  slug            String   @unique @db.VarChar(50)
+  description     String?  @db.Text
+  totalHadith     Int      @default(0) @map("total_hadith")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  hadiths         Hadith[]
+
+  @@map("collections")
+}
+
 model Hadith {
   id              Int      @id @default(autoincrement())
   collection      String   @db.VarChar(50)
+  collectionId    Int?     @map("collection_id")
   bookNumber      Int      @map("book_number")
   hadithNumber    Int      @map("hadith_number")
   arabicText      String   @map("arabic_text") @db.Text
@@ -23,10 +39,12 @@ model Hadith {
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
 
+  collectionRef   Collection? @relation(fields: [collectionId], references: [id], onDelete: SetNull)
   translations    Translation[]
 
   @@unique([collection, bookNumber, hadithNumber])
   @@index([collection])
+  @@index([collectionId])
   @@index([bookNumber])
   @@map("hadiths")
 }

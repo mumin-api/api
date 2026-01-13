@@ -24,6 +24,7 @@ import { GdprModule } from './modules/gdpr/gdpr.module';
 import { BillingModule } from './modules/billing/billing.module';
 import { HadithsModule } from './modules/hadiths/hadiths.module';
 import { AdminModule } from './modules/admin/admin.module';
+import { CollectionsModule } from './modules/collections/collections.module';
 
 // Middleware
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
@@ -79,6 +80,7 @@ import { GeolocationUtil } from './common/utils/geolocation.util';
         BillingModule,
         HadithsModule,
         AdminModule,
+        CollectionsModule,
     ],
     providers: [
         // Global guard for rate limiting

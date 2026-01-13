@@ -20,8 +20,21 @@ export class HadithsController {
     @Get('random')
     @ApiOperation({ summary: 'Get a random hadith' })
     @ApiQuery({ name: 'language', required: false, example: 'en' })
-    async findRandom(@Query('language') language?: string) {
-        return this.hadithsService.findRandom(language);
+    @ApiQuery({ name: 'collection', required: false })
+    @ApiQuery({ name: 'grade', required: false })
+    async findRandom(
+        @Query('language') language?: string,
+        @Query('collection') collection?: string,
+        @Query('grade') grade?: string,
+    ) {
+        return this.hadithsService.findRandom({ language, collection, grade });
+    }
+
+    @Get('daily')
+    @ApiOperation({ summary: 'Get the daily featured hadith' })
+    @ApiQuery({ name: 'language', required: false, example: 'en' })
+    async findDaily(@Query('language') language?: string) {
+        return this.hadithsService.findDaily(language);
     }
 
     @Get('search')
