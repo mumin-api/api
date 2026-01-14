@@ -36,32 +36,37 @@ export class ApiKeyGuard implements CanActivate {
         }
 
         const request = context.switchToHttp().getRequest();
-        const authHeader = request.headers.authorization;
 
-        // Check for Authorization header
-        if (!authHeader) {
+        // Allow OPTIONS (preflight) requests
+        if (request.method === 'OPTIONS') {
+            return true;
+        }
+
+        const authHeader = request.headers.authorization;
+        const xApiKey = request.headers['x-api-key'];
+
+        this.logger.log(`Auth Debug: AuthHeader=${authHeader ? 'YES' : 'NO'}, X-API-Key=${xApiKey ? 'YES' : 'NO'}`);
+        if (xApiKey) this.logger.log(`Received X-API-Key: ${xApiKey}`);
+
+        let apiKey: string;
+
+        if (authHeader && authHeader.startsWith('Bearer ')) {
+            apiKey = authHeader.substring(7).trim();
+        } else if (xApiKey) {
+            apiKey = Array.isArray(xApiKey) ? xApiKey[0] : xApiKey;
+        } else {
+            this.logger.warn('Missing both Authorization and X-API-Key headers');
             throw new UnauthorizedException({
                 statusCode: 401,
                 error: 'MISSING_API_KEY',
-                message: 'Authorization header required',
-                details: 'Include header: Authorization: Bearer YOUR_API_KEY',
+                message: 'API Key required',
+                details: 'Use header: "Authorization: Bearer <KEY>" or "X-API-Key: <KEY>"',
             });
         }
-
-        // Extract API key
-        if (!authHeader.startsWith('Bearer ')) {
-            throw new UnauthorizedException({
-                statusCode: 401,
-                error: 'INVALID_AUTH_FORMAT',
-                message: 'Invalid authorization format',
-                details: 'Use: Authorization: Bearer YOUR_API_KEY',
-            });
-        }
-
-        const apiKey = authHeader.substring(7).trim();
 
         // Validate key format
-        if (!apiKey.startsWith('sk_mumin_') || apiKey.length !== 41) {
+        // Allow 41 chars (production) or 42 chars (dev test key)
+        if (!apiKey.startsWith('sk_mumin_') || (apiKey.length !== 41 && apiKey.length !== 42)) {
             throw new UnauthorizedException({
                 statusCode: 401,
                 error: 'INVALID_API_KEY_FORMAT',
@@ -211,7 +216,7 @@ export class ApiKeyGuard implements CanActivate {
                     );
 
                     // Update trust score
-                    await this.fraudDetection.updateTrustScore(dbKey.id, fraudCheckResult.type);
+                    await this.fraudDetection.updateTrustScore(dbKey.id, fraudCheckResult.type || 'unknown');
 
                     // Add fraud flag to account
                     const updatedFlags = [...new Set([...dbKey.fraudFlags, fraudCheckResult.type || 'unknown'])];
@@ -221,7 +226,7 @@ export class ApiKeyGuard implements CanActivate {
                     });
 
                     this.logger.warn(
-                        `${fraudCheckResult.severity.toUpperCase()} fraud detected - Flagged for review: ${dbKey.keyPrefix}`,
+                        `${fraudCheckResult.severity?.toUpperCase() || 'UNKNOWN'} fraud detected - Flagged for review: ${dbKey.keyPrefix}`,
                     );
 
                     // Allow request to continue but log the event

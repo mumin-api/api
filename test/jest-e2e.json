@@ -1,0 +1,15 @@
+{
+    "moduleFileExtensions": ["js", "json", "ts"],
+    "rootDir": "..",
+    "testEnvironment": "node",
+    "testRegex": "test/.*\\.e2e-spec\\.ts$",
+    "transform": {
+        "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "moduleNameMapper": {
+        "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "transformIgnorePatterns": ["node_modules/(?!@faker-js)"],
+    "globalSetup": "<rootDir>/test/setup.ts",
+    "setupFilesAfterEnv": ["<rootDir>/test/setup-env.ts"]
+}

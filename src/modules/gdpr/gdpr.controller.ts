@@ -17,11 +17,10 @@ export class GdprController {
     ) { }
 
     @Get('consent')
-    @UseGuards(ApiKeyGuard)
-    @ApiBearerAuth('api-key')
+    @Public()
     @ApiOperation({ summary: 'Get current cookie consent state' })
     async getConsent(@CurrentUser() user: any) {
-        return this.consentService.getConsent(user.apiKeyId);
+        return this.consentService.getConsent(user?.apiKeyId);
     }
 
     @Put('consent')

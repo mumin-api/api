@@ -5,14 +5,18 @@ import { PrismaService } from '../../prisma/prisma.service';
 export class ConsentService {
     constructor(private prisma: PrismaService) { }
 
-    async getConsent(apiKeyId: number) {
+    async getConsent(apiKeyId?: number) {
+        if (!apiKeyId) {
+            return {};
+        }
+
         const apiKey = await this.prisma.apiKey.findUnique({
             where: { id: apiKeyId },
             select: { cookieConsent: true },
         });
 
         if (!apiKey) {
-            throw new NotFoundException('API Key not found');
+            return {};
         }
 
         return apiKey.cookieConsent || {};

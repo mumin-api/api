@@ -13,7 +13,7 @@ export class DeviceFingerprintMiddleware implements NestMiddleware {
             req.headers['accept'] || '',
         ];
 
-        req['deviceFingerprint'] = generateFingerprint(components);
+        (req as any)['deviceFingerprint'] = generateFingerprint(components as string[]);
 
         next();
     }

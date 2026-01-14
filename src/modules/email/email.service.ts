@@ -1,7 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '@/prisma/prisma.service';
-import * as sendgrid from '@sendgrid/mail';
 import { Resend } from 'resend';
 
 interface SendEmailOptions {
@@ -23,18 +22,14 @@ export class EmailService {
     private config: ConfigService,
     private prisma: PrismaService,
   ) {
-    this.provider = this.config.get('email.provider') || 'sendgrid';
-
-    // Initialize SendGrid
-    const sgApiKey = this.config.get('email.sendgridApiKey');
-    if (sgApiKey) {
-      sendgrid.setApiKey(sgApiKey);
-    }
+    this.provider = this.config.get('email.provider') || 'resend';
 
     // Initialize Resend
     const resendApiKey = this.config.get('email.resendApiKey');
     if (resendApiKey) {
       this.resend = new Resend(resendApiKey);
+    } else {
+      this.logger.warn('RESEND_API_KEY is not set. Email sending will fail.');
     }
   }
 
@@ -52,7 +47,7 @@ export class EmailService {
         let messageId = `failed_${Date.now()}`;
         let providerUsed = this.provider;
 
-        if (this.provider === 'resend' && this.resend) {
+        if (this.resend) {
           const { data, error } = await this.resend.emails.send({
             from,
             to: [to],
@@ -65,21 +60,7 @@ export class EmailService {
           }
           messageId = data?.id || `resend_${Date.now()}`;
         } else {
-          // Default to SendGrid
-          const msg = {
-            to,
-            from: fromEmail,
-            subject,
-            html,
-            trackingSettings: {
-              clickTracking: { enable: true },
-              openTracking: { enable: true },
-            },
-          };
-
-          const response = await sendgrid.send(msg);
-          messageId = response[0].headers['x-message-id'] as string;
-          providerUsed = 'sendgrid';
+          throw new Error('Email provider not configured');
         }
 
         // Log email in database
@@ -97,7 +78,7 @@ export class EmailService {
 
         this.logger.log(`Email sent via ${providerUsed}: ${emailType} to ${to} (Attempt ${attempts + 1})`);
         return; // Success!
-      } catch (error) {
+      } catch (error: any) {
         attempts++;
         this.logger.error(`Failed to send email to ${to} via ${this.provider} (Attempt ${attempts}/${maxAttempts}):`, error);
 
@@ -110,7 +91,7 @@ export class EmailService {
               recipient: to,
               subject,
               bounced: true,
-              bounceReason: error.message,
+              bounceReason: error?.message || 'Unknown error',
               messageId: `failed_${Date.now()}`,
               provider: this.provider,
               metadata,

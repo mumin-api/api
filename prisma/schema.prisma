@@ -112,6 +112,11 @@ model ApiKey {
   fraudFlags              String[]  @default([]) @map("fraud_flags") // ["honeypot_hit", "sequential_access"]
   maxDailyRequests        Int       @default(500) @map("max_daily_requests")
   
+  description             String?   @map("description")
+  allowedOrigins          String[]  @default([]) @map("allowed_origins")
+
+
+
   // Inactivity Policy
   inactivityWarnings      Int       @default(0) @map("inactivity_warnings")
   dormantAt               DateTime? @map("dormant_at")

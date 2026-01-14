@@ -34,10 +34,15 @@
             "@prisma/*": [
                 "src/prisma/*"
             ]
-        }
+        },
+        "types": [
+            "node",
+            "jest"
+        ]
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "scripts/**/*"
     ],
     "exclude": [
         "node_modules",

@@ -13,6 +13,47 @@ const prisma = new PrismaClient();
  * 3. GitHub: https://github.com/sunnah-com/hadith-json
  */
 
+async function createApiKey() {
+    console.log('🔑 Creating default API key...');
+
+    // Hash for 'sk_mumin_test_key_1234567890abcdef12345678'
+    // This is a fixed test key for development
+    const apiKey = 'sk_mumin_test_key_1234567890abcdef12345678';
+
+    // Check if key already exists
+    const existingKey = await prisma.apiKey.findFirst({
+        where: { keyPrefix: 'sk_mumin_test' }
+    });
+
+    if (existingKey) {
+        console.log('✅ Default API key already exists');
+        return;
+    }
+
+    // Import crypto dynamically to avoid top-level issues
+    const { createHash } = await import('crypto');
+    const keyHash = createHash('sha256').update(apiKey).digest('hex');
+
+    await prisma.apiKey.create({
+        data: {
+            keyPrefix: 'sk_mumin_test',
+            keyHash: keyHash,
+            isActive: true,
+            balance: 10000,
+            maxDailyRequests: 1000,
+            trustScore: 100,
+            userEmail: 'dev@mumin.ink',
+            description: 'Default Development Key',
+            allowedOrigins: ['http://localhost:3000', 'http://localhost:3003', 'http://localhost:3005'],
+            allowedIPs: [], // Empty array = allow all IPs
+            fraudFlags: []
+        }
+    });
+
+    console.log(`✅ Created API Key: ${apiKey}`);
+    console.log('👉 Add this to your Reader .env.local as NEXT_PUBLIC_API_KEY');
+}
+
 async function seedFromLocalJSON() {
     console.log('📚 Seeding from local JSON file...');
 
@@ -151,6 +192,8 @@ async function main() {
     console.log('🌱 Starting database seed...\n');
 
     try {
+        await createApiKey();
+
         // Try to seed from local JSON first
         const dataPath = path.join(__dirname, '../prisma/seed-data/bukhari.json');
 

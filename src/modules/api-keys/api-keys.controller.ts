@@ -25,9 +25,16 @@ export class ApiKeysController {
             dto,
             req.ip || 'unknown',
             req.headers['user-agent'] || '',
-            req['deviceFingerprint'] || '',
-            this.geoUtil.getLocation(req.ip) || 'unknown',
+            (req as any)['deviceFingerprint'] || '',
+            this.geoUtil.getLocation(req.ip || '') || 'unknown',
         );
+    }
+
+    @Post('refresh')
+    @Public()
+    @ApiOperation({ summary: 'Stub for token refresh' })
+    async refresh() {
+        return { success: true, message: 'Refresh successful' };
     }
 
     @Get('me')
