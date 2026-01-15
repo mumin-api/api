@@ -42,6 +42,7 @@ lerna-debug.log*
 # Prisma
 prisma/migrations/*
 !prisma/migrations/.gitkeep
+!prisma/migrations/20260115112148_enable_trigram_search/
 
 # Temp files
 *.tmp

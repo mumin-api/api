@@ -236,9 +236,14 @@ export class HadithsService {
         const length = query.length;
         const wordCount = query.split(/\s+/).length;
 
-        // Short single-word queries need higher precision
+        // Very short queries (< 5 chars) - need higher precision to avoid noise
+        if (length < 5 && wordCount === 1) {
+            return 0.6; // e.g., "вера" - must match closely
+        }
+
+        // Short single-word queries (5-10 chars) - balanced for typos
         if (length < 10 && wordCount === 1) {
-            return 0.5; // e.g., "намаз" - must match closely
+            return 0.35; // e.g., "пророк", "рророк" - allow 1-2 typos
         }
 
         // Medium queries - balanced
@@ -295,14 +300,9 @@ export class HadithsService {
     ) {
         const skip = (page - 1) * limit;
 
-        // Build WHERE clause parts using Prisma.sql for safety
-        const baseWhere = this.prisma.$queryRaw`
-            (h.arabic_text % ${query} OR t.text % ${query})
-            AND GREATEST(
-                similarity(h.arabic_text, ${query}),
-                similarity(t.text, ${query})
-            ) > ${threshold}
-        `;
+        // Set similarity threshold for % operator (performance optimization)
+        // This makes the % operator use the threshold, reducing rows to scan
+        await this.prisma.$executeRawUnsafe(`SELECT set_limit(${threshold});`);
 
         // Build complete query dynamically
         let whereClause = `
