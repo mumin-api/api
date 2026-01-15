@@ -16,16 +16,14 @@ async function bootstrap() {
     // CORS - ВАЖНО для httpOnly cookies!
     app.enableCors({
         origin: [
-            'http://localhost:3000', // Reader dev (legacy/conflicting)
-            'http://localhost:3003', // Reader dev (new)
-            'http://localhost:3005', // Reader dev (alternative)
-            'http://localhost:3001', // Dashboard dev
-            'http://localhost:3002', // Docs dev
-            'http://localhost:3333', // Alternative API dev port
-            process.env.DASHBOARD_URL || 'https://dashboard.mumin.ink',
-            process.env.DOCS_URL || 'https://docs.mumin.ink',
-            process.env.READER_URL,
-        ].filter((o): o is string => !!o),
+            /^https?:\/\/(.+\.)?mumin\.ink$/, // Allow all mumin.ink subdomains
+            /^https?:\/\/mumin-api-production\.up\.railway\.app$/, // Railway technical domain
+            'http://localhost:3000',
+            'http://localhost:3003',
+            'http://localhost:3005',
+            'http://localhost:3001',
+            'http://localhost:3002',
+        ],
         credentials: true, // ← КРИТИЧНО! Разрешает cookies
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
         allowedHeaders: [
