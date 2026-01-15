@@ -6,8 +6,10 @@ import * as path from 'path';
 
 const prisma = new PrismaClient();
 
-const BATCH_SIZE = 100;
+const BATCH_SIZE = 50;
 const DATA_DIR = path.join(__dirname, '../data/muslim');
+
+const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const FILE_PATHS = {
     arabic: path.join(DATA_DIR, 'ara-muslim1.txt'),
@@ -260,12 +262,15 @@ async function main() {
                     }
                 }
             }, {
-                maxWait: 10000,
-                timeout: 60000
+                maxWait: 20000,
+                timeout: 100000
             });
 
             processedCount += batch.length;
             process.stdout.write(`\rProcessed ${processedCount}/${payloads.length} hadiths...`);
+
+            // Add delay to let DB breathe
+            await wait(200);
         }
 
         console.log('\nSeeding completed successfully!');
