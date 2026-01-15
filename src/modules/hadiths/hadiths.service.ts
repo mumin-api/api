@@ -171,22 +171,46 @@ export class HadithsService {
         return this.mapHadithResponse(hadith);
     }
 
-    async search(query: string, language: string = 'en', page: number = 1, limit: number = 20) {
+    async search(query: string, language: string = 'en', page: number = 1, limit: number = 20, collection?: string, grade?: string) {
         const skip = (page - 1) * limit;
 
         const where: any = {
-            OR: [
-                { arabicText: { contains: query, mode: 'insensitive' } },
+            AND: [
                 {
-                    translations: {
-                        some: {
-                            text: { contains: query, mode: 'insensitive' },
-                            languageCode: language,
+                    OR: [
+                        { arabicText: { contains: query, mode: 'insensitive' } },
+                        {
+                            translations: {
+                                some: {
+                                    text: { contains: query, mode: 'insensitive' },
+                                    languageCode: language,
+                                },
+                            },
                         },
+                    ],
+                }
+            ]
+        };
+
+        if (collection) {
+            where.AND.push({
+                OR: [
+                    { collection: collection },
+                    { collectionRef: { slug: collection } }
+                ]
+            });
+        }
+
+        if (grade) {
+            where.AND.push({
+                translations: {
+                    some: {
+                        grade,
+                        languageCode: language,
                     },
                 },
-            ],
-        };
+            });
+        }
 
         const [hadiths, total] = await Promise.all([
             this.prisma.hadith.findMany({

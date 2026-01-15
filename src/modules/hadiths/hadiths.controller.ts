@@ -43,13 +43,17 @@ export class HadithsController {
     @ApiQuery({ name: 'language', required: false, example: 'en' })
     @ApiQuery({ name: 'page', required: false, example: 1 })
     @ApiQuery({ name: 'limit', required: false, example: 20 })
+    @ApiQuery({ name: 'collection', required: false })
+    @ApiQuery({ name: 'grade', required: false })
     async search(
         @Query('q') query: string,
         @Query('language') language?: string,
         @Query('page', new ParseIntPipe({ optional: true })) page?: number,
         @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
+        @Query('collection') collection?: string,
+        @Query('grade') grade?: string,
     ) {
-        return this.hadithsService.search(query, language, page, limit);
+        return this.hadithsService.search(query, language, page, limit, collection, grade);
     }
 
     @Get(':id')
