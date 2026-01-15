@@ -15,15 +15,13 @@ async function bootstrap() {
 
     // CORS - ВАЖНО для httpOnly cookies!
     app.enableCors({
-        origin: [
-            /^https?:\/\/(.+\.)?mumin\.ink$/, // Allow all mumin.ink subdomains
-            /^https?:\/\/mumin-api-production\.up\.railway\.app$/, // Railway technical domain
-            'http://localhost:3000',
-            'http://localhost:3003',
-            'http://localhost:3005',
-            'http://localhost:3001',
-            'http://localhost:3002',
-        ],
+        origin: (origin, callback) => {
+            if (!origin || origin.endsWith('mumin.ink') || origin.includes('localhost') || origin.includes('railway.app')) {
+                callback(null, true);
+            } else {
+                callback(null, false);
+            }
+        },
         credentials: true, // ← КРИТИЧНО! Разрешает cookies
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
         allowedHeaders: [
