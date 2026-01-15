@@ -306,19 +306,19 @@ export class HadithsService {
 
         // Build complete query dynamically
         let whereClause = `
-            (h.arabic_text % '${query.replace(/'/g, "''")}' OR t.text % '${query.replace(/'/g, "''")}')
+            (h.arabic_text % '${query.replace(/'/g, "''")}'::text OR t.text % '${query.replace(/'/g, "''")}'::text)
             AND GREATEST(
-                similarity(h.arabic_text, '${query.replace(/'/g, "''")}'),
-                similarity(t.text, '${query.replace(/'/g, "''")}')
+                similarity(h.arabic_text, '${query.replace(/'/g, "''")}'::text),
+                similarity(t.text, '${query.replace(/'/g, "''")}'::text)
             ) > ${threshold}
         `;
 
         if (collection) {
-            whereClause += ` AND (h.collection = '${collection.replace(/'/g, "''")}' OR c.slug = '${collection.replace(/'/g, "''")}')`;
+            whereClause += ` AND (h.collection = '${collection.replace(/'/g, "''")}'::text OR c.slug = '${collection.replace(/'/g, "''")}'::text)`;
         }
 
         if (grade) {
-            whereClause += ` AND t.grade = '${grade.replace(/'/g, "''")}'`;
+            whereClause += ` AND t.grade = '${grade.replace(/'/g, "''")}'::text`;
         }
 
         // Execute main query
@@ -339,11 +339,11 @@ export class HadithsService {
                 t.language_code,
                 c.name_english as collection_name,
                 GREATEST(
-                    similarity(h.arabic_text, '${query.replace(/'/g, "''")}'),
-                    similarity(t.text, '${query.replace(/'/g, "''")}')
+                    similarity(h.arabic_text, '${query.replace(/'/g, "''")}'::text),
+                    similarity(t.text, '${query.replace(/'/g, "''")}'::text)
                 ) as relevance
             FROM hadiths h
-            LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${language.replace(/'/g, "''")}'
+            LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${language.replace(/'/g, "''")}'::text
             LEFT JOIN collections c ON h.collection_id = c.id
             WHERE ${whereClause}
             ORDER BY relevance DESC
@@ -355,7 +355,7 @@ export class HadithsService {
         const countResult: any[] = await this.prisma.$queryRawUnsafe(`
             SELECT COUNT(DISTINCT h.id) as total
             FROM hadiths h
-            LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${language.replace(/'/g, "''")}'
+            LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${language.replace(/'/g, "''")}'::text
             LEFT JOIN collections c ON h.collection_id = c.id
             WHERE ${whereClause}
         `);
