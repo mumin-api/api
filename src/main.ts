@@ -7,6 +7,20 @@ import helmet from 'helmet'
 async function bootstrap() {
     const app = await NestFactory.create(AppModule)
 
+    // Manual CORS/OPTIONS handling for early response
+    app.use((req: any, res: any, next: any) => {
+        if (req.method === 'OPTIONS') {
+            res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+            res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-API-Key, Accept, X-Requested-With, Origin');
+            res.header('Access-Control-Allow-Credentials', 'true');
+            return res.sendStatus(204);
+        }
+        next();
+    });
+
+    // Security
+
     // Security
     app.use(helmet())
 
