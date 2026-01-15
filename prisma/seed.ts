@@ -75,9 +75,24 @@ async function seedFromLocalJSON() {
 
     for (const book of data.books || []) {
         for (const hadith of book.hadiths || []) {
-            // Create hadith
-            const createdHadith = await prisma.hadith.create({
-                data: {
+            // Upsert hadith
+            const createdHadith = await prisma.hadith.upsert({
+                where: {
+                    collection_bookNumber_hadithNumber: {
+                        collection: 'sahih-bukhari',
+                        bookNumber: book.bookNumber || 1,
+                        hadithNumber: hadith.hadithNumber || count + 1,
+                    }
+                },
+                update: {
+                    arabicText: hadith.arabicText || hadith.text_ar || '',
+                    arabicNarrator: hadith.arabicNarrator || hadith.narrator_ar || null,
+                    metadata: {
+                        grade: hadith.grade || 'sahih',
+                        reference: hadith.reference || null,
+                    },
+                },
+                create: {
                     collection: 'sahih-bukhari',
                     bookNumber: book.bookNumber || 1,
                     hadithNumber: hadith.hadithNumber || count + 1,
@@ -90,10 +105,20 @@ async function seedFromLocalJSON() {
                 },
             });
 
-            // Create English translation
+            // Upsert English translation
             if (hadith.englishText || hadith.text_en) {
-                await prisma.translation.create({
-                    data: {
+                await prisma.translation.upsert({
+                    where: {
+                        hadithId_languageCode: {
+                            hadithId: createdHadith.id,
+                            languageCode: 'en',
+                        }
+                    },
+                    update: {
+                        text: hadith.englishText || hadith.text_en,
+                        narrator: hadith.englishNarrator || hadith.narrator_en || null,
+                    },
+                    create: {
                         hadithId: createdHadith.id,
                         languageCode: 'en',
                         text: hadith.englishText || hadith.text_en,
@@ -164,8 +189,20 @@ async function seedSampleData() {
     ];
 
     for (const hadith of sampleHadiths) {
-        const createdHadith = await prisma.hadith.create({
-            data: {
+        const createdHadith = await prisma.hadith.upsert({
+            where: {
+                collection_bookNumber_hadithNumber: {
+                    collection: hadith.collection,
+                    bookNumber: hadith.bookNumber,
+                    hadithNumber: hadith.hadithNumber,
+                }
+            },
+            update: {
+                arabicText: hadith.arabicText,
+                arabicNarrator: hadith.arabicNarrator,
+                metadata: hadith.metadata,
+            },
+            create: {
                 collection: hadith.collection,
                 bookNumber: hadith.bookNumber,
                 hadithNumber: hadith.hadithNumber,
@@ -175,8 +212,18 @@ async function seedSampleData() {
             },
         });
 
-        await prisma.translation.create({
-            data: {
+        await prisma.translation.upsert({
+            where: {
+                hadithId_languageCode: {
+                    hadithId: createdHadith.id,
+                    languageCode: 'en',
+                }
+            },
+            update: {
+                text: hadith.englishText,
+                narrator: hadith.englishNarrator,
+            },
+            create: {
                 hadithId: createdHadith.id,
                 languageCode: 'en',
                 text: hadith.englishText,
