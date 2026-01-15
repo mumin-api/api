@@ -7,7 +7,7 @@ import helmet from 'helmet'
 async function bootstrap() {
     const app = await NestFactory.create(AppModule)
 
-    // Manual CORS/OPTIONS handling for early response
+    // 1. Manual CORS/OPTIONS handling for early response (Bypasses complexity)
     app.use((req: any, res: any, next: any) => {
         if (req.method === 'OPTIONS') {
             res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
@@ -19,15 +19,13 @@ async function bootstrap() {
         next();
     });
 
-    // Security
-
-    // Security
-    app.use(helmet())
-
-    // Cookie parser (для httpOnly cookies)
+    // 2. Security Middleware
+    app.use(helmet({
+        crossOriginResourcePolicy: false, // Allows cross-origin requests
+    }));
     app.use(cookieParser())
 
-    // CORS - ВАЖНО для httpOnly cookies!
+    // 3. NestJS CORS (For GET/POST requests)
     app.enableCors({
         origin: (origin, callback) => {
             if (!origin || origin.endsWith('mumin.ink') || origin.includes('localhost') || origin.includes('railway.app')) {
@@ -36,36 +34,24 @@ async function bootstrap() {
                 callback(null, false);
             }
         },
-        credentials: true, // ← КРИТИЧНО! Разрешает cookies
+        credentials: true,
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-        allowedHeaders: [
-            'Content-Type',
-            'Authorization',
-            'X-Requested-With',
-            'Accept',
-            'Origin',
-            'X-API-Key',  // ← ДОБАВЬТЕ ЭТУ СТРОКУ!
-        ],
-        preflightContinue: false,
-        optionsSuccessStatus: 204,
+        allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'X-API-Key'],
     })
 
-    // Global validation pipe
-    app.useGlobalPipes(
-        new ValidationPipe({
-            whitelist: true,
-            forbidNonWhitelisted: true,
-            transform: true,
-        }),
-    )
-
-    // Global prefix
+    // 4. Pipes & Prefix
+    app.useGlobalPipes(new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+    }));
     app.setGlobalPrefix('v1')
 
-    const port = process.env.PORT || 3333  // ← Также исправил порт на 3333
-    await app.listen(port)
+    // 5. Port Binding (Crucial for Railway)
+    const port = process.env.PORT || 3333
+    await app.listen(port, '0.0.0.0')
 
-    console.log(`🚀 Server running on http://localhost:${port}/v1`)
+    console.log(`🚀 Server running on http://0.0.0.0:${port}/v1`)
 }
 
 bootstrap()
