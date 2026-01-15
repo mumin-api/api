@@ -24,7 +24,8 @@ async function bootstrap() {
             'http://localhost:3333', // Alternative API dev port
             process.env.DASHBOARD_URL || 'https://dashboard.mumin.ink',
             process.env.DOCS_URL || 'https://docs.mumin.ink',
-        ],
+            process.env.READER_URL,
+        ].filter((o): o is string => !!o),
         credentials: true, // ← КРИТИЧНО! Разрешает cookies
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
         allowedHeaders: [
