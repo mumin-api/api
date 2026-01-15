@@ -288,6 +288,12 @@ export class HadithsService {
 
     /**
      * Trigram similarity search using raw SQL
+     * Uses subquery to find matching IDs first for optimal index usage
+     */
+    /**
+     * Trigram similarity search using raw SQL
+     * Uses subquery to find matching IDs first for optimal index usage
+     * Wrapped in transaction to ensure set_limit applies to the query
      */
     private async trigramSearch(
         query: string,
@@ -298,103 +304,126 @@ export class HadithsService {
         collection?: string,
         grade?: string
     ) {
-        const skip = (page - 1) * limit;
+        return this.prisma.$transaction(async (tx) => {
+            const skip = (page - 1) * limit;
 
-        // Set similarity threshold for % operator (performance optimization)
-        // This makes the % operator use the threshold, reducing rows to scan
-        await this.prisma.$executeRawUnsafe(`SELECT set_limit(${threshold});`);
+            // Set similarity threshold for % operator within this transaction
+            await tx.$executeRawUnsafe(`SELECT set_limit(${threshold});`);
 
-        // Build complete query dynamically
-        let whereClause = `
-            (h.arabic_text % '${query.replace(/'/g, "''")}'::text OR t.text % '${query.replace(/'/g, "''")}'::text)
-            AND GREATEST(
-                similarity(h.arabic_text, '${query.replace(/'/g, "''")}'::text),
-                similarity(t.text, '${query.replace(/'/g, "''")}'::text)
-            ) > ${threshold}
-        `;
+            const escapedQuery = query.replace(/'/g, "''");
+            const escapedLanguage = language.replace(/'/g, "''");
 
-        if (collection) {
-            whereClause += ` AND (h.collection = '${collection.replace(/'/g, "''")}'::text OR c.slug = '${collection.replace(/'/g, "''")}'::text)`;
-        }
+            // Build collection filter for subquery
+            let collectionJoin = '';
+            let collectionWhere = '';
+            if (collection) {
+                const escapedCollection = collection.replace(/'/g, "''");
+                collectionJoin = 'LEFT JOIN collections c ON h.collection_id = c.id';
+                collectionWhere = `AND (h.collection = '${escapedCollection}' OR c.slug = '${escapedCollection}')`;
+            }
 
-        if (grade) {
-            whereClause += ` AND t.grade = '${grade.replace(/'/g, "''")}'::text`;
-        }
+            // Build grade filter
+            let gradeWhere = '';
+            if (grade) {
+                const escapedGrade = grade.replace(/'/g, "''");
+                gradeWhere = `AND grade = '${escapedGrade}'`;
+            }
 
-        // Execute main query
-        const results: any[] = await this.prisma.$queryRawUnsafe(`
-            SELECT 
-                h.id,
-                h.hadith_number,
-                h.book_number,
-                h.arabic_text,
-                h.arabic_narrator,
-                h.collection,
-                h.collection_id,
-                h.metadata,
-                t.text as translation_text,
-                t.narrator as translation_narrator,
-                t.grade as translation_grade,
-                t.translator,
-                t.language_code,
-                c.name_english as collection_name,
-                GREATEST(
-                    similarity(h.arabic_text, '${query.replace(/'/g, "''")}'::text),
-                    similarity(t.text, '${query.replace(/'/g, "''")}'::text)
-                ) as relevance
-            FROM hadiths h
-            LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${language.replace(/'/g, "''")}'::text
-            LEFT JOIN collections c ON h.collection_id = c.id
-            WHERE ${whereClause}
-            ORDER BY relevance DESC
-            LIMIT ${limit}
-            OFFSET ${skip}
-        `);
+            // Combined query for Data + Total Count using Window Function
+            const results: any[] = await tx.$queryRawUnsafe(`
+                WITH matching_ids AS (
+                    -- IDs from Arabic text matches
+                    SELECT h.id, similarity(h.arabic_text, '${escapedQuery}') as score
+                    FROM hadiths h
+                    ${collectionJoin}
+                    WHERE h.arabic_text % '${escapedQuery}'
+                    ${collectionWhere}
+                    
+                    UNION ALL
+                    
+                    -- IDs from translation matches  
+                    SELECT h.id, similarity(t.text, '${escapedQuery}') as score
+                    FROM hadiths h
+                    INNER JOIN translations t ON h.id = t.hadith_id
+                    ${collectionJoin}
+                    WHERE t.text % '${escapedQuery}'
+                        AND t.language_code = '${escapedLanguage}'
+                        ${gradeWhere}
+                        ${collectionWhere}
+                ),
+                best_scores AS (
+                    SELECT id, MAX(score) as relevance
+                    FROM matching_ids
+                    GROUP BY id
+                ),
+                final_dataset AS (
+                    SELECT 
+                        h.id,
+                        h.hadith_number,
+                        h.book_number,
+                        h.arabic_text,
+                        h.arabic_narrator,
+                        h.collection,
+                        h.collection_id,
+                        h.metadata,
+                        t.text as translation_text,
+                        t.narrator as translation_narrator,
+                        t.grade as translation_grade,
+                        t.translator,
+                        t.language_code,
+                        c.name_english as collection_name,
+                        b.relevance,
+                        COUNT(*) OVER() as total_count
+                    FROM best_scores b
+                    INNER JOIN hadiths h ON b.id = h.id
+                    LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${escapedLanguage}'
+                    LEFT JOIN collections c ON h.collection_id = c.id
+                )
+                SELECT * FROM final_dataset
+                ORDER BY relevance DESC
+                LIMIT ${limit}
+                OFFSET ${skip}
+            `);
 
-        // Get total count
-        const countResult: any[] = await this.prisma.$queryRawUnsafe(`
-            SELECT COUNT(DISTINCT h.id) as total
-            FROM hadiths h
-            LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${language.replace(/'/g, "''")}'::text
-            LEFT JOIN collections c ON h.collection_id = c.id
-            WHERE ${whereClause}
-        `);
+            const total = results.length > 0 ? Number(results[0].total_count) : 0;
+            const totalPages = Math.ceil(total / limit);
 
-        const total = parseInt(countResult[0]?.total || '0');
-        const totalPages = Math.ceil(total / limit);
+            // Map results to hadith format
+            const mappedResults = results.map(row => ({
+                id: row.id,
+                collection: row.collection_name || row.collection,
+                collectionId: row.collection_id,
+                bookNumber: row.book_number,
+                hadithNumber: row.hadith_number,
+                arabicText: row.arabic_text,
+                arabicNarrator: row.arabic_narrator,
+                translation: row.translation_text ? {
+                    text: row.translation_text,
+                    narrator: row.translation_narrator,
+                    grade: row.translation_grade,
+                    translator: row.translator,
+                    languageCode: row.language_code,
+                } : null,
+                metadata: row.metadata,
+                relevance: parseFloat(row.relevance),
+            }));
 
-        // Map results to hadith format
-        const mappedResults = results.map(row => ({
-            id: row.id,
-            collection: row.collection_name || row.collection,
-            collectionId: row.collection_id,
-            bookNumber: row.book_number,
-            hadithNumber: row.hadith_number,
-            arabicText: row.arabic_text,
-            arabicNarrator: row.arabic_narrator,
-            translation: row.translation_text ? {
-                text: row.translation_text,
-                narrator: row.translation_narrator,
-                grade: row.translation_grade,
-                translator: row.translator,
-                languageCode: row.language_code,
-            } : null,
-            metadata: row.metadata,
-            relevance: parseFloat(row.relevance), // Include relevance score
-        }));
-
-        return {
-            data: mappedResults,
-            pagination: {
-                page,
-                limit,
-                total,
-                totalPages,
-                hasNext: page < totalPages,
-                hasPrev: page > 1,
-            },
-        };
+            return {
+                data: mappedResults,
+                pagination: {
+                    page,
+                    limit,
+                    total,
+                    totalPages,
+                    hasNext: page < totalPages,
+                    hasPrev: page > 1,
+                },
+            };
+        });
     }
+
+
+
 
     /**
      * Keyword fallback search when trigram finds nothing
