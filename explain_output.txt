@@ -1,0 +1,65 @@
+BEGIN
+SET
+                                                                                              QUERY PLAN                                                                                               
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=4886.03..4886.08 rows=20 width=16) (actual time=4912.219..4912.240 rows=20.00 loops=1)
+   Buffers: shared hit=21586
+   ->  Sort  (cost=4886.03..4886.53 rows=200 width=16) (actual time=4912.217..4912.232 rows=20.00 loops=1)
+         Sort Key: (max((word_similarity('проро'::text, h_1.arabic_text)))) DESC
+         Sort Method: top-N heapsort  Memory: 26kB
+         Buffers: shared hit=21586
+         ->  WindowAgg  (cost=4877.24..4880.71 rows=200 width=16) (actual time=4907.744..4910.015 rows=6560.00 loops=1)
+               Window: w1 AS ()
+               Storage: Memory  Maximum Storage: 270kB
+               Buffers: shared hit=21583
+               ->  Nested Loop  (cost=4186.49..4878.21 rows=200 width=8) (actual time=4870.566..4900.942 rows=6560.00 loops=1)
+                     Buffers: shared hit=21583
+                     ->  HashAggregate  (cost=4186.21..4188.21 rows=200 width=8) (actual time=4870.492..4874.097 rows=6560.00 loops=1)
+                           Group Key: h_1.id
+                           Batches: 1  Memory Usage: 681kB
+                           Buffers: shared hit=4248
+                           ->  Append  (cost=56.28..4176.41 rows=1959 width=8) (actual time=2425.390..4853.046 rows=6560.00 loops=1)
+                                 Buffers: shared hit=4248
+                                 ->  Bitmap Heap Scan on hadiths h_1  (cost=56.28..60.30 rows=1 width=8) (actual time=0.094..0.095 rows=0.00 loops=1)
+                                       Filter: ('проро'::text <% arabic_text)
+                                       Buffers: shared hit=13
+                                       ->  Bitmap Index Scan on hadiths_arabic_text_trgm_idx  (cost=0.00..56.28 rows=1 width=0) (actual time=0.085..0.085 rows=0.00 loops=1)
+                                             Index Cond: (arabic_text %> 'проро'::text)
+                                             Index Searches: 1
+                                             Buffers: shared hit=13
+                                 ->  Hash Join  (cost=2803.03..4106.32 rows=1958 width=8) (actual time=2425.293..4850.106 rows=6560.00 loops=1)
+                                       Hash Cond: (h_2.id = t.hadith_id)
+                                       Buffers: shared hit=4235
+                                       ->  Seq Scan on hadiths h_2  (cost=0.00..1278.55 rows=7555 width=4) (actual time=0.032..18.264 rows=7555.00 loops=1)
+                                             Buffers: shared hit=1203
+                                       ->  Hash  (cost=2778.56..2778.56 rows=1958 width=735) (actual time=2424.955..2424.960 rows=6560.00 loops=1)
+                                             Buckets: 8192 (originally 2048)  Batches: 1 (originally 1)  Memory Usage: 5473kB
+                                             Buffers: shared hit=2806
+                                             ->  Bitmap Heap Scan on translations t  (cost=216.62..2778.56 rows=1958 width=735) (actual time=7.462..2384.934 rows=6560.00 loops=1)
+                                                   Recheck Cond: ((language_code)::text = 'ru'::text)
+                                                   Filter: ('проро'::text <% text)
+                                                   Rows Removed by Filter: 233
+                                                   Heap Blocks: exact=2515
+                                                   Buffers: shared hit=2806
+                                                   ->  BitmapAnd  (cost=216.62..216.62 rows=1958 width=0) (actual time=6.367..6.369 rows=0.00 loops=1)
+                                                         Buffers: shared hit=42
+                                                         ->  Bitmap Index Scan on translations_language_code_idx  (cost=0.00..96.46 rows=7490 width=0) (actual time=1.631..1.631 rows=8044.00 loops=1)
+                                                               Index Cond: ((language_code)::text = 'ru'::text)
+                                                               Index Searches: 1
+                                                               Buffers: shared hit=11
+                                                         ->  Bitmap Index Scan on translations_text_trgm_idx  (cost=0.00..118.93 rows=5768 width=0) (actual time=4.493..4.493 rows=6793.00 loops=1)
+                                                               Index Cond: (text %> 'проро'::text)
+                                                               Index Searches: 1
+                                                               Buffers: shared hit=31
+                     ->  Index Only Scan using hadiths_pkey on hadiths h  (cost=0.28..3.44 rows=1 width=4) (actual time=0.003..0.003 rows=1.00 loops=6560)
+                           Index Cond: (id = h_1.id)
+                           Heap Fetches: 4214
+                           Index Searches: 6560
+                           Buffers: shared hit=17335
+ Planning:
+   Buffers: shared hit=365
+ Planning Time: 87.650 ms
+ Execution Time: 4913.287 ms
+(58 rows)
+
+ROLLBACK

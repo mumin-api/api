@@ -232,27 +232,37 @@ export class HadithsService {
     /**
      * Calculate dynamic similarity threshold based on query characteristics
      */
+    /**
+     * Calculate dynamic similarity threshold based on query characteristics
+     * Optimized for word_similarity (substring matching) which generally produces higher scores
+     * than full string similarity.
+     */
     private calculateSimilarityThreshold(query: string): number {
         const length = query.length;
         const wordCount = query.split(/\s+/).length;
 
-        // Very short queries (< 5 chars) - need higher precision to avoid noise
+        // Very short queries (< 5 chars) - need very high precision
         if (length < 5 && wordCount === 1) {
-            return 0.6; // e.g., "вера" - must match closely
+            return 0.8; // e.g., "iman" should not match "animal"
         }
 
-        // Short single-word queries (5-10 chars) - balanced for typos
+        // 5 chars exactly - strict but allows prefix matches like "проро" -> "пророк" (score ~0.8)
+        if (length === 5 && wordCount === 1) {
+            return 0.7;
+        }
+
+        // 6-9 chars - balanced for typos (e.g. "рророк" -> "пророк" is ~0.57)
         if (length < 10 && wordCount === 1) {
-            return 0.35; // e.g., "пророк", "рророк" - allow 1-2 typos
+            return 0.5;
         }
 
-        // Medium queries - balanced
+        // Medium queries
         if (length < 30) {
-            return 0.3; // e.g., "Передавайте от меня"
+            return 0.4;
         }
 
-        // Long queries - more tolerant (more room for variation)
-        return 0.25; // e.g., "Передавайте от меня даже если аята"
+        // Long queries - allow more flexibility
+        return 0.3;
     }
 
     /**
