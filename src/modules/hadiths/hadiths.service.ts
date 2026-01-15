@@ -289,10 +289,6 @@ export class HadithsService {
     /**
      * Trigram similarity search using raw SQL
      * Uses subquery to find matching IDs first for optimal index usage
-     */
-    /**
-     * Trigram similarity search using raw SQL
-     * Uses subquery to find matching IDs first for optimal index usage
      * Wrapped in transaction to ensure set_limit applies to the query
      */
     private async trigramSearch(
@@ -307,8 +303,9 @@ export class HadithsService {
         return this.prisma.$transaction(async (tx) => {
             const skip = (page - 1) * limit;
 
-            // Set similarity threshold for % operator within this transaction
-            await tx.$executeRawUnsafe(`SELECT set_limit(${threshold});`);
+            // Set word similarity threshold for <% operator within this transaction
+            // Note: set_limit() only works for %, we need word_similarity_threshold for <%
+            await tx.$executeRawUnsafe(`SET pg_trgm.word_similarity_threshold = ${threshold};`);
 
             const escapedQuery = query.replace(/'/g, "''");
             const escapedLanguage = language.replace(/'/g, "''");
@@ -330,23 +327,24 @@ export class HadithsService {
             }
 
             // Combined query for Data + Total Count using Window Function
+            // Uses <% operator for word similarity (finding query roughly inside text)
             const results: any[] = await tx.$queryRawUnsafe(`
                 WITH matching_ids AS (
                     -- IDs from Arabic text matches
-                    SELECT h.id, similarity(h.arabic_text, '${escapedQuery}') as score
+                    SELECT h.id, word_similarity('${escapedQuery}', h.arabic_text) as score
                     FROM hadiths h
                     ${collectionJoin}
-                    WHERE h.arabic_text % '${escapedQuery}'
+                    WHERE '${escapedQuery}' <% h.arabic_text
                     ${collectionWhere}
                     
                     UNION ALL
                     
                     -- IDs from translation matches  
-                    SELECT h.id, similarity(t.text, '${escapedQuery}') as score
+                    SELECT h.id, word_similarity('${escapedQuery}', t.text) as score
                     FROM hadiths h
                     INNER JOIN translations t ON h.id = t.hadith_id
                     ${collectionJoin}
-                    WHERE t.text % '${escapedQuery}'
+                    WHERE '${escapedQuery}' <% t.text
                         AND t.language_code = '${escapedLanguage}'
                         ${gradeWhere}
                         ${collectionWhere}
