@@ -1,0 +1,68 @@
+PrismaClientValidationError: 
+Invalid `prisma.apiKey.upsert()` invocation in
+C:\Users\Intel\Desktop\mumin\api\scripts\create-dev-key.ts:15:37
+
+  12 });
+  13 if (!user) throw new Error('Dev user not found. Run seed script first.');
+  14 
+→ 15 const key = await prisma.apiKey.upsert({
+       where: {
+         keyHash: "85fb99e0ac5089528edb5b09959713c387220551a6cded727ffaa7cace4cc9ca"
+       },
+       update: {
+         isActive: true,
+         userId: 4
+       },
+       create: {
+         keyHash: "85fb99e0ac5089528edb5b09959713c387220551a6cded727ffaa7cace4cc9ca",
+         keyPrefix: "sk_mumin_dev",
+         userId: 4,
+         userEmail: "dev@mumin.ink",
+         maxDailyRequests: 10000,
+         isActive: true,
+         totalDataTransferred: 0n,
+         ~~~~~~~~~~~~~~~~~~~~
+     ?   id?: Int,
+     ?   userMetadata?: NullableJsonNullValueInput | Json,
+     ?   suspendedAt?: DateTime | Null,
+     ?   suspendReason?: String | Null,
+     ?   createdAt?: DateTime,
+     ?   lastUsedAt?: DateTime | Null,
+     ?   lastActivityDate?: DateTime,
+     ?   termsAcceptedAt?: DateTime | Null,
+     ?   termsVersion?: String | Null,
+     ?   privacyPolicyAcceptedAt?: DateTime | Null,
+     ?   privacyPolicyVersion?: String | Null,
+     ?   cookieConsent?: NullableJsonNullValueInput | Json,
+     ?   ipAtRegistration?: String | Null,
+     ?   userAgentAtRegistration?: String | Null,
+     ?   deviceFingerprintAtReg?: String | Null,
+     ?   geoLocationAtReg?: String | Null,
+     ?   trustScore?: Float,
+     ?   fraudFlags?: ApiKeyCreatefraudFlagsInput | String[],
+     ?   description?: String | Null,
+     ?   allowedOrigins?: ApiKeyCreateallowedOriginsInput | String[],
+     ?   inactivityWarnings?: Int,
+     ?   dormantAt?: DateTime | Null,
+     ?   allowedIPs?: ApiKeyCreateallowedIPsInput | String[],
+     ?   webhookUrl?: String | Null,
+     ?   notes?: String | Null,
+     ?   requestLogs?: RequestLogUncheckedCreateNestedManyWithoutApiKeyInput,
+     ?   transactions?: TransactionUncheckedCreateNestedManyWithoutApiKeyInput,
+     ?   payments?: PaymentUncheckedCreateNestedManyWithoutApiKeyInput,
+     ?   emailLogs?: EmailLogUncheckedCreateNestedManyWithoutApiKeyInput,
+     ?   fraudEvents?: FraudEventUncheckedCreateNestedManyWithoutApiKeyInput,
+     ?   dataExportRequests?: DataExportRequestUncheckedCreateNestedManyWithoutApiKeyInput,
+     ?   accountDeletionRequests?: AccountDeletionRequestUncheckedCreateNestedManyWithoutApiKeyInput
+       }
+     })
+
+Unknown argument `totalDataTransferred`. Available options are marked with ?.
+    at wn (C:\Users\Intel\Desktop\mumin\api\node_modules\@prisma\client\runtime\library.js:29:1363)
+    at $n.handleRequestError (C:\Users\Intel\Desktop\mumin\api\node_modules\@prisma\client\runtime\library.js:121:6958)
+    at $n.handleAndLogRequestError (C:\Users\Intel\Desktop\mumin\api\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\Intel\Desktop\mumin\api\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\Intel\Desktop\mumin\api\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async createDevKey (C:\Users\Intel\Desktop\mumin\api\scripts\create-dev-key.ts:15:17) {
+  clientVersion: '5.22.0'
+}

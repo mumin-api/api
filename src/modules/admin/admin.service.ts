@@ -31,8 +31,12 @@ export class AdminService {
                     id: true,
                     keyPrefix: true,
                     userEmail: true,
-                    balance: true,
-                    totalRequests: true,
+                    user: {
+                        select: {
+                            balance: true,
+                            totalRequests: true,
+                        }
+                    },
                     isActive: true,
                     suspendedAt: true,
                     suspendReason: true,
@@ -48,7 +52,12 @@ export class AdminService {
         const totalPages = Math.ceil(total / limit);
 
         return {
-            data: keys,
+            data: keys.map(k => ({
+                ...k,
+                balance: k.user?.balance ?? 0,
+                totalRequests: Number(k.user?.totalRequests ?? 0),
+                user: undefined,
+            })),
             pagination: {
                 page,
                 limit,
@@ -128,7 +137,15 @@ export class AdminService {
      * Add balance to account
      */
     async addBalance(id: number, amount: number, description: string) {
-        return this.billingService.addCredits(id, amount, description);
+        const key = await this.prisma.apiKey.findUnique({
+            where: { id },
+        });
+
+        if (!key) {
+            throw new NotFoundException(`API key with ID ${id} not found`);
+        }
+
+        return this.billingService.addCredits(key.userId, amount, description);
     }
 
     /**

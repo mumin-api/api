@@ -1,0 +1,491 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// CORE HADITH DATA
+// ============================================
+
+model Collection {
+  id              Int      @id @default(autoincrement())
+  nameEnglish     String   @map("name_english") @db.VarChar(100)
+  nameArabic      String?  @map("name_arabic") @db.VarChar(100)
+  slug            String   @unique @db.VarChar(50)
+  description     String?  @db.Text
+  totalHadith     Int      @default(0) @map("total_hadith")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  hadiths         Hadith[]
+
+  @@map("collections")
+}
+
+model Hadith {
+  id              Int      @id @default(autoincrement())
+  collection      String   @db.VarChar(50)
+  collectionId    Int?     @map("collection_id")
+  bookNumber      Int      @map("book_number")
+  hadithNumber    Int      @map("hadith_number")
+  arabicText      String   @map("arabic_text") @db.Text
+  arabicNarrator  String?  @map("arabic_narrator") @db.VarChar(255)
+  metadata        Json?    @db.JsonB
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  collectionRef   Collection? @relation(fields: [collectionId], references: [id], onDelete: SetNull)
+  translations    Translation[]
+
+  @@unique([collection, bookNumber, hadithNumber])
+  @@index([collection])
+  @@index([collectionId])
+  @@index([bookNumber])
+  @@map("hadiths")
+}
+
+model Translation {
+  id            Int      @id @default(autoincrement())
+  hadithId      Int      @map("hadith_id")
+  languageCode  String   @map("language_code") @db.VarChar(5)
+  text          String   @db.Text
+  narrator      String?  @db.VarChar(255)
+  grade         String?  @db.VarChar(50)
+  translator    String?  @db.VarChar(100)
+
+  hadith        Hadith   @relation(fields: [hadithId], references: [id], onDelete: Cascade)
+
+  @@unique([hadithId, languageCode])
+  @@index([languageCode])
+  @@index([hadithId])
+  @@map("translations")
+}
+
+// ============================================
+// AUTHENTICATION & USER MANAGEMENT
+// ============================================
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  firstName String?  @map("first_name") @db.VarChar(100)
+  lastName  String?  @map("last_name") @db.VarChar(100)
+  
+  // Refresh Token Strategy
+  hashedRt  String?  @map("hashed_rt")
+
+  // Balance & Billing (Global across all API keys)
+  balance              Int       @default(0)
+  totalRequests        Int       @default(0) @map("total_requests")
+  totalDataTransferred BigInt    @default(0) @map("total_data_transferred") // Bytes
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  apiKeys      ApiKey[]
+  transactions Transaction[]
+  payments     Payment[]
+  requestLogs  RequestLog[]
+  fraudEvents  FraudEvent[]
+  emailLogs    EmailLog[]
+  dataExportRequests      DataExportRequest[]
+  accountDeletionRequests AccountDeletionRequest[]
+
+  @@map("users")
+}
+
+// ============================================
+// API KEYS & USAGE
+// ============================================
+
+model ApiKey {
+  id                      Int       @id @default(autoincrement())
+  keyHash                 String    @unique @map("key_hash") @db.VarChar(64)
+  keyPrefix               String    @map("key_prefix") @db.VarChar(20)
+  
+  // Balance & Billing
+  balance                 Int       @default(0)
+  
+  // User Information
+  userId                  Int?      @map("user_id")
+  userEmail               String?   @map("user_email") @db.VarChar(255)
+  userMetadata            Json?     @map("user_metadata") @db.JsonB
+  
+  // Account Status
+  isActive                Boolean   @default(true) @map("is_active")
+  suspendedAt             DateTime? @map("suspended_at")
+  suspendReason           String?   @map("suspend_reason") @db.Text
+  
+  // Dates
+  createdAt               DateTime  @default(now()) @map("created_at")
+  lastUsedAt              DateTime? @map("last_used_at")
+  lastActivityDate        DateTime  @default(now()) @map("last_activity_date")
+  
+  // Legal Compliance (CRITICAL)
+  termsAcceptedAt         DateTime? @map("terms_accepted_at")
+  termsVersion            String?   @map("terms_version") @db.VarChar(10)
+  privacyPolicyAcceptedAt DateTime? @map("privacy_policy_accepted_at")
+  privacyPolicyVersion    String?   @map("privacy_policy_version") @db.VarChar(10)
+  cookieConsent           Json?     @map("cookie_consent") @db.JsonB
+  
+  // Registration Data (for dispute resolution)
+  ipAtRegistration        String?   @map("ip_at_registration") @db.VarChar(45)
+  userAgentAtRegistration String?   @map("user_agent_at_registration") @db.Text
+  deviceFingerprintAtReg  String?   @map("device_fingerprint_at_reg") @db.VarChar(64)
+  geoLocationAtReg        String?   @map("geo_location_at_reg") @db.VarChar(100)
+  
+  // Fraud Detection
+  trustScore              Float     @default(50) @map("trust_score") // 0-100
+  fraudFlags              String[]  @default([]) @map("fraud_flags") // ["honeypot_hit", "sequential_access"]
+  maxDailyRequests        Int       @default(500) @map("max_daily_requests")
+  
+  description             String?   @map("description")
+  allowedOrigins          String[]  @default([]) @map("allowed_origins")
+
+
+
+  // Inactivity Policy
+  inactivityWarnings      Int       @default(0) @map("inactivity_warnings")
+  dormantAt               DateTime? @map("dormant_at")
+  
+  // Enterprise Features (optional)
+  allowedIPs              String[]  @default([]) @map("allowed_ips")
+  webhookUrl              String?   @map("webhook_url") @db.VarChar(500)
+  
+  // Admin Notes
+  notes                   String?   @db.Text
+
+  // Relations
+  user                    User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  requestLogs             RequestLog[]
+  transactions            Transaction[]
+  payments                Payment[]
+  emailLogs               EmailLog[]
+  fraudEvents             FraudEvent[]
+  dataExportRequests      DataExportRequest[]
+  accountDeletionRequests AccountDeletionRequest[]
+
+  @@index([keyHash])
+  @@index([userEmail])
+  @@index([isActive])
+  @@index([createdAt])
+  @@index([lastActivityDate])
+  @@map("api_keys")
+}
+
+// ============================================
+// REQUEST LOGGING (CHARGEBACK DEFENSE)
+// ============================================
+
+model RequestLog {
+  id                  Int       @id @default(autoincrement())
+  
+  // Basic Request Info
+  userId              Int?      @map("user_id")
+  apiKeyId            Int?      @map("api_key_id")
+  endpoint            String    @db.Text
+  method              String    @db.VarChar(10)
+  
+  // Request Details (for proof of service delivery)
+  requestBody         Json?     @map("request_body") @db.JsonB
+  requestHeaders      Json?     @map("request_headers") @db.JsonB
+  queryParams         Json?     @map("query_params") @db.JsonB
+  
+  // Response Details
+  responseStatus      Int?      @map("response_status")
+  responseBody        Json?     @map("response_body") @db.JsonB // Truncated to 5KB
+  responseTimeMs      Int?      @map("response_time_ms")
+  dataTransferred     Int?      @map("data_transferred") // Bytes
+  
+  // Client Information
+  ipAddress           String?   @map("ip_address") @db.VarChar(45)
+  userAgent           String?   @map("user_agent") @db.Text
+  deviceFingerprint   String?   @map("device_fingerprint") @db.VarChar(64)
+  geoLocation         String?   @map("geo_location") @db.VarChar(100) // "US-CA" or "RU-MOW"
+  
+  // Performance & Caching
+  wasFromCache        Boolean   @default(false) @map("was_from_cache")
+  cacheKey            String?   @map("cache_key") @db.VarChar(255)
+  
+  // Billing
+  billingImpact       Int       @default(1) @map("billing_impact") // Credits deducted
+  
+  // Metadata
+  requestId           String    @map("request_id") @db.VarChar(36) // UUID
+  timestamp           DateTime  @default(now())
+
+  // Relations
+  user                User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  apiKey              ApiKey?   @relation(fields: [apiKeyId], references: [id], onDelete: SetNull)
+
+  @@index([apiKeyId])
+  @@index([timestamp(sort: Desc)])
+  @@index([endpoint])
+  @@index([ipAddress])
+  @@index([requestId])
+  @@map("request_logs")
+}
+
+// ============================================
+// BILLING & TRANSACTIONS
+// ============================================
+
+model Transaction {
+  id              Int       @id @default(autoincrement())
+  userId          Int       @map("user_id")
+  apiKeyId        Int?      @map("api_key_id")
+  
+  type            String    // "top_up", "deduction", "refund", "inactivity_fee", "bonus"
+  amount          Int       // Credits (positive for top_up, negative for deduction)
+  
+  balanceBefore   Int       @map("balance_before")
+  balanceAfter    Int       @map("balance_after")
+  
+  description     String?   @db.Text
+  metadata        Json?     @db.JsonB
+  
+  // Link to payment (if applicable)
+  paymentId       Int?      @map("payment_id")
+  
+  createdAt       DateTime  @default(now()) @map("created_at")
+
+  // Relations
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  apiKey          ApiKey?   @relation(fields: [apiKeyId], references: [id], onDelete: SetNull)
+  payment         Payment?  @relation(fields: [paymentId], references: [id])
+
+  @@index([apiKeyId])
+  @@index([type])
+  @@index([createdAt])
+  @@map("transactions")
+}
+
+model Payment {
+  id                  Int       @id @default(autoincrement())
+  userId              Int       @map("user_id")
+  apiKeyId            Int?      @map("api_key_id")
+  
+  // Payment Provider Info
+  provider            String    // "stripe", "crypto", "payme", "click"
+  providerPaymentId   String    @unique @map("provider_payment_id") // Stripe payment_intent_id, crypto tx hash
+  
+  // Amount
+  amount              Decimal   @db.Decimal(10, 2)
+  currency            String    @default("USD") @db.VarChar(3)
+  credits             Int       // Credits granted
+  
+  // Status
+  status              String    // "pending", "completed", "failed", "refunded", "disputed"
+  
+  // Chargeback Defense
+  chargebackStatus    String?   @map("chargeback_status") // "none", "initiated", "won", "lost"
+  chargebackReason    String?   @map("chargeback_reason") @db.Text
+  disputeEvidenceUrl  String?   @map("dispute_evidence_url") @db.Text
+  
+  // Metadata
+  metadata            Json?     @db.JsonB
+  ipAddress           String?   @map("ip_address") @db.VarChar(45)
+  deviceFingerprint   String?   @map("device_fingerprint") @db.VarChar(64)
+  
+  // Dates
+  createdAt           DateTime  @default(now()) @map("created_at")
+  completedAt         DateTime? @map("completed_at")
+  refundedAt          DateTime? @map("refunded_at")
+
+  // Relations
+  user                User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  apiKey              ApiKey?     @relation(fields: [apiKeyId], references: [id], onDelete: SetNull)
+  transactions        Transaction[]
+
+  @@index([apiKeyId])
+  @@index([provider])
+  @@index([providerPaymentId])
+  @@index([status])
+  @@map("payments")
+}
+
+// ============================================
+// EMAIL TRACKING (INACTIVITY POLICY)
+// ============================================
+
+model EmailLog {
+  id              Int       @id @default(autoincrement())
+  userId          Int       @map("user_id")
+  apiKeyId        Int?      @map("api_key_id")
+  
+  emailType       String    @map("email_type") // "inactivity_warning", "balance_low", "welcome"
+  recipient       String    @db.VarChar(255)
+  subject         String    @db.Text
+  
+  // Delivery Status
+  sentAt          DateTime  @default(now()) @map("sent_at")
+  deliveredAt     DateTime? @map("delivered_at")
+  openedAt        DateTime? @map("opened_at")
+  clickedAt       DateTime? @map("clicked_at")
+  
+  bounced         Boolean   @default(false)
+  bounceReason    String?   @map("bounce_reason") @db.Text
+  
+  // Provider Info
+  messageId       String    @unique @map("message_id") @db.VarChar(255) // From SendGrid/Mailgun
+  provider        String    @default("resend") // "resend", "sendgrid", "mailgun", "ses"
+  
+  // Metadata
+  metadata        Json?     @db.JsonB
+
+  // Relations
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  apiKey          ApiKey?   @relation(fields: [apiKeyId], references: [id], onDelete: SetNull)
+
+  @@index([apiKeyId])
+  @@index([emailType])
+  @@index([sentAt])
+  @@index([provider])
+  @@map("email_logs")
+}
+
+// ============================================
+// FRAUD DETECTION
+// ============================================
+
+model FraudEvent {
+  id              Int       @id @default(autoincrement())
+  userId          Int?      @map("user_id")
+  apiKeyId        Int       @map("api_key_id")
+  
+  eventType       String    @map("event_type") // "honeypot_hit", "sequential_access", "rate_limit_exceeded"
+  severity        String    // "low", "medium", "high", "critical"
+  
+  description     String    @db.Text
+  evidence        Json?     @db.JsonB
+  
+  // Action Taken
+  actionTaken     String?   @map("action_taken") // "flagged", "rate_limited", "suspended"
+  
+  ipAddress       String?   @map("ip_address") @db.VarChar(45)
+  
+  timestamp       DateTime  @default(now())
+
+  // Relations
+  user            User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  apiKey          ApiKey    @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
+
+  @@index([apiKeyId])
+  @@index([eventType])
+  @@index([severity])
+  @@index([timestamp])
+  @@map("fraud_events")
+}
+
+// ============================================
+// ADMIN AUDIT LOGS
+// ============================================
+
+model AdminAuditLog {
+  id              Int       @id @default(autoincrement())
+  
+  adminKeyId      Int       @map("admin_key_id") // Which admin performed action
+  action          String    // "created_key", "suspended_account", "added_balance"
+  
+  targetKeyId     Int?      @map("target_key_id") // Which key was affected
+  
+  details         Json?     @db.JsonB
+  ipAddress       String?   @map("ip_address") @db.VarChar(45)
+  
+  timestamp       DateTime  @default(now())
+
+  @@index([adminKeyId])
+  @@index([targetKeyId])
+  @@index([timestamp])
+  @@map("admin_audit_logs")
+}
+
+// ============================================
+// GDPR COMPLIANCE
+// ============================================
+
+model DataExportRequest {
+  id              Int       @id @default(autoincrement())
+  userId          Int       @map("user_id")
+  apiKeyId        Int?      @map("api_key_id")
+  
+  status          String    @default("pending") // "pending", "processing", "completed", "failed"
+  
+  requestedAt     DateTime  @default(now()) @map("requested_at")
+  completedAt     DateTime? @map("completed_at")
+  
+  downloadUrl     String?   @map("download_url") @db.Text
+  expiresAt       DateTime? @map("expires_at")
+  
+  fileSize        Int?      @map("file_size") // Bytes
+  format          String    @default("json") // "json", "csv"
+
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  apiKey          ApiKey?   @relation(fields: [apiKeyId], references: [id], onDelete: SetNull)
+
+  @@index([apiKeyId])
+  @@index([status])
+  @@map("data_export_requests")
+}
+
+model AccountDeletionRequest {
+  id                  Int       @id @default(autoincrement())
+  userId              Int       @map("user_id")
+  apiKeyId            Int?      @map("api_key_id")
+  
+  requestedAt         DateTime  @default(now()) @map("requested_at")
+  scheduledFor        DateTime  @map("scheduled_for") // 30 days grace period
+  
+  confirmationToken   String    @unique @map("confirmation_token") @db.VarChar(64)
+  confirmed           Boolean   @default(false)
+  confirmedAt         DateTime? @map("confirmed_at")
+  
+  deletedAt           DateTime? @map("deleted_at")
+  
+  reason              String?   @db.Text
+
+  user                User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  apiKey              ApiKey?   @relation(fields: [apiKeyId], references: [id], onDelete: SetNull)
+
+  @@index([apiKeyId])
+  @@index([scheduledFor])
+  @@map("account_deletion_requests")
+}
+
+// ============================================
+// ANALYTICS & STATISTICS
+// ============================================
+
+model EndpointStats {
+  id              Int       @id @default(autoincrement())
+  date            DateTime  @db.Date
+  endpoint        String    @db.VarChar(255)
+  
+  totalHits       Int       @default(0) @map("total_hits")
+  uniqueUsers     Int       @default(0) @map("unique_users")
+  avgResponseMs   Float     @default(0) @map("avg_response_ms")
+  cacheHitRate    Float     @default(0) @map("cache_hit_rate") // 0-1
+  
+  @@unique([date, endpoint])
+  @@index([date])
+  @@map("endpoint_stats")
+}
+
+model GeoStats {
+  id              Int       @id @default(autoincrement())
+  date            DateTime  @db.Date
+  country         String    @db.VarChar(2) // ISO country code
+  
+  requestCount    Int       @default(0) @map("request_count")
+  uniqueUsers     Int       @default(0) @map("unique_users")
+  
+  @@unique([date, country])
+  @@index([date])
+  @@map("geo_stats")
+}

@@ -1,0 +1,18 @@
+PrismaClientKnownRequestError: 
+Invalid `prisma.apiKey.create()` invocation in
+C:\Users\Intel\Desktop\mumin\api\scripts\create-dev-key.ts:20:37
+
+  17     where: { userEmail: 'dev@mumin.ink' }
+  18 });
+  19 
+→ 20 const key = await prisma.apiKey.create(
+Unique constraint failed on the fields: (`id`)
+    at $n.handleRequestError (C:\Users\Intel\Desktop\mumin\api\node_modules\@prisma\client\runtime\library.js:121:7315)
+    at $n.handleAndLogRequestError (C:\Users\Intel\Desktop\mumin\api\node_modules\@prisma\client\runtime\library.js:121:6623)
+    at $n.request (C:\Users\Intel\Desktop\mumin\api\node_modules\@prisma\client\runtime\library.js:121:6307)
+    at async l (C:\Users\Intel\Desktop\mumin\api\node_modules\@prisma\client\runtime\library.js:130:9633)
+    at async createDevKey (C:\Users\Intel\Desktop\mumin\api\scripts\create-dev-key.ts:20:17) {
+  code: 'P2002',
+  clientVersion: '5.22.0',
+  meta: { modelName: 'ApiKey', target: [ 'id' ] }
+}

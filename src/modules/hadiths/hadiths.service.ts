@@ -114,9 +114,8 @@ export class HadithsService {
         }
 
         const count = await this.prisma.hadith.count({ where });
-
         if (count === 0) {
-            throw new NotFoundException('No hadiths found matching criteria');
+            return null;
         }
 
         const skip = Math.floor(Math.random() * count);
@@ -142,7 +141,7 @@ export class HadithsService {
     async findDaily(language: string = 'en') {
         const count = await this.prisma.hadith.count();
         if (count === 0) {
-            throw new NotFoundException('No hadiths found');
+            return null;
         }
 
         const now = new Date();
@@ -165,7 +164,7 @@ export class HadithsService {
         });
 
         if (!hadith) {
-            throw new NotFoundException('No matching hadith found');
+            return null;
         }
 
         return this.mapHadithResponse(hadith);

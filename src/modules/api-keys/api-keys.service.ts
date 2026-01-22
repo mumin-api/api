@@ -35,18 +35,31 @@ export class ApiKeysService {
         }
 
         // Generate API key
+        this.logger.log(`Registering new API key for email: ${dto.email}`);
         const apiKey = generateApiKey();
         const keyHash = hashApiKey(apiKey);
         const keyPrefix = getKeyPrefix(apiKey);
+
+        // Find user
+        const user = await this.prisma.user.findUnique({
+            where: { email: dto.email }
+        });
+        if (!user) throw new BadRequestException('User account missing. Please register first.');
+
+        // Limit to 5 keys
+        const keyCount = await this.prisma.apiKey.count({ where: { userId: user.id } });
+        if (keyCount >= 5) {
+            throw new BadRequestException('Maximum limit of 5 API keys reached. Please delete or rotate existing keys.');
+        }
 
         // Create API key in database
         const dbKey = await this.prisma.apiKey.create({
             data: {
                 keyHash,
                 keyPrefix,
+                userId: user.id,
                 userEmail: dto.email,
                 userMetadata: dto.metadata,
-                balance: 100, // Free 100 credits on signup
                 termsAcceptedAt: new Date(),
                 termsVersion: dto.termsVersion,
                 privacyPolicyAcceptedAt: new Date(),
@@ -58,17 +71,7 @@ export class ApiKeysService {
             },
         });
 
-        // Create initial transaction for free credits
-        await this.prisma.transaction.create({
-            data: {
-                apiKeyId: dbKey.id,
-                type: 'bonus',
-                amount: 100,
-                balanceBefore: 0,
-                balanceAfter: 100,
-                description: 'Welcome bonus - 100 free credits',
-            },
-        });
+        // NO individual transaction - we use user balance
 
         this.logger.log(`New API key registered: ${keyPrefix} (${dto.email})`);
 
@@ -76,8 +79,9 @@ export class ApiKeysService {
         if (dto.email) {
             this.emailService.sendWelcomeEmail({
                 id: dbKey.id,
+                userId: user.id,
                 keyPrefix,
-                balance: 100,
+                balance: user.balance,
                 userEmail: dto.email,
             }).catch((error) => {
                 this.logger.error(`Failed to send welcome email to ${dto.email}:`, error);
@@ -87,7 +91,7 @@ export class ApiKeysService {
         return {
             apiKey, // Only time we return the plain key
             keyPrefix,
-            balance: 100,
+            balance: user.balance,
             email: dto.email,
             createdAt: dbKey.createdAt,
             message: 'API key created successfully. Save this key securely - it will not be shown again.',
@@ -103,10 +107,14 @@ export class ApiKeysService {
             select: {
                 id: true,
                 keyPrefix: true,
-                balance: true,
-                totalRequests: true,
-                totalDataTransferred: true,
                 userEmail: true,
+                user: {
+                    select: {
+                        balance: true,
+                        totalRequests: true,
+                        totalDataTransferred: true,
+                    }
+                },
                 isActive: true,
                 suspendedAt: true,
                 suspendReason: true,
@@ -127,7 +135,34 @@ export class ApiKeysService {
             throw new BadRequestException('API key not found');
         }
 
-        return key;
+        // Convert BigInt and flatten user data
+        return {
+            ...key,
+            id: key.id.toString(),
+            balance: key.user?.balance ?? 0,
+            totalRequests: Number(key.user?.totalRequests ?? 0),
+            totalDataTransferred: Number(key.user?.totalDataTransferred ?? 0n),
+            user: undefined, // Don't return nested user object
+        };
+    }
+
+    async getKeysByUserEmail(email: string) {
+        const keys = await this.prisma.apiKey.findMany({
+            where: { userEmail: email },
+            orderBy: { createdAt: 'desc' },
+            include: { user: true },
+        });
+
+        return keys.map((key) => ({
+            id: key.id.toString(),
+            keyPrefix: key.keyPrefix,
+            createdAt: key.createdAt,
+            lastUsedAt: key.lastUsedAt,
+            isActive: key.isActive,
+            balance: key.user?.balance ?? 0,
+            totalRequests: Number(key.user?.totalRequests ?? 0),
+            totalDataTransferred: Number(key.user?.totalDataTransferred ?? 0n),
+        }));
     }
 
     /**
@@ -165,6 +200,19 @@ export class ApiKeysService {
         };
     }
 
+    async rotateKeyByUserEmail(email: string) {
+        const key = await this.prisma.apiKey.findFirst({
+            where: { userEmail: email },
+            orderBy: { createdAt: 'desc' },
+        });
+
+        if (!key) {
+            throw new BadRequestException('API key not found');
+        }
+
+        return this.rotateKey(key.id);
+    }
+
     /**
      * Update API key settings
      */
@@ -177,5 +225,18 @@ export class ApiKeysService {
         this.logger.log(`Settings updated for API key ID ${apiKeyId}`);
 
         return { message: 'Settings updated successfully' };
+    }
+
+    async updateSettingsByUserEmail(email: string, settings: { allowedIPs?: string[]; webhookUrl?: string }) {
+        const key = await this.prisma.apiKey.findFirst({
+            where: { userEmail: email },
+            orderBy: { createdAt: 'desc' },
+        });
+
+        if (!key) {
+            throw new BadRequestException('API key not found');
+        }
+
+        return this.updateSettings(key.id, settings);
     }
 }

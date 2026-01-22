@@ -8,11 +8,11 @@ export class BillingService {
     constructor(private prisma: PrismaService) { }
 
     /**
-     * Get balance for API key
+     * Get balance for User
      */
-    async getBalance(apiKeyId: number) {
-        const key = await this.prisma.apiKey.findUnique({
-            where: { id: apiKeyId },
+    async getBalance(userId: number) {
+        const user = await this.prisma.user.findUnique({
+            where: { id: userId },
             select: {
                 balance: true,
                 totalRequests: true,
@@ -21,26 +21,67 @@ export class BillingService {
         });
 
         return {
-            balance: key?.balance || 0,
-            totalRequests: key?.totalRequests || 0,
-            totalDataTransferred: key?.totalDataTransferred || 0,
+            balance: user?.balance || 0,
+            totalRequests: user?.totalRequests ? Number(user.totalRequests) : 0,
+            totalDataTransferred: user?.totalDataTransferred ? Number(user.totalDataTransferred) : 0,
+        };
+    }
+
+    async getApiKeyIdByEmail(email: string): Promise<number | null> {
+        const key = await this.prisma.apiKey.findFirst({
+            where: { userEmail: email },
+            select: { id: true },
+        });
+        return key?.id || null;
+    }
+
+    async getBalanceByUserEmail(email: string) {
+        const user = await this.prisma.user.findUnique({
+            where: { email },
+            select: {
+                id: true,
+                balance: true,
+                totalRequests: true,
+                totalDataTransferred: true,
+            },
+        });
+
+        // Calculate today's requests across all API keys for this user
+        let requestsToday = 0;
+        if (user) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            requestsToday = await this.prisma.requestLog.count({
+                where: {
+                    userId: user.id,
+                    timestamp: { gte: today },
+                },
+            });
+        }
+
+        return {
+            balance: user?.balance || 0,
+            requestsToday,
+            totalRequests: user?.totalRequests ? Number(user.totalRequests) : 0,
+            totalDataTransferred: user?.totalDataTransferred ? Number(user.totalDataTransferred) : 0,
         };
     }
 
     /**
      * Get transaction history
      */
-    async getTransactions(apiKeyId: number, page: number = 1, limit: number = 50) {
+    async getTransactions(userId: number, page: number = 1, limit: number = 50) {
         const skip = (page - 1) * limit;
 
         const [transactions, total] = await Promise.all([
             this.prisma.transaction.findMany({
-                where: { apiKeyId },
+                where: { userId },
                 orderBy: { createdAt: 'desc' },
                 skip,
                 take: limit,
             }),
-            this.prisma.transaction.count({ where: { apiKeyId } }),
+            this.prisma.transaction.count({ where: { userId } }),
         ]);
 
         const totalPages = Math.ceil(total / limit);
@@ -61,9 +102,9 @@ export class BillingService {
     /**
      * Get payment history
      */
-    async getPayments(apiKeyId: number) {
+    async getPayments(userId: number) {
         return this.prisma.payment.findMany({
-            where: { apiKeyId },
+            where: { userId },
             orderBy: { createdAt: 'desc' },
         });
     }
@@ -71,36 +112,36 @@ export class BillingService {
     /**
      * Add credits to account (manual top-up)
      */
-    async addCredits(apiKeyId: number, amount: number, description: string) {
-        const key = await this.prisma.apiKey.findUnique({
-            where: { id: apiKeyId },
+    async addCredits(userId: number, amount: number, description: string) {
+        const user = await this.prisma.user.findUnique({
+            where: { id: userId },
         });
 
-        if (!key) {
-            throw new Error('API key not found');
+        if (!user) {
+            throw new Error('User not found');
         }
 
         await this.prisma.$transaction([
-            this.prisma.apiKey.update({
-                where: { id: apiKeyId },
-                data: { balance: key.balance + amount },
+            this.prisma.user.update({
+                where: { id: userId },
+                data: { balance: user.balance + amount },
             }),
             this.prisma.transaction.create({
                 data: {
-                    apiKeyId,
+                    userId,
                     type: 'top_up',
                     amount,
-                    balanceBefore: key.balance,
-                    balanceAfter: key.balance + amount,
+                    balanceBefore: user.balance,
+                    balanceAfter: user.balance + amount,
                     description,
                 },
             }),
         ]);
 
-        this.logger.log(`Added ${amount} credits to API key ${key.keyPrefix}`);
+        this.logger.log(`Added ${amount} credits to User ${user.email}`);
 
         return {
-            balance: key.balance + amount,
+            balance: user.balance + amount,
             message: `Successfully added ${amount} credits`,
         };
     }

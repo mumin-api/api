@@ -4,25 +4,29 @@ import { createHash } from 'crypto';
 const prisma = new PrismaClient();
 
 async function createDevKey() {
-    const apiKey = 'sk_mumin_dev_master_key_1234567890abcdef'; // 41 chars exactly
+    const apiKey = 'sk_mumin_dev_master_key_1234567890abcderf'; // 41 chars exactly
     const keyHash = createHash('sha256').update(apiKey).digest('hex');
 
-    const key = await prisma.apiKey.upsert({
-        where: { keyHash },
-        update: {
-            isActive: true,
-            balance: 1000000,
-        },
-        create: {
+    const user = await prisma.user.findUnique({
+        where: { email: 'dev@mumin.ink' }
+    });
+    if (!user) throw new Error('Dev user not found. Run seed script first.');
+
+    // Delete existing dev keys for this user
+    await prisma.apiKey.deleteMany({
+        where: { userEmail: 'dev@mumin.ink' }
+    });
+
+    const key = await prisma.apiKey.create({
+        data: {
             keyHash,
             keyPrefix: 'sk_mumin_dev',
+            userId: user.id,
             userEmail: 'dev@mumin.ink',
             maxDailyRequests: 10000,
-            balance: 1000000,
             isActive: true,
-            totalDataTransferred: BigInt(0),
         },
-    } as any);
+    });
 
     console.log('✅ Development API Key created/updated:');
     console.log(`🔑 Key: ${apiKey}`);

@@ -18,93 +18,123 @@ export class InactivityCronService {
      */
     @Cron(CronExpression.EVERY_DAY_AT_2AM)
     async checkInactiveAccounts(): Promise<void> {
-        this.logger.log('Running inactivity check...');
+        this.logger.log('Running inactivity check (User-centric)...');
 
-        // Find accounts inactive for 335 days (30 days before 365)
+        // Find users inactive for 335 days
         const warningDate = subDays(new Date(), 335);
 
-        const accountsNeedingWarning = await this.prisma.apiKey.findMany({
+        // We find users where ALL their keys are inactive
+        const usersNeedingWarning = await this.prisma.user.findMany({
             where: {
-                lastActivityDate: { lt: warningDate },
                 balance: { gt: 0 },
-                inactivityWarnings: 0,
-                isActive: true,
-                userEmail: { not: null },
+                apiKeys: {
+                    every: {
+                        lastActivityDate: { lt: warningDate },
+                    }
+                },
+                // We'll track warnings at the user level or just pick the primary key for emails
             },
+            include: {
+                apiKeys: {
+                    orderBy: { lastActivityDate: 'desc' },
+                    take: 1
+                }
+            }
         });
 
-        this.logger.log(`Found ${accountsNeedingWarning.length} accounts needing first warning`);
+        this.logger.log(`Found ${usersNeedingWarning.length} users potentially needing warnings`);
 
-        // Send first warning (30 days before dormant)
-        for (const key of accountsNeedingWarning) {
-            try {
-                await this.emailService.sendInactivityWarning(key, 30);
-                await this.prisma.apiKey.update({
-                    where: { id: key.id },
-                    data: { inactivityWarnings: 1 },
-                });
-                this.logger.log(`Sent 30-day warning to ${key.userEmail}`);
-            } catch (error) {
-                this.logger.error(`Failed to send warning to ${key.userEmail}:`, error);
+        for (const user of usersNeedingWarning) {
+            const latestKey = user.apiKeys[0];
+            if (!latestKey) continue;
+
+            // Check if warning already sent (using the latest key's tracking for now)
+            if (latestKey.inactivityWarnings === 0) {
+                try {
+                    await this.emailService.sendInactivityWarning({
+                        userEmail: user.email,
+                        keyPrefix: latestKey.keyPrefix,
+                    } as any, 30);
+
+                    await this.prisma.apiKey.update({
+                        where: { id: latestKey.id },
+                        data: { inactivityWarnings: 1 },
+                    });
+                    this.logger.log(`Sent 30-day warning to user ${user.email}`);
+                } catch (error) {
+                    this.logger.error(`Failed to send warning to ${user.email}:`, error);
+                }
             }
         }
 
-        // Find accounts needing second warning (7 days before dormant)
+        // Logic for 7-day warning and dormancy...
         const secondWarningDate = subDays(new Date(), 358);
-
-        const accountsNeedingSecondWarning = await this.prisma.apiKey.findMany({
+        const usersNeedingSecondWarning = await this.prisma.user.findMany({
             where: {
-                lastActivityDate: { lt: secondWarningDate },
                 balance: { gt: 0 },
-                inactivityWarnings: 1,
-                isActive: true,
-                userEmail: { not: null },
+                apiKeys: {
+                    every: {
+                        lastActivityDate: { lt: secondWarningDate },
+                        inactivityWarnings: 1
+                    }
+                }
             },
+            include: {
+                apiKeys: { orderBy: { lastActivityDate: 'desc' }, take: 1 }
+            }
         });
 
-        this.logger.log(`Found ${accountsNeedingSecondWarning.length} accounts needing second warning`);
+        for (const user of usersNeedingSecondWarning) {
+            const latestKey = user.apiKeys[0];
+            if (!latestKey) continue;
 
-        for (const key of accountsNeedingSecondWarning) {
             try {
-                await this.emailService.sendInactivityWarning(key, 7);
+                await this.emailService.sendInactivityWarning({
+                    userEmail: user.email,
+                    keyPrefix: latestKey.keyPrefix,
+                } as any, 7);
+
                 await this.prisma.apiKey.update({
-                    where: { id: key.id },
+                    where: { id: latestKey.id },
                     data: { inactivityWarnings: 2 },
                 });
-                this.logger.log(`Sent 7-day warning to ${key.userEmail}`);
+                this.logger.log(`Sent 7-day warning to user ${user.email}`);
             } catch (error) {
-                this.logger.error(`Failed to send second warning to ${key.userEmail}:`, error);
+                this.logger.error(`Failed to send second warning to ${user.email}:`, error);
             }
         }
 
-        // Find accounts that became dormant (365 days)
+        // Dormancy check (365 days)
         const dormantDate = subDays(new Date(), 365);
-
-        const dormantAccounts = await this.prisma.apiKey.findMany({
+        const usersBecomingDormant = await this.prisma.user.findMany({
             where: {
-                lastActivityDate: { lt: dormantDate },
-                balance: { gt: 10 }, // Exempt small balances
-                dormantAt: null,
-                isActive: true,
+                apiKeys: {
+                    every: {
+                        lastActivityDate: { lt: dormantDate },
+                        dormantAt: null
+                    }
+                },
+                balance: { gt: 10 }
             },
+            include: {
+                apiKeys: { orderBy: { lastActivityDate: 'desc' }, take: 1 }
+            }
         });
 
-        this.logger.log(`Found ${dormantAccounts.length} newly dormant accounts`);
+        for (const user of usersBecomingDormant) {
+            const latestKey = user.apiKeys[0];
+            if (!latestKey) continue;
 
-        for (const key of dormantAccounts) {
             try {
-                // Mark as dormant
                 await this.prisma.apiKey.update({
-                    where: { id: key.id },
+                    where: { id: latestKey.id },
                     data: { dormantAt: new Date() },
                 });
 
-                // Charge first inactivity fee
-                await this.chargeInactivityFee(key);
-
-                this.logger.log(`Marked account ${key.userEmail} as dormant`);
+                await this.chargeInactivityFee(user);
+                this.logger.log(`Marked user ${user.email} as dormant`);
             } catch (error) {
-                this.logger.error(`Failed to process dormant account ${key.userEmail}:`, error);
+                this.logger.error(`Failed to process dormant user ${user.email}:`, error);
             }
         }
     }
@@ -116,61 +146,69 @@ export class InactivityCronService {
     async chargeMonthlyInactivityFees(): Promise<void> {
         this.logger.log('Charging monthly inactivity fees...');
 
-        const dormantAccounts = await this.prisma.apiKey.findMany({
+        const dormantUsers = await this.prisma.user.findMany({
             where: {
-                dormantAt: { not: null },
+                apiKeys: {
+                    some: { dormantAt: { not: null } }
+                },
                 balance: { gt: 0 },
-                isActive: true,
-            },
+            }
         });
 
-        this.logger.log(`Found ${dormantAccounts.length} dormant accounts to charge`);
+        this.logger.log(`Found ${dormantUsers.length} dormant users to charge`);
 
-        for (const key of dormantAccounts) {
-            await this.chargeInactivityFee(key);
+        for (const user of dormantUsers) {
+            await this.chargeInactivityFee(user);
         }
     }
 
-    private async chargeInactivityFee(key: any): Promise<void> {
+    private async chargeInactivityFee(user: any): Promise<void> {
         const feeAmount = 5000; // $5 = 5000 credits
 
-        if (key.balance < feeAmount) {
-            // Balance too low, close account
-            await this.prisma.apiKey.update({
-                where: { id: key.id },
+        if (user.balance < feeAmount) {
+            // Balance too low, suspend account
+            await this.prisma.user.update({
+                where: { id: user.id },
                 data: {
                     balance: 0,
-                    isActive: false,
-                    suspendedAt: new Date(),
-                    suspendReason: 'Balance depleted due to inactivity fees',
                 },
             });
 
-            this.logger.log(`Closed account ${key.userEmail} - balance depleted`);
+            // Suspend all keys
+            await this.prisma.apiKey.updateMany({
+                where: { userId: user.id },
+                data: {
+                    isActive: false,
+                    suspendedAt: new Date(),
+                    suspendReason: 'Balance depleted due to inactivity fees',
+                }
+            });
+
+            this.logger.log(`Suspended user ${user.email} - balance depleted`);
             return;
         }
 
         // Charge fee
         await this.prisma.$transaction([
-            // Deduct balance
-            this.prisma.apiKey.update({
-                where: { id: key.id },
-                data: { balance: key.balance - feeAmount },
+            // Deduct balance from User
+            this.prisma.user.update({
+                where: { id: user.id },
+                data: { balance: user.balance - feeAmount },
             }),
 
             // Log transaction
             this.prisma.transaction.create({
                 data: {
-                    apiKeyId: key.id,
+                    userId: user.id,
                     type: 'inactivity_fee',
                     amount: -feeAmount,
-                    balanceBefore: key.balance,
-                    balanceAfter: key.balance - feeAmount,
+                    balanceBefore: user.balance,
+                    balanceAfter: user.balance - feeAmount,
                     description: 'Monthly inactivity fee ($5)',
                 },
             }),
         ]);
 
-        this.logger.log(`Charged $5 inactivity fee to ${key.userEmail}. New balance: ${key.balance - feeAmount}`);
+        this.logger.log(`Charged $5 inactivity fee to ${user.email}. New balance: ${user.balance - feeAmount}`);
     }
 }

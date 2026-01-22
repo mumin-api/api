@@ -1,6 +1,6 @@
 import { Controller, Post, Get, Put, Delete, Param, Body, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
-import { ApiKeyGuard } from '@/common/guards/api-key.guard';
+import { UnifiedAuthGuard } from '@/common/guards/unified-auth.guard';
 import { CurrentUser } from '@/common/decorators/current-user.decorator';
 import { DataExportService } from './data-export.service';
 import { DataDeletionService } from './data-deletion.service';
@@ -17,37 +17,37 @@ export class GdprController {
     ) { }
 
     @Get('consent')
-    @Public()
+    @UseGuards(UnifiedAuthGuard)
     @ApiOperation({ summary: 'Get current cookie consent state' })
     async getConsent(@CurrentUser() user: any) {
-        return this.consentService.getConsent(user?.apiKeyId);
+        return this.consentService.getConsent(user?.userId, user?.apiKeyId);
     }
 
     @Put('consent')
-    @UseGuards(ApiKeyGuard)
+    @UseGuards(UnifiedAuthGuard)
     @ApiBearerAuth('api-key')
     @ApiOperation({ summary: 'Update cookie consent state' })
     async updateConsent(@CurrentUser() user: any, @Body() body: any) {
-        return this.consentService.updateConsent(user.apiKeyId, body);
+        return this.consentService.updateConsent(body, user.userId, user.apiKeyId);
     }
 
     @Post('export')
-    @UseGuards(ApiKeyGuard)
+    @UseGuards(UnifiedAuthGuard)
     @ApiBearerAuth('api-key')
     @ApiOperation({ summary: 'Request data export (GDPR)' })
     async requestExport(
         @CurrentUser() user: any,
         @Body() body: { format?: 'json' | 'csv' },
     ) {
-        return this.exportService.requestExport(user.apiKeyId, body.format);
+        return this.exportService.requestExport(user.apiKeyId, user.userId, body.format);
     }
 
     @Post('delete')
-    @UseGuards(ApiKeyGuard)
+    @UseGuards(UnifiedAuthGuard)
     @ApiBearerAuth('api-key')
     @ApiOperation({ summary: 'Request account deletion (GDPR)' })
     async requestDeletion(@CurrentUser() user: any, @Body() body: { reason?: string }) {
-        return this.deletionService.requestDeletion(user.apiKeyId, body.reason);
+        return this.deletionService.requestDeletion(user.apiKeyId, user.userId, body.reason);
     }
 
     @Get('delete/confirm/:token')
@@ -58,7 +58,7 @@ export class GdprController {
     }
 
     @Delete('delete/cancel')
-    @UseGuards(ApiKeyGuard)
+    @UseGuards(UnifiedAuthGuard)
     @ApiBearerAuth('api-key')
     @ApiOperation({ summary: 'Cancel deletion request' })
     async cancelDeletion(@CurrentUser() user: any) {

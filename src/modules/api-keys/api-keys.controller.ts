@@ -4,13 +4,13 @@ import { ApiKeysService } from './api-keys.service';
 import { RegisterApiKeyDto } from './dto/register-key.dto';
 import { Public } from '@/common/decorators/public.decorator';
 import { CurrentUser } from '@/common/decorators/current-user.decorator';
-import { ApiKeyGuard } from '@/common/guards/api-key.guard';
+import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 import { Request } from 'express';
 import { Req } from '@nestjs/common';
 import { GeolocationUtil } from '@/common/utils/geolocation.util';
 
-@ApiTags('auth')
-@Controller('auth')
+@ApiTags('api-keys')
+@Controller('keys')
 export class ApiKeysController {
     constructor(
         private apiKeysService: ApiKeysService,
@@ -30,6 +30,27 @@ export class ApiKeysController {
         );
     }
 
+    @Post('create')
+    @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth('jwt')
+    @ApiOperation({ summary: 'Create API key for authenticated user' })
+    async create(@CurrentUser() user: any, @Req() req: Request) {
+        console.log(`[API_KEYS] create for ${user?.email}`);
+        return this.apiKeysService.register(
+            {
+                email: user.email,
+                acceptTerms: true,
+                termsVersion: '1.0',
+                acceptPrivacyPolicy: true,
+                privacyPolicyVersion: '1.0',
+            } as any,
+            req.ip || 'unknown',
+            req.headers['user-agent'] || '',
+            '',
+            this.geoUtil.getLocation(req.ip || '') || 'unknown',
+        );
+    }
+
     @Post('refresh')
     @Public()
     @ApiOperation({ summary: 'Stub for token refresh' })
@@ -38,29 +59,31 @@ export class ApiKeysController {
     }
 
     @Get('me')
-    @UseGuards(ApiKeyGuard)
-    @ApiBearerAuth('api-key')
+    @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth('jwt')
     @ApiOperation({ summary: 'Get current API key information' })
     async getMe(@CurrentUser() user: any) {
-        return this.apiKeysService.getKeyInfo(user.apiKeyId);
+        console.log(`[API_KEYS] getMe for ${user?.email}`);
+        return this.apiKeysService.getKeysByUserEmail(user.email);
     }
 
     @Post('rotate')
-    @UseGuards(ApiKeyGuard)
-    @ApiBearerAuth('api-key')
+    @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth('jwt')
     @ApiOperation({ summary: 'Rotate API key (generate new key)' })
     async rotate(@CurrentUser() user: any) {
-        return this.apiKeysService.rotateKey(user.apiKeyId);
+        console.log(`[API_KEYS] rotate for ${user?.email}`);
+        return this.apiKeysService.rotateKeyByUserEmail(user.email);
     }
 
     @Patch('settings')
-    @UseGuards(ApiKeyGuard)
-    @ApiBearerAuth('api-key')
+    @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth('jwt')
     @ApiOperation({ summary: 'Update API key settings' })
     async updateSettings(
         @CurrentUser() user: any,
         @Body() settings: { allowedIPs?: string[]; webhookUrl?: string },
     ) {
-        return this.apiKeysService.updateSettings(user.apiKeyId, settings);
+        return this.apiKeysService.updateSettingsByUserEmail(user.email, settings);
     }
 }

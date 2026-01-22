@@ -13,11 +13,12 @@ export class DataExportService {
     /**
      * Request data export (GDPR Right to Data Portability)
      */
-    async requestExport(apiKeyId: number, format: 'json' | 'csv' = 'json'): Promise<any> {
+    async requestExport(apiKeyId: number, userId: number, format: 'json' | 'csv' = 'json'): Promise<any> {
         // Create export request
         const exportRequest = await this.prisma.dataExportRequest.create({
             data: {
                 apiKeyId,
+                userId,
                 format,
                 status: 'pending',
             },
@@ -52,7 +53,7 @@ export class DataExportService {
             });
 
             // Gather all user data
-            const userData = await this.gatherUserData(exportRequest.apiKeyId);
+            const userData = await this.gatherUserData(exportRequest.apiKeyId!);
 
             // Generate export file
             const filename = `user_data_${exportRequest.apiKeyId}_${Date.now()}.${exportRequest.format}`;
@@ -100,7 +101,10 @@ export class DataExportService {
     private async gatherUserData(apiKeyId: number): Promise<any> {
         const [apiKey, requestLogs, transactions, payments, emailLogs, fraudEvents] =
             await Promise.all([
-                this.prisma.apiKey.findUnique({ where: { id: apiKeyId } }),
+                this.prisma.apiKey.findUnique({
+                    where: { id: apiKeyId },
+                    include: { user: true }
+                }),
                 this.prisma.requestLog.findMany({
                     where: { apiKeyId },
                     orderBy: { timestamp: 'desc' },
@@ -130,8 +134,9 @@ export class DataExportService {
                 id: apiKey?.id,
                 keyPrefix: apiKey?.keyPrefix,
                 email: apiKey?.userEmail,
-                balance: apiKey?.balance,
-                totalRequests: apiKey?.totalRequests,
+                balance: apiKey?.user?.balance,
+                totalRequests: apiKey?.user?.totalRequests,
+                totalDataTransferred: Number(apiKey?.user?.totalDataTransferred ?? 0n),
                 createdAt: apiKey?.createdAt,
                 lastUsedAt: apiKey?.lastUsedAt,
                 termsAcceptedAt: apiKey?.termsAcceptedAt,

@@ -14,12 +14,13 @@ export class DataDeletionService {
     /**
      * Request account deletion (GDPR Right to be Forgotten)
      */
-    async requestDeletion(apiKeyId: number, reason?: string): Promise<any> {
+    async requestDeletion(apiKeyId: number, userId: number, reason?: string): Promise<any> {
         const confirmationToken = randomBytes(32).toString('hex');
 
         const deletionRequest = await this.prisma.accountDeletionRequest.create({
             data: {
                 apiKeyId,
+                userId,
                 scheduledFor: addDays(new Date(), 30), // 30-day grace period
                 confirmationToken,
                 reason,
@@ -100,27 +101,27 @@ export class DataDeletionService {
 
         for (const deletion of pendingDeletions) {
             try {
-                await this.deleteAccount(deletion.apiKeyId);
+                await this.deleteAccount(deletion.apiKeyId!, deletion.userId!);
 
                 await this.prisma.accountDeletionRequest.update({
                     where: { id: deletion.id },
                     data: { deletedAt: new Date() },
                 });
 
-                this.logger.log(`Deleted account ${deletion.apiKeyId}`);
+                this.logger.log(`Deleted account for User ${deletion.userId} (Key ${deletion.apiKeyId})`);
             } catch (error) {
-                this.logger.error(`Failed to delete account ${deletion.apiKeyId}:`, error);
+                this.logger.error(`Failed to delete account for User ${deletion.userId}:`, error);
             }
         }
     }
 
-    private async deleteAccount(apiKeyId: number): Promise<void> {
+    private async deleteAccount(apiKeyId: number, userId: number): Promise<void> {
         // GDPR-compliant deletion: Remove PII, keep anonymized stats
 
         await this.prisma.$transaction([
             // Anonymize request logs (keep for analytics, remove PII)
             this.prisma.requestLog.updateMany({
-                where: { apiKeyId },
+                where: { userId },
                 data: {
                     ipAddress: null,
                     userAgent: null,
@@ -133,17 +134,17 @@ export class DataDeletionService {
             }),
 
             // Delete email logs
-            this.prisma.emailLog.deleteMany({ where: { apiKeyId } }),
+            this.prisma.emailLog.deleteMany({ where: { userId } }),
 
             // Delete fraud events
-            this.prisma.fraudEvent.deleteMany({ where: { apiKeyId } }),
+            this.prisma.fraudEvent.deleteMany({ where: { userId } }),
 
             // Delete transactions (or anonymize)
-            this.prisma.transaction.deleteMany({ where: { apiKeyId } }),
+            this.prisma.transaction.deleteMany({ where: { userId } }),
 
             // Keep payments for 7 years (legal requirement) - just anonymize
             this.prisma.payment.updateMany({
-                where: { apiKeyId },
+                where: { userId },
                 data: {
                     ipAddress: null,
                     deviceFingerprint: null,
@@ -151,11 +152,11 @@ export class DataDeletionService {
             }),
 
             // Delete data export requests
-            this.prisma.dataExportRequest.deleteMany({ where: { apiKeyId } }),
+            this.prisma.dataExportRequest.deleteMany({ where: { userId } }),
 
-            // Finally, anonymize API key
-            this.prisma.apiKey.update({
-                where: { id: apiKeyId },
+            // Finally, anonymize all API keys for this user
+            this.prisma.apiKey.updateMany({
+                where: { userId },
                 data: {
                     keyHash: `DELETED_${Date.now()}`,
                     userEmail: null,
@@ -170,6 +171,19 @@ export class DataDeletionService {
                     notes: 'GDPR deletion - all PII removed',
                 },
             }),
+
+            // Anonymize User model
+            this.prisma.user.update({
+                where: { id: userId },
+                data: {
+                    email: `deleted_${userId}@deleted.invalid`,
+                    password: 'DELETED',
+                    firstName: null,
+                    lastName: null,
+                    hashedRt: null,
+                    balance: 0,
+                }
+            })
         ]);
     }
 }

@@ -53,7 +53,7 @@ export class ApiKeyGuard implements CanActivate {
         if (authHeader && authHeader.startsWith('Bearer ')) {
             apiKey = authHeader.substring(7).trim();
         } else if (xApiKey) {
-            apiKey = Array.isArray(xApiKey) ? xApiKey[0] : xApiKey;
+            apiKey = (Array.isArray(xApiKey) ? xApiKey[0] : xApiKey).trim();
         } else {
             this.logger.warn('Missing both Authorization and X-API-Key headers');
             throw new UnauthorizedException({
@@ -67,10 +67,12 @@ export class ApiKeyGuard implements CanActivate {
         // Validate key format
         // Allow 41 chars (production) or 42 chars (dev test key)
         if (!apiKey.startsWith('sk_mumin_') || (apiKey.length !== 41 && apiKey.length !== 42)) {
+            this.logger.error(`Invalid API key format: received length ${apiKey.length}, starts with ${apiKey.substring(0, 9)}`);
             throw new UnauthorizedException({
                 statusCode: 401,
                 error: 'INVALID_API_KEY_FORMAT',
                 message: 'Invalid API key format',
+                details: `Expected length 41 or 42, got ${apiKey.length}`,
             });
         }
 
@@ -80,6 +82,7 @@ export class ApiKeyGuard implements CanActivate {
         try {
             const dbKey = await this.prisma.apiKey.findUnique({
                 where: { keyHash },
+                include: { user: true },
             });
 
             if (!dbKey) {
@@ -88,6 +91,15 @@ export class ApiKeyGuard implements CanActivate {
                     statusCode: 401,
                     error: 'INVALID_API_KEY',
                     message: 'API key not found or has been revoked',
+                });
+            }
+
+            const user = dbKey.user;
+            if (!user) {
+                throw new UnauthorizedException({
+                    statusCode: 401,
+                    error: 'USER_NOT_FOUND',
+                    message: 'Associated user account not found',
                 });
             }
 
@@ -101,7 +113,7 @@ export class ApiKeyGuard implements CanActivate {
                 });
             }
 
-            // Check if suspended
+            // Check if account suspended (User-level or Key-level)
             if (dbKey.suspendedAt) {
                 throw new ForbiddenException({
                     statusCode: 403,
@@ -112,13 +124,13 @@ export class ApiKeyGuard implements CanActivate {
                 });
             }
 
-            // Check balance
-            if (dbKey.balance <= 0) {
+            // Check balance (from User)
+            if (user.balance <= 0) {
                 throw new HttpException(
                     {
                         statusCode: 402,
                         error: 'BALANCE_DEPLETED',
-                        message: 'Your API key balance is depleted. Please top up to continue.',
+                        message: 'Your shared account balance is depleted. Please top up to continue.',
                         balance: 0,
                     },
                     HttpStatus.PAYMENT_REQUIRED,
@@ -246,12 +258,19 @@ export class ApiKeyGuard implements CanActivate {
                 }
             }
 
-            // Update key stats (balance, requests, last used)
+            // Update user balance and total requests
+            await this.prisma.user.update({
+                where: { id: user.id },
+                data: {
+                    balance: user.balance - 1,
+                    totalRequests: user.totalRequests + 1,
+                },
+            });
+
+            // Update key last used (only)
             await this.prisma.apiKey.update({
                 where: { id: dbKey.id },
                 data: {
-                    balance: dbKey.balance - 1,
-                    totalRequests: dbKey.totalRequests + 1,
                     lastUsedAt: new Date(),
                     lastActivityDate: new Date(),
                 },
@@ -259,9 +278,10 @@ export class ApiKeyGuard implements CanActivate {
 
             // Attach user info to request
             request.user = {
+                userId: user.id,
                 apiKeyId: dbKey.id,
-                email: dbKey.userEmail,
-                balance: dbKey.balance - 1,
+                email: user.email,
+                balance: user.balance - 1,
                 trustScore: dbKey.trustScore,
                 accountAgeDays,
             };

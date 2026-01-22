@@ -1,0 +1,1 @@
+{"success":false,"error":{"statusCode":401,"timestamp":"2026-01-18T16:39:44.089Z","path":"/v1/hadiths/1","method":"GET","error":"INVALID_API_KEY_FORMAT","message":"Invalid API key format"},"meta":{"requestId":"59bdd289-45b3-4fb1-b276-e29f254c6266"}}

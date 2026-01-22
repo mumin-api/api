@@ -31,6 +31,7 @@ export class RequestTrackingInterceptor implements NestInterceptor {
         // Extract request data
         const requestData = {
             apiKeyId: request.user?.apiKeyId,
+            userId: request.user?.userId,
             endpoint: request.url,
             method: request.method,
             queryParams: request.query,
@@ -76,11 +77,11 @@ export class RequestTrackingInterceptor implements NestInterceptor {
                         this.logger.error('Failed to log request:', error);
                     });
 
-                    // Update API key data transferred counter
-                    if (request.user?.apiKeyId) {
-                        this.prisma.apiKey
+                    // Update User data transferred counter
+                    if (request.user?.userId) {
+                        this.prisma.user
                             .update({
-                                where: { id: request.user.apiKeyId },
+                                where: { id: request.user.userId },
                                 data: {
                                     totalDataTransferred: {
                                         increment: responseSize,
@@ -120,6 +121,7 @@ export class RequestTrackingInterceptor implements NestInterceptor {
             await this.prisma.requestLog.create({
                 data: {
                     apiKeyId: data.apiKeyId,
+                    userId: data.userId,
                     endpoint: data.endpoint,
                     method: data.method,
                     requestHeaders: {
@@ -139,8 +141,39 @@ export class RequestTrackingInterceptor implements NestInterceptor {
                     requestId: data.requestId,
                 },
             });
-        } catch (error) {
-            // If DB write fails, log to console as backup
+        } catch (error: any) {
+            // Handle foreign key violation (P2003) - user or api key record might be missing
+            if (error.code === 'P2003') {
+                try {
+                    // Retry without userId and apiKeyId
+                    await this.prisma.requestLog.create({
+                        data: {
+                            endpoint: data.endpoint,
+                            method: data.method,
+                            requestHeaders: {
+                                userAgent: data.userAgent,
+                            },
+                            queryParams: data.queryParams,
+                            responseStatus: data.responseStatus,
+                            responseBody: data.responseBody,
+                            responseTimeMs: data.responseTimeMs,
+                            dataTransferred: data.dataTransferred,
+                            ipAddress: data.ipAddress,
+                            userAgent: data.userAgent,
+                            deviceFingerprint: data.deviceFingerprint,
+                            geoLocation: data.geoLocation,
+                            wasFromCache: data.wasFromCache,
+                            billingImpact: 0,
+                            requestId: data.requestId,
+                        },
+                    });
+                    this.logger.warn(`Logged request with orphan userId/apiKeyId (P2003): ${data.endpoint}`);
+                    return;
+                } catch (retryError) {
+                    this.logger.error('Database logging retry failed:', retryError);
+                }
+            }
+            // If DB write fails for other reasons, log to console as backup
             this.logger.error('Database logging failed:', error);
         }
     }

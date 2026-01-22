@@ -9,6 +9,7 @@ interface SendEmailOptions {
   html: string;
   emailType: string;
   apiKeyId: number;
+  userId: number;
   metadata?: any;
 }
 
@@ -34,7 +35,7 @@ export class EmailService {
   }
 
   async sendEmail(options: SendEmailOptions): Promise<void> {
-    const { to, subject, html, emailType, apiKeyId, metadata } = options;
+    const { to, subject, html, emailType, apiKeyId, userId, metadata } = options;
     const fromName = this.config.get('email.fromName') || 'Mumin Hadith API';
     const fromEmail = this.config.get('email.fromAddress') || 'noreply@mumin.ink';
     const from = `${fromName} <${fromEmail}>`;
@@ -67,6 +68,7 @@ export class EmailService {
         await this.prisma.emailLog.create({
           data: {
             apiKeyId,
+            userId,
             emailType,
             recipient: to,
             subject,
@@ -87,6 +89,7 @@ export class EmailService {
           await this.prisma.emailLog.create({
             data: {
               apiKeyId,
+              userId,
               emailType,
               recipient: to,
               subject,
@@ -237,6 +240,7 @@ export class EmailService {
       html,
       emailType: 'inactivity_warning',
       apiKeyId: apiKey.id,
+      userId: apiKey.userId,
       metadata: { daysUntilDormant },
     });
   }
@@ -275,6 +279,7 @@ export class EmailService {
       html,
       emailType: 'balance_low',
       apiKeyId: apiKey.id,
+      userId: apiKey.userId,
     });
   }
 
@@ -319,6 +324,137 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \\
       html,
       emailType: 'welcome',
       apiKeyId: apiKey.id,
+      userId: apiKey.userId,
     });
+  }
+
+  /**
+   * Send verification code email
+   */
+  async sendVerificationCode(email: string, code: string): Promise<void> {
+    const fromName = this.config.get('email.fromName') || 'Mumin Hadith API';
+    const fromEmail = this.config.get('email.fromAddress') || 'noreply@mumin.ink';
+    const from = `${fromName} <${fromEmail}>`;
+
+    const html = this.getVerificationEmailTemplate(code);
+
+    try {
+      if (!this.resend) {
+        throw new Error('Resend client not initialized');
+      }
+
+      const result = await this.resend.emails.send({
+        from,
+        to: email,
+        subject: 'Verify Your Email - Mumin Hadith API',
+        html,
+      });
+
+      this.logger.log(`Verification email sent to ${email}, message ID: ${result.data?.id}`);
+
+      // Log to database (without apiKeyId since user might not have one yet)
+      const user = await this.prisma.user.findUnique({
+        where: { email },
+        select: { id: true },
+      });
+
+      if (user) {
+        await this.prisma.emailLog.create({
+          data: {
+            userId: user.id,
+            emailType: 'verification',
+            recipient: email,
+            subject: 'Verify Your Email - Mumin Hadith API',
+            provider: 'resend',
+            messageId: result.data?.id || 'unknown',
+          },
+        });
+      }
+    } catch (error) {
+      this.logger.error(`Failed to send verification email to ${email}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get verification email HTML template
+   */
+  private getVerificationEmailTemplate(code: string): string {
+    return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Your Email</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f0;">
+  <table role="presentation" style="width: 100%; border-collapse: collapse;">
+    <tr>
+      <td align="center" style="padding: 40px 20px;">
+        <table role="presentation" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 16px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <!-- Header -->
+          <tr>
+            <td style="padding: 40px 40px 20px; text-align: center; background: linear-gradient(135deg, #065f46 0%, #047857 100%); border-radius: 16px 16px 0 0;">
+              <h1 style="margin: 0; color: #f5f5f0; font-size: 28px; font-weight: 600;">Mumin Hadith API</h1>
+              <p style="margin: 8px 0 0; color: #d4af37; font-size: 14px; font-weight: 500;">Email Verification</p>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 40px;">
+              <p style="margin: 0 0 24px; color: #1f2937; font-size: 16px; line-height: 1.6;">
+                As-salamu alaykum! Thank you for registering with Mumin Hadith API.
+              </p>
+              
+              <p style="margin: 0 0 32px; color: #4b5563; font-size: 15px; line-height: 1.6;">
+                Please use the verification code below to complete your registration:
+              </p>
+              
+              <!-- Verification Code -->
+              <div style="background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid #10b981; border-radius: 12px; padding: 32px; text-align: center; margin: 0 0 32px;">
+                <p style="margin: 0 0 12px; color: #065f46; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+                  Your Verification Code
+                </p>
+                <p style="margin: 0; color: #047857; font-size: 48px; font-weight: 700; letter-spacing: 8px; font-family: 'Courier New', monospace;">
+                  ${code}
+                </p>
+              </div>
+              
+              <!-- Warning Box -->
+              <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 16px; margin: 0 0 24px; border-radius: 4px;">
+                <p style="margin: 0 0 8px; color: #92400e; font-size: 14px; font-weight: 600;">
+                  ⚠️ Important Security Notice
+                </p>
+                <p style="margin: 0; color: #78350f; font-size: 13px; line-height: 1.5;">
+                  • This code expires in <strong>15 minutes</strong><br>
+                  • Never share this code with anyone<br>
+                  • Mumin staff will never ask for this code
+                </p>
+              </div>
+              
+              <p style="margin: 0; color: #6b7280; font-size: 14px; line-height: 1.6;">
+                If you didn't request this verification code, please ignore this email or contact our support team.
+              </p>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 24px 40px; background-color: #f9fafb; border-radius: 0 0 16px 16px; border-top: 1px solid #e5e7eb;">
+              <p style="margin: 0; color: #9ca3af; font-size: 12px; text-align: center; line-height: 1.5;">
+                © 2026 Mumin Hadith API. All rights reserved.<br>
+                This is an automated message, please do not reply.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+    `;
   }
 }
