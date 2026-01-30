@@ -74,6 +74,7 @@ model User {
   cookieConsent           Json?                    @map("cookie_consent")
   emailVerified           Boolean                  @default(false) @map("email_verified")
   emailVerifiedAt         DateTime?                @map("email_verified_at")
+  telegramId              String?                  @unique @map("telegram_id") @db.VarChar(50)
   accountDeletionRequests AccountDeletionRequest[]
   apiKeys                 ApiKey[]
   dataExportRequests      DataExportRequest[]
@@ -228,12 +229,13 @@ model Transaction {
 model Payment {
   id                 Int           @id @default(autoincrement())
   apiKeyId           Int?          @map("api_key_id")
-  provider           String
-  providerPaymentId  String        @unique @map("provider_payment_id")
+  provider           String        // e.g., "cryptobot"
+  providerPaymentId  String        @unique @map("provider_payment_id") // CryptoBot invoice_id
   amount             Decimal       @db.Decimal(10, 2)
-  currency           String        @default("USD") @db.VarChar(3)
+  currency           String        @default("USD") @db.VarChar(10)
   credits            Int
-  status             String
+  status             String        // PENDING, PAID, EXPIRED
+  invoiceUrl         String?       @map("invoice_url") @db.VarChar(500)
   chargebackStatus   String?       @map("chargeback_status")
   chargebackReason   String?       @map("chargeback_reason")
   disputeEvidenceUrl String?       @map("dispute_evidence_url")

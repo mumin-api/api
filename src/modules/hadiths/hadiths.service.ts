@@ -309,6 +309,7 @@ export class HadithsService {
         collection?: string,
         grade?: string
     ) {
+        // Use a 15-second timeout for the transaction
         return this.prisma.$transaction(async (tx) => {
             const skip = (page - 1) * limit;
 
@@ -338,58 +339,48 @@ export class HadithsService {
             // Combined query for Data + Total Count using Window Function
             // Uses <% operator for word similarity (finding query roughly inside text)
             const results: any[] = await tx.$queryRawUnsafe(`
-                WITH matching_ids AS (
-                    -- IDs from Arabic text matches
-                    SELECT h.id, word_similarity('${escapedQuery}', h.arabic_text) as score
-                    FROM hadiths h
-                    ${collectionJoin}
-                    WHERE '${escapedQuery}' <% h.arabic_text
-                    ${collectionWhere}
-                    
+                WITH matching_translations AS (
+                    SELECT hadith_id, 
+                           word_similarity('${escapedQuery}', text) as score
+                    FROM translations
+                    WHERE language_code = '${escapedLanguage}'
+                      AND (text ILIKE '%${escapedQuery}%' OR '${escapedQuery}' <% text)
+                ),
+                matching_arabic AS (
+                    SELECT id as hadith_id,
+                           word_similarity('${escapedQuery}', arabic_text) as score
+                    FROM hadiths
+                    WHERE (arabic_text ILIKE '%${escapedQuery}%' OR '${escapedQuery}' <% arabic_text)
+                ),
+                combined_matches AS (
+                    SELECT hadith_id, score FROM matching_translations
                     UNION ALL
-                    
-                    -- IDs from translation matches  
-                    SELECT h.id, word_similarity('${escapedQuery}', t.text) as score
-                    FROM hadiths h
-                    INNER JOIN translations t ON h.id = t.hadith_id
-                    ${collectionJoin}
-                    WHERE '${escapedQuery}' <% t.text
-                        AND t.language_code = '${escapedLanguage}'
-                        ${gradeWhere}
-                        ${collectionWhere}
+                    SELECT hadith_id, score FROM matching_arabic
                 ),
                 best_scores AS (
-                    SELECT id, MAX(score) as relevance
-                    FROM matching_ids
-                    GROUP BY id
-                ),
-                final_dataset AS (
-                    SELECT 
-                        h.id,
-                        h.hadith_number,
-                        h.book_number,
-                        h.arabic_text,
-                        h.arabic_narrator,
-                        h.collection,
-                        h.collection_id,
-                        h.metadata,
-                        t.text as translation_text,
-                        t.narrator as translation_narrator,
-                        t.grade as translation_grade,
-                        t.translator,
-                        t.language_code,
-                        c.name_english as collection_name,
-                        b.relevance,
-                        COUNT(*) OVER() as total_count
-                    FROM best_scores b
-                    INNER JOIN hadiths h ON b.id = h.id
-                    LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${escapedLanguage}'
-                    LEFT JOIN collections c ON h.collection_id = c.id
+                    SELECT hadith_id, MAX(score) as relevance
+                    FROM combined_matches
+                    GROUP BY hadith_id
                 )
-                SELECT * FROM final_dataset
-                ORDER BY relevance DESC
-                LIMIT ${limit}
-                OFFSET ${skip}
+                SELECT 
+                    h.*,
+                    t.text as translation_text,
+                    t.narrator as translation_narrator,
+                    t.grade as translation_grade,
+                    t.translator,
+                    t.language_code,
+                    c.name_english as collection_name,
+                    b.relevance,
+                    COUNT(*) OVER() as total_count
+                FROM best_scores b
+                INNER JOIN hadiths h ON b.hadith_id = h.id
+                LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${escapedLanguage}'
+                LEFT JOIN collections c ON h.collection_id = c.id
+                WHERE (1=1)
+                ${gradeWhere}
+                ${collectionWhere}
+                ORDER BY b.relevance DESC
+                LIMIT ${limit} OFFSET ${skip}
             `);
 
             const total = results.length > 0 ? Number(results[0].total_count) : 0;
@@ -426,7 +417,7 @@ export class HadithsService {
                     hasPrev: page > 1,
                 },
             };
-        });
+        }, { timeout: 15000 });
     }
 
 

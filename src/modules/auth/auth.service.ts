@@ -1,4 +1,4 @@
-import { Injectable, ForbiddenException, BadRequestException, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, ForbiddenException, BadRequestException, NotFoundException, UnauthorizedException, Inject } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
 import { RegisterDto, LoginDto, UpdateProfileDto } from './dto/auth.dto';
 import * as bcrypt from 'bcrypt';
@@ -7,6 +7,7 @@ import { ConfigService } from '@nestjs/config';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { VerificationService } from './verification.service';
 import { EmailService } from '../email/email.service';
+import Redis from 'ioredis';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,43 @@ export class AuthService {
         private config: ConfigService,
         private verificationService: VerificationService,
         private emailService: EmailService,
+        @Inject('REDIS_CLIENT') private redis: Redis,
     ) { }
+
+    async claimTelegram(userId: number, token: string) {
+        const key = `auth:telegram:${token}`;
+        const data = await this.redis.get(key);
+        
+        if (!data) {
+            console.warn(`[AuthService] Claim failed: Token ${token} not found in Redis (key: ${key})`);
+            throw new BadRequestException('Invalid or expired token');
+        }
+
+        const { telegramId, username } = JSON.parse(data);
+        console.log(`[AuthService] Claiming telegramId ${telegramId} for userId ${userId}`);
+
+        // Check if this telegram ID is already linked to ANOTHER user
+        const existing = await this.prisma.user.findFirst({
+            where: { telegramId },
+        });
+
+        if (existing && existing.id !== userId) {
+            console.warn(`[AuthService] Claim failed: telegramId ${telegramId} already linked to user ${existing.id}`);
+            throw new ForbiddenException('This Telegram account is already linked to another user.');
+        }
+
+        // Link
+        await this.prisma.user.update({
+            where: { id: userId },
+            data: { telegramId },
+        });
+
+        // Delete token so it can't be reused
+        await this.redis.del(key);
+        console.log(`[AuthService] Successfully linked telegramId ${telegramId} to userId ${userId}`);
+
+        return { success: true, telegramId, username };
+    }
 
     async register(dto: RegisterDto) {
         const hash = await this.hashData(dto.password);

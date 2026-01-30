@@ -70,3 +70,10 @@ export class UpdateProfileDto {
     @IsOptional()
     lastName?: string;
 }
+
+export class ClaimTelegramDto {
+    @ApiProperty({ example: 'uuid-token-here' })
+    @IsNotEmpty()
+    @IsString()
+    token!: string;
+}

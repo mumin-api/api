@@ -239,4 +239,30 @@ export class ApiKeysService {
 
         return this.updateSettings(key.id, settings);
     }
+
+    /**
+     * Internal sync: Find API key prefix for a telegram ID
+     */
+    async syncTelegramStatus(telegramId: string) {
+        const user = await this.prisma.user.findFirst({
+            where: { telegramId },
+            include: {
+                apiKeys: {
+                    where: { isActive: true },
+                    orderBy: { createdAt: 'desc' },
+                    take: 1,
+                }
+            }
+        });
+
+        if (!user) return null;
+
+        return {
+            userId: user.id,
+            email: user.email,
+            apiKeyId: user.apiKeys[0]?.id || null,
+            apiKeyPrefix: user.apiKeys[0]?.keyPrefix || null,
+            linked: true,
+        };
+    }
 }

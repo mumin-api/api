@@ -1,0 +1,1 @@
+{"success":false,"error":{"statusCode":400,"timestamp":"2026-01-30T08:12:57.219Z","path":"/v1/hadiths/search?q=%D0%BF%D1%80%D0%BE%D1%80%D0%BE%D0%BA&language=ru&limit=5","method":"GET","message":"Validation failed (numeric string is expected)","error":"Bad Request"},"meta":{"requestId":"88ddc563-4299-4495-b347-6eeeded79c31"}}

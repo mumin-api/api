@@ -1,8 +1,10 @@
-import { Controller, Get, Query, UseGuards, ParseIntPipe, Request } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards, ParseIntPipe, Post, Body, Headers } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { BillingService } from './billing.service';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 import { CurrentUser } from '@/common/decorators/current-user.decorator';
+import { Public } from '@/common/decorators/public.decorator';
+import { CryptoPayWebhook } from './billing.types';
 
 @ApiTags('billing')
 @Controller('billing')
@@ -31,5 +33,30 @@ export class BillingController {
     @ApiOperation({ summary: 'Get payment history' })
     async getPayments(@CurrentUser() user: any) {
         return this.billingService.getPayments(user.userId);
+    }
+
+    @Get('stats')
+    @ApiOperation({ summary: 'Get account usage stats' })
+    async getStats(@CurrentUser() user: any) {
+        return this.billingService.getUsageStats(user.userId);
+    }
+
+    @Post('crypto/create-invoice')
+    @ApiOperation({ summary: 'Create CryptoBot invoice' })
+    async createInvoice(
+        @CurrentUser() user: any,
+        @Body('amount', ParseIntPipe) amount: number
+    ) {
+        return this.billingService.createCryptoInvoice(user.userId, amount);
+    }
+
+    @Public()
+    @Post('crypto/webhook')
+    @ApiOperation({ summary: 'CryptoBot webhook' })
+    async handleWebhook(
+        @Body() payload: CryptoPayWebhook,
+        @Headers('crypto-pay-api-signature') signature: string
+    ) {
+        return this.billingService.handleCryptoWebhook(payload, signature);
     }
 }

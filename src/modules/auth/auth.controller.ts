@@ -1,11 +1,12 @@
-import { Body, Controller, HttpCode, HttpStatus, Post, UseGuards, Res, Req, Get, Patch, Query } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post, UseGuards, Res, Req, Get, Patch, Query, Param, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { RegisterDto, LoginDto, UpdateProfileDto } from './dto/auth.dto';
+import { RegisterDto, LoginDto, UpdateProfileDto, ClaimTelegramDto } from './dto/auth.dto';
 import { Response, Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { VerificationService } from './verification.service';
 import { Public } from '@/common/decorators/public.decorator';
+import { ApiKeysService } from '../api-keys/api-keys.service';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -13,6 +14,7 @@ export class AuthController {
     constructor(
         private authService: AuthService,
         private verificationService: VerificationService,
+        private apiKeysService: ApiKeysService,
     ) { }
 
     @Post('register')
@@ -88,6 +90,26 @@ export class AuthController {
         // Remove tokens from response body
         const { access_token, refresh_token, ...response } = result;
         return response;
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Post('telegram/claim')
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: 'Link Telegram account via token' })
+    async claimTelegram(@Req() req: any, @Body() dto: ClaimTelegramDto) {
+        return this.authService.claimTelegram(req.user.userId, dto.token);
+    }
+
+    @Public()
+    @Get('telegram/sync/:telegramId')
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: 'Internal: Sync Telegram account status' })
+    async syncTelegram(@Param('telegramId') telegramId: string, @Req() req: Request) {
+        const secret = req.headers['x-internal-key'];
+        if (secret !== process.env.INTERNAL_BOT_KEY) {
+            throw new UnauthorizedException('Invalid internal key');
+        }
+        return this.apiKeysService.syncTelegramStatus(telegramId);
     }
 
     // ============================================
