@@ -28,11 +28,8 @@ async function bootstrap() {
     // 3. NestJS CORS (For GET/POST requests)
     app.enableCors({
         origin: (origin, callback) => {
-            if (!origin || origin.endsWith('mumin.ink') || origin.includes('localhost') || origin.includes('127.0.0.1') || origin.includes('railway.app')) {
-                callback(null, true);
-            } else {
-                callback(null, false);
-            }
+            // Allow ALL origins so the SDK works on any website (React/Vue/etc)
+            callback(null, true);
         },
         credentials: true,
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
