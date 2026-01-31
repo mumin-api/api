@@ -40,8 +40,8 @@ lerna-debug.log*
 .env.production
 
 # Prisma
-prisma/migrations/*
-!prisma/migrations/.gitkeep
+# prisma/migrations/*
+# !prisma/migrations/.gitkeep
 !prisma/migrations/ 
 
 # Temp files
