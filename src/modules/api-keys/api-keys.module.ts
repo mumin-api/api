@@ -5,9 +5,10 @@ import { PrismaModule } from '@/prisma/prisma.module';
 import { GeolocationUtil } from '@/common/utils/geolocation.util';
 import { FraudModule } from '@/modules/fraud/fraud.module';
 import { EmailModule } from '@/modules/email/email.module';
+import { BillingModule } from '@/modules/billing/billing.module';
 
 @Module({
-    imports: [PrismaModule, FraudModule, EmailModule],
+    imports: [PrismaModule, FraudModule, EmailModule, BillingModule],
     controllers: [ApiKeysController],
     providers: [ApiKeysService, GeolocationUtil],
     exports: [ApiKeysService],

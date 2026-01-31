@@ -3,6 +3,7 @@ import { PrismaService } from '@/prisma/prisma.service';
 import { RegisterApiKeyDto } from './dto/register-key.dto';
 import { generateApiKey, hashApiKey, getKeyPrefix } from '@/common/utils/crypto.util';
 import { EmailService } from '@/modules/email/email.service';
+import { BillingService } from '@/modules/billing/billing.service';
 
 @Injectable()
 export class ApiKeysService {
@@ -11,6 +12,7 @@ export class ApiKeysService {
     constructor(
         private prisma: PrismaService,
         private emailService: EmailService,
+        private billingService: BillingService,
     ) { }
 
     /**
@@ -257,11 +259,20 @@ export class ApiKeysService {
 
         if (!user) return null;
 
+        const stats = await this.billingService.getUsageStats(user.id);
+        const transactions = await this.billingService.getTransactions(user.id, 1, 5);
+        const payments = await this.billingService.getPayments(user.id);
+
         return {
             userId: user.id,
             email: user.email,
             apiKeyId: user.apiKeys[0]?.id || null,
             apiKeyPrefix: user.apiKeys[0]?.keyPrefix || null,
+            balance: user.balance,
+            dailyRequests: stats.dailyRequests,
+            monthlyRequests: stats.monthlyRequests,
+            transactions: transactions.data,
+            payments: payments.slice(0, 5),
             linked: true,
         };
     }

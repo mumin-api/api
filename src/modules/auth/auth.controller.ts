@@ -107,10 +107,14 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Internal: Sync Telegram account status' })
     async syncTelegram(@Param('telegramId') telegramId: string, @Req() req: Request) {
-        const secret = req.headers['x-internal-key'];
+        const secretHeader = req.headers['x-internal-key'];
+        const secret = Array.isArray(secretHeader) ? secretHeader[0] : secretHeader;
+        
         if (secret !== process.env.INTERNAL_BOT_KEY) {
+            console.warn(`[Auth] Internal Sync Failed: Key Mismatch. Received: ${secret ? secret.substring(0, 5) + '...' : 'NONE'}, Expected: ${process.env.INTERNAL_BOT_KEY ? 'DEFINED' : 'UNDEFINED'}`);
             throw new UnauthorizedException('Invalid internal key');
         }
+        
         return this.apiKeysService.syncTelegramStatus(telegramId);
     }
 
