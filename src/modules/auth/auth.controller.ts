@@ -7,6 +7,7 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { VerificationService } from './verification.service';
 import { Public } from '@/common/decorators/public.decorator';
 import { ApiKeysService } from '../api-keys/api-keys.service';
+import { ConfigService } from '@nestjs/config';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -15,6 +16,7 @@ export class AuthController {
         private authService: AuthService,
         private verificationService: VerificationService,
         private apiKeysService: ApiKeysService,
+        private config: ConfigService,
     ) { }
 
     @Post('register')
@@ -169,25 +171,32 @@ export class AuthController {
     }
 
     private setCookies(res: Response, accessToken: string, refreshToken: string) {
-        res.cookie('access_token', accessToken, {
+        const domain = this.config.get<string>('COOKIE_DOMAIN');
+        const cookieOptions: any = {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-domain in production
+            path: '/', // Ensure cookie is available for all routes
+        };
+
+        if (domain) {
+            cookieOptions.domain = domain;
+        }
+        
+        res.cookie('access_token', accessToken, {
+            ...cookieOptions,
             maxAge: 15 * 60 * 1000, // 15m
         });
 
         res.cookie('refresh_token', refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            ...cookieOptions,
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
         });
 
         res.cookie('logged_in', 'true', {
+            ...cookieOptions,
             httpOnly: false, // Accessible by client JS
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
-            maxAge: 15 * 60 * 1000,
+            maxAge: 7 * 24 * 60 * 60 * 1000, // Sync with refresh token
         });
     }
 }
