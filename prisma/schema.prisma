@@ -409,3 +409,17 @@ model GeoStats {
   @@index([date])
   @@map("geo_stats")
 }
+
+model AppEvent {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique @db.VarChar(50)
+  name      String   @db.VarChar(100)
+  isActive  Boolean  @default(false) @map("is_active")
+  startDate DateTime? @map("start_date")
+  endDate   DateTime? @map("end_date")
+  config    Json?    // Store theme colors, animation intensity, greeting text etc.
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("app_events")
+}

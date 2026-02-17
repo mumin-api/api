@@ -26,6 +26,7 @@ import { HadithsModule } from './modules/hadiths/hadiths.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { CollectionsModule } from './modules/collections/collections.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { EventsModule } from './modules/events/events.module';
 
 // Middleware
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
@@ -83,6 +84,7 @@ import { GeolocationUtil } from './common/utils/geolocation.util';
         AdminModule,
         CollectionsModule,
         AuthModule,
+        EventsModule,
     ],
     providers: [
         // Global guard for rate limiting
