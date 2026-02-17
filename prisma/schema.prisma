@@ -33,6 +33,7 @@ model Hadith {
   metadata       Json?
   createdAt      DateTime      @default(now()) @map("created_at")
   updatedAt      DateTime      @updatedAt @map("updated_at")
+  topics         HadithTopic[]
   collectionRef  Collection?   @relation(fields: [collectionId], references: [id])
   translations   Translation[]
 
@@ -41,6 +42,32 @@ model Hadith {
   @@index([collectionId])
   @@index([bookNumber])
   @@map("hadiths")
+}
+
+model Topic {
+  id          Int           @id @default(autoincrement())
+  nameEnglish String        @map("name_english") @db.VarChar(100)
+  nameArabic  String?       @map("name_arabic") @db.VarChar(100)
+  slug        String        @unique @db.VarChar(50)
+  description String?
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+  hadiths     HadithTopic[]
+
+  @@map("topics")
+}
+
+model HadithTopic {
+  hadithId   Int      @map("hadith_id")
+  topicId    Int      @map("topic_id")
+  assignedAt DateTime @default(now()) @map("assigned_at")
+  hadith     Hadith   @relation(fields: [hadithId], references: [id], onDelete: Cascade)
+  topic      Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@id([hadithId, topicId])
+  @@index([hadithId])
+  @@index([topicId])
+  @@map("hadith_topics")
 }
 
 model Translation {
@@ -229,13 +256,12 @@ model Transaction {
 model Payment {
   id                 Int           @id @default(autoincrement())
   apiKeyId           Int?          @map("api_key_id")
-  provider           String        // e.g., "cryptobot"
-  providerPaymentId  String        @unique @map("provider_payment_id") // CryptoBot invoice_id
+  provider           String
+  providerPaymentId  String        @unique @map("provider_payment_id")
   amount             Decimal       @db.Decimal(10, 2)
   currency           String        @default("USD") @db.VarChar(10)
   credits            Int
-  status             String        // PENDING, PAID, EXPIRED
-  invoiceUrl         String?       @map("invoice_url") @db.VarChar(500)
+  status             String
   chargebackStatus   String?       @map("chargeback_status")
   chargebackReason   String?       @map("chargeback_reason")
   disputeEvidenceUrl String?       @map("dispute_evidence_url")
@@ -246,6 +272,7 @@ model Payment {
   completedAt        DateTime?     @map("completed_at")
   refundedAt         DateTime?     @map("refunded_at")
   userId             Int           @map("user_id")
+  invoiceUrl         String?       @map("invoice_url") @db.VarChar(500)
   apiKey             ApiKey?       @relation(fields: [apiKeyId], references: [id])
   user               User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactions       Transaction[]

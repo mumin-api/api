@@ -43,4 +43,9 @@ export class GetHadithsDto {
     @IsOptional()
     @IsString()
     grade?: string;
+
+    @ApiProperty({ required: false })
+    @IsOptional()
+    @IsString()
+    topic?: string;
 }

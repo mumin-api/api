@@ -21,7 +21,7 @@ export class HadithsService {
     }
 
     async findAll(dto: GetHadithsDto) {
-        const { page = 1, limit = 20, collection, bookNumber, hadithNumber, language = 'en', grade } = dto;
+        const { page = 1, limit = 20, collection, bookNumber, hadithNumber, language = 'en', grade, topic } = dto;
         const skip = (page - 1) * limit;
 
         const where: any = {};
@@ -41,6 +41,16 @@ export class HadithsService {
                 some: {
                     grade,
                     languageCode: language,
+                },
+            };
+        }
+
+        if (topic) {
+            where.topics = {
+                some: {
+                    topic: {
+                        slug: topic,
+                    },
                 },
             };
         }
