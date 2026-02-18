@@ -183,6 +183,39 @@ export class BillingService {
         };
     }
 
+    /**
+     * Get daily usage stats for the last N days (real data from RequestLog)
+     */
+    async getUsageByDay(userId: number, days: number = 7): Promise<{ date: string; requests: number }[]> {
+        const since = new Date();
+        since.setDate(since.getDate() - (days - 1));
+        since.setHours(0, 0, 0, 0);
+
+        // Raw SQL: group RequestLog by date for this user
+        const rows = await this.prisma.$queryRaw<{ date: string; requests: bigint }[]>`
+            SELECT
+                TO_CHAR(DATE_TRUNC('day', timestamp AT TIME ZONE 'UTC'), 'YYYY-MM-DD') AS date,
+                COUNT(*)::bigint AS requests
+            FROM request_logs
+            WHERE user_id = ${userId}
+              AND timestamp >= ${since}
+            GROUP BY DATE_TRUNC('day', timestamp AT TIME ZONE 'UTC')
+            ORDER BY DATE_TRUNC('day', timestamp AT TIME ZONE 'UTC') ASC
+        `;
+
+        // Build a full 7-day array (fill missing days with 0)
+        const result: { date: string; requests: number }[] = [];
+        for (let i = 0; i < days; i++) {
+            const d = new Date();
+            d.setDate(d.getDate() - (days - 1 - i));
+            const dateStr = d.toISOString().split('T')[0];
+            const found = rows.find(r => r.date === dateStr);
+            result.push({ date: dateStr, requests: found ? Number(found.requests) : 0 });
+        }
+
+        return result;
+    }
+
     async createCryptoInvoice(userId: number, amount: number) {
         const token = process.env.CRYPTO_PAY_TOKEN;
         const isTestnet = process.env.CRYPTO_PAY_NET === 'testnet';

@@ -41,6 +41,15 @@ export class BillingController {
         return this.billingService.getUsageStats(user.userId);
     }
 
+    @Get('analytics/usage')
+    @ApiOperation({ summary: 'Get daily usage stats for last N days (real data)' })
+    async getUsageByDay(
+        @CurrentUser() user: any,
+        @Query('days', new ParseIntPipe({ optional: true })) days?: number,
+    ) {
+        return this.billingService.getUsageByDay(user.userId, days ?? 7);
+    }
+
     @Post('crypto/create-invoice')
     @ApiOperation({ summary: 'Create CryptoBot invoice' })
     async createInvoice(
