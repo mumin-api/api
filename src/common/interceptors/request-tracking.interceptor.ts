@@ -23,8 +23,11 @@ export class RequestTrackingInterceptor implements NestInterceptor {
         const request = context.switchToHttp().getRequest();
         const startTime = Date.now();
 
-        // Skip logging for health checks and public endpoints
-        if (request.url.includes('/health') || !request.user) {
+        // Skip logging for health checks, public endpoints, and management routes
+        const skipRoutes = ['/health', '/auth', '/billing', '/keys', '/analytics', '/admin'];
+        const isManagementRoute = skipRoutes.some(route => request.url.includes(route));
+
+        if (isManagementRoute || !request.user) {
             return next.handle();
         }
 

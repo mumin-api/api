@@ -59,6 +59,10 @@ export class BillingService {
                 where: {
                     userId: user.id,
                     timestamp: { gte: today },
+                    OR: [
+                        { apiKeyId: { not: null } },
+                        { billingImpact: { gt: 0 } }
+                    ]
                 },
             });
         }
@@ -199,6 +203,7 @@ export class BillingService {
             FROM request_logs
             WHERE user_id = ${userId}
               AND timestamp >= ${since}
+              AND (api_key_id IS NOT NULL OR billing_impact > 0)
             GROUP BY DATE_TRUNC('day', timestamp AT TIME ZONE 'UTC')
             ORDER BY DATE_TRUNC('day', timestamp AT TIME ZONE 'UTC') ASC
         `;
