@@ -169,13 +169,21 @@ export class BillingService {
             this.prisma.requestLog.count({
                 where: {
                     userId,
-                    timestamp: { gte: startOfDay }
+                    timestamp: { gte: startOfDay },
+                    OR: [
+                        { apiKeyId: { not: null } },
+                        { billingImpact: { gt: 0 } }
+                    ]
                 }
             }),
             this.prisma.requestLog.count({
                 where: {
                     userId,
-                    timestamp: { gte: startOfMonth }
+                    timestamp: { gte: startOfMonth },
+                    OR: [
+                        { apiKeyId: { not: null } },
+                        { billingImpact: { gt: 0 } }
+                    ]
                 }
             })
         ]);

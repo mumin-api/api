@@ -23,11 +23,9 @@ export class RequestTrackingInterceptor implements NestInterceptor {
         const request = context.switchToHttp().getRequest();
         const startTime = Date.now();
 
-        // Skip logging for health checks, public endpoints, and management routes
-        const skipRoutes = ['/health', '/auth', '/billing', '/keys', '/analytics', '/admin'];
-        const isManagementRoute = skipRoutes.some(route => request.url.includes(route));
-
-        if (isManagementRoute || !request.user) {
+        // Only log requests that have an API key ID.
+        // This automatically excludes dashboard requests (JWT-based), health checks, and public unauthenticated routes.
+        if (!request.user?.apiKeyId) {
             return next.handle();
         }
 
