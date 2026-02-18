@@ -77,3 +77,18 @@ export class ClaimTelegramDto {
     @IsString()
     token!: string;
 }
+
+export class RequestEmailChangeDto {
+    @ApiProperty({ example: 'new-email@example.com' })
+    @IsEmail()
+    @IsNotEmpty()
+    newEmail!: string;
+}
+
+export class VerifyEmailChangeDto {
+    @ApiProperty({ example: '123456' })
+    @IsString()
+    @IsNotEmpty()
+    @MinLength(6)
+    code!: string;
+}

@@ -1,7 +1,8 @@
 import { Injectable, ForbiddenException, BadRequestException, NotFoundException, UnauthorizedException, Inject } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
-import { RegisterDto, LoginDto, UpdateProfileDto } from './dto/auth.dto';
+import { RegisterDto, LoginDto, UpdateProfileDto, RequestEmailChangeDto, VerifyEmailChangeDto } from './dto/auth.dto';
 import * as bcrypt from 'bcrypt';
+import * as crypto from 'crypto';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
@@ -209,14 +210,9 @@ export class AuthService {
 
         if (!user) throw new NotFoundException('User not found');
 
-        // Check if email is being changed and if it's already taken
+        // PREVENT direct email change - must use /auth/request-email-change
         if (dto.email && dto.email !== user.email) {
-            const existingUser = await this.prisma.user.findUnique({
-                where: { email: dto.email },
-            });
-            if (existingUser) {
-                throw new ForbiddenException('Email already taken');
-            }
+            throw new BadRequestException('Email cannot be changed directly. Use the email verification flow.');
         }
 
         // Update user
@@ -230,21 +226,80 @@ export class AuthService {
         const updatedUser = await this.prisma.user.update({
             where: { id: userId },
             data: {
-                email: dto.email ?? user.email,
+                // Email update is now handled via verifyEmailChange
                 firstName: firstName ?? user.firstName,
                 lastName: lastName ?? user.lastName,
             },
         });
 
-        // If email changed, update associated API keys
-        if (dto.email && dto.email !== user.email) {
-            await this.prisma.apiKey.updateMany({
-                where: { userEmail: user.email },
-                data: { userEmail: dto.email },
-            });
-        }
+        // Generate new tokens with updated data (email remains same here)
+        const tokens = await this.getTokens(updatedUser.id, updatedUser.email);
+        await this.updateRtHash(updatedUser.id, tokens.refresh_token);
 
-        // Generate new tokens with updated email
+        return {
+            user: {
+                id: updatedUser.id.toString(),
+                email: updatedUser.email,
+                displayName: `${updatedUser.firstName} ${updatedUser.lastName}`.trim(),
+            },
+            ...tokens,
+        };
+    }
+
+    async requestEmailChange(userId: number, newEmail: string) {
+        // Validate email not taken
+        const existing = await this.prisma.user.findUnique({
+            where: { email: newEmail },
+        });
+        if (existing) throw new BadRequestException('Email already taken');
+
+        // Generate code
+        const code = crypto.randomInt(100000, 999999).toString();
+        const hashCode = await bcrypt.hash(code, 10);
+
+        // Store in redis (15m)
+        const key = `auth:email-change:${userId}`;
+        await this.redis.set(key, JSON.stringify({ newEmail, code: hashCode }), 'EX', 15 * 60);
+
+        // Send email
+        await this.emailService.sendVerificationCode(newEmail, code);
+
+        return { success: true, message: 'Verification code sent to your new email' };
+    }
+
+    async verifyEmailChange(userId: number, plainCode: string) {
+        const key = `auth:email-change:${userId}`;
+        const data = await this.redis.get(key);
+        if (!data) throw new BadRequestException('No pending email change or code expired');
+
+        const { newEmail, code: hashCode } = JSON.parse(data);
+
+        // Verify code
+        const isValid = await bcrypt.compare(plainCode, hashCode);
+        if (!isValid) throw new BadRequestException('Invalid verification code');
+
+        // Perform update
+        const user = await this.prisma.user.findUnique({ where: { id: userId } });
+        if (!user) throw new NotFoundException('User not found');
+
+        const oldEmail = user.email;
+
+        // Atomic update
+        const updatedUser = await this.prisma.user.update({
+            where: { id: userId },
+            data: { email: newEmail },
+        });
+
+        // Update API keys linked to old email
+        await this.prisma.apiKey.updateMany({
+            where: { userEmail: oldEmail },
+            data: { userEmail: newEmail },
+        });
+
+        // Delete from redis
+        await this.redis.del(key);
+
+        // New tokens
         const tokens = await this.getTokens(updatedUser.id, updatedUser.email);
         await this.updateRtHash(updatedUser.id, tokens.refresh_token);
 

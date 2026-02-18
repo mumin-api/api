@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post, UseGuards, Res, Req, Get, Patch, Query, Param, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { RegisterDto, LoginDto, UpdateProfileDto, ClaimTelegramDto } from './dto/auth.dto';
+import { RegisterDto, LoginDto, UpdateProfileDto, ClaimTelegramDto, RequestEmailChangeDto, VerifyEmailChangeDto } from './dto/auth.dto';
 import { Response, Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -100,6 +100,30 @@ export class AuthController {
     @ApiOperation({ summary: 'Link Telegram account via token' })
     async claimTelegram(@Req() req: any, @Body() dto: ClaimTelegramDto) {
         return this.authService.claimTelegram(req.user.userId, dto.token);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Post('request-email-change')
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: 'Request email change' })
+    async requestEmailChange(@Req() req: any, @Body() dto: RequestEmailChangeDto) {
+        return this.authService.requestEmailChange(req.user.userId, dto.newEmail);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Post('verify-email-change')
+    @HttpCode(HttpStatus.OK)
+    @ApiOperation({ summary: 'Verify email change with code' })
+    async verifyEmailChange(
+        @Req() req: any,
+        @Body() dto: VerifyEmailChangeDto,
+        @Res({ passthrough: true }) res: Response
+    ) {
+        const result = await this.authService.verifyEmailChange(req.user.userId, dto.code);
+        this.setCookies(res, result.access_token, result.refresh_token);
+        
+        const { access_token, refresh_token, ...response } = result;
+        return response;
     }
 
     @Public()
