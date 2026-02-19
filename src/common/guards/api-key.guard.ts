@@ -125,7 +125,9 @@ export class ApiKeyGuard implements CanActivate {
             }
 
             // Check balance (from User)
-            if (user.balance <= 0) {
+            const isFreeMode = process.env.FREE_MODE === 'true';
+            
+            if (!isFreeMode && user.balance <= 0) {
                 throw new HttpException(
                     {
                         statusCode: 402,
@@ -259,10 +261,11 @@ export class ApiKeyGuard implements CanActivate {
             }
 
             // Update user balance and total requests
+            const isFreeMode = process.env.FREE_MODE === 'true';
             await this.prisma.user.update({
                 where: { id: user.id },
                 data: {
-                    balance: user.balance - 1,
+                    balance: isFreeMode ? user.balance : user.balance - 1,
                     totalRequests: user.totalRequests + 1,
                 },
             });

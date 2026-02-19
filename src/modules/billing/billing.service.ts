@@ -27,6 +27,7 @@ export class BillingService {
             balance: user?.balance || 0,
             totalRequests: user?.totalRequests ? Number(user.totalRequests) : 0,
             totalDataTransferred: user?.totalDataTransferred ? Number(user.totalDataTransferred) : 0,
+            freeMode: process.env.FREE_MODE === 'true',
         };
     }
 
@@ -72,6 +73,7 @@ export class BillingService {
             requestsToday,
             totalRequests: user?.totalRequests ? Number(user.totalRequests) : 0,
             totalDataTransferred: user?.totalDataTransferred ? Number(user.totalDataTransferred) : 0,
+            freeMode: process.env.FREE_MODE === 'true',
         };
     }
 
