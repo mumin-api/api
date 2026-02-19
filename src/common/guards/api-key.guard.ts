@@ -261,7 +261,6 @@ export class ApiKeyGuard implements CanActivate {
             }
 
             // Update user balance and total requests
-            const isFreeMode = process.env.FREE_MODE === 'true';
             await this.prisma.user.update({
                 where: { id: user.id },
                 data: {
