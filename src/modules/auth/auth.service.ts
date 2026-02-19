@@ -188,6 +188,9 @@ export class AuthService {
                 totalRequests: true,
                 totalDataTransferred: true,
                 createdAt: true,
+                lowBalanceAlerts: true,
+                usageReports: true,
+                securityAlerts: true,
             }
         });
 
@@ -200,6 +203,9 @@ export class AuthService {
             balance: user.balance,
             totalRequests: Number(user.totalRequests),
             totalDataTransferred: Number(user.totalDataTransferred),
+            lowBalanceAlerts: user.lowBalanceAlerts,
+            usageReports: user.usageReports,
+            securityAlerts: user.securityAlerts,
         };
     }
 
@@ -229,6 +235,9 @@ export class AuthService {
                 // Email update is now handled via verifyEmailChange
                 firstName: firstName ?? user.firstName,
                 lastName: lastName ?? user.lastName,
+                lowBalanceAlerts: dto.lowBalanceAlerts ?? user.lowBalanceAlerts,
+                usageReports: dto.usageReports ?? user.usageReports,
+                securityAlerts: dto.securityAlerts ?? user.securityAlerts,
             },
         });
 

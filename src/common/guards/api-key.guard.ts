@@ -13,6 +13,7 @@ import { createHash } from 'crypto';
 import { PrismaService } from '@/prisma/prisma.service';
 import { FraudDetectionService } from '@/modules/fraud/fraud-detection.service';
 import { IS_PUBLIC_KEY } from '@/common/decorators/public.decorator';
+import { EmailService } from '@/modules/email/email.service';
 
 @Injectable()
 export class ApiKeyGuard implements CanActivate {
@@ -22,6 +23,7 @@ export class ApiKeyGuard implements CanActivate {
         private reflector: Reflector,
         private prisma: PrismaService,
         private fraudDetection: FraudDetectionService,
+        private emailService: EmailService,
     ) { }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -124,9 +126,6 @@ export class ApiKeyGuard implements CanActivate {
                 });
             }
 
-            // Check balance (from User)
-            const isFreeMode = process.env.FREE_MODE === 'true';
-            
             if (!isFreeMode && user.balance <= 0) {
                 throw new HttpException(
                     {
@@ -137,6 +136,32 @@ export class ApiKeyGuard implements CanActivate {
                     },
                     HttpStatus.PAYMENT_REQUIRED,
                 );
+            }
+
+            // Trigger low balance alert if needed
+            if (!isFreeMode && user.balance < 50 && user.lowBalanceAlerts && !user.lowBalanceAlertSent) {
+                try {
+                    // Import EmailService if not available or use this.prisma (but easier to call EmailService)
+                    // Since we want to be safe and not over-engineer, we'll use a direct service if possible.
+                    // Actually, let's just log and update DB for now, or check if we can inject EmailService.
+                    // ApiKeyGuard has access to prisma.
+                    
+                    // We'll update the user and trigger email in a background-like way
+                    await this.prisma.user.update({
+                        where: { id: user.id },
+                        data: { lowBalanceAlertSent: true }
+                    });
+
+                    // Send email
+                    await this.emailService.sendBalanceLowWarning({
+                        id: dbKey.id,
+                        userId: user.id,
+                        userEmail: user.email,
+                        balance: user.balance,
+                    });
+                } catch (e) {
+                    this.logger.error('Failed to trigger low balance alert', e);
+                }
             }
 
             // Check graduated access limits (fraud prevention)

@@ -102,6 +102,13 @@ model User {
   emailVerified           Boolean                  @default(false) @map("email_verified")
   emailVerifiedAt         DateTime?                @map("email_verified_at")
   telegramId              String?                  @unique @map("telegram_id") @db.VarChar(50)
+  
+  // Notification Preferences
+  lowBalanceAlerts        Boolean                  @default(true) @map("low_balance_alerts")
+  usageReports            Boolean                  @default(true) @map("usage_reports")
+  securityAlerts          Boolean                  @default(true) @map("security_alerts")
+  lowBalanceAlertSent     Boolean                  @default(false) @map("low_balance_alert_sent")
+  
   accountDeletionRequests AccountDeletionRequest[]
   apiKeys                 ApiKey[]
   dataExportRequests      DataExportRequest[]

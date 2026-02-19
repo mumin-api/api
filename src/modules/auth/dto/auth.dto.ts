@@ -69,6 +69,15 @@ export class UpdateProfileDto {
     @IsString()
     @IsOptional()
     lastName?: string;
+
+    @IsOptional()
+    lowBalanceAlerts?: boolean;
+
+    @IsOptional()
+    usageReports?: boolean;
+
+    @IsOptional()
+    securityAlerts?: boolean;
 }
 
 export class ClaimTelegramDto {

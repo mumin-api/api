@@ -133,7 +133,10 @@ export class BillingService {
         await this.prisma.$transaction([
             this.prisma.user.update({
                 where: { id: userId },
-                data: { balance: user.balance + amount },
+                data: { 
+                    balance: user.balance + amount,
+                    lowBalanceAlertSent: false // Reset flag so they get notified again in the future
+                },
             }),
             this.prisma.transaction.create({
                 data: {
