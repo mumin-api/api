@@ -38,6 +38,7 @@ export class ApiKeyGuard implements CanActivate {
         }
 
         const request = context.switchToHttp().getRequest();
+        const isFreeMode = process.env.FREE_MODE === 'true';
 
         // Allow OPTIONS (preflight) requests
         if (request.method === 'OPTIONS') {
