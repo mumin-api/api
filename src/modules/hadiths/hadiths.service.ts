@@ -217,6 +217,38 @@ export class HadithsService {
     }
 
     /**
+     * Get search suggestions based on topics
+     * Uses trigram similarity for fuzzy matching
+     */
+    async getSuggestions(query: string, language: string = 'en') {
+        const { valid } = this.validateSearchQuery(query);
+        if (!valid || query.length < 2) return [];
+
+        const escapedQuery = query.replace(/'/g, "''");
+        
+        // Build language-specific column name
+        const nameColumn = language === 'ar' ? 'name_arabic' : 'name_english';
+
+        const suggestions: any[] = await this.prisma.$queryRawUnsafe(`
+            SELECT 
+                ${nameColumn} as name,
+                slug,
+                word_similarity('${escapedQuery}', ${nameColumn}) as score
+            FROM topics
+            WHERE ${nameColumn} IS NOT NULL
+              AND (${nameColumn} ILIKE '%${escapedQuery}%' OR '${escapedQuery}' <% ${nameColumn})
+            ORDER BY score DESC
+            LIMIT 5
+        `);
+
+        return suggestions.map(s => ({
+            name: s.name,
+            slug: s.slug,
+            score: parseFloat(s.score)
+        }));
+    }
+
+    /**
      * Validate search query for edge cases
      */
     private validateSearchQuery(query: string): { valid: boolean; reason?: string } {

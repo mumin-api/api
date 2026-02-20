@@ -56,6 +56,17 @@ export class HadithsController {
         return this.hadithsService.search(query, language, page, limit, collection, grade);
     }
 
+    @Get('suggestions')
+    @ApiOperation({ summary: 'Get search suggestions based on topics' })
+    @ApiQuery({ name: 'q', required: true, description: 'Search query' })
+    @ApiQuery({ name: 'language', required: false, example: 'en' })
+    async getSuggestions(
+        @Query('q') query: string,
+        @Query('language') language?: string,
+    ) {
+        return this.hadithsService.getSuggestions(query, language);
+    }
+
     @Get(':id')
     @ApiOperation({ summary: 'Get hadith by ID' })
     @ApiQuery({ name: 'language', required: false, example: 'en' })
