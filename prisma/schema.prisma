@@ -108,7 +108,6 @@ model User {
   usageReports            Boolean                  @default(true) @map("usage_reports")
   securityAlerts          Boolean                  @default(true) @map("security_alerts")
   lowBalanceAlertSent     Boolean                  @default(false) @map("low_balance_alert_sent")
-  
   accountDeletionRequests AccountDeletionRequest[]
   apiKeys                 ApiKey[]
   dataExportRequests      DataExportRequest[]
@@ -418,15 +417,74 @@ model GeoStats {
 }
 
 model AppEvent {
-  id        Int      @id @default(autoincrement())
-  slug      String   @unique @db.VarChar(50)
-  name      String   @db.VarChar(100)
-  isActive  Boolean  @default(false) @map("is_active")
+  id        Int       @id @default(autoincrement())
+  slug      String    @unique @db.VarChar(50)
+  name      String    @db.VarChar(100)
+  isActive  Boolean   @default(false) @map("is_active")
   startDate DateTime? @map("start_date")
   endDate   DateTime? @map("end_date")
-  config    Json?    // Store theme colors, animation intensity, greeting text etc.
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  config    Json?
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
 
   @@map("app_events")
+}
+
+model bot_analytics {
+  id                 Int      @id @default(autoincrement())
+  date               DateTime @unique @db.Date
+  total_users        Int      @default(0)
+  active_users       Int      @default(0)
+  new_users          Int      @default(0)
+  commands_executed  Int      @default(0)
+  hadiths_viewed     Int      @default(0)
+  searches_performed Int      @default(0)
+}
+
+model favorites {
+  id              Int            @id @default(autoincrement())
+  user_id         Int
+  hadith_id       Int
+  collection_slug String         @db.VarChar(100)
+  created_at      DateTime       @default(now())
+  telegram_users  telegram_users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@unique([user_id, hadith_id])
+  @@index([user_id])
+}
+
+model search_history {
+  id             Int            @id @default(autoincrement())
+  user_id        Int
+  query          String
+  results_count  Int
+  timestamp      DateTime       @default(now())
+  telegram_users telegram_users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([timestamp])
+  @@index([user_id])
+}
+
+model telegram_users {
+  id                   Int              @id @default(autoincrement())
+  telegram_id          BigInt           @unique
+  username             String?          @db.VarChar(255)
+  first_name           String?          @db.VarChar(255)
+  last_name            String?          @db.VarChar(255)
+  language_code        String           @default("ru") @db.VarChar(5)
+  timezone             String           @default("UTC") @db.VarChar(50)
+  daily_hadith_time    String?          @db.VarChar(5)
+  preferred_collection String?          @db.VarChar(100)
+  is_subscribed        Boolean          @default(false)
+  subscribed_at        DateTime?
+  api_key_id           Int?
+  created_at           DateTime         @default(now())
+  last_active_at       DateTime         @default(now())
+  total_commands       Int              @default(0)
+  favorites            favorites[]
+  search_history       search_history[]
+
+  @@index([is_subscribed])
+  @@index([language_code])
+  @@index([telegram_id])
 }
