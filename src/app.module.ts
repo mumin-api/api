@@ -13,6 +13,7 @@ import { validationSchema } from './config/validation.schema';
 
 // Core modules
 import { PrismaModule } from './prisma/prisma.module';
+import { RedisModule } from './common/redis/redis.module';
 
 // Feature modules
 import { ApiKeysModule } from './modules/api-keys/api-keys.module';
@@ -71,6 +72,7 @@ import { GeolocationUtil } from './common/utils/geolocation.util';
 
         // Core modules
         PrismaModule,
+        RedisModule,
 
         // Feature modules
         ApiKeysModule,

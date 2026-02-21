@@ -9,8 +9,7 @@ import { RtStrategy } from './strategies/rt.strategy';
 import { VerificationService } from './verification.service';
 import { EmailModule } from '../email/email.module';
 import { ApiKeysModule } from '../api-keys/api-keys.module';
-import { ConfigService } from '@nestjs/config';
-import Redis from 'ioredis';
+import { RedisModule } from '@/common/redis/redis.module';
 
 @Module({
     imports: [
@@ -19,19 +18,13 @@ import Redis from 'ioredis';
         JwtModule.register({}),
         EmailModule,
         ApiKeysModule,
+        RedisModule,
     ],
     providers: [
         AuthService, 
         JwtStrategy, 
         RtStrategy, 
         VerificationService,
-        {
-            provide: 'REDIS_CLIENT',
-            useFactory: (config: ConfigService) => {
-                return new Redis(config.get<string>('redis.url') || process.env.REDIS_URL || 'redis://localhost:6379');
-            },
-            inject: [ConfigService],
-        }
     ],
     controllers: [AuthController],
 })
