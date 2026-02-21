@@ -33,9 +33,15 @@ class MockPrismaService {
     }
 }
 
+// Mock Redis
+class MockRedis {
+    get = async () => null;
+    set = async () => 'OK';
+}
+
 async function verify() {
     const prisma = new MockPrismaService();
-    const service = new HadithsService(prisma as any);
+    const service = new HadithsService(prisma as any, new MockRedis() as any);
 
     console.log('--- TEST 1: Search "27" (Logic check) ---');
     // We expect:
