@@ -3,8 +3,8 @@
 ```text
 ███████╗███████╗ ██████╗██╗   ██╗██████╗ ███████╗
 ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██╔════╝
-███████╗█████╗  ██║     ██║   ██║██████╔╝█████╗  
-╚════██║██╔══╝  ██║     ██║   ██║██╔══██╗██╔══╝  
+███████╗█████╗  ██║     ██║   ██║██████╔╝█████╗
+╚════██║██╔══╝  ██║     ██║   ██║██╔══██╗██╔══╝
 ███████║███████╗╚██████╗╚██████╔╝██║  ██║███████╗
 ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 ```
@@ -67,6 +67,7 @@ The **Mumin Hadith API** is not merely a piece of software; it is a digital **Am
 ## 2. The 7 Pillars of Mumin Engineering
 
 Every line of code in this repository is guided by these seven principles:
+
 1.  **Excellence (Ihsaan)**: Striving for the most efficient and clean implementation.
 2.  **Trust (Amanah)**: Protecting user data and the integrity of the hadith text.
 3.  **Justice (Adl)**: Transparent billing and fair treatment of all developers.
@@ -80,13 +81,17 @@ Every line of code in this repository is guided by these seven principles:
 ## 3. Technology Stack Deep Dive
 
 ### The Power of NestJS
+
 NestJS provides a robust, opinionated structure. Its use of **TypeScript decorators** makes the code highly readable and allows us to verify security policies (like `@Admin()`) directly at the controller level.
 
 ### Prisma & Relational Data Security
+
 Prisma acts as our guardian. By generating a client that is **100% typed**, we eliminate the most common cause of database errors: mismatched data types. Our schema uses **JSONB** for flexibility while maintaining strict relations for financial integrity.
 
 ### Redis Caching Strategy
+
 We use an **LRU (Least Recently Used)** eviction policy in Redis.
+
 - **Hadith Objects**: Cached for 24 hours.
 - **Rate Limit Buckets**: Cached for 60 seconds.
 - **Session Metadata**: Cached for the duration of the TTL.
@@ -125,25 +130,27 @@ We use an **LRU (Least Recently Used)** eviction policy in Redis.
 
 ### Detailed Model Reference
 
-| Model | Purpose | Key Fields |
-| :--- | :--- | :--- |
-| `User` | Internal Dashboard Access | `email`, `passwordHash`, `role` |
-| `ApiKey` | External Developer ID | `keyHash`, `balance`, `trustScore` |
-| `Hadith` | The Prophetic Text | `textArabic`, `tag`, `collectionId` |
-| `Translation` | Language Varient | `languageCode`, `textTranslated` |
-| `RequestLog` | The Flight Recorder | `method`, `path`, `responseTime` |
-| `Transaction` | Credit Movement | `amount`, `balanceAfter`, `type` |
-| `FraudEvent` | Evidence of Attack | `evidenceJson`, `severityLevel` |
-| `InactivityLog` | Dormancy Tracking | `warningSentAt`, `status` |
+| Model           | Purpose                   | Key Fields                          |
+| :-------------- | :------------------------ | :---------------------------------- |
+| `User`          | Internal Dashboard Access | `email`, `passwordHash`, `role`     |
+| `ApiKey`        | External Developer ID     | `keyHash`, `balance`, `trustScore`  |
+| `Hadith`        | The Prophetic Text        | `textArabic`, `tag`, `collectionId` |
+| `Translation`   | Language Varient          | `languageCode`, `textTranslated`    |
+| `RequestLog`    | The Flight Recorder       | `method`, `path`, `responseTime`    |
+| `Transaction`   | Credit Movement           | `amount`, `balanceAfter`, `type`    |
+| `FraudEvent`    | Evidence of Attack        | `evidenceJson`, `severityLevel`     |
+| `InactivityLog` | Dormancy Tracking         | `warningSentAt`, `status`           |
 
 ---
 
 ## 6. The Mumin Shield (Fraud Detection)
 
 ### Level 1: Volumetric Analysis
+
 We use a **Token Bucket Algorithm** to permit bursts of traffic while ensuring long-term adherence to the 100 RPM limit.
 
 ### Level 2: Behavioral Pattern Recognition
+
 Our `FraudService` calculates the "Entropy" of a user's requests. If a user only requests consecutive primary keys, the system flags a **Crawler anomaly**.
 
 ---
@@ -151,7 +158,9 @@ Our `FraudService` calculates the "Entropy" of a user's requests. If a user only
 ## 7. Security & Cryptography
 
 ### API Key Hashing
-We follow a "No-Secret-Stored" policy. 
+
+We follow a "No-Secret-Stored" policy.
+
 - Generated key: `sk_mumin_abcdef...`
 - Key stored in DB: `sha256('sk_mumin_abcdef...')`
 - Even with DB access, keys cannot be stolen.
@@ -161,8 +170,10 @@ We follow a "No-Secret-Stored" policy.
 ## 8. Financial & Lifecycle Operations
 
 ### Credit Model
+
 1 Credit = 1 Hadeeth Request.
 Users purchase credits in blocks:
+
 - **Small**: 10,000 Credits ($10)
 - **Medium**: 60,000 Credits ($50)
 - **Ummah Pack**: 150,000 Credits ($100)
@@ -172,6 +183,7 @@ Users purchase credits in blocks:
 ## 9. Legal & GDPR Compliance Framework
 
 ### Data Portability
+
 Our `GdprService` runs outside the main request loop to generate JSON dumps of user activity, ensuring the API remains fast while serving legal requests.
 
 ---
@@ -179,6 +191,7 @@ Our `GdprService` runs outside the main request loop to generate JSON dumps of u
 ## 10. Setup & Installation Guide
 
 ### Local Setup
+
 1. `npm install`
 2. `npx prisma generate`
 3. `npm run start:dev`
@@ -193,18 +206,20 @@ Our `GdprService` runs outside the main request loop to generate JSON dumps of u
 
 ---
 
-## 15. Project Roadmap (2026)
-
 ### Q1: The Foundation
+
 - [x] Core API implementation.
 - [x] Resend migration.
+- [x] Smart Search Suite (Fuzzy, Spell Suggest, Layout Correction).
 - [x] Basic Analytics.
 
 ### Q2: Expansion
+
 - [ ] Support for 5 new languages.
 - [ ] Webhook support for Billing events.
 
 ### Q3: Optimization
+
 - [ ] GraphQL interface.
 - [ ] Real-time Fraud blocking Dashboard.
 
