@@ -236,7 +236,28 @@ export class HadithsService {
             results = await this.standardSearch(normalized, language, page, limit, collection, grade);
         }
 
-        // Cache if results found
+        // --- Smart Layout Fallback ---
+        // If results are empty and it looks like a keyboard layout mismatch (Latin input but searching in RU context)
+        // We only trigger this if the primary search failed to prevent false positives for actual English words.
+        if (results.pagination.total === 0 && language === 'ru' && /^[a-z0-9\s.,!?;:]+$/i.test(normalized)) {
+            const corrected = this.convertLayout(normalized);
+            if (corrected !== normalized) {
+                let correctedResults;
+                if (useFuzzySearch) {
+                    correctedResults = await this.fuzzySearch(corrected, language, page, limit, collection, grade);
+                } else {
+                    correctedResults = await this.standardSearch(corrected, language, page, limit, collection, grade);
+                }
+
+                if (correctedResults.pagination.total > 0) {
+                    results = correctedResults;
+                    // Add a hint that this was corrected
+                    results['metadata'] = { ...results['metadata'], correctedFrom: normalized };
+                }
+            }
+        }
+
+        // Cache if results found (even if corrected)
         if (results && results.data && results.data.length > 0) {
             try {
                 await this.redis.set(cacheKey, JSON.stringify(results), 'EX', 86400); // 24 hours
@@ -289,6 +310,19 @@ export class HadithsService {
             .trim()
             .replace(/[.,!?;:]+$/, '') // Remove trailing punctuation
             .replace(/\s+/g, ' ');      // Collapse multiple spaces
+    }
+
+    /**
+     * Convert English keyboard layout to Russian (Smart Layout)
+     */
+    private convertLayout(query: string): string {
+        const en = "qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>?".split('');
+        const ru = "йцукенгшщзхъфывапролджэячсмитьбю.ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,".split('');
+        
+        const map: Record<string, string> = {};
+        en.forEach((char, i) => map[char] = ru[i]);
+
+        return query.split('').map(char => map[char] || char).join('');
     }
 
     /**
