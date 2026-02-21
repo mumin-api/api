@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Put, Delete, Param, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Get, Put, Delete, Param, Body, UseGuards, BadRequestException } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { UnifiedAuthGuard } from '@/common/guards/unified-auth.guard';
 import { CurrentUser } from '@/common/decorators/current-user.decorator';
@@ -6,6 +6,7 @@ import { DataExportService } from './data-export.service';
 import { DataDeletionService } from './data-deletion.service';
 import { ConsentService } from './consent.service';
 import { Public } from '@/common/decorators/public.decorator';
+import { AuthenticatedUser } from '@/common/interfaces/user.interface';
 
 @ApiTags('gdpr')
 @Controller('user')
@@ -19,15 +20,15 @@ export class GdprController {
     @Get('consent')
     @UseGuards(UnifiedAuthGuard)
     @ApiOperation({ summary: 'Get current cookie consent state' })
-    async getConsent(@CurrentUser() user: any) {
-        return this.consentService.getConsent(user?.userId, user?.apiKeyId);
+    async getConsent(@CurrentUser() user: AuthenticatedUser) {
+        return this.consentService.getConsent(user.userId, user.apiKeyId);
     }
 
     @Put('consent')
     @UseGuards(UnifiedAuthGuard)
     @ApiBearerAuth('api-key')
     @ApiOperation({ summary: 'Update cookie consent state' })
-    async updateConsent(@CurrentUser() user: any, @Body() body: any) {
+    async updateConsent(@CurrentUser() user: AuthenticatedUser, @Body() body: any) {
         return this.consentService.updateConsent(body, user.userId, user.apiKeyId);
     }
 
@@ -36,9 +37,10 @@ export class GdprController {
     @ApiBearerAuth('api-key')
     @ApiOperation({ summary: 'Request data export (GDPR)' })
     async requestExport(
-        @CurrentUser() user: any,
+        @CurrentUser() user: AuthenticatedUser,
         @Body() body: { format?: 'json' | 'csv' },
     ) {
+        if (!user.apiKeyId) throw new BadRequestException('API Key required for this operation');
         return this.exportService.requestExport(user.apiKeyId, user.userId, body.format);
     }
 
@@ -46,7 +48,8 @@ export class GdprController {
     @UseGuards(UnifiedAuthGuard)
     @ApiBearerAuth('api-key')
     @ApiOperation({ summary: 'Request account deletion (GDPR)' })
-    async requestDeletion(@CurrentUser() user: any, @Body() body: { reason?: string }) {
+    async requestDeletion(@CurrentUser() user: AuthenticatedUser, @Body() body: { reason?: string }) {
+        if (!user.apiKeyId) throw new BadRequestException('API Key required for this operation');
         return this.deletionService.requestDeletion(user.apiKeyId, user.userId, body.reason);
     }
 
@@ -61,7 +64,7 @@ export class GdprController {
     @UseGuards(UnifiedAuthGuard)
     @ApiBearerAuth('api-key')
     @ApiOperation({ summary: 'Cancel deletion request' })
-    async cancelDeletion(@CurrentUser() user: any) {
-        return this.deletionService.cancelDeletion(user.apiKeyId);
+    async cancelDeletion(@CurrentUser() user: AuthenticatedUser) {
+        return this.deletionService.cancelDeletion(user.apiKeyId!);
     }
 }

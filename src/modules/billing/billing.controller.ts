@@ -5,6 +5,7 @@ import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 import { CurrentUser } from '@/common/decorators/current-user.decorator';
 import { Public } from '@/common/decorators/public.decorator';
 import { CryptoPayWebhook } from './billing.types';
+import { AuthenticatedUser } from '@/common/interfaces/user.interface';
 
 @ApiTags('billing')
 @Controller('billing')
@@ -15,14 +16,14 @@ export class BillingController {
 
     @Get('balance')
     @ApiOperation({ summary: 'Get current balance' })
-    async getBalance(@CurrentUser() user: any) {
+    async getBalance(@CurrentUser() user: AuthenticatedUser) {
         return this.billingService.getBalanceByUserEmail(user.email);
     }
 
     @Get('transactions')
     @ApiOperation({ summary: 'Get transaction history' })
     async getTransactions(
-        @CurrentUser() user: any,
+        @CurrentUser() user: AuthenticatedUser,
         @Query('page', new ParseIntPipe({ optional: true })) page?: number,
         @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
     ) {
@@ -31,20 +32,20 @@ export class BillingController {
 
     @Get('payments')
     @ApiOperation({ summary: 'Get payment history' })
-    async getPayments(@CurrentUser() user: any) {
+    async getPayments(@CurrentUser() user: AuthenticatedUser) {
         return this.billingService.getPayments(user.userId);
     }
 
     @Get('stats')
     @ApiOperation({ summary: 'Get account usage stats' })
-    async getStats(@CurrentUser() user: any) {
+    async getStats(@CurrentUser() user: AuthenticatedUser) {
         return this.billingService.getUsageStats(user.userId);
     }
 
     @Get('analytics/usage')
     @ApiOperation({ summary: 'Get daily usage stats for last N days (real data)' })
     async getUsageByDay(
-        @CurrentUser() user: any,
+        @CurrentUser() user: AuthenticatedUser,
         @Query('days', new ParseIntPipe({ optional: true })) days?: number,
     ) {
         return this.billingService.getUsageByDay(user.userId, days ?? 7);
@@ -53,7 +54,7 @@ export class BillingController {
     @Post('crypto/create-invoice')
     @ApiOperation({ summary: 'Create CryptoBot invoice' })
     async createInvoice(
-        @CurrentUser() user: any,
+        @CurrentUser() user: AuthenticatedUser,
         @Body('amount', ParseIntPipe) amount: number
     ) {
         return this.billingService.createCryptoInvoice(user.userId, amount);

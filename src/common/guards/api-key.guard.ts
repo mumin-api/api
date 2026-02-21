@@ -286,12 +286,12 @@ export class ApiKeyGuard implements CanActivate {
                 }
             }
 
-            // Update user balance and total requests
+            // Update user balance and total requests (ATOMIC)
             await this.prisma.user.update({
                 where: { id: user.id },
                 data: {
-                    balance: isFreeMode ? user.balance : user.balance - 1,
-                    totalRequests: user.totalRequests + 1,
+                    balance: isFreeMode ? undefined : { decrement: 1 },
+                    totalRequests: { increment: 1 },
                 },
             });
 

@@ -8,6 +8,7 @@ import { VerificationService } from './verification.service';
 import { Public } from '@/common/decorators/public.decorator';
 import { ApiKeysService } from '../api-keys/api-keys.service';
 import { ConfigService } from '@nestjs/config';
+import { AuthenticatedUser } from '@/common/interfaces/user.interface';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -44,9 +45,9 @@ export class AuthController {
     @Post('logout')
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Logout user' })
-    async logout(@Req() req: any, @Res({ passthrough: true }) res: Response) {
+    async logout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
         // userId comes from JwtStrategy validate() which returns { userId: sub ... }
-        if (req.user && req.user.userId) {
+        if (req.user) {
             await this.authService.logout(req.user.userId);
         }
         res.clearCookie('access_token');
@@ -73,8 +74,8 @@ export class AuthController {
     @Get('me')
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Get current user profile' })
-    async getMe(@Req() req: any) {
-        return this.authService.getMe(req.user.userId);
+    async getMe(@Req() req: Request) {
+        return this.authService.getMe(req.user!.userId);
     }
 
     @UseGuards(AuthGuard('jwt'))
@@ -82,11 +83,11 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Update user profile' })
     async updateProfile(
-        @Req() req: any,
+        @Req() req: Request,
         @Body() dto: UpdateProfileDto,
         @Res({ passthrough: true }) res: Response
     ) {
-        const result = await this.authService.updateProfile(req.user.userId, dto);
+        const result = await this.authService.updateProfile(req.user!.userId, dto);
         this.setCookies(res, result.access_token, result.refresh_token);
 
         // Remove tokens from response body

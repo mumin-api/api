@@ -8,6 +8,7 @@ import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 import { Request } from 'express';
 import { Req } from '@nestjs/common';
 import { GeolocationUtil } from '@/common/utils/geolocation.util';
+import { AuthenticatedUser } from '@/common/interfaces/user.interface';
 
 @ApiTags('api-keys')
 @Controller('keys')
@@ -25,7 +26,7 @@ export class ApiKeysController {
             dto,
             req.ip || 'unknown',
             req.headers['user-agent'] || '',
-            (req as any)['deviceFingerprint'] || '',
+            req.deviceFingerprint || '',
             this.geoUtil.getLocation(req.ip || '') || 'unknown',
         );
     }
@@ -34,7 +35,7 @@ export class ApiKeysController {
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth('jwt')
     @ApiOperation({ summary: 'Create API key for authenticated user' })
-    async create(@CurrentUser() user: any, @Req() req: Request) {
+    async create(@CurrentUser() user: AuthenticatedUser, @Req() req: Request) {
         console.log(`[API_KEYS] create for ${user?.email}`);
         return this.apiKeysService.register(
             {
@@ -62,7 +63,7 @@ export class ApiKeysController {
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth('jwt')
     @ApiOperation({ summary: 'Get current API key information' })
-    async getMe(@CurrentUser() user: any) {
+    async getMe(@CurrentUser() user: AuthenticatedUser) {
         console.log(`[API_KEYS] getMe for ${user?.email}`);
         return this.apiKeysService.getKeysByUserEmail(user.email);
     }
@@ -71,7 +72,7 @@ export class ApiKeysController {
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth('jwt')
     @ApiOperation({ summary: 'Rotate API key (generate new key)' })
-    async rotate(@CurrentUser() user: any) {
+    async rotate(@CurrentUser() user: AuthenticatedUser) {
         console.log(`[API_KEYS] rotate for ${user?.email}`);
         return this.apiKeysService.rotateKeyByUserEmail(user.email);
     }
@@ -81,7 +82,7 @@ export class ApiKeysController {
     @ApiBearerAuth('jwt')
     @ApiOperation({ summary: 'Update API key settings' })
     async updateSettings(
-        @CurrentUser() user: any,
+        @CurrentUser() user: AuthenticatedUser,
         @Body() settings: { allowedIPs?: string[]; webhookUrl?: string },
     ) {
         return this.apiKeysService.updateSettingsByUserEmail(user.email, settings);
