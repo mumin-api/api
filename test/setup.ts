@@ -18,7 +18,7 @@ process.env.RESEND_API_KEY = process.env.RESEND_API_KEY || 're_dummy_key';
 export default async () => {
     console.log('\n--- Syncing Test Database ---');
     try {
-        execSync('npx prisma db push --skip-generate', { stdio: 'inherit' });
+        execSync('npx prisma db push --skip-generate --accept-data-loss', { stdio: 'inherit' });
         console.log('--- Test Database Synced ---\n');
     } catch (error) {
         console.error('--- Failed to sync test database ---');

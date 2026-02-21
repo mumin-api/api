@@ -185,8 +185,8 @@ export class HadithsService {
         return this.mapHadithResponse(hadith);
     }
 
-    async search(query: string, language: string = 'en', page: number = 1, limit: number = 20, collection?: string, grade?: string) {
-        const trimmed = query.trim();
+    async search(query: string = '', language: string = 'en', page: number = 1, limit: number = 20, collection?: string, grade?: string) {
+        const trimmed = (query || '').trim();
 
         // Edge case validation
         const validation = this.validateSearchQuery(trimmed);

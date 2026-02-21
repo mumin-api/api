@@ -1,0 +1,115 @@
+  console.error
+    Fuzzy search failed for "test query": TypeError: this.prisma.$transaction is not a function
+        at HadithsService.trigramSearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:435:28)
+        at HadithsService.fuzzySearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:398:40)
+        at HadithsService.search (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:234:34)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5)
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.spec.ts:138:13)
+
+    [0m [90m 412 |[39m             [36mreturn[39m results[33m;[39m
+     [90m 413 |[39m         } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 414 |[39m             console[33m.[39merror([32m`Fuzzy search failed for "${query}":`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m                     [31m[1m^[22m[39m
+     [90m 415 |[39m             [90m// Fallback to standard search on error[39m
+     [90m 416 |[39m             [36mreturn[39m [36mthis[39m[33m.[39mstandardSearch(query[33m,[39m language[33m,[39m page[33m,[39m limit[33m,[39m collection[33m,[39m grade)[33m;[39m
+     [90m 417 |[39m         }[0m
+
+      at HadithsService.fuzzySearch (modules/hadiths/hadiths.service.ts:414:21)
+      at HadithsService.search (modules/hadiths/hadiths.service.ts:234:23)
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:138:13)
+
+  console.error
+    Fuzzy search failed for "hfvflfy": TypeError: this.prisma.$transaction is not a function
+        at HadithsService.trigramSearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:435:28)
+        at HadithsService.fuzzySearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:398:40)
+        at HadithsService.search (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:234:34)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5)
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.spec.ts:156:28)
+
+    [0m [90m 412 |[39m             [36mreturn[39m results[33m;[39m
+     [90m 413 |[39m         } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 414 |[39m             console[33m.[39merror([32m`Fuzzy search failed for "${query}":`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m                     [31m[1m^[22m[39m
+     [90m 415 |[39m             [90m// Fallback to standard search on error[39m
+     [90m 416 |[39m             [36mreturn[39m [36mthis[39m[33m.[39mstandardSearch(query[33m,[39m language[33m,[39m page[33m,[39m limit[33m,[39m collection[33m,[39m grade)[33m;[39m
+     [90m 417 |[39m         }[0m
+
+      at HadithsService.fuzzySearch (modules/hadiths/hadiths.service.ts:414:21)
+      at HadithsService.search (modules/hadiths/hadiths.service.ts:234:23)
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:156:28)
+
+  console.error
+    Fuzzy search failed for "рамадан": TypeError: this.prisma.$transaction is not a function
+        at HadithsService.trigramSearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:435:28)
+        at HadithsService.fuzzySearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:398:40)
+        at HadithsService.search (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:247:51)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5)
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.spec.ts:156:28)
+
+    [0m [90m 412 |[39m             [36mreturn[39m results[33m;[39m
+     [90m 413 |[39m         } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 414 |[39m             console[33m.[39merror([32m`Fuzzy search failed for "${query}":`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m                     [31m[1m^[22m[39m
+     [90m 415 |[39m             [90m// Fallback to standard search on error[39m
+     [90m 416 |[39m             [36mreturn[39m [36mthis[39m[33m.[39mstandardSearch(query[33m,[39m language[33m,[39m page[33m,[39m limit[33m,[39m collection[33m,[39m grade)[33m;[39m
+     [90m 417 |[39m         }[0m
+
+      at HadithsService.fuzzySearch (modules/hadiths/hadiths.service.ts:414:21)
+      at HadithsService.search (modules/hadiths/hadiths.service.ts:247:40)
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:156:28)
+
+FAIL src/modules/hadiths/hadiths.service.spec.ts (11.969 s)
+  HadithsService
+    findAll
+      √ should return paginated hadiths (23 ms)
+      √ should filter by collection and grade (6 ms)
+    findOne
+      √ should return a single hadith if found (4 ms)
+      √ should throw NotFoundException if not found (28 ms)
+    findRandom
+      √ should return a random hadith (5 ms)
+      × should throw NotFound if count is 0 (4 ms)
+    search
+      √ should return results from cache if available (4 ms)
+      √ should normalize queries and cache results (48 ms)
+      √ should correct keyboard layout if no results found in RU language (18 ms)
+      × should prioritize numeric search if query is a number (3 ms)
+
+  ● HadithsService › findRandom › should throw NotFound if count is 0
+
+    expect(received).rejects.toThrow()
+
+    Received promise resolved instead of rejected
+    Resolved to value: null
+
+    [0m [90m 114 |[39m         it([32m'should throw NotFound if count is 0'[39m[33m,[39m [36masync[39m () [33m=>[39m {
+     [90m 115 |[39m             (prisma[33m.[39mhadith[33m.[39mcount [36mas[39m jest[33m.[39m[33mMock[39m)[33m.[39mmockResolvedValue([35m0[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 116 |[39m             [36mawait[39m expect(service[33m.[39mfindRandom())[33m.[39mrejects[33m.[39mtoThrow([33mNotFoundException[39m)[33m;[39m
+     [90m     |[39m                   [31m[1m^[22m[39m
+     [90m 117 |[39m         })[33m;[39m
+     [90m 118 |[39m     })[33m;[39m
+     [90m 119 |[39m[0m
+
+      at expect (../node_modules/expect/build/index.js:113:15)
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:116:19)
+
+  ● HadithsService › search › should prioritize numeric search if query is a number
+
+    TypeError: Cannot read properties of undefined (reading 'map')
+
+    [0m [90m 711 |[39m [32m                AND hadith_number != ${hadithNumber}[39m
+     [90m 712 |[39m [32m            `[39m[33m;[39m
+    [31m[1m>[22m[39m[90m 713 |[39m             [36mconst[39m partialNumberIds [33m=[39m partialNumberIdsRaw[33m.[39mmap(r [33m=>[39m r[33m.[39mid)[33m;[39m
+     [90m     |[39m                                                          [31m[1m^[22m[39m
+     [90m 714 |[39m
+     [90m 715 |[39m             [90m// Construct Other Query[39m
+     [90m 716 |[39m             [36mconst[39m otherWhere[33m:[39m any [33m=[39m {[0m
+
+      at HadithsService.searchWithNumberPriority (modules/hadiths/hadiths.service.ts:713:58)
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:169:28)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 8 passed, 10 total
+Snapshots:   0 total
+Time:        12.561 s
+Ran all test suites matching /src\\modules\\hadiths\\hadiths.service.spec.ts/i.

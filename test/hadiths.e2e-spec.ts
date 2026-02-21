@@ -36,14 +36,22 @@ describe('HadithsController (e2e)', () => {
         const validApiKey = 'sk_mumin_' + 'a'.repeat(32); // 41 chars
         const keyHash = crypto.createHash('sha256').update(validApiKey).digest('hex');
 
+        const user = await prisma.user.create({
+            data: {
+                email: 'test@example.com',
+                password: 'password',
+                balance: 1000,
+                totalRequests: 0,
+            }
+        });
+
         await prisma.apiKey.create({
             data: {
                 keyPrefix: validApiKey.substring(0, 15),
                 keyHash: keyHash,
                 isActive: true,
-                balance: 1000,
-                totalRequests: 0,
                 userEmail: 'test@example.com',
+                userId: user.id,
             }
         });
         apiKey = validApiKey;

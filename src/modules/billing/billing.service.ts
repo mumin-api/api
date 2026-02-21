@@ -161,7 +161,11 @@ export class BillingService {
     async getUsageStats(userId: number): Promise<BillingStats> {
         const user = await this.prisma.user.findUnique({
             where: { id: userId },
-            select: { balance: true }
+            select: { 
+                balance: true,
+                totalRequests: true,
+                totalDataTransferred: true
+            }
         });
 
         if (!user) throw new BadRequestException('User not found');
@@ -196,6 +200,8 @@ export class BillingService {
         return {
             dailyRequests: daily,
             monthlyRequests: monthly,
+            totalRequests: user ? Number(user.totalRequests) : 0,
+            totalDataTransferred: user ? Number(user.totalDataTransferred) : 0,
             balance: user.balance
         };
     }

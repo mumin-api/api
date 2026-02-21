@@ -1,0 +1,12 @@
+PASS src/common/guards/api-key.guard.spec.ts (11.779 s)
+  ApiKeyGuard
+    √ should throw UnauthorizedException if API key is invalid (32 ms)
+    ○ skipped should throw UnauthorizedException if no API key is provided
+    ○ skipped should allow request and update balance atomically
+    ○ skipped should throw ForbiddenException if account is suspended
+
+Test Suites: 1 passed, 1 total
+Tests:       3 skipped, 1 passed, 4 total
+Snapshots:   0 total
+Time:        12.389 s
+Ran all test suites matching /src\\common\\guards\\api-key.guard.spec.ts/i with tests matching "should throw UnauthorizedException if API key is invalid".

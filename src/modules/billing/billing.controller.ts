@@ -1,4 +1,4 @@
-import { Controller, Get, Query, UseGuards, ParseIntPipe, Post, Body, Headers } from '@nestjs/common';
+import { Controller, Get, Query, UseGuards, ParseIntPipe, Post, Body, Headers, DefaultValuePipe } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { BillingService } from './billing.service';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
@@ -24,8 +24,8 @@ export class BillingController {
     @ApiOperation({ summary: 'Get transaction history' })
     async getTransactions(
         @CurrentUser() user: AuthenticatedUser,
-        @Query('page', new ParseIntPipe({ optional: true })) page?: number,
-        @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
     ) {
         return this.billingService.getTransactions(user.userId, page, limit);
     }

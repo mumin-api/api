@@ -1,0 +1,68 @@
+
+> mumin-hadith-api@2.0.0 test:e2e
+> jest --config ./test/jest-e2e.json
+
+
+--- Syncing Test Database ---
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "mumin_test", schema "public" at "localhost:5433"
+
+The database is already in sync with the Prisma schema.
+
+--- Test Database Synced ---
+
+FAIL test/auth.e2e-spec.ts
+  ● Test suite failed to run
+
+    [96mtest/auth.e2e-spec.ts[0m:[93m85[0m:[93m47[0m - [91merror[0m[90m TS2339: [0mProperty 'find' does not exist on type 'string'.
+
+    [7m85[0m             const accessTokenCookie = cookies.find((c: string) => c.startsWith('access_token='));
+    [7m  [0m [91m                                              ~~~~[0m
+
+FAIL test/billing.e2e-spec.ts
+  ● Test suite failed to run
+
+    [96mtest/billing.e2e-spec.ts[0m:[93m50[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'find' does not exist on type 'string'.
+
+    [7m50[0m         const accessTokenCookie = cookies.find((c: string) => c.startsWith('access_token='));
+    [7m  [0m [91m                                          ~~~~[0m
+
+FAIL test/hadiths.e2e-spec.ts
+  ● Test suite failed to run
+
+    [96mtest/hadiths.e2e-spec.ts[0m:[93m44[0m:[93m17[0m - [91merror[0m[90m TS2353: [0mObject literal may only specify known properties, and 'balance' does not exist in type '(Without<ApiKeyCreateInput, ApiKeyUncheckedCreateInput> & ApiKeyUncheckedCreateInput) | (Without<...> & ApiKeyCreateInput)'.
+
+    [7m44[0m                 balance: 1000,
+    [7m  [0m [91m                ~~~~~~~[0m
+
+      [96mnode_modules/.prisma/client/index.d.ts[0m:[93m12886[0m:[93m5[0m
+        [7m12886[0m     data: XOR<ApiKeyCreateInput, ApiKeyUncheckedCreateInput>
+        [7m     [0m [96m    ~~~~[0m
+        The expected type comes from property 'data' which is declared here on type '{ select?: ApiKeySelect<DefaultArgs> | null | undefined; include?: ApiKeyInclude<DefaultArgs> | null | undefined; data: (Without<...> & ApiKeyUncheckedCreateInput) | (Without<...> & ApiKeyCreateInput); }'
+
+FAIL test/admin.e2e-spec.ts
+  ● Test suite failed to run
+
+    [96mtest/admin.e2e-spec.ts[0m:[93m65[0m:[93m17[0m - [91merror[0m[90m TS2322: [0mType '{ keyPrefix: string; keyHash: string; userEmail: string; isActive: true; }' is not assignable to type '(Without<ApiKeyCreateInput, ApiKeyUncheckedCreateInput> & ApiKeyUncheckedCreateInput) | (Without<...> & ApiKeyCreateInput)'.
+      Type '{ keyPrefix: string; keyHash: string; userEmail: string; isActive: true; }' is not assignable to type 'Without<ApiKeyUncheckedCreateInput, ApiKeyCreateInput> & ApiKeyCreateInput'.
+        Property 'user' is missing in type '{ keyPrefix: string; keyHash: string; userEmail: string; isActive: true; }' but required in type 'ApiKeyCreateInput'.
+
+    [7m65[0m                 data: {
+    [7m  [0m [91m                ~~~~[0m
+
+      [96mnode_modules/.prisma/client/index.d.ts[0m:[93m32478[0m:[93m5[0m
+        [7m32478[0m     user: UserCreateNestedOneWithoutApiKeysInput
+        [7m     [0m [96m    ~~~~[0m
+        'user' is declared here.
+      [96mnode_modules/.prisma/client/index.d.ts[0m:[93m12886[0m:[93m5[0m
+        [7m12886[0m     data: XOR<ApiKeyCreateInput, ApiKeyUncheckedCreateInput>
+        [7m     [0m [96m    ~~~~[0m
+        The expected type comes from property 'data' which is declared here on type '{ select?: ApiKeySelect<DefaultArgs> | null | undefined; include?: ApiKeyInclude<DefaultArgs> | null | undefined; data: (Without<...> & ApiKeyUncheckedCreateInput) | (Without<...> & ApiKeyCreateInput); }'
+
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks. Active timers can also cause this, ensure that .unref() was called on them.
+Test Suites: 4 failed, 4 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        26.717 s
+Ran all test suites.

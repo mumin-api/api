@@ -1,0 +1,51 @@
+  console.log
+    Trigram found 0 results for "test query", falling back to keyword search
+
+      at HadithsService.fuzzySearch (modules/hadiths/hadiths.service.ts:408:25)
+
+  console.log
+    Trigram found 0 results for "hfvflfy", falling back to keyword search
+
+      at HadithsService.fuzzySearch (modules/hadiths/hadiths.service.ts:408:25)
+
+  console.log
+    Trigram found 0 results for "рамадан", falling back to keyword search
+
+      at HadithsService.fuzzySearch (modules/hadiths/hadiths.service.ts:408:25)
+
+FAIL src/modules/hadiths/hadiths.service.spec.ts (10.662 s)
+  HadithsService
+    findAll
+      √ should return paginated hadiths (23 ms)
+      √ should filter by collection and grade (5 ms)
+    findOne
+      √ should return a single hadith if found (4 ms)
+      √ should throw NotFoundException if not found (31 ms)
+    findRandom
+      √ should return a random hadith (5 ms)
+      √ should return null if count is 0 (4 ms)
+    search
+      √ should return results from cache if available (4 ms)
+      √ should normalize queries and cache results (41 ms)
+      √ should correct keyboard layout if no results found in RU language (7 ms)
+      × should prioritize numeric search if query is a number (4 ms)
+
+  ● HadithsService › search › should prioritize numeric search if query is a number
+
+    TypeError: Cannot read properties of undefined (reading 'hadithNumber')
+
+    [0m [90m 172 |[39m             [36mconst[39m result [33m=[39m [36mawait[39m service[33m.[39msearch([32m'27'[39m)[33m;[39m
+     [90m 173 |[39m
+    [31m[1m>[22m[39m[90m 174 |[39m             expect(result[33m.[39mdata[[35m0[39m][33m.[39mhadithNumber)[33m.[39mtoBe([35m27[39m)[33m;[39m
+     [90m     |[39m                                   [31m[1m^[22m[39m
+     [90m 175 |[39m             expect(prisma[33m.[39mhadith[33m.[39mfindUnique)[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m 176 |[39m         })[33m;[39m
+     [90m 177 |[39m     })[33m;[39m[0m
+
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:174:35)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 9 passed, 10 total
+Snapshots:   0 total
+Time:        11.49 s
+Ran all test suites matching /src\\modules\\hadiths\\hadiths.service.spec.ts/i.

@@ -1,0 +1,93 @@
+FAIL src/common/guards/api-key.guard.spec.ts (13.037 s)
+  ApiKeyGuard
+    × should throw UnauthorizedException if no API key is provided (77 ms)
+    × should throw UnauthorizedException if API key is invalid (9 ms)
+    × should allow request and update balance atomically (4 ms)
+    × should throw ForbiddenException if account is suspended (8 ms)
+
+  ● ApiKeyGuard › should throw UnauthorizedException if no API key is provided
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected constructor: UnauthorizedException
+    Received constructor: TypeError
+
+    Received message: "context.getHandler is not a function"
+
+        [0m [90m 30 |[39m         [90m// Check if endpoint is public[39m
+         [90m 31 |[39m         [36mconst[39m isPublic [33m=[39m [36mthis[39m[33m.[39mreflector[33m.[39mgetAllAndOverride[33m<[39m[33mboolean[39m[33m>[39m([33mIS_PUBLIC_KEY[39m[33m,[39m [
+        [31m[1m>[22m[39m[90m 32 |[39m             context[33m.[39mgetHandler()[33m,[39m
+         [90m    |[39m                     [31m[1m^[22m[39m
+         [90m 33 |[39m             context[33m.[39mgetClass()[33m,[39m
+         [90m 34 |[39m         ])[33m;[39m
+         [90m 35 |[39m[0m
+
+      at ApiKeyGuard.canActivate (common/guards/api-key.guard.ts:32:21)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:83:28)
+      at Object.toThrow (../node_modules/expect/build/index.js:218:22)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:83:58)
+
+  ● ApiKeyGuard › should throw UnauthorizedException if API key is invalid
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected constructor: UnauthorizedException
+    Received constructor: TypeError
+
+    Received message: "context.getHandler is not a function"
+
+        [0m [90m 30 |[39m         [90m// Check if endpoint is public[39m
+         [90m 31 |[39m         [36mconst[39m isPublic [33m=[39m [36mthis[39m[33m.[39mreflector[33m.[39mgetAllAndOverride[33m<[39m[33mboolean[39m[33m>[39m([33mIS_PUBLIC_KEY[39m[33m,[39m [
+        [31m[1m>[22m[39m[90m 32 |[39m             context[33m.[39mgetHandler()[33m,[39m
+         [90m    |[39m                     [31m[1m^[22m[39m
+         [90m 33 |[39m             context[33m.[39mgetClass()[33m,[39m
+         [90m 34 |[39m         ])[33m;[39m
+         [90m 35 |[39m[0m
+
+      at ApiKeyGuard.canActivate (common/guards/api-key.guard.ts:32:21)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:95:28)
+      at Object.toThrow (../node_modules/expect/build/index.js:218:22)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:95:58)
+
+  ● ApiKeyGuard › should allow request and update balance atomically
+
+    TypeError: context.getHandler is not a function
+
+    [0m [90m 30 |[39m         [90m// Check if endpoint is public[39m
+     [90m 31 |[39m         [36mconst[39m isPublic [33m=[39m [36mthis[39m[33m.[39mreflector[33m.[39mgetAllAndOverride[33m<[39m[33mboolean[39m[33m>[39m([33mIS_PUBLIC_KEY[39m[33m,[39m [
+    [31m[1m>[22m[39m[90m 32 |[39m             context[33m.[39mgetHandler()[33m,[39m
+     [90m    |[39m                     [31m[1m^[22m[39m
+     [90m 33 |[39m             context[33m.[39mgetClass()[33m,[39m
+     [90m 34 |[39m         ])[33m;[39m
+     [90m 35 |[39m[0m
+
+      at ApiKeyGuard.canActivate (common/guards/api-key.guard.ts:32:21)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:122:36)
+
+  ● ApiKeyGuard › should throw ForbiddenException if account is suspended
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected constructor: ForbiddenException
+    Received constructor: TypeError
+
+    Received message: "context.getHandler is not a function"
+
+        [0m [90m 30 |[39m         [90m// Check if endpoint is public[39m
+         [90m 31 |[39m         [36mconst[39m isPublic [33m=[39m [36mthis[39m[33m.[39mreflector[33m.[39mgetAllAndOverride[33m<[39m[33mboolean[39m[33m>[39m([33mIS_PUBLIC_KEY[39m[33m,[39m [
+        [31m[1m>[22m[39m[90m 32 |[39m             context[33m.[39mgetHandler()[33m,[39m
+         [90m    |[39m                     [31m[1m^[22m[39m
+         [90m 33 |[39m             context[33m.[39mgetClass()[33m,[39m
+         [90m 34 |[39m         ])[33m;[39m
+         [90m 35 |[39m[0m
+
+      at ApiKeyGuard.canActivate (common/guards/api-key.guard.ts:32:21)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:146:28)
+      at Object.toThrow (../node_modules/expect/build/index.js:218:22)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:146:58)
+
+Test Suites: 1 failed, 1 total
+Tests:       4 failed, 4 total
+Snapshots:   0 total
+Time:        13.534 s
+Ran all test suites matching /src\\common\\guards\\api-key.guard.spec.ts/i.

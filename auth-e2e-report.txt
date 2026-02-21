@@ -1,0 +1,276 @@
+
+--- Syncing Test Database ---
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": PostgreSQL database "mumin_test", schema "public" at "localhost:5433"
+
+The database is already in sync with the Prisma schema.
+
+--- Test Database Synced ---
+
+  console.log
+    prisma:info Starting a postgresql pool with 13 connections.
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."bot_analytics" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."email_logs" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."fraud_events" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."transactions" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."collections" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."hadiths" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."search_history" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."admin_audit_logs" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."data_export_requests" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."app_events" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."endpoint_stats" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."favorites" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."account_deletion_requests" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."geo_stats" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."translations" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."verification_logs" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."verification_codes" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."topics" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."hadith_topics" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."request_logs" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."telegram_users" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."payments" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."api_keys" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."users" WHERE 1=1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query INSERT INTO "public"."users" ("email","password","first_name","last_name","balance","total_requests","total_data_transferred","created_at","updated_at","email_verified","low_balance_alerts","usage_reports","security_alerts","low_balance_alert_sent") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "public"."users"."id", "public"."users"."email", "public"."users"."password", "public"."users"."first_name", "public"."users"."last_name", "public"."users"."hashed_rt", "public"."users"."balance", "public"."users"."total_requests", "public"."users"."total_data_transferred", "public"."users"."created_at", "public"."users"."updated_at", "public"."users"."cookie_consent", "public"."users"."email_verified", "public"."users"."email_verified_at", "public"."users"."telegram_id", "public"."users"."low_balance_alerts", "public"."users"."usage_reports", "public"."users"."security_alerts", "public"."users"."low_balance_alert_sent"
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query INSERT INTO "public"."transactions" ("type","amount","balance_before","balance_after","description","created_at","user_id") VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "public"."transactions"."id", "public"."transactions"."api_key_id", "public"."transactions"."type", "public"."transactions"."amount", "public"."transactions"."balance_before", "public"."transactions"."balance_after", "public"."transactions"."description", "public"."transactions"."metadata", "public"."transactions"."payment_id", "public"."transactions"."created_at", "public"."transactions"."user_id"
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query SELECT COUNT(*) FROM (SELECT "public"."verification_logs"."id" FROM "public"."verification_logs" WHERE ("public"."verification_logs"."email" = $1 AND "public"."verification_logs"."action" IN ($2,$3) AND "public"."verification_logs"."created_at" >= $4) OFFSET $5) AS "sub"
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query DELETE FROM "public"."verification_codes" WHERE "public"."verification_codes"."email" = $1
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query SELECT "public"."users"."id" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query INSERT INTO "public"."verification_codes" ("email","code","expires_at","created_at","attempts","max_attempts","user_id") VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "public"."verification_codes"."id", "public"."verification_codes"."email", "public"."verification_codes"."code", "public"."verification_codes"."expires_at", "public"."verification_codes"."created_at", "public"."verification_codes"."attempts", "public"."verification_codes"."max_attempts", "public"."verification_codes"."used_at", "public"."verification_codes"."user_id"
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query INSERT INTO "public"."verification_logs" ("email","action","success","reason","created_at","user_id") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."verification_logs"."id", "public"."verification_logs"."email", "public"."verification_logs"."action", "public"."verification_logs"."ip_address", "public"."verification_logs"."user_agent", "public"."verification_logs"."success", "public"."verification_logs"."reason", "public"."verification_logs"."created_at", "public"."verification_logs"."user_id"
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query UPDATE "public"."users" SET "hashed_rt" = $1, "updated_at" = $2 WHERE ("public"."users"."id" = $3 AND 1=1) RETURNING "public"."users"."id", "public"."users"."email", "public"."users"."password", "public"."users"."first_name", "public"."users"."last_name", "public"."users"."hashed_rt", "public"."users"."balance", "public"."users"."total_requests", "public"."users"."total_data_transferred", "public"."users"."created_at", "public"."users"."updated_at", "public"."users"."cookie_consent", "public"."users"."email_verified", "public"."users"."email_verified_at", "public"."users"."telegram_id", "public"."users"."low_balance_alerts", "public"."users"."usage_reports", "public"."users"."security_alerts", "public"."users"."low_balance_alert_sent"
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query UPDATE "public"."users" SET "email_verified" = $1, "email_verified_at" = $2, "updated_at" = $3 WHERE ("public"."users"."email" = $4 AND 1=1) RETURNING "public"."users"."id", "public"."users"."email", "public"."users"."password", "public"."users"."first_name", "public"."users"."last_name", "public"."users"."hashed_rt", "public"."users"."balance", "public"."users"."total_requests", "public"."users"."total_data_transferred", "public"."users"."created_at", "public"."users"."updated_at", "public"."users"."cookie_consent", "public"."users"."email_verified", "public"."users"."email_verified_at", "public"."users"."telegram_id", "public"."users"."low_balance_alerts", "public"."users"."usage_reports", "public"."users"."security_alerts", "public"."users"."low_balance_alert_sent"
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query INSERT INTO "public"."users" ("email","password","first_name","last_name","balance","total_requests","total_data_transferred","created_at","updated_at","email_verified","low_balance_alerts","usage_reports","security_alerts","low_balance_alert_sent") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14) RETURNING "public"."users"."id", "public"."users"."email", "public"."users"."password", "public"."users"."first_name", "public"."users"."last_name", "public"."users"."hashed_rt", "public"."users"."balance", "public"."users"."total_requests", "public"."users"."total_data_transferred", "public"."users"."created_at", "public"."users"."updated_at", "public"."users"."cookie_consent", "public"."users"."email_verified", "public"."users"."email_verified_at", "public"."users"."telegram_id", "public"."users"."low_balance_alerts", "public"."users"."usage_reports", "public"."users"."security_alerts", "public"."users"."low_balance_alert_sent"
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:error 
+    Invalid `this.prisma.user.create()` invocation in
+    C:\Users\Intel\Desktop\mumin\api\src\modules\auth\auth.service.ts:62:49
+    
+      59 async register(dto: RegisterDto) {
+      60     const hash = await this.hashData(dto.password);
+      61     try {
+    → 62         const user = await this.prisma.user.create(
+    Unique constraint failed on the fields: (`email`)
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+[31m[Nest] 24380  - [39m21.02.2026, 13:29:53 [31m  ERROR[39m [38;5;3m[API] [39m[31mPOST /v1/auth/register 403 299ms - ::ffff:127.0.0.1[39m
+ForbiddenException: Credentials taken
+    at AuthService.register (C:\Users\Intel\Desktop\mumin\api\src\modules\auth\auth.service.ts:99:27)
+    at AuthController.register (C:\Users\Intel\Desktop\mumin\api\src\modules\auth\auth.controller.ts:27:24)
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."password", "public"."users"."first_name", "public"."users"."last_name", "public"."users"."email_verified" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query UPDATE "public"."users" SET "hashed_rt" = $1, "updated_at" = $2 WHERE ("public"."users"."id" = $3 AND 1=1) RETURNING "public"."users"."id", "public"."users"."email", "public"."users"."password", "public"."users"."first_name", "public"."users"."last_name", "public"."users"."hashed_rt", "public"."users"."balance", "public"."users"."total_requests", "public"."users"."total_data_transferred", "public"."users"."created_at", "public"."users"."updated_at", "public"."users"."cookie_consent", "public"."users"."email_verified", "public"."users"."email_verified_at", "public"."users"."telegram_id", "public"."users"."low_balance_alerts", "public"."users"."usage_reports", "public"."users"."security_alerts", "public"."users"."low_balance_alert_sent"
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."password", "public"."users"."first_name", "public"."users"."last_name", "public"."users"."email_verified" FROM "public"."users" WHERE ("public"."users"."email" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.mc (node_modules/@prisma/client/runtime/library.js:21:432)
+
+[31m[Nest] 24380  - [39m21.02.2026, 13:29:53 [31m  ERROR[39m [38;5;3m[API] [39m[31mPOST /v1/auth/login 403 138ms - ::ffff:127.0.0.1[39m
+ForbiddenException: Invalid credentials
+    at AuthService.login (C:\Users\Intel\Desktop\mumin\api\src\modules\auth\auth.service.ts:124:37)
+    at AuthController.login (C:\Users\Intel\Desktop\mumin\api\src\modules\auth\auth.controller.ts:36:24)
+FAIL test/auth.e2e-spec.ts (13.862 s)
+  AuthController (e2e)
+    /v1/auth/register (POST)
+      √ should register a new user (1201 ms)
+      √ should fail to register if email already exists (336 ms)
+    /v1/auth/login (POST)
+      × should login and return user data (tokens in cookies) (352 ms)
+      × should fail with wrong credentials (154 ms)
+
+  ● AuthController (e2e) › /v1/auth/login (POST) › should login and return user data (tokens in cookies)
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "e2e-test@example.com"
+    Received: undefined
+
+    [0m [90m 84 |[39m
+     [90m 85 |[39m             expect(response[33m.[39mheaders[[32m'set-cookie'[39m])[33m.[39mtoBeDefined()[33m;[39m
+    [31m[1m>[22m[39m[90m 86 |[39m             expect(response[33m.[39mbody[33m.[39memail)[33m.[39mtoBe(testUser[33m.[39memail)[33m;[39m
+     [90m    |[39m                                         [31m[1m^[22m[39m
+     [90m 87 |[39m             
+     [90m 88 |[39m             [90m// Extract access token from cookies for subsequent tests[39m
+     [90m 89 |[39m             [36mconst[39m cookies [33m=[39m response[33m.[39mheaders[[32m'set-cookie'[39m] [33m||[39m [][33m;[39m[0m
+
+      at Object.<anonymous> (test/auth.e2e-spec.ts:86:41)
+
+  ● AuthController (e2e) › /v1/auth/login (POST) › should fail with wrong credentials
+
+    expected 401 "Unauthorized", got 403 "Forbidden"
+
+    [0m [90m 109 |[39m                     password[33m:[39m [32m'wrongpassword'[39m[33m,[39m
+     [90m 110 |[39m                 })
+    [31m[1m>[22m[39m[90m 111 |[39m                 [33m.[39mexpect([35m401[39m)[33m;[39m
+     [90m     |[39m                  [31m[1m^[22m[39m
+     [90m 112 |[39m         })[33m;[39m
+     [90m 113 |[39m     })[33m;[39m
+     [90m 114 |[39m })[33m;[39m[0m
+
+      at Object.<anonymous> (test/auth.e2e-spec.ts:111:18)
+      ----
+      at Test._assertStatus (node_modules/supertest/lib/test.js:309:14)
+      at node_modules/supertest/lib/test.js:365:13
+      at Test._assertFunction (node_modules/supertest/lib/test.js:342:13)
+      at Test.assert (node_modules/supertest/lib/test.js:195:23)
+      at localAssert (node_modules/supertest/lib/test.js:138:14)
+      at Server.<anonymous> (node_modules/supertest/lib/test.js:152:11)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 2 passed, 4 total
+Snapshots:   0 total
+Time:        14.057 s
+Ran all test suites matching /test\\auth.e2e-spec.ts/i.
+Jest did not exit one second after the test run has completed.
+
+'This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.

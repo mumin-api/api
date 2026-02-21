@@ -118,10 +118,10 @@ export class AuthService {
             },
         });
 
-        if (!user) throw new ForbiddenException('User not found');
+        if (!user) throw new UnauthorizedException('Invalid credentials');
 
         const passwordMatches = await bcrypt.compare(dto.password, user.password);
-        if (!passwordMatches) throw new ForbiddenException('Invalid credentials');
+        if (!passwordMatches) throw new UnauthorizedException('Invalid credentials');
 
         // Check if email is verified
         if (!user.emailVerified) {

@@ -8,6 +8,7 @@ import {
     Query,
     UseGuards,
     ParseIntPipe,
+    DefaultValuePipe,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiHeader } from '@nestjs/swagger';
 import { AdminService } from './admin.service';
@@ -27,8 +28,8 @@ export class AdminController {
     @Get('keys')
     @ApiOperation({ summary: 'List all API keys' })
     async listKeys(
-        @Query('page', new ParseIntPipe({ optional: true })) page?: number,
-        @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+        @Query('limit', new DefaultValuePipe(50), ParseIntPipe) limit: number,
         @Query('email') email?: string,
         @Query('isActive') isActive?: boolean,
     ) {
@@ -68,8 +69,8 @@ export class AdminController {
     @Get('fraud-events')
     @ApiOperation({ summary: 'Get fraud events' })
     async getFraudEvents(
-        @Query('page', new ParseIntPipe({ optional: true })) page?: number,
-        @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+        @Query('limit', new DefaultValuePipe(50), ParseIntPipe) limit: number,
     ) {
         return this.adminService.getFraudEvents(page, limit);
     }

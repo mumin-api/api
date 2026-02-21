@@ -1,0 +1,52 @@
+[31m[Nest] 22020  - [39m21.02.2026, 12:28:09 [31m  ERROR[39m [38;5;3m[ApiKeyGuard] [39m[31mInvalid API key format: received length 7, starts with invalid[39m
+[31m[Nest] 22020  - [39m21.02.2026, 12:28:09 [31m  ERROR[39m [38;5;3m[ApiKeyGuard] [39m[31mInvalid API key format: received length 9, starts with valid-key[39m
+[31m[Nest] 22020  - [39m21.02.2026, 12:28:09 [31m  ERROR[39m [38;5;3m[ApiKeyGuard] [39m[31mInvalid API key format: received length 3, starts with key[39m
+FAIL src/common/guards/api-key.guard.spec.ts (14.523 s)
+  ApiKeyGuard
+    √ should throw UnauthorizedException if no API key is provided (112 ms)
+    √ should throw UnauthorizedException if API key is invalid (53 ms)
+    × should allow request and update balance atomically (6 ms)
+    × should throw ForbiddenException if account is suspended (26 ms)
+
+  ● ApiKeyGuard › should allow request and update balance atomically
+
+    UnauthorizedException: Invalid API key format
+
+    [0m [90m 72 |[39m         [36mif[39m ([33m![39mapiKey[33m.[39mstartsWith([32m'sk_mumin_'[39m) [33m||[39m (apiKey[33m.[39mlength [33m!==[39m [35m41[39m [33m&&[39m apiKey[33m.[39mlength [33m!==[39m [35m42[39m)) {
+     [90m 73 |[39m             [36mthis[39m[33m.[39mlogger[33m.[39merror([32m`Invalid API key format: received length ${apiKey.length}, starts with ${apiKey.substring(0, 9)}`[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 74 |[39m             [36mthrow[39m [36mnew[39m [33mUnauthorizedException[39m({
+     [90m    |[39m                   [31m[1m^[22m[39m
+     [90m 75 |[39m                 statusCode[33m:[39m [35m401[39m[33m,[39m
+     [90m 76 |[39m                 error[33m:[39m [32m'INVALID_API_KEY_FORMAT'[39m[33m,[39m
+     [90m 77 |[39m                 message[33m:[39m [32m'Invalid API key format'[39m[33m,[39m[0m
+
+      at ApiKeyGuard.canActivate (common/guards/api-key.guard.ts:74:19)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:128:36)
+
+  ● ApiKeyGuard › should throw ForbiddenException if account is suspended
+
+    expect(received).rejects.toThrow(expected)
+
+    Expected constructor: ForbiddenException
+    Received constructor: UnauthorizedException
+
+    Received message: "Invalid API key format"
+
+        [0m [90m 72 |[39m         [36mif[39m ([33m![39mapiKey[33m.[39mstartsWith([32m'sk_mumin_'[39m) [33m||[39m (apiKey[33m.[39mlength [33m!==[39m [35m41[39m [33m&&[39m apiKey[33m.[39mlength [33m!==[39m [35m42[39m)) {
+         [90m 73 |[39m             [36mthis[39m[33m.[39mlogger[33m.[39merror([32m`Invalid API key format: received length ${apiKey.length}, starts with ${apiKey.substring(0, 9)}`[39m)[33m;[39m
+        [31m[1m>[22m[39m[90m 74 |[39m             [36mthrow[39m [36mnew[39m [33mUnauthorizedException[39m({
+         [90m    |[39m                   [31m[1m^[22m[39m
+         [90m 75 |[39m                 statusCode[33m:[39m [35m401[39m[33m,[39m
+         [90m 76 |[39m                 error[33m:[39m [32m'INVALID_API_KEY_FORMAT'[39m[33m,[39m
+         [90m 77 |[39m                 message[33m:[39m [32m'Invalid API key format'[39m[33m,[39m[0m
+
+      at ApiKeyGuard.canActivate (common/guards/api-key.guard.ts:74:19)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:154:28)
+      at Object.toThrow (../node_modules/expect/build/index.js:218:22)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:154:58)
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 2 passed, 4 total
+Snapshots:   0 total
+Time:        15.129 s
+Ran all test suites matching /src\\common\\guards\\api-key.guard.spec.ts/i.

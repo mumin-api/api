@@ -26,5 +26,7 @@ export interface CryptoPayWebhook {
 export interface BillingStats {
     dailyRequests: number;
     monthlyRequests: number;
+    totalRequests: number;
+    totalDataTransferred: number;
     balance: number;
 }

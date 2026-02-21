@@ -1,0 +1,172 @@
+FAIL src/common/guards/api-key.guard.spec.ts (9.39 s)
+  ApiKeyGuard
+    × should throw UnauthorizedException if no API key is provided (11 ms)
+    × should throw UnauthorizedException if API key is invalid (1 ms)
+    × should allow request and update balance atomically (2 ms)
+    × should throw ForbiddenException if account is suspended (2 ms)
+
+  ● ApiKeyGuard › should throw UnauthorizedException if no API key is provided
+
+    Nest can't resolve dependencies of the ApiKeyGuard (Reflector, PrismaService, ?, EmailService). Please make sure that the argument FraudDetectionService at index [2] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If FraudDetectionService is a provider, is it part of the current RootTestModule?
+    - If FraudDetectionService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing FraudDetectionService */ ]
+      })
+
+    [0m [90m 41 |[39m
+     [90m 42 |[39m     beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 43 |[39m         [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                       [31m[1m^[22m[39m
+     [90m 44 |[39m             providers[33m:[39m [
+     [90m 45 |[39m                 [33mApiKeyGuard[39m[33m,[39m
+     [90m 46 |[39m                 { provide[33m:[39m [33mPrismaService[39m[33m,[39m useValue[33m:[39m mockPrisma }[33m,[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:262:19)
+      at TestingInjector.resolveComponentInstance (../node_modules/@nestjs/core/injector/injector.js:215:33)
+      at TestingInjector.resolveComponentInstance (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:129:38)
+          at async Promise.all (index 2)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:144:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:43:39)
+
+  ● ApiKeyGuard › should throw UnauthorizedException if API key is invalid
+
+    Nest can't resolve dependencies of the ApiKeyGuard (Reflector, PrismaService, ?, EmailService). Please make sure that the argument FraudDetectionService at index [2] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If FraudDetectionService is a provider, is it part of the current RootTestModule?
+    - If FraudDetectionService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing FraudDetectionService */ ]
+      })
+
+    [0m [90m 41 |[39m
+     [90m 42 |[39m     beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 43 |[39m         [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                       [31m[1m^[22m[39m
+     [90m 44 |[39m             providers[33m:[39m [
+     [90m 45 |[39m                 [33mApiKeyGuard[39m[33m,[39m
+     [90m 46 |[39m                 { provide[33m:[39m [33mPrismaService[39m[33m,[39m useValue[33m:[39m mockPrisma }[33m,[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:262:19)
+      at TestingInjector.resolveComponentInstance (../node_modules/@nestjs/core/injector/injector.js:215:33)
+      at TestingInjector.resolveComponentInstance (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:129:38)
+          at async Promise.all (index 2)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:144:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:43:39)
+
+  ● ApiKeyGuard › should allow request and update balance atomically
+
+    Nest can't resolve dependencies of the ApiKeyGuard (Reflector, PrismaService, ?, EmailService). Please make sure that the argument FraudDetectionService at index [2] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If FraudDetectionService is a provider, is it part of the current RootTestModule?
+    - If FraudDetectionService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing FraudDetectionService */ ]
+      })
+
+    [0m [90m 41 |[39m
+     [90m 42 |[39m     beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 43 |[39m         [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                       [31m[1m^[22m[39m
+     [90m 44 |[39m             providers[33m:[39m [
+     [90m 45 |[39m                 [33mApiKeyGuard[39m[33m,[39m
+     [90m 46 |[39m                 { provide[33m:[39m [33mPrismaService[39m[33m,[39m useValue[33m:[39m mockPrisma }[33m,[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:262:19)
+      at TestingInjector.resolveComponentInstance (../node_modules/@nestjs/core/injector/injector.js:215:33)
+      at TestingInjector.resolveComponentInstance (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:129:38)
+          at async Promise.all (index 2)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:144:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:43:39)
+
+  ● ApiKeyGuard › should throw ForbiddenException if account is suspended
+
+    Nest can't resolve dependencies of the ApiKeyGuard (Reflector, PrismaService, ?, EmailService). Please make sure that the argument FraudDetectionService at index [2] is available in the RootTestModule context.
+
+    Potential solutions:
+    - Is RootTestModule a valid NestJS module?
+    - If FraudDetectionService is a provider, is it part of the current RootTestModule?
+    - If FraudDetectionService is exported from a separate @Module, is that module imported within RootTestModule?
+      @Module({
+        imports: [ /* the Module containing FraudDetectionService */ ]
+      })
+
+    [0m [90m 41 |[39m
+     [90m 42 |[39m     beforeEach([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 43 |[39m         [36mconst[39m module[33m:[39m [33mTestingModule[39m [33m=[39m [36mawait[39m [33mTest[39m[33m.[39mcreateTestingModule({
+     [90m    |[39m                                       [31m[1m^[22m[39m
+     [90m 44 |[39m             providers[33m:[39m [
+     [90m 45 |[39m                 [33mApiKeyGuard[39m[33m,[39m
+     [90m 46 |[39m                 { provide[33m:[39m [33mPrismaService[39m[33m,[39m useValue[33m:[39m mockPrisma }[33m,[39m[0m
+
+      at TestingInjector.lookupComponentInParentModules (../node_modules/@nestjs/core/injector/injector.js:262:19)
+      at TestingInjector.resolveComponentInstance (../node_modules/@nestjs/core/injector/injector.js:215:33)
+      at TestingInjector.resolveComponentInstance (../node_modules/@nestjs/testing/testing-injector.js:19:45)
+      at resolveParam (../node_modules/@nestjs/core/injector/injector.js:129:38)
+          at async Promise.all (index 2)
+      at TestingInjector.resolveConstructorParams (../node_modules/@nestjs/core/injector/injector.js:144:27)
+      at TestingInjector.loadInstance (../node_modules/@nestjs/core/injector/injector.js:70:13)
+      at TestingInjector.loadProvider (../node_modules/@nestjs/core/injector/injector.js:98:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:56:13
+          at async Promise.all (index 3)
+      at TestingInstanceLoader.createInstancesOfProviders (../node_modules/@nestjs/core/injector/instance-loader.js:55:9)
+      at ../node_modules/@nestjs/core/injector/instance-loader.js:40:13
+          at async Promise.all (index 1)
+      at TestingInstanceLoader.createInstances (../node_modules/@nestjs/core/injector/instance-loader.js:39:9)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/core/injector/instance-loader.js:22:13)
+      at TestingInstanceLoader.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-instance-loader.js:9:9)
+      at TestingModuleBuilder.createInstancesOfDependencies (../node_modules/@nestjs/testing/testing-module.builder.js:118:9)
+      at TestingModuleBuilder.compile (../node_modules/@nestjs/testing/testing-module.builder.js:74:9)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:43:39)
+
+Test Suites: 1 failed, 1 total
+Tests:       4 failed, 4 total
+Snapshots:   0 total
+Time:        9.907 s
+Ran all test suites matching /src\\common\\guards\\api-key.guard.spec.ts/i.

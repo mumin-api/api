@@ -1,0 +1,111 @@
+  console.error
+    Fuzzy search failed for "test query": TypeError: tx.$executeRawUnsafe is not a function
+        at prisma.$transaction.timeout (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:440:22)
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.spec.ts:15:35)
+        at C:\Users\Intel\Desktop\mumin\api\node_modules\jest-mock\build\index.js:397:39
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\node_modules\jest-mock\build\index.js:404:13)
+        at Object.mockConstructor [as $transaction] (C:\Users\Intel\Desktop\mumin\api\node_modules\jest-mock\build\index.js:103:19)
+        at HadithsService.trigramSearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:435:28)
+        at HadithsService.fuzzySearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:398:40)
+        at HadithsService.search (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:234:34)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5)
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.spec.ts:140:13)
+
+    [0m [90m 412 |[39m             [36mreturn[39m results[33m;[39m
+     [90m 413 |[39m         } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 414 |[39m             console[33m.[39merror([32m`Fuzzy search failed for "${query}":`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m                     [31m[1m^[22m[39m
+     [90m 415 |[39m             [90m// Fallback to standard search on error[39m
+     [90m 416 |[39m             [36mreturn[39m [36mthis[39m[33m.[39mstandardSearch(query[33m,[39m language[33m,[39m page[33m,[39m limit[33m,[39m collection[33m,[39m grade)[33m;[39m
+     [90m 417 |[39m         }[0m
+
+      at HadithsService.fuzzySearch (modules/hadiths/hadiths.service.ts:414:21)
+      at HadithsService.search (modules/hadiths/hadiths.service.ts:234:23)
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:140:13)
+
+  console.error
+    Fuzzy search failed for "hfvflfy": TypeError: tx.$executeRawUnsafe is not a function
+        at prisma.$transaction.timeout (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:440:22)
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.spec.ts:15:35)
+        at C:\Users\Intel\Desktop\mumin\api\node_modules\jest-mock\build\index.js:397:39
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\node_modules\jest-mock\build\index.js:404:13)
+        at Object.mockConstructor [as $transaction] (C:\Users\Intel\Desktop\mumin\api\node_modules\jest-mock\build\index.js:103:19)
+        at HadithsService.trigramSearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:435:28)
+        at HadithsService.fuzzySearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:398:40)
+        at HadithsService.search (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:234:34)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5)
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.spec.ts:158:28)
+
+    [0m [90m 412 |[39m             [36mreturn[39m results[33m;[39m
+     [90m 413 |[39m         } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 414 |[39m             console[33m.[39merror([32m`Fuzzy search failed for "${query}":`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m                     [31m[1m^[22m[39m
+     [90m 415 |[39m             [90m// Fallback to standard search on error[39m
+     [90m 416 |[39m             [36mreturn[39m [36mthis[39m[33m.[39mstandardSearch(query[33m,[39m language[33m,[39m page[33m,[39m limit[33m,[39m collection[33m,[39m grade)[33m;[39m
+     [90m 417 |[39m         }[0m
+
+      at HadithsService.fuzzySearch (modules/hadiths/hadiths.service.ts:414:21)
+      at HadithsService.search (modules/hadiths/hadiths.service.ts:234:23)
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:158:28)
+
+  console.error
+    Fuzzy search failed for "рамадан": TypeError: tx.$executeRawUnsafe is not a function
+        at prisma.$transaction.timeout (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:440:22)
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.spec.ts:15:35)
+        at C:\Users\Intel\Desktop\mumin\api\node_modules\jest-mock\build\index.js:397:39
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\node_modules\jest-mock\build\index.js:404:13)
+        at Object.mockConstructor [as $transaction] (C:\Users\Intel\Desktop\mumin\api\node_modules\jest-mock\build\index.js:103:19)
+        at HadithsService.trigramSearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:435:28)
+        at HadithsService.fuzzySearch (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:398:40)
+        at HadithsService.search (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.ts:247:51)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5)
+        at Object.<anonymous> (C:\Users\Intel\Desktop\mumin\api\src\modules\hadiths\hadiths.service.spec.ts:158:28)
+
+    [0m [90m 412 |[39m             [36mreturn[39m results[33m;[39m
+     [90m 413 |[39m         } [36mcatch[39m (error) {
+    [31m[1m>[22m[39m[90m 414 |[39m             console[33m.[39merror([32m`Fuzzy search failed for "${query}":`[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m                     [31m[1m^[22m[39m
+     [90m 415 |[39m             [90m// Fallback to standard search on error[39m
+     [90m 416 |[39m             [36mreturn[39m [36mthis[39m[33m.[39mstandardSearch(query[33m,[39m language[33m,[39m page[33m,[39m limit[33m,[39m collection[33m,[39m grade)[33m;[39m
+     [90m 417 |[39m         }[0m
+
+      at HadithsService.fuzzySearch (modules/hadiths/hadiths.service.ts:414:21)
+      at HadithsService.search (modules/hadiths/hadiths.service.ts:247:40)
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:158:28)
+
+FAIL src/modules/hadiths/hadiths.service.spec.ts (11.142 s)
+  HadithsService
+    findAll
+      √ should return paginated hadiths (23 ms)
+      √ should filter by collection and grade (6 ms)
+    findOne
+      √ should return a single hadith if found (4 ms)
+      √ should throw NotFoundException if not found (35 ms)
+    findRandom
+      √ should return a random hadith (5 ms)
+      √ should return null if count is 0 (5 ms)
+    search
+      √ should return results from cache if available (5 ms)
+      √ should normalize queries and cache results (68 ms)
+      √ should correct keyboard layout if no results found in RU language (30 ms)
+      × should prioritize numeric search if query is a number (4 ms)
+
+  ● HadithsService › search › should prioritize numeric search if query is a number
+
+    TypeError: Cannot read properties of undefined (reading 'hadithNumber')
+
+    [0m [90m 171 |[39m             [36mconst[39m result [33m=[39m [36mawait[39m service[33m.[39msearch([32m'27'[39m)[33m;[39m
+     [90m 172 |[39m
+    [31m[1m>[22m[39m[90m 173 |[39m             expect(result[33m.[39mdata[[35m0[39m][33m.[39mhadithNumber)[33m.[39mtoBe([35m27[39m)[33m;[39m
+     [90m     |[39m                                   [31m[1m^[22m[39m
+     [90m 174 |[39m             expect(prisma[33m.[39mhadith[33m.[39mfindUnique)[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m 175 |[39m         })[33m;[39m
+     [90m 176 |[39m     })[33m;[39m[0m
+
+      at Object.<anonymous> (modules/hadiths/hadiths.service.spec.ts:173:35)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 9 passed, 10 total
+Snapshots:   0 total
+Time:        11.638 s
+Ran all test suites matching /src\\modules\\hadiths\\hadiths.service.spec.ts/i.

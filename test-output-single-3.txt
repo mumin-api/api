@@ -1,0 +1,29 @@
+[31m[Nest] 7496  - [39m21.02.2026, 12:37:58 [31m  ERROR[39m [38;5;3m[ApiKeyGuard] [39m[31mAuthentication error:[39m
+[31m[Nest] 7496  - [39m21.02.2026, 12:37:58 [31m  ERROR[39m [38;5;3m[ApiKeyGuard] [39m[31mTypeError: Cannot read properties of undefined (reading 'length')[39m
+FAIL src/common/guards/api-key.guard.spec.ts (11.227 s)
+  ApiKeyGuard
+    × should allow request and update balance atomically (19 ms)
+    ○ skipped should throw UnauthorizedException if no API key is provided
+    ○ skipped should throw UnauthorizedException if API key is invalid
+    ○ skipped should throw ForbiddenException if account is suspended
+
+  ● ApiKeyGuard › should allow request and update balance atomically
+
+    UnauthorizedException: Failed to authenticate API key
+
+    [0m [90m 325 |[39m
+     [90m 326 |[39m             [36mthis[39m[33m.[39mlogger[33m.[39merror([32m'Authentication error:'[39m[33m,[39m error)[33m;[39m
+    [31m[1m>[22m[39m[90m 327 |[39m             [36mthrow[39m [36mnew[39m [33mUnauthorizedException[39m({
+     [90m     |[39m                   [31m[1m^[22m[39m
+     [90m 328 |[39m                 statusCode[33m:[39m [35m401[39m[33m,[39m
+     [90m 329 |[39m                 error[33m:[39m [32m'AUTHENTICATION_FAILED'[39m[33m,[39m
+     [90m 330 |[39m                 message[33m:[39m [32m'Failed to authenticate API key'[39m[33m,[39m[0m
+
+      at ApiKeyGuard.canActivate (common/guards/api-key.guard.ts:327:19)
+      at Object.<anonymous> (common/guards/api-key.guard.spec.ts:134:24)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 3 skipped, 4 total
+Snapshots:   0 total
+Time:        11.865 s
+Ran all test suites matching /src\\common\\guards\\api-key.guard.spec.ts/i with tests matching "should allow request and update balance atomically".
