@@ -251,8 +251,11 @@ export class HadithsService {
 
                 if (correctedResults.pagination.total > 0) {
                     results = correctedResults;
-                    // Add a hint that this was corrected
-                    results['metadata'] = { ...results['metadata'], correctedFrom: normalized };
+                    // Add a hint that this was corrected (cast to any to avoid strict type checks)
+                    (results as any)['metadata'] = { 
+                        ...((results as any)['metadata'] || {}), 
+                        correctedFrom: normalized 
+                    };
                 }
             }
         }
