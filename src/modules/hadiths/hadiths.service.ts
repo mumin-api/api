@@ -332,10 +332,10 @@ export class HadithsService {
                 SELECT DISTINCT unnest(regexp_split_to_array(lower(text), '[^\\wа-яёa-z\\u0600-\\u06FF]+')) as word
                 FROM translations
                 WHERE language_code = '${language}'
-                  AND '${escapedQuery}' <% text
+                  AND word_similarity('${escapedQuery}', text) > 0.3
             ) words
             WHERE length(word) > 2
-              AND word_similarity('${escapedQuery}', word) > 0.45
+              AND word_similarity('${escapedQuery}', word) > 0.4
             ORDER BY sim DESC
             LIMIT 3
         `);

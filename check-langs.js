@@ -1,0 +1,1 @@
+const { PrismaClient } = require('@prisma/client'); const prisma = new PrismaClient(); async function main() { const codes = await prisma.translations.findMany({ select: { language_code: true }, distinct: ['language_code'] }); console.log(JSON.stringify(codes, null, 2)); } main().catch(console.error).finally(() => prisma.$disconnect());
