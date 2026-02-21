@@ -1,10 +1,15 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Inject } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
 import { GetHadithsDto } from './dto/get-hadiths.dto';
+import Redis from 'ioredis';
+import { REDIS_CLIENT } from '@/common/redis/redis.module';
 
 @Injectable()
 export class HadithsService {
-    constructor(private prisma: PrismaService) { }
+    constructor(
+        private prisma: PrismaService,
+        @Inject(REDIS_CLIENT) private redis: Redis,
+    ) { }
 
     private mapHadithResponse(hadith: any) {
         return {
@@ -209,11 +214,35 @@ export class HadithsService {
         // Feature flag: use fuzzy search or fallback to legacy
         const useFuzzySearch = process.env.ENABLE_FUZZY_SEARCH !== 'false'; // Default: enabled
 
-        if (useFuzzySearch) {
-            return this.fuzzySearch(trimmed, language, page, limit, collection, grade);
-        } else {
-            return this.standardSearch(trimmed, language, page, limit, collection, grade);
+        // Cache key for search results
+        const cacheKey = `search:v2:${trimmed}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
+        
+        try {
+            const cached = await this.redis.get(cacheKey);
+            if (cached) {
+                return JSON.parse(cached);
+            }
+        } catch (e) {
+            console.error('Search cache read error:', e);
         }
+
+        let results;
+        if (useFuzzySearch) {
+            results = await this.fuzzySearch(trimmed, language, page, limit, collection, grade);
+        } else {
+            results = await this.standardSearch(trimmed, language, page, limit, collection, grade);
+        }
+
+        // Cache if results found
+        if (results && results.data && results.data.length > 0) {
+            try {
+                await this.redis.set(cacheKey, JSON.stringify(results), 'EX', 86400); // 24 hours
+            } catch (e) {
+                console.error('Search cache write error:', e);
+            }
+        }
+
+        return results;
     }
 
     /**
