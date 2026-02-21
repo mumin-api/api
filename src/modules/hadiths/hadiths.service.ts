@@ -211,11 +211,14 @@ export class HadithsService {
             return this.searchWithNumberPriority(hadithNumber, trimmed, language, page, limit, collection, grade);
         }
 
+        // Normalize query for consistent caching and searching
+        const normalized = this.normalizeQuery(trimmed);
+
         // Feature flag: use fuzzy search or fallback to legacy
         const useFuzzySearch = process.env.ENABLE_FUZZY_SEARCH !== 'false'; // Default: enabled
 
-        // Cache key for search results
-        const cacheKey = `search:v2:${trimmed}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
+        // Cache key for search results (using normalized query)
+        const cacheKey = `search:v2:${normalized}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
         
         try {
             const cached = await this.redis.get(cacheKey);
@@ -228,9 +231,9 @@ export class HadithsService {
 
         let results;
         if (useFuzzySearch) {
-            results = await this.fuzzySearch(trimmed, language, page, limit, collection, grade);
+            results = await this.fuzzySearch(normalized, language, page, limit, collection, grade);
         } else {
-            results = await this.standardSearch(trimmed, language, page, limit, collection, grade);
+            results = await this.standardSearch(normalized, language, page, limit, collection, grade);
         }
 
         // Cache if results found
@@ -275,6 +278,17 @@ export class HadithsService {
             slug: s.slug,
             score: parseFloat(s.score)
         }));
+    }
+
+    /**
+     * Normalize query: lowercase, trim, remove redundant punctuation
+     */
+    private normalizeQuery(query: string): string {
+        return query
+            .toLowerCase()
+            .trim()
+            .replace(/[.,!?;:]+$/, '') // Remove trailing punctuation
+            .replace(/\s+/g, ' ');      // Collapse multiple spaces
     }
 
     /**

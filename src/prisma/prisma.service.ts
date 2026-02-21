@@ -6,8 +6,9 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
     private readonly logger = new Logger(PrismaService.name);
 
     constructor() {
+        const isProduction = process.env.NODE_ENV === 'production';
         super({
-            log: ['query', 'info', 'warn', 'error'],
+            log: isProduction ? ['error', 'warn'] : ['query', 'info', 'warn', 'error'],
         });
     }
 
