@@ -230,10 +230,17 @@ export class HadithsService {
         }
 
         let results;
-        if (useFuzzySearch) {
-            results = await this.fuzzySearch(normalized, language, page, limit, collection, grade);
-        } else {
-            results = await this.standardSearch(normalized, language, page, limit, collection, grade);
+        // Stage 1: Fast exact ILIKE search (uses GIN index, sub-100ms)
+        results = await this.standardSearch(normalized, language, page, limit, collection, grade);
+
+        // Stage 2: Fuzzy fallback — only if exact results are insufficient
+        // Religious users typically spell carefully, so most queries resolve in Stage 1.
+        // Fuzzy search is reserved for typos and transliteration edge cases.
+        if (useFuzzySearch && results.pagination.total < 5) {
+            const fuzzyResults = await this.fuzzySearch(normalized, language, page, limit, collection, grade);
+            if (fuzzyResults.pagination.total > 0) {
+                results = fuzzyResults;
+            }
         }
 
         // --- Smart Layout Fallback ---
@@ -280,8 +287,11 @@ export class HadithsService {
         const { valid } = this.validateSearchQuery(query);
         if (!valid || query.length < 2) return [];
 
-        const escapedQuery = query.replace(/'/g, "''");
-        
+        // If query contains Cyrillic, transliterate to Latin so it can match English topic names
+        const hasCyrillic = /[а-яё]/i.test(query);
+        const searchQuery = hasCyrillic ? this.transliterateCyrillicToLatin(query) : query;
+        const escapedQuery = searchQuery.replace(/'/g, "''");
+
         // Build language-specific column name
         const nameColumn = language === 'ar' ? 'name_arabic' : 'name_english';
 
@@ -302,6 +312,22 @@ export class HadithsService {
             slug: s.slug,
             score: parseFloat(s.score)
         }));
+    }
+
+    /**
+     * Transliterate Cyrillic characters to their Latin equivalents.
+     * Enables Russian users to find English topic names.
+     * e.g. "рамадан" → "ramadan"
+     */
+    private transliterateCyrillicToLatin(text: string): string {
+        const map: Record<string, string> = {
+            'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo',
+            'ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m',
+            'н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u',
+            'ф':'f','х':'h','ц':'ts','ч':'ch','ш':'sh','щ':'shch',
+            'ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya',
+        };
+        return text.toLowerCase().split('').map(ch => map[ch] ?? ch).join('');
     }
 
     /**
