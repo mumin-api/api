@@ -315,6 +315,39 @@ export class HadithsService {
     }
 
     /**
+     * Spell suggestions: extract real words from hadith text that are
+     * similar to the query. Uses GIN index for fast pre-filtering.
+     * e.g. "рророк" → ["пророк"]
+     */
+    async spellSuggest(query: string, language: string = 'en') {
+        if (!query || query.trim().length < 3) return [];
+
+        const escapedQuery = query.trim().replace(/'/g, "''");
+        // Allow only word characters to prevent SQL injection
+        if (!/^[\wа-яёА-ЯЁa-zA-Z\s\u0600-\u06FF]+$/.test(query)) return [];
+
+        const results: any[] = await this.prisma.$queryRawUnsafe(`
+            SELECT word, word_similarity('${escapedQuery}', word) as sim
+            FROM (
+                SELECT DISTINCT unnest(regexp_split_to_array(lower(text), '[^\\wа-яёa-z\\u0600-\\u06FF]+')) as word
+                FROM translations
+                WHERE language_code = '${language}'
+                  AND '${escapedQuery}' <% text
+            ) words
+            WHERE length(word) > 2
+              AND word_similarity('${escapedQuery}', word) > 0.45
+            ORDER BY sim DESC
+            LIMIT 3
+        `);
+
+        return results.map(r => ({
+            word: r.word,
+            score: parseFloat(r.sim)
+        }));
+    }
+
+
+    /**
      * Transliterate Cyrillic characters to their Latin equivalents.
      * Enables Russian users to find English topic names.
      * e.g. "рамадан" → "ramadan"

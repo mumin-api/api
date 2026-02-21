@@ -67,6 +67,18 @@ export class HadithsController {
         return this.hadithsService.getSuggestions(query, language);
     }
 
+    @Get('spell')
+    @ApiOperation({ summary: 'Spell suggestion: find similar real words from hadith corpus' })
+    @ApiQuery({ name: 'q', required: true, description: 'Misspelled query' })
+    @ApiQuery({ name: 'language', required: false, example: 'ru' })
+    async spellSuggest(
+        @Query('q') query: string,
+        @Query('language') language?: string,
+    ) {
+        return this.hadithsService.spellSuggest(query, language);
+    }
+
+
     @Get(':id')
     @ApiOperation({ summary: 'Get hadith by ID' })
     @ApiQuery({ name: 'language', required: false, example: 'en' })
