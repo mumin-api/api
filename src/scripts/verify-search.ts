@@ -39,9 +39,14 @@ class MockRedis {
     set = async () => 'OK';
 }
 
+// Mock Meilisearch
+class MockMeilisearchService {
+    search = async () => ({ hits: [], totalHits: 0 });
+}
+
 async function verify() {
     const prisma = new MockPrismaService();
-    const service = new HadithsService(prisma as any, new MockRedis() as any);
+    const service = new HadithsService(prisma as any, new MockRedis() as any, new MockMeilisearchService() as any);
 
     console.log('--- TEST 1: Search "27" (Logic check) ---');
     // We expect:
