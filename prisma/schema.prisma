@@ -29,7 +29,7 @@ model Hadith {
   bookNumber     Int           @map("book_number")
   hadithNumber   Int           @map("hadith_number")
   arabicText     String        @map("arabic_text")
-  arabicNarrator String?       @map("arabic_narrator") @db.VarChar(255)
+  arabicNarrator String?       @map("arabic_narrator")
   metadata       Json?
   createdAt      DateTime      @default(now()) @map("created_at")
   updatedAt      DateTime      @updatedAt @map("updated_at")
@@ -75,9 +75,9 @@ model Translation {
   hadithId     Int     @map("hadith_id")
   languageCode String  @map("language_code") @db.VarChar(5)
   text         String
-  narrator     String? @db.VarChar(255)
-  grade        String? @db.VarChar(50)
-  translator   String? @db.VarChar(100)
+  narrator     String?
+  grade        String?
+  translator   String?
   hadith       Hadith  @relation(fields: [hadithId], references: [id], onDelete: Cascade)
 
   @@unique([hadithId, languageCode])
