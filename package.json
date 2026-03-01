@@ -25,7 +25,8 @@
         "prisma:seed": "ts-node prisma/seed.ts",
         "seed": "ts-node prisma/seed.ts",
         "seed:bukhari": "ts-node scripts/seed-bukhari.ts",
-        "seed:muslim": "ts-node scripts/seed-muslim.ts"
+        "seed:muslim": "ts-node scripts/seed-muslim.ts",
+        "seed:json": "ts-node scripts/seed-json.ts"
     },
     "dependencies": {
         "@nestjs/cache-manager": "^2.1.1",

@@ -3,13 +3,44 @@ import { PrismaService } from '@/prisma/prisma.service';
 import { GetHadithsDto } from './dto/get-hadiths.dto';
 import Redis from 'ioredis';
 import { REDIS_CLIENT } from '@/common/redis/redis.module';
+import { 
+    TrigramSearchEngine, 
+    QueryProcessor, 
+    DatabaseAdapter 
+} from '../../../../pg-smart-search/src'; // In production, this would be from 'pg-smart-search'
 
 @Injectable()
 export class HadithsService {
+    private searchEngine: TrigramSearchEngine;
+
     constructor(
         private prisma: PrismaService,
         @Inject(REDIS_CLIENT) private redis: Redis,
-    ) { }
+    ) { 
+        // Initialize the universal search engine
+        const adapter: DatabaseAdapter = {
+            query: (sql: string, params?: any[]) => this.prisma.$queryRawUnsafe(sql, ...(params || [])),
+            execute: (sql: string, params?: any[]) => {
+                const result = this.prisma.$executeRawUnsafe(sql, ...(params || []));
+                return result as unknown as Promise<void>;
+            },
+            transaction: (cb: (adapter: DatabaseAdapter) => Promise<any>) => this.prisma.$transaction(async (tx: any) => {
+                const txAdapter: DatabaseAdapter = {
+                    query: (sql: string, params?: any[]) => tx.$queryRawUnsafe(sql, ...(params || [])),
+                    execute: (sql: string, params?: any[]) => tx.$executeRawUnsafe(sql, ...(params || [])) as unknown as Promise<void>,
+                    transaction: (innerCb) => cb(txAdapter) // Simplified nesting
+                };
+                return cb(txAdapter);
+            })
+        };
+
+        this.searchEngine = new TrigramSearchEngine(adapter, {
+            tableName: 'hadiths', // Note: Real implementation uses joins for translations, 
+                                 // so standard search engine might need a custom query or view.
+            searchColumns: ['arabic_text'],
+            idColumn: 'id'
+        });
+    }
 
     private mapHadithResponse(hadith: any) {
         return {
@@ -188,19 +219,12 @@ export class HadithsService {
     async search(query: string = '', language: string = 'en', page: number = 1, limit: number = 20, collection?: string, grade?: string) {
         const trimmed = (query || '').trim();
 
-        // Edge case validation
-        const validation = this.validateSearchQuery(trimmed);
+        // Use library for validation
+        const validation = QueryProcessor.validate(trimmed);
         if (!validation.valid) {
             return {
                 data: [],
-                pagination: {
-                    page,
-                    limit,
-                    total: 0,
-                    totalPages: 0,
-                    hasNext: false,
-                    hasPrev: false,
-                },
+                pagination: { page, limit, total: 0, totalPages: 0, hasNext: false, hasPrev: false },
             };
         }
 
@@ -211,8 +235,8 @@ export class HadithsService {
             return this.searchWithNumberPriority(hadithNumber, trimmed, language, page, limit, collection, grade);
         }
 
-        // Normalize query for consistent caching and searching
-        const normalized = this.normalizeQuery(trimmed);
+        // Normalize query via library
+        const normalized = QueryProcessor.normalize(trimmed);
 
         // Feature flag: use fuzzy search or fallback to legacy
         const useFuzzySearch = process.env.ENABLE_FUZZY_SEARCH !== 'false'; // Default: enabled
@@ -229,43 +253,17 @@ export class HadithsService {
             console.error('Search cache read error:', e);
         }
 
-        let results;
-        // Stage 1: Fast exact ILIKE search (uses GIN index, sub-100ms)
-        results = await this.standardSearch(normalized, language, page, limit, collection, grade);
-
-        // Stage 2: Fuzzy fallback — only if exact results are insufficient
-        // Religious users typically spell carefully, so most queries resolve in Stage 1.
-        // Fuzzy search is reserved for typos and transliteration edge cases.
-        if (useFuzzySearch && results.pagination.total < 5) {
-            const fuzzyResults = await this.fuzzySearch(normalized, language, page, limit, collection, grade);
-            if (fuzzyResults.pagination.total > 0) {
-                results = fuzzyResults;
+        // Use the centralized search engine
+        const results = await this.searchEngine.search({
+            query: normalized,
+            language,
+            page,
+            limit,
+            filters: {
+                collection,
+                grade
             }
-        }
-
-        // --- Smart Layout Fallback ---
-        // If results are empty and it looks like a keyboard layout mismatch (Latin input but searching in RU context)
-        // We only trigger this if the primary search failed to prevent false positives for actual English words.
-        if (results.pagination.total === 0 && language === 'ru' && /^[a-z0-9\s.,!?;:]+$/i.test(normalized)) {
-            const corrected = this.convertLayout(normalized);
-            if (corrected !== normalized) {
-                let correctedResults;
-                if (useFuzzySearch) {
-                    correctedResults = await this.fuzzySearch(corrected, language, page, limit, collection, grade);
-                } else {
-                    correctedResults = await this.standardSearch(corrected, language, page, limit, collection, grade);
-                }
-
-                if (correctedResults.pagination.total > 0) {
-                    results = correctedResults;
-                    // Add a hint that this was corrected (cast to any to avoid strict type checks)
-                    (results as any)['metadata'] = { 
-                        ...((results as any)['metadata'] || {}), 
-                        correctedFrom: normalized 
-                    };
-                }
-            }
-        }
+        });
 
         // Cache if results found (even if corrected)
         if (results && results.data && results.data.length > 0) {
@@ -284,12 +282,12 @@ export class HadithsService {
      * Uses trigram similarity for fuzzy matching
      */
     async getSuggestions(query: string, language: string = 'en') {
-        const { valid } = this.validateSearchQuery(query);
-        if (!valid || query.length < 2) return [];
+        const validation = QueryProcessor.validate(query);
+        if (!validation.valid || query.length < 2) return [];
 
         // If query contains Cyrillic, transliterate to Latin so it can match English topic names
         const hasCyrillic = /[а-яё]/i.test(query);
-        const searchQuery = hasCyrillic ? this.transliterateCyrillicToLatin(query) : query;
+        const searchQuery = hasCyrillic ? QueryProcessor.transliterate(query) : query;
         const escapedQuery = searchQuery.replace(/'/g, "''");
 
         // Build language-specific column name
@@ -348,355 +346,9 @@ export class HadithsService {
 
 
     /**
-     * Transliterate Cyrillic characters to their Latin equivalents.
-     * Enables Russian users to find English topic names.
-     * e.g. "рамадан" → "ramadan"
+     * Search logic is now handled by @mumin/pg-smart-search
      */
-    private transliterateCyrillicToLatin(text: string): string {
-        const map: Record<string, string> = {
-            'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo',
-            'ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m',
-            'н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u',
-            'ф':'f','х':'h','ц':'ts','ч':'ch','ш':'sh','щ':'shch',
-            'ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya',
-        };
-        return text.toLowerCase().split('').map(ch => map[ch] ?? ch).join('');
-    }
 
-    /**
-     * Normalize query: lowercase, trim, remove redundant punctuation
-     */
-    private normalizeQuery(query: string): string {
-        return query
-            .toLowerCase()
-            .trim()
-            .replace(/[.,!?;:]+$/, '') // Remove trailing punctuation
-            .replace(/\s+/g, ' ');      // Collapse multiple spaces
-    }
-
-    /**
-     * Convert English keyboard layout to Russian (Smart Layout)
-     */
-    private convertLayout(query: string): string {
-        const en = "qwertyuiop[]asdfghjkl;'zxcvbnm,./QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>?".split('');
-        const ru = "йцукенгшщзхъфывапролджэячсмитьбю.ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,".split('');
-        
-        const map: Record<string, string> = {};
-        en.forEach((char, i) => map[char] = ru[i]);
-
-        return query.split('').map(char => map[char] || char).join('');
-    }
-
-    /**
-     * Validate search query for edge cases
-     */
-    private validateSearchQuery(query: string): { valid: boolean; reason?: string } {
-        // Empty query
-        if (!query) {
-            return { valid: false, reason: 'empty' };
-        }
-
-        // Too short for meaningful search
-        if (query.length < 2) {
-            return { valid: false, reason: 'too_short' };
-        }
-
-        // Only punctuation/special chars (no valid text)
-        if (!/[а-яА-ЯёЁa-zA-Z0-9\u0600-\u06FF]/.test(query)) {
-            return { valid: false, reason: 'no_valid_chars' };
-        }
-
-        return { valid: true };
-    }
-
-    /**
-     * Calculate dynamic similarity threshold based on query characteristics
-     */
-    /**
-     * Calculate dynamic similarity threshold based on query characteristics
-     * Optimized for word_similarity (substring matching) which generally produces higher scores
-     * than full string similarity.
-     */
-    private calculateSimilarityThreshold(query: string): number {
-        const length = query.length;
-        const wordCount = query.split(/\s+/).length;
-
-        // Very short queries (< 5 chars) - need very high precision
-        if (length < 5 && wordCount === 1) {
-            return 0.8; // e.g., "iman" should not match "animal"
-        }
-
-        // 5 chars exactly - strict but allows prefix matches like "проро" -> "пророк" (score ~0.8)
-        if (length === 5 && wordCount === 1) {
-            return 0.7;
-        }
-
-        // 6-9 chars - balanced for typos (e.g. "рророк" -> "пророк" is ~0.57)
-        if (length < 10 && wordCount === 1) {
-            return 0.5;
-        }
-
-        // Medium queries
-        if (length < 30) {
-            return 0.4;
-        }
-
-        // Long queries - allow more flexibility
-        return 0.3;
-    }
-
-    /**
-     * Fuzzy search using PostgreSQL trigram similarity
-     */
-    private async fuzzySearch(query: string, language: string, page: number, limit: number, collection?: string, grade?: string) {
-        const startTime = Date.now();
-        const threshold = this.calculateSimilarityThreshold(query);
-
-        try {
-            // Tier 1: Strict trigram search
-            const results = await this.trigramSearch(query, threshold, language, page, limit, collection, grade);
-
-            // Log performance
-            const duration = Date.now() - startTime;
-            if (duration > 200) {
-                console.warn(`Slow fuzzy search: "${query}" took ${duration}ms`);
-            }
-
-            // Tier 2: Fallback to keyword search if no results
-            if (results.pagination.total === 0) {
-                console.log(`Trigram found 0 results for "${query}", falling back to keyword search`);
-                return this.keywordFallbackSearch(query, language, page, limit, collection, grade);
-            }
-
-            return results;
-        } catch (error) {
-            console.error(`Fuzzy search failed for "${query}":`, error);
-            // Fallback to standard search on error
-            return this.standardSearch(query, language, page, limit, collection, grade);
-        }
-    }
-
-    /**
-     * Trigram similarity search using raw SQL
-     * Uses subquery to find matching IDs first for optimal index usage
-     * Wrapped in transaction to ensure set_limit applies to the query
-     */
-    private async trigramSearch(
-        query: string,
-        threshold: number,
-        language: string,
-        page: number,
-        limit: number,
-        collection?: string,
-        grade?: string
-    ) {
-        // Use a 15-second timeout for the transaction
-        return this.prisma.$transaction(async (tx) => {
-            const skip = (page - 1) * limit;
-
-            // Set word similarity threshold for <% operator within this transaction
-            // Note: set_limit() only works for %, we need word_similarity_threshold for <%
-            await tx.$executeRawUnsafe(`SET pg_trgm.word_similarity_threshold = ${threshold};`);
-
-            const escapedQuery = query.replace(/'/g, "''");
-            const escapedLanguage = language.replace(/'/g, "''");
-
-            // Build collection filter for subquery
-            let collectionJoin = '';
-            let collectionWhere = '';
-            if (collection) {
-                const escapedCollection = collection.replace(/'/g, "''");
-                collectionJoin = 'LEFT JOIN collections c ON h.collection_id = c.id';
-                collectionWhere = `AND (h.collection = '${escapedCollection}' OR c.slug = '${escapedCollection}')`;
-            }
-
-            // Build grade filter
-            let gradeWhere = '';
-            if (grade) {
-                const escapedGrade = grade.replace(/'/g, "''");
-                gradeWhere = `AND grade = '${escapedGrade}'`;
-            }
-
-            // Combined query for Data + Total Count using Window Function
-            // Uses <% operator for word similarity (finding query roughly inside text)
-            const results: any[] = await tx.$queryRawUnsafe(`
-                WITH matching_translations AS (
-                    SELECT hadith_id, 
-                           word_similarity('${escapedQuery}', text) as score
-                    FROM translations
-                    WHERE language_code = '${escapedLanguage}'
-                      AND (text ILIKE '%${escapedQuery}%' OR '${escapedQuery}' <% text)
-                ),
-                matching_arabic AS (
-                    SELECT id as hadith_id,
-                           word_similarity('${escapedQuery}', arabic_text) as score
-                    FROM hadiths
-                    WHERE (arabic_text ILIKE '%${escapedQuery}%' OR '${escapedQuery}' <% arabic_text)
-                ),
-                combined_matches AS (
-                    SELECT hadith_id, score FROM matching_translations
-                    UNION ALL
-                    SELECT hadith_id, score FROM matching_arabic
-                ),
-                best_scores AS (
-                    SELECT hadith_id, MAX(score) as relevance
-                    FROM combined_matches
-                    GROUP BY hadith_id
-                )
-                SELECT 
-                    h.*,
-                    t.text as translation_text,
-                    t.narrator as translation_narrator,
-                    t.grade as translation_grade,
-                    t.translator,
-                    t.language_code,
-                    c.name_english as collection_name,
-                    b.relevance,
-                    COUNT(*) OVER() as total_count
-                FROM best_scores b
-                INNER JOIN hadiths h ON b.hadith_id = h.id
-                LEFT JOIN translations t ON h.id = t.hadith_id AND t.language_code = '${escapedLanguage}'
-                LEFT JOIN collections c ON h.collection_id = c.id
-                WHERE (1=1)
-                ${gradeWhere}
-                ${collectionWhere}
-                ORDER BY b.relevance DESC
-                LIMIT ${limit} OFFSET ${skip}
-            `);
-
-            const total = results.length > 0 ? Number(results[0].total_count) : 0;
-            const totalPages = Math.ceil(total / limit);
-
-            // Map results to hadith format
-            const mappedResults = results.map(row => ({
-                id: row.id,
-                collection: row.collection_name || row.collection,
-                collectionId: row.collection_id,
-                bookNumber: row.book_number,
-                hadithNumber: row.hadith_number,
-                arabicText: row.arabic_text,
-                arabicNarrator: row.arabic_narrator,
-                translation: row.translation_text ? {
-                    text: row.translation_text,
-                    narrator: row.translation_narrator,
-                    grade: row.translation_grade,
-                    translator: row.translator,
-                    languageCode: row.language_code,
-                } : null,
-                metadata: row.metadata,
-                relevance: parseFloat(row.relevance),
-            }));
-
-            return {
-                data: mappedResults,
-                pagination: {
-                    page,
-                    limit,
-                    total,
-                    totalPages,
-                    hasNext: page < totalPages,
-                    hasPrev: page > 1,
-                },
-            };
-        }, { timeout: 15000 });
-    }
-
-
-
-
-    /**
-     * Keyword fallback search when trigram finds nothing
-     */
-    private async keywordFallbackSearch(query: string, language: string, page: number, limit: number, collection?: string, grade?: string) {
-        const skip = (page - 1) * limit;
-
-        // Extract keywords (remove stop words)
-        const stopWords = ['от', 'до', 'и', 'в', 'на', 'с', 'по', 'для', 'даже', 'если', 'the', 'a', 'an', 'and', 'or', 'but'];
-        const keywords = query
-            .toLowerCase()
-            .split(/\s+/)
-            .filter(w => w.length > 2 && !stopWords.includes(w));
-
-        if (keywords.length === 0) {
-            // No valid keywords, return empty
-            return {
-                data: [],
-                pagination: { page, limit, total: 0, totalPages: 0, hasNext: false, hasPrev: false },
-            };
-        }
-
-        // Build OR conditions for each keyword
-        const keywordConditions = keywords.map(kw => ({
-            OR: [
-                { arabicText: { contains: kw, mode: 'insensitive' as const } },
-                {
-                    translations: {
-                        some: {
-                            text: { contains: kw, mode: 'insensitive' as const },
-                            languageCode: language,
-                        },
-                    },
-                },
-            ],
-        }));
-
-        const where: any = {
-            OR: keywordConditions,
-        };
-
-        // Apply collection filter
-        if (collection) {
-            where.AND = where.AND || [];
-            where.AND.push({
-                OR: [
-                    { collection: collection },
-                    { collectionRef: { slug: collection } },
-                ],
-            });
-        }
-
-        // Apply grade filter
-        if (grade) {
-            where.AND = where.AND || [];
-            where.AND.push({
-                translations: {
-                    some: {
-                        grade,
-                        languageCode: language,
-                    },
-                },
-            });
-        }
-
-        const [hadiths, total] = await Promise.all([
-            this.prisma.hadith.findMany({
-                where,
-                skip,
-                take: limit,
-                include: {
-                    translations: {
-                        where: { languageCode: language },
-                    },
-                    collectionRef: true,
-                },
-            }),
-            this.prisma.hadith.count({ where }),
-        ]);
-
-        const totalPages = Math.ceil(total / limit);
-
-        return {
-            data: hadiths.map(h => this.mapHadithResponse(h)),
-            pagination: {
-                page,
-                limit,
-                total,
-                totalPages,
-                hasNext: page < totalPages,
-                hasPrev: page > 1,
-            },
-        };
-    }
 
 
     private async searchWithNumberPriority(
@@ -871,75 +523,6 @@ export class HadithsService {
         };
     }
 
-    private async standardSearch(query: string, language: string, page: number, limit: number, collection?: string, grade?: string) {
-        const skip = (page - 1) * limit;
 
-        const where: any = {
-            AND: [
-                {
-                    OR: [
-                        { arabicText: { contains: query, mode: 'insensitive' } },
-                        {
-                            translations: {
-                                some: {
-                                    text: { contains: query, mode: 'insensitive' },
-                                    languageCode: language,
-                                },
-                            },
-                        },
-                    ],
-                }
-            ]
-        };
-
-        if (collection) {
-            where.AND.push({
-                OR: [
-                    { collection: collection },
-                    { collectionRef: { slug: collection } }
-                ]
-            });
-        }
-
-        if (grade) {
-            where.AND.push({
-                translations: {
-                    some: {
-                        grade,
-                        languageCode: language,
-                    },
-                },
-            });
-        }
-
-        const [hadiths, total] = await Promise.all([
-            this.prisma.hadith.findMany({
-                where,
-                skip,
-                take: limit,
-                include: {
-                    translations: {
-                        where: { languageCode: language },
-                    },
-                    collectionRef: true,
-                },
-            }),
-            this.prisma.hadith.count({ where }),
-        ]);
-
-        const totalPages = Math.ceil(total / limit);
-
-        return {
-            data: hadiths.map(h => this.mapHadithResponse(h)),
-            pagination: {
-                page,
-                limit,
-                total,
-                totalPages,
-                hasNext: page < totalPages,
-                hasPrev: page > 1,
-            },
-        };
-    }
 }
 
