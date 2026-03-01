@@ -3,43 +3,16 @@ import { PrismaService } from '@/prisma/prisma.service';
 import { GetHadithsDto } from './dto/get-hadiths.dto';
 import Redis from 'ioredis';
 import { REDIS_CLIENT } from '@/common/redis/redis.module';
-import { 
-    TrigramSearchEngine, 
-    QueryProcessor, 
-    DatabaseAdapter 
-} from '../../../../pg-smart-search/src'; // In production, this would be from 'pg-smart-search'
+import { MeilisearchService } from '@/common/meilisearch/meilisearch.service';
 
 @Injectable()
 export class HadithsService {
-    private searchEngine: TrigramSearchEngine;
-
     constructor(
         private prisma: PrismaService,
         @Inject(REDIS_CLIENT) private redis: Redis,
+        private meilisearch: MeilisearchService,
     ) { 
-        // Initialize the universal search engine
-        const adapter: DatabaseAdapter = {
-            query: (sql: string, params?: any[]) => this.prisma.$queryRawUnsafe(sql, ...(params || [])),
-            execute: (sql: string, params?: any[]) => {
-                const result = this.prisma.$executeRawUnsafe(sql, ...(params || []));
-                return result as unknown as Promise<void>;
-            },
-            transaction: (cb: (adapter: DatabaseAdapter) => Promise<any>) => this.prisma.$transaction(async (tx: any) => {
-                const txAdapter: DatabaseAdapter = {
-                    query: (sql: string, params?: any[]) => tx.$queryRawUnsafe(sql, ...(params || [])),
-                    execute: (sql: string, params?: any[]) => tx.$executeRawUnsafe(sql, ...(params || [])) as unknown as Promise<void>,
-                    transaction: (innerCb) => cb(txAdapter) // Simplified nesting
-                };
-                return cb(txAdapter);
-            })
-        };
-
-        this.searchEngine = new TrigramSearchEngine(adapter, {
-            tableName: 'hadiths', // Note: Real implementation uses joins for translations, 
-                                 // so standard search engine might need a custom query or view.
-            searchColumns: ['arabic_text'],
-            idColumn: 'id'
-        });
+        // Logic moved to MeilisearchService onModuleInit
     }
 
     private mapHadithResponse(hadith: any) {
@@ -218,10 +191,7 @@ export class HadithsService {
 
     async search(query: string = '', language: string = 'en', page: number = 1, limit: number = 20, collection?: string, grade?: string) {
         const trimmed = (query || '').trim();
-
-        // Use library for validation
-        const validation = QueryProcessor.validate(trimmed);
-        if (!validation.valid) {
+        if (!trimmed) {
             return {
                 data: [],
                 pagination: { page, limit, total: 0, totalPages: 0, hasNext: false, hasPrev: false },
@@ -235,14 +205,8 @@ export class HadithsService {
             return this.searchWithNumberPriority(hadithNumber, trimmed, language, page, limit, collection, grade);
         }
 
-        // Normalize query via library
-        const normalized = QueryProcessor.normalize(trimmed);
-
-        // Feature flag: use fuzzy search or fallback to legacy
-        const useFuzzySearch = process.env.ENABLE_FUZZY_SEARCH !== 'false'; // Default: enabled
-
-        // Cache key for search results (using normalized query)
-        const cacheKey = `search:v2:${normalized}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
+        // Cache key for search results
+        const cacheKey = `search:meili:${trimmed}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
         
         try {
             const cached = await this.redis.get(cacheKey);
@@ -253,20 +217,43 @@ export class HadithsService {
             console.error('Search cache read error:', e);
         }
 
-        // Use the centralized search engine
-        const results = await this.searchEngine.search({
-            query: normalized,
-            language,
-            page,
-            limit,
-            filters: {
-                collection,
-                grade
-            }
+        // Use Meilisearch
+        const filter: string[] = [];
+        if (collection) filter.push(`collection = "${collection}"`);
+        if (grade) filter.push(`grade = "${grade}"`);
+        if (language) filter.push(`languageCode = "${language}"`);
+
+        const meiliResults = await this.meilisearch.search(trimmed, {
+            filter: filter.length > 0 ? filter.join(' AND ') : undefined,
+            offset: (page - 1) * limit,
+            limit: limit,
         });
 
-        // Cache if results found (even if corrected)
-        if (results && results.data && results.data.length > 0) {
+        const results = {
+            data: meiliResults.hits.map(hit => ({
+                id: hit.id,
+                collection: hit.collection,
+                bookNumber: hit.bookNumber,
+                hadithNumber: hit.hadithNumber,
+                arabicText: hit.arabicText,
+                translation: {
+                    text: hit.translations ? (hit.translations[0]?.text || '') : (hit.text || ''),
+                    grade: hit.grade,
+                    languageCode: hit.languageCode
+                }
+            })),
+            pagination: {
+                page,
+                limit,
+                total: meiliResults.totalHits || meiliResults.estimatedTotalHits || 0,
+                totalPages: Math.ceil((meiliResults.totalHits || meiliResults.estimatedTotalHits || 0) / limit),
+                hasNext: page < Math.ceil((meiliResults.totalHits || meiliResults.estimatedTotalHits || 0) / limit),
+                hasPrev: page > 1,
+            },
+        };
+
+        // Cache if results found
+        if (results.data.length > 0) {
             try {
                 await this.redis.set(cacheKey, JSON.stringify(results), 'EX', 86400); // 24 hours
             } catch (e) {
@@ -277,77 +264,15 @@ export class HadithsService {
         return results;
     }
 
-    /**
-     * Get search suggestions based on topics
-     * Uses trigram similarity for fuzzy matching
-     */
     async getSuggestions(query: string, language: string = 'en') {
-        const validation = QueryProcessor.validate(query);
-        if (!validation.valid || query.length < 2) return [];
-
-        // If query contains Cyrillic, transliterate to Latin so it can match English topic names
-        const hasCyrillic = /[а-яё]/i.test(query);
-        const searchQuery = hasCyrillic ? QueryProcessor.transliterate(query) : query;
-        const escapedQuery = searchQuery.replace(/'/g, "''");
-
-        // Build language-specific column name
-        const nameColumn = language === 'ar' ? 'name_arabic' : 'name_english';
-
-        const suggestions: any[] = await this.prisma.$queryRawUnsafe(`
-            SELECT 
-                ${nameColumn} as name,
-                slug,
-                word_similarity('${escapedQuery}', ${nameColumn}) as score
-            FROM topics
-            WHERE ${nameColumn} IS NOT NULL
-              AND (${nameColumn} ILIKE '%${escapedQuery}%' OR '${escapedQuery}' <% ${nameColumn})
-            ORDER BY score DESC
-            LIMIT 5
-        `);
-
-        return suggestions.map(s => ({
-            name: s.name,
-            slug: s.slug,
-            score: parseFloat(s.score)
-        }));
+        // Meilisearch placeholder for now
+        return [];
     }
 
-    /**
-     * Spell suggestions: extract real words from hadith text that are
-     * similar to the query. Uses GIN index for fast pre-filtering.
-     * e.g. "рророк" → ["пророк"]
-     */
     async spellSuggest(query: string, language: string = 'en') {
-        if (!query || query.trim().length < 3) return [];
-
-        const escapedQuery = query.trim().replace(/'/g, "''");
-        // Allow only word characters to prevent SQL injection
-        if (!/^[\wа-яёА-ЯЁa-zA-Z\s\u0600-\u06FF]+$/.test(query)) return [];
-
-        const results: any[] = await this.prisma.$queryRawUnsafe(`
-            SELECT word, word_similarity('${escapedQuery}', word) as sim
-            FROM (
-                SELECT DISTINCT unnest(regexp_split_to_array(lower(text), '[^\\wа-яёa-z\\u0600-\\u06FF]+')) as word
-                FROM translations
-                WHERE language_code = '${language}'
-                  AND word_similarity('${escapedQuery}', text) > 0.3
-            ) words
-            WHERE length(word) > 2
-              AND word_similarity('${escapedQuery}', word) > 0.4
-            ORDER BY sim DESC
-            LIMIT 3
-        `);
-
-        return results.map(r => ({
-            word: r.word,
-            score: parseFloat(r.sim)
-        }));
+        // Meilisearch handles typo tolerance automatically
+        return [];
     }
-
-
-    /**
-     * Search logic is now handled by @mumin/pg-smart-search
-     */
 
 
 

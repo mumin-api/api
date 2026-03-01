@@ -45,4 +45,8 @@ export const validationSchema = Joi.object({
 
     // Logging
     LOG_LEVEL: Joi.string().default('info'),
+
+    // Meilisearch
+    MEILISEARCH_HOST: Joi.string().uri().required(),
+    MEILISEARCH_API_KEY: Joi.string().required(),
 });
