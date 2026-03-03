@@ -26,35 +26,37 @@ This is the comprehensive technical documentation for the **Mumin Hadith API**. 
 4.  [Folder Structure: The Anatomy of the API](#4-folder-structure-the-anatomy-of-the-api)
     - [Centralized Logic (`/src/common`)](#centralized-logic-srccommon)
     - [Feature Modules (`/src/modules`)](#feature-modules-srcmodules)
-5.  [Database Schema Architecture](#5-database-schema-architecture)
-    - [Entity Relationship Diagram (ERD) Overview](#entity-relationship-diagram-erd-overview)
-    - [Detailed Model Reference (15 Models)](#detailed-model-reference-15-models)
-6.  [The Mumin Shield (Fraud Detection)](#6-the-mumin-shield-fraud-detection)
+5.  [MuminAI: The Scholarly AI Engine](#5-muminai-the-scholarly-ai-engine)
+    - [AI Provider Strategy (Gemini, GPT-4, Claude)](#ai-provider-strategy-gemini-gpt-4-claude)
+    - [Scholarly Constraints & Safety](#scholarly-constraints--safety)
+6.  [Database Schema Architecture](#6-database-schema-architecture)
+    - [Detailed Model Reference (17 Models)](#detailed-model-reference-17-models)
+7.  [The Mumin Shield (Fraud Detection)](#6-the-mumin-shield-fraud-detection)
     - [Level 1: Rate Limiting](#level-1-rate-limiting)
     - [Level 2: Behavioral Pattern Recognition](#level-2-behavioral-pattern-recognition)
     - [Level 3: Device & Geo Fingerprinting](#level-3-device--geo-fingerprinting)
-7.  [Security & Cryptography](#7-security--cryptography)
+8.  [Security & Cryptography](#7-security--cryptography)
     - [API Key Hashing (SHA-256)](#api-key-hashing-sha-256)
     - [httpOnly Session Management](#httponly-session-management)
     - [Argon2/BCrypt Password Safety](#argon2bcrypt-password-safety)
-8.  [Financial & Lifecycle Operations](#8-financial--lifecycle-operations)
+9.  [Financial & Lifecycle Operations](#8-financial--lifecycle-operations)
     - [Credit Model ($1 = 1000 Credits)](#credit-model-1--1000-credits)
     - [The Inactivity & Dormancy Engine](#the-inactivity--dormancy-engine)
-9.  [Legal & GDPR Compliance Framework](#9-legal--gdpr-compliance-framework)
+10. [Legal & GDPR Compliance Framework](#9-legal--gdpr-compliance-framework)
     - [Data Portability Exports](#data-portability-exports)
     - [Account Anonymization Procedures](#account-anonymization-procedures)
-10. [Setup & Installation Guide](#10-setup--installation-guide)
+11. [Setup & Installation Guide](#10-setup--installation-guide)
     - [Local Development Setup](#local-development-setup)
     - [Docker Containerization](#docker-containerization)
-11. [API Endpoint Reference (Main Channels)](#11-api-endpoint-reference-main-channels)
-12. [Middleware & Request Pipeline](#12-middleware--request-pipeline)
-13. [Testing & QA Lifecycle](#13-testing--qa-lifecycle)
-14. [Operational Maintenance & Monitoring](#14-operational-maintenance--monitoring)
-15. [Project Roadmap (Q1 - Q4)](#15-project-roadmap-q1---q4)
-16. [Frequently Asked Questions (FAQ)](#16-frequently-asked-questions-faq)
-17. [Troubleshooting & Support](#17-troubleshooting--support)
-18. [Glossary of Terms](#18-glossary-of-terms)
-19. [Final Technical Word](#19-final-technical-word)
+12. [API Endpoint Reference (Main Channels)](#11-api-endpoint-reference-main-channels)
+13. [Middleware & Request Pipeline](#12-middleware--request-pipeline)
+14. [Testing & QA Lifecycle](#13-testing--qa-lifecycle)
+15. [Operational Maintenance & Monitoring](#14-operational-maintenance--monitoring)
+16. [Project Roadmap (Q1 - Q4)](#15-project-roadmap-q1---q4)
+17. [Frequently Asked Questions (FAQ)](#16-frequently-asked-questions-faq)
+18. [Troubleshooting & Support](#17-troubleshooting--support)
+19. [Glossary of Terms](#18-glossary-of-terms)
+20. [Final Technical Word](#19-final-technical-word)
 
 ---
 
@@ -87,6 +89,38 @@ NestJS provides a robust, opinionated structure. Its use of **TypeScript decorat
 ### Prisma & Relational Data Security
 
 Prisma acts as our guardian. By generating a client that is **100% typed**, we eliminate the most common cause of database errors: mismatched data types. Our schema uses **JSONB** for flexibility while maintaining strict relations for financial integrity.
+
+### MuminAI: Generative Scholarly Intelligence
+
+The API features a sophisticated AI layer that provides deep, academic explanations for hadiths based on classical commentaries (Sharhs). It is a **white-labeled AI ecosystem** branded as **MuminAI**.
+
+- **Multi-Provider Resilience**: Dynamically switches between Google Gemini 2.5, OpenAI GPT-4o, and Anthropic Claude 3.
+- **Multilingual Support**: Supports 5+ languages including Russian, Uzbek (Latin), Turkish, and English.
+- **Scholarly Prompting**: Hardened prompts ensure accuracy, preventing hallucinations and ad-hoc interpretations.
+
+---
+
+## 5. MuminAI: The Scholarly AI Engine
+
+**MuminAI** is a core component of the Mumin ecosystem, designed to provide context and depth to the sacred texts.
+
+### AI Provider Strategy (Gemini, GPT-4, Claude)
+
+We employ a **Multi-Model Strategy** to ensure high availability and output quality:
+
+- **Google Gemini 2.5 Flash**: Primary provider for high-speed, cost-effective multilingual explanations.
+- **OpenAI GPT-4o-mini**: Secondary/Failover provider known for high logical reasoning.
+- **Anthropic Claude 3 Haiku**: Specialized provider for nuanced linguistic analysis.
+
+### Scholarly Constraints & Safety
+
+Every AI-generated explanation is governed by a **9-layer Scholarly Constraint System**:
+
+1. **Academic Neutrality**: No personal opinions, only consensus-based Sharh (commentary).
+2. **Citation Guard**: Strict prohibition of fabricated sources or "fake" hadiths.
+3. **Dual-Layer Meaning**: Separation between a concise "Short Meaning" and a "Long Meaning" for deep study.
+4. **Contextual Enrichment**: Built-in definitions for complex terms (e.g., _Guylul_, _Tahara_).
+5. **Human-in-the-loop Reporting**: Users can report AI inaccuracies, which trigger instant **Admin Notifications** for review.
 
 ### Redis Caching Strategy
 
@@ -130,16 +164,17 @@ We use an **LRU (Least Recently Used)** eviction policy in Redis.
 
 ### Detailed Model Reference
 
-| Model           | Purpose                   | Key Fields                          |
-| :-------------- | :------------------------ | :---------------------------------- |
-| `User`          | Internal Dashboard Access | `email`, `passwordHash`, `role`     |
-| `ApiKey`        | External Developer ID     | `keyHash`, `balance`, `trustScore`  |
-| `Hadith`        | The Prophetic Text        | `textArabic`, `tag`, `collectionId` |
-| `Translation`   | Language Varient          | `languageCode`, `textTranslated`    |
-| `RequestLog`    | The Flight Recorder       | `method`, `path`, `responseTime`    |
-| `Transaction`   | Credit Movement           | `amount`, `balanceAfter`, `type`    |
-| `FraudEvent`    | Evidence of Attack        | `evidenceJson`, `severityLevel`     |
-| `InactivityLog` | Dormancy Tracking         | `warningSentAt`, `status`           |
+| Model                 | Purpose                   | Key Fields                                 |
+| :-------------------- | :------------------------ | :----------------------------------------- |
+| `User`                | Internal Dashboard Access | `email`, `passwordHash`, `role`            |
+| `ApiKey`              | External Developer ID     | `keyHash`, `balance`, `trustScore`         |
+| `Hadith`              | The Prophetic Text        | `arabicText`, `collection`, `hadithNumber` |
+| `Translation`         | Language Variant          | `languageCode`, `text`, `grade`            |
+| `HadithExplanation`   | **MuminAI Content**       | `content` (JSON), `provider`, `model`      |
+| `ExplanationFeedback` | AI Reporting System       | `message`, `status`, `userId`              |
+| `RequestLog`          | The Flight Recorder       | `method`, `path`, `responseTime`           |
+| `Transaction`         | Credit Movement           | `amount`, `balanceAfter`, `type`           |
+| `FraudEvent`          | Evidence of Attack        | `evidence`, `severity`                     |
 
 ---
 
@@ -209,13 +244,16 @@ Our `GdprService` runs outside the main request loop to generate JSON dumps of u
 ### Q1: The Foundation
 
 - [x] Core API implementation.
-- [x] Resend migration.
-- [x] Smart Search Suite (Fuzzy, Spell Suggest, Layout Correction).
-- [x] Basic Analytics.
+- [x] Res Meilisearch Search Suite (Fuzzy, Spell Suggest, Layout Correction).
+- [x] **MuminAI v1.0** (Multi-provider, scholarly explanations).
+- [x] **Multilingual Support** (RU, UZ, TR, EN).
+- [x] Basic Analytics & Fraud Detection.
 
 ### Q2: Expansion
 
-- [ ] Support for 5 new languages.
+- [x] **Admin Notification System** (Email reports for AI fixes).
+- [x] **Geo-Hardening** (Middle-east & Central Asia compliance).
+- [ ] Automated scholarly dataset ingestion.
 - [ ] Webhook support for Billing events.
 
 ### Q3: Optimization
