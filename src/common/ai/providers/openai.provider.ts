@@ -79,7 +79,7 @@ export class OpenAiProvider implements AiProvider {
 
 ${languageInstruction}
 
-Выдай ответ СТРОГО в формате JSON:
+Выдай ответ СТРОГО в формате JSON, где каждое значение — это ОДНА ПЛОСКАЯ СТРОКА (string):
 {
   "short_meaning": "Краткий и точный смысл хадиса (для быстрого чтения)",
   "long_meaning": "Развёрнутое и глубокое объяснение со всеми нюансами",
