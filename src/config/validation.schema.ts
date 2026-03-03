@@ -39,6 +39,7 @@ export const validationSchema = Joi.object({
     // Legal
     TERMS_VERSION: Joi.string().default('2.0'),
     PRIVACY_POLICY_VERSION: Joi.string().default('1.0'),
+    BLOCKED_COUNTRIES: Joi.string().default('UZ'),
 
     // Data Retention
     LOG_RETENTION_DAYS: Joi.number().default(90),

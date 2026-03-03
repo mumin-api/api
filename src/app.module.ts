@@ -35,6 +35,7 @@ import { AiModule } from './common/ai/ai.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { RequestIdMiddleware } from './common/middleware/request-id.middleware';
 import { DeviceFingerprintMiddleware } from './common/middleware/device-fingerprint.middleware';
+import { GeoBlockMiddleware } from './common/middleware/geo-block.middleware';
 
 // Guards
 import { ApiKeyGuard } from './common/guards/api-key.guard';
@@ -134,7 +135,7 @@ import { GeolocationUtil } from './common/utils/geolocation.util';
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
-            .apply(RequestIdMiddleware, LoggerMiddleware, DeviceFingerprintMiddleware)
+            .apply(RequestIdMiddleware, LoggerMiddleware, DeviceFingerprintMiddleware, GeoBlockMiddleware)
             .forRoutes('*');
     }
 }

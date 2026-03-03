@@ -59,8 +59,10 @@ export class HadithsService {
                 languageCode: language,
                 content: {
                     meaning: result.meaning,
+                    legal_note: result.legal_note,
                     benefit: result.benefit,
-                    sources: result.sources,
+                    certainty_level: result.certainty_level,
+                    notes: result.notes,
                 },
                 provider: result.provider,
                 model: result.model,

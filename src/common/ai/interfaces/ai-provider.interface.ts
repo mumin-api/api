@@ -1,7 +1,9 @@
 export interface ExplanationResult {
   meaning: string;
+  legal_note: string;
   benefit: string;
-  sources: string;
+  certainty_level: string;
+  notes: string;
   model: string;
   provider: string;
 }
