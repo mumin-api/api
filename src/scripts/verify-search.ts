@@ -55,13 +55,28 @@ class MockAiService {
     });
 }
 
+// Mock EmailService
+class MockEmailService {
+    sendEmail = async () => {};
+}
+
+// Mock ConfigService
+class MockConfigService {
+    get = (key: string) => {
+        if (key === 'email.adminEmail') return 'admin@mumin.ink';
+        return null;
+    };
+}
+
 async function verify() {
     const prisma = new MockPrismaService();
     const service = new HadithsService(
         prisma as any, 
         new MockRedis() as any, 
         new MockMeilisearchService() as any,
-        new MockAiService() as any
+        new MockAiService() as any,
+        new MockEmailService() as any,
+        new MockConfigService() as any
     );
 
     console.log('--- TEST 1: Search "27" (Logic check) ---');
