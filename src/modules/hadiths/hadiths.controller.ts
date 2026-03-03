@@ -88,4 +88,23 @@ export class HadithsController {
     ) {
         return this.hadithsService.findOne(id, language);
     }
+
+    @Get(':id/explain')
+    @ApiOperation({ summary: 'Get or generate AI explanation for a hadith' })
+    @ApiQuery({ name: 'language', required: false, example: 'ru' })
+    async explain(
+        @Param('id', ParseIntPipe) id: number,
+        @Query('language') language: string = 'ru',
+    ) {
+        return this.hadithsService.getExplanation(id, language);
+    }
+
+    @Get(':id/explain/report') // Using GET/POST interchangeably for simplicity if needed, but following REST
+    @ApiOperation({ summary: 'Report an error in AI explanation' })
+    async report(
+        @Param('id', ParseIntPipe) id: number,
+        @Query('message') message: string,
+    ) {
+        return this.hadithsService.reportExplanation(id, message);
+    }
 }

@@ -36,6 +36,7 @@ model Hadith {
   topics         HadithTopic[]
   collectionRef  Collection?   @relation(fields: [collectionId], references: [id])
   translations   Translation[]
+  explanations   HadithExplanation[]
 
   @@unique([collection, bookNumber, hadithNumber])
   @@index([collection])
@@ -117,7 +118,8 @@ model User {
   requestLogs             RequestLog[]
   transactions            Transaction[]
   verificationCodes       VerificationCode[]
-  verificationLogs        VerificationLog[]
+  verificationlogs        VerificationLog[]
+  explanationFeedbacks   ExplanationFeedback[]
 
   @@map("users")
 }
@@ -487,4 +489,45 @@ model telegram_users {
   @@index([is_subscribed])
   @@index([language_code])
   @@index([telegram_id])
+}
+
+model SystemSetting {
+  key   String @id @db.VarChar(100)
+  value String @db.Text
+
+  @@map("system_settings")
+}
+
+model HadithExplanation {
+  id           Int                   @id @default(autoincrement())
+  hadithId     Int                   @map("hadith_id")
+  languageCode String                @map("language_code") @db.VarChar(5)
+  content      Json // Structure: { meaning: "", benefit: "", sources: "" }
+  provider     String                @default("openai") @db.VarChar(50)
+  model        String                @db.VarChar(50)
+  isApproved   Boolean               @default(false) @map("is_approved")
+  createdAt    DateTime              @default(now()) @map("created_at")
+  updatedAt    DateTime              @updatedAt @map("updated_at")
+  hadith       Hadith                @relation(fields: [hadithId], references: [id], onDelete: Cascade)
+  feedbacks    ExplanationFeedback[]
+
+  @@unique([hadithId, languageCode])
+  @@index([hadithId])
+  @@index([languageCode])
+  @@map("hadith_explanations")
+}
+
+model ExplanationFeedback {
+  id            Int               @id @default(autoincrement())
+  explanationId Int               @map("explanation_id")
+  userId        Int?              @map("user_id")
+  message       String            @db.Text
+  status        String            @default("pending") @db.VarChar(20) // pending, resolved, rejected
+  createdAt     DateTime          @default(now()) @map("created_at")
+  explanation   HadithExplanation @relation(fields: [explanationId], references: [id], onDelete: Cascade)
+  user          User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([explanationId])
+  @@index([status])
+  @@map("explanation_feedback")
 }

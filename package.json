@@ -30,6 +30,8 @@
         "sync:meili": "ts-node scripts/sync-meilisearch.ts"
     },
     "dependencies": {
+        "@anthropic-ai/sdk": "^0.78.0",
+        "@google/generative-ai": "^0.24.1",
         "@nestjs/cache-manager": "^2.1.1",
         "@nestjs/common": "^10.3.0",
         "@nestjs/config": "^3.1.1",
@@ -62,6 +64,7 @@
         "joi": "^17.11.0",
         "meilisearch": "^0.55.0",
         "nest-winston": "^1.9.4",
+        "openai": "^6.25.0",
         "passport": "^0.7.0",
         "passport-jwt": "^4.0.1",
         "passport-local": "^1.0.0",

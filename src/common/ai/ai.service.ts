@@ -1,0 +1,67 @@
+import { Injectable, Logger } from '@nestjs/common';
+import { PrismaService } from '../../prisma/prisma.service';
+import { OpenAiProvider } from './providers/openai.provider';
+import { GeminiProvider } from './providers/gemini.provider';
+import { AnthropicProvider } from './providers/anthropic.provider';
+import { AiProvider, ExplanationResult } from './interfaces/ai-provider.interface';
+
+@Injectable()
+export class AiService {
+  private readonly logger = new Logger(AiService.name);
+  private readonly providers: Map<string, AiProvider> = new Map();
+
+  constructor(
+    private prisma: PrismaService,
+    private openai: OpenAiProvider,
+    private gemini: GeminiProvider,
+    private anthropic: AnthropicProvider,
+  ) {
+    this.providers.set(this.openai.getName(), this.openai);
+    this.providers.set(this.gemini.getName(), this.gemini);
+    this.providers.set(this.anthropic.getName(), this.anthropic);
+  }
+
+  async generateExplanation(
+    hadithText: string,
+    hadithId: number,
+    collection: string,
+    language: string,
+  ): Promise<ExplanationResult> {
+    const providerName = await this.getActiveProviderName();
+    const provider = this.providers.get(providerName) || this.openai;
+
+    this.logger.log(`Generating explanation for hadith ${hadithId} using ${provider.getName()} in ${language}`);
+
+    try {
+      return await provider.generateExplanation(hadithText, collection, language);
+    } catch (error: any) {
+      this.logger.error(`AI Provider ${providerName} failed: ${error.message}`);
+      // Fallback to OpenAI if primary fails
+      if (providerName !== 'openai') {
+        this.logger.warn(`Attempting fallback to openai...`);
+        return await this.openai.generateExplanation(hadithText, collection, language);
+      }
+      throw error;
+    }
+  }
+
+  private async getActiveProviderName(): Promise<string> {
+    try {
+      // Prisma usually maps SystemSetting to systemSetting
+      const setting = await (this.prisma as any).systemSetting.findUnique({
+        where: { key: 'active_ai_provider' },
+      });
+      return setting?.value || 'openai';
+    } catch (e) {
+      return 'openai';
+    }
+  }
+  
+  async setActiveProvider(provider: 'openai' | 'gemini' | 'anthropic'): Promise<void> {
+      await (this.prisma as any).systemSetting.upsert({
+          where: { key: 'active_ai_provider' },
+          create: { key: 'active_ai_provider', value: provider },
+          update: { value: provider }
+      });
+  }
+}

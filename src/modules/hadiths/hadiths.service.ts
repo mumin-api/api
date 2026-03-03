@@ -4,6 +4,7 @@ import { GetHadithsDto } from './dto/get-hadiths.dto';
 import Redis from 'ioredis';
 import { REDIS_CLIENT } from '@/common/redis/redis.module';
 import { MeilisearchService } from '@/common/meilisearch/meilisearch.service';
+import { AiService } from '@/common/ai/ai.service';
 
 @Injectable()
 export class HadithsService {
@@ -11,8 +12,79 @@ export class HadithsService {
         private prisma: PrismaService,
         @Inject(REDIS_CLIENT) private redis: Redis,
         private meilisearch: MeilisearchService,
+        private aiService: AiService,
     ) { 
         // Logic moved to MeilisearchService onModuleInit
+    }
+
+    async getExplanation(id: number, language: string = 'en') {
+        // 1. Check cache
+        const cache = await (this.prisma as any).hadithExplanation.findUnique({
+            where: {
+                hadithId_languageCode: {
+                    hadithId: id,
+                    languageCode: language,
+                },
+            },
+        });
+
+        if (cache) {
+            return cache;
+        }
+
+        // 2. Not in cache, get hadith text
+        const hadith = await this.prisma.hadith.findUnique({
+            where: { id },
+            include: { collectionRef: true },
+        });
+
+        if (!hadith) {
+            throw new NotFoundException(`Hadith with ID ${id} not found`);
+        }
+
+        const collectionName = hadith.collectionRef?.nameEnglish || hadith.collection;
+        
+        // 3. Generate explanation
+        const result = await this.aiService.generateExplanation(
+            hadith.arabicText,
+            hadith.id,
+            collectionName,
+            language,
+        );
+
+        // 4. Save to cache
+        return (this.prisma as any).hadithExplanation.create({
+            data: {
+                hadithId: id,
+                languageCode: language,
+                content: {
+                    meaning: result.meaning,
+                    benefit: result.benefit,
+                    sources: result.sources,
+                },
+                provider: result.provider,
+                model: result.model,
+            },
+        });
+    }
+
+    async reportExplanation(id: number, message: string, userId?: number) {
+        // Find existing explanation
+        const explanation = await (this.prisma as any).hadithExplanation.findFirst({
+            where: { hadithId: id },
+        });
+
+        if (!explanation) {
+            throw new NotFoundException(`Explanation for hadith ${id} not found`);
+        }
+
+        return (this.prisma as any).explanationFeedback.create({
+            data: {
+                explanationId: explanation.id,
+                message: message,
+                userId: userId || null,
+            },
+        });
     }
 
     private mapHadithResponse(hadith: any) {
