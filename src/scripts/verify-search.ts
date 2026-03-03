@@ -44,9 +44,25 @@ class MockMeilisearchService {
     search = async () => ({ hits: [], totalHits: 0 });
 }
 
+// Mock AiService
+class MockAiService {
+    generateExplanation = async () => ({
+        meaning: 'mock',
+        benefit: 'mock',
+        sources: 'mock',
+        model: 'mock',
+        provider: 'mock'
+    });
+}
+
 async function verify() {
     const prisma = new MockPrismaService();
-    const service = new HadithsService(prisma as any, new MockRedis() as any, new MockMeilisearchService() as any);
+    const service = new HadithsService(
+        prisma as any, 
+        new MockRedis() as any, 
+        new MockMeilisearchService() as any,
+        new MockAiService() as any
+    );
 
     console.log('--- TEST 1: Search "27" (Logic check) ---');
     // We expect:
