@@ -66,7 +66,7 @@ import { GeolocationUtil } from './common/utils/geolocation.util';
         ThrottlerModule.forRoot([
             {
                 ttl: 60000, // 60 seconds
-                limit: 100, // 100 requests per minute
+                limit: 500, // 500 requests per minute
             },
         ]),
 
