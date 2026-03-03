@@ -58,7 +58,9 @@ export class HadithsService {
                 hadithId: id,
                 languageCode: language,
                 content: {
-                    meaning: result.meaning,
+                    short_meaning: result.short_meaning,
+                    long_meaning: result.long_meaning,
+                    context: result.context,
                     legal_note: result.legal_note,
                     benefit: result.benefit,
                     certainty_level: result.certainty_level,

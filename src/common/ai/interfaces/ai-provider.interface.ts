@@ -1,5 +1,7 @@
 export interface ExplanationResult {
-  meaning: string;
+  short_meaning: string;
+  long_meaning: string;
+  context: string;
   legal_note: string;
   benefit: string;
   certainty_level: string;
