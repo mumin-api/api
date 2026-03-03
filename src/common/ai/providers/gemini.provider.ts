@@ -22,7 +22,7 @@ export class GeminiProvider implements AiProvider {
     collection: string,
     language: string,
   ): Promise<ExplanationResult> {
-    const modelName = 'gemini-1.5-flash-latest';
+    const modelName = 'gemini-1.5-flash-001';
     const model = this.genAI.getGenerativeModel({ 
         model: modelName,
         generationConfig: { responseMimeType: 'application/json' }
