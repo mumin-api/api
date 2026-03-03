@@ -5,6 +5,7 @@ export default registerAs('email', () => ({
     sendgridApiKey: process.env.SENDGRID_API_KEY,
     resendApiKey: process.env.RESEND_API_KEY,
     resendWebhookSecret: process.env.RESEND_WEBHOOK_SECRET,
+    adminEmail: process.env.ADMIN_EMAIL || 'admin@mumin.ink',
     fromAddress: process.env.EMAIL_FROM_ADDRESS || 'noreply@mumin.ink',
     fromName: process.env.EMAIL_FROM_NAME || 'Mumin Hadith API',
 }));

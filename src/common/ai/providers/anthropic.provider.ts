@@ -54,9 +54,16 @@ export class AnthropicProvider implements AiProvider {
   }
 
   private getSystemPrompt(language: string): string {
-    const languageInstruction = language === 'uz' 
-        ? 'Отвечай строго на языке запроса (узбекский), используя латиницу.' 
-        : `Отвечай строго на языке запроса: ${language}.`;
+    const languageNames: Record<string, string> = {
+      ru: 'Russian (Русский)',
+      uz: 'Uzbek (O\'zbek tili, Latin script)',
+      tr: 'Turkish (Türkçe)',
+      en: 'English',
+      ar: 'Arabic (العربية)',
+    };
+
+    const languageName = languageNames[language] || language;
+    const languageInstruction = `CRITICAL: You MUST provide the content of all JSON fields STRICTLY in the ${languageName} language. DO NOT use any other language for the values.`;
 
     return `Роль: Ты специалист по хадисоведению и классическим шархам (например, Фатх аль-Бари, Шарх ан-Навави).
 
@@ -78,7 +85,7 @@ export class AnthropicProvider implements AiProvider {
 
 ${languageInstruction}
 
-Выдай ответ СТРОГО в формате JSON, где каждое значение — это ОДНА ПЛОСКАЯ СТРОКА (string):
+Выдай ответ СТРОГО в формате JSON, где каждое значение — это ОДНА ПЛОСКАЯ СТРОКА (string) на языке ${languageName}:
 {
   "short_meaning": "Краткий и точный смысл хадиса (для быстрого чтения)",
   "long_meaning": "Развёрнутое и глубокое объяснение со всеми нюансами",

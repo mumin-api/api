@@ -25,6 +25,7 @@ export const validationSchema = Joi.object({
     RATE_LIMIT_MAX: Joi.number().default(100),
 
     // Email
+    ADMIN_EMAIL: Joi.string().email().optional(),
     EMAIL_PROVIDER: Joi.string().valid('sendgrid', 'resend', 'mailgun', 'ses').default('sendgrid'),
     SENDGRID_API_KEY: Joi.string().optional(),
     RESEND_API_KEY: Joi.string().optional(),

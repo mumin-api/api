@@ -5,6 +5,8 @@ import Redis from 'ioredis';
 import { REDIS_CLIENT } from '@/common/redis/redis.module';
 import { MeilisearchService } from '@/common/meilisearch/meilisearch.service';
 import { AiService } from '@/common/ai/ai.service';
+import { EmailService } from '@/modules/email/email.service';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class HadithsService {
@@ -13,6 +15,8 @@ export class HadithsService {
         @Inject(REDIS_CLIENT) private redis: Redis,
         private meilisearch: MeilisearchService,
         private aiService: AiService,
+        private emailService: EmailService,
+        private config: ConfigService,
     ) { 
         // Logic moved to MeilisearchService onModuleInit
     }
@@ -82,13 +86,36 @@ export class HadithsService {
             throw new NotFoundException(`Explanation for hadith ${id} not found`);
         }
 
-        return (this.prisma as any).explanationFeedback.create({
+        const feedback = await (this.prisma as any).explanationFeedback.create({
             data: {
                 explanationId: explanation.id,
                 message: message,
                 userId: userId || null,
             },
         });
+
+        // Send admin notification
+        const adminEmail = this.config.get('email.adminEmail');
+        if (adminEmail) {
+            this.emailService.sendEmail({
+                to: adminEmail,
+                subject: `⚠️ Hadith Explanation Reported (#${id})`,
+                html: `
+                    <h3>AI Explanation Report</h3>
+                    <p><strong>Hadith ID:</strong> ${id}</p>
+                    <p><strong>Explanation ID:</strong> ${explanation.id}</p>
+                    <p><strong>Message:</strong> ${message}</p>
+                    <p><strong>User ID:</strong> ${userId || 'Anonymous'}</p>
+                    <hr>
+                    <p>Please review the explanation in the database.</p>
+                `,
+                emailType: 'admin_report',
+                apiKeyId: 1, // System-level (placeholder for system logs)
+                userId: userId || 1, // System-level
+            }).catch(err => console.error('Failed to send admin report email:', err));
+        }
+
+        return feedback;
     }
 
     private mapHadithResponse(hadith: any) {
