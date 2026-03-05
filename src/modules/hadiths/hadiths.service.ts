@@ -357,7 +357,7 @@ export class HadithsService {
         // If Meilisearch returns results, use them
         if (meiliResults.hits && meiliResults.hits.length > 0) {
             const results = {
-                data: meiliResults.hits.map(hit => ({
+                data: meiliResults.hits.map((hit: any) => ({
                     id: hit.id,
                     collection: hit.collection,
                     bookNumber: hit.bookNumber,
