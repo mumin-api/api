@@ -9,12 +9,14 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 ## ✅ Completed Components
 
 ### 1. Project Foundation
+
 - ✅ NestJS project structure with TypeScript strict mode
 - ✅ Complete `package.json` with all dependencies
 - ✅ ESLint, Prettier, Git configuration
 - ✅ Environment configuration with Joi validation
 
 ### 2. Database Schema (Prisma)
+
 - ✅ **15 comprehensive models** covering:
   - Core hadith data (`Hadith`, `Translation`)
   - Authentication (`ApiKey` with 25+ legal compliance fields)
@@ -27,6 +29,7 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
   - Admin audit logs (`AdminAuditLog`)
 
 ### 3. Core Infrastructure
+
 - ✅ **Middleware**: Request ID, Logger, Device Fingerprinting
 - ✅ **Decorators**: `@Public()`, `@CurrentUser()`, `@ApiKey()`
 - ✅ **Guards**: Enhanced API Key Guard with fraud detection, Admin Guard
@@ -36,6 +39,7 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 - ✅ **Utilities**: Crypto (key generation, hashing), Geolocation, Fingerprinting
 
 ### 4. Fraud Detection Module ⭐
+
 - ✅ **Tiered severity approach** (approved by user):
   - **CRITICAL** (honeypot hits) → Auto-suspend
   - **HIGH** (sequential access, rapid requests) → Flag only + admin notification
@@ -51,6 +55,7 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 - ✅ Automatic trust score penalties
 
 ### 5. API Keys Module
+
 - ✅ **Registration** with legal compliance:
   - ToS acceptance tracking (version + timestamp)
   - Privacy Policy acceptance tracking
@@ -64,6 +69,7 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 - ✅ Balance tracking and deduction
 
 ### 6. Enhanced API Key Guard
+
 - ✅ Format validation
 - ✅ Balance checking (402 Payment Required)
 - ✅ Suspension checking
@@ -74,6 +80,7 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 - ✅ Trust score evaluation
 
 ### 7. Request Logging (Chargeback Defense)
+
 - ✅ **Comprehensive tracking** of every request:
   - Full request details (endpoint, method, query params, headers)
   - Response data (status, body truncated to 5KB, timing)
@@ -85,6 +92,7 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 - ✅ Proof of service delivery for disputes
 
 ### 8. Main Application
+
 - ✅ **App Module** with all imports and global providers
 - ✅ **Main.ts** bootstrap with:
   - Helmet security headers
@@ -100,12 +108,14 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 ## 🚧 In Progress / Next Steps
 
 ### 9. Email System (Next)
+
 - ✅ Email service with SendGrid integration
 - ✅ Email templates (inactivity warning, balance low, welcome)
 - ✅ Webhook handler for delivery tracking
 - ✅ Bounce detection
 
 ### 10. Inactivity Policy
+
 - ✅ Cron job for 30-day warnings (335 days inactive)
 - ✅ Cron job for 7-day warnings (358 days inactive)
 - ✅ Dormant account marking (365 days)
@@ -113,18 +123,38 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 - ✅ Account closure on zero balance
 
 ### 11. GDPR Compliance
+
 - ✅ Data export service (Right to Data Portability)
 - ✅ Account deletion service (Right to be Forgotten)
 - ✅ 30-day grace period with confirmation
 - ✅ Data anonymization (remove PII, keep analytics)
 
-### 12. Billing & Payments
+### 12. Arabic Search & Vector Support
+
+- [x] Fix Arabic search with diacritics (harakat)
+  - [x] Implement `normalizeArabic` in API
+  - [x] Add Prisma fallback to search
+  - [x] Fix TS build error (implicit any)
+- [x] Implement Vector Search Support
+  - [x] Add `generateEmbedding` to interface
+  - [x] Support separate `VECTOR_API_KEY` for embeddings
+  - [x] Set Gemini 2.5 as default for vector indexing
+  - [/] Prepare Database for Vectors
+    - [ ] Update `schema.prisma` with embedding field
+    - [ ] Create and run migration
+  - [/] Create Embedding Generation Script
+    - [ ] Implement `scripts/generate-embeddings.ts`
+    - [ ] Add batching and rate limiting
+
+### 13. Billing & Payments
+
 - ✅ Transaction service with audit trail
 - ✅ Payment provider integration ready
 - ✅ Chargeback status tracking
 - ✅ Balance management
 
-### 13. Hadith Data Endpoints
+### 14. Hadith Data Endpoints
+
 - ✅ GET /v1/hadiths (list with pagination)
 - ✅ GET /v1/hadiths/:id (single hadith)
 - ✅ GET /v1/hadiths/random
@@ -133,11 +163,13 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 - ✅ Translation support
 
 ### 14. Admin Module
+
 - ✅ Admin endpoints (list keys, suspend, unsuspend, balance)
 - ✅ Fraud event dashboard
 - ✅ System statistics
 
 ### 15. Testing & Documentation
+
 - [ ] Unit tests for services
 - [ ] Integration tests for endpoints
 - [ ] E2E tests for critical flows
@@ -150,18 +182,21 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 ## 🎯 Key Features Implemented
 
 ✅ **Legal Compliance**
+
 - ToS/Privacy Policy tracking at registration
 - Comprehensive request logging (chargeback defense)
 - IP, device fingerprint, geolocation tracking
 - 90-day log retention
 
 ✅ **Fraud Detection**
+
 - Tiered severity approach (CRITICAL auto-suspend, MEDIUM/HIGH flag)
 - 5 detection patterns
 - Trust score system
 - Fraud event logging
 
 ✅ **Security**
+
 - Enhanced API key guard with multiple checks
 - IP whitelisting support
 - Daily rate limits (graduated access)
@@ -169,6 +204,7 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 - Helmet security headers
 
 ✅ **Performance**
+
 - Request tracking interceptor
 - Cache hit tracking
 - Response compression
@@ -179,16 +215,19 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 ## 📦 Files Created (60+)
 
 ### Configuration
+
 - `package.json`, `tsconfig.json`, `nest-cli.json`
 - `.env.example`, `.env`
 - `.eslintrc.js`, `.prettierrc`, `.gitignore`
 - `src/config/*.config.ts` (5 files)
 
 ### Database
+
 - `prisma/schema.prisma` (15 models, 500+ lines)
 - `src/prisma/prisma.service.ts`, `prisma.module.ts`
 
 ### Common
+
 - `src/common/decorators/*` (3 files)
 - `src/common/guards/*` (2 files)
 - `src/common/interceptors/*` (4 files)
@@ -199,11 +238,13 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
 - `src/common/interfaces/*` (2 files)
 
 ### Modules
+
 - `src/modules/fraud/*` (2 files)
 - `src/modules/api-keys/*` (4 files)
 - `src/modules/health/*` (2 files)
 
 ### Main
+
 - `src/app.module.ts`
 - `src/main.ts`
 

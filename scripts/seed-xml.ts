@@ -36,7 +36,7 @@ const COLLECTION_METADATA: Record<string, { name: string, description: string }>
     name: 'Shama\'il Muhammadiyah',
     description: 'A beautiful collection detailing the physical appearance and noble character of the Prophet (ﷺ).'
   },
-  'saliheen': {
+  'riyadh': {
     name: 'Riyadh as-Saliheen',
     description: 'The Meadows of the Righteous; a world-renowned collection of hadith on piety and morals by Imam an-Nawawi.'
   },
@@ -44,6 +44,15 @@ const COLLECTION_METADATA: Record<string, { name: string, description: string }>
     name: 'Al-Adab Al-Mufrad',
     description: 'A dedicated collection focusing on Islamic etiquette and social conduct, compiled by Imam al-Bukhari.'
   }
+};
+
+const SLUG_MAP: Record<string, string> = {
+  'saliheen': 'riyadh',
+  'riyad-as-saliheen': 'riyadh',
+  'abu-dawud': 'abudawud',
+  'abi-dawud': 'abudawud',
+  'an-nasai': 'nasai',
+  'ibn-majah': 'ibnmajah',
 };
 const prisma = new PrismaClient();
 const DATA_DIR = path.join(__dirname, '../data');
@@ -68,7 +77,11 @@ async function processXmlFile(filePath: string) {
     return;
   }
 
-  const slug = collectionCode.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  let slug = collectionCode.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  if (SLUG_MAP[slug]) {
+    slug = SLUG_MAP[slug];
+  }
+  
   const meta = COLLECTION_METADATA[slug] || {
     name: collectionNameFromXml || collectionCode,
     description: `A collection of prophetic traditions inherited from the ${collectionCode} source.`

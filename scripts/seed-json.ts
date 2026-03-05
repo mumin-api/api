@@ -7,34 +7,34 @@ const DATA_DIR = path.join(__dirname, '../data');
 
 const collectionsMeta: Record<string, { slug: string, nameEnglish: string, nameArabic?: string, description?: string }> = {
     'Jami-at-Tirmidhi.json': {
-        slug: 'jami-at-tirmidhi',
+        slug: 'tirmidhi',
         nameEnglish: 'Jami` at-Tirmidhi',
         description: 'A collection of hadith compiled by Imam Abu `Isa Muhammad at-Tirmidhi'
     },
     'Sahih-Muslim.json': {
-        slug: 'sahih-muslim',
+        slug: 'muslim',
         nameEnglish: 'Sahih Muslim',
         nameArabic: 'صحيح مسلم',
         description: 'One of the Kutub al-Sittah (six major hadith collections), compiled by Imam Muslim'
     },
     'Sahih-al-Bukhari.json': {
-        slug: 'sahih-bukhari',
+        slug: 'bukhari',
         nameEnglish: 'Sahih al-Bukhari',
         nameArabic: 'صحيح البخاري',
         description: 'The most authentic collection of Hadith, compiled by Imam al-Bukhari'
     },
     'Sunan-Dawud.json': {
-        slug: 'sunan-abu-dawud',
+        slug: 'abudawud',
         nameEnglish: 'Sunan Abi Dawud',
         description: 'A collection of hadith compiled by Imam Abu Dawud'
     },
     'Sunan-Ibn-Majah.json': {
-        slug: 'sunan-ibn-majah',
+        slug: 'ibnmajah',
         nameEnglish: 'Sunan Ibn Majah',
         description: 'A collection of hadith compiled by Imam Ibn Majah'
     },
     'Sunan-an-Nasa.json': {
-        slug: 'sunan-an-nasai',
+        slug: 'nasai',
         nameEnglish: 'Sunan an-Nasa\'i',
         description: 'A collection of hadith compiled by Imam an-Nasa\'i'
     }

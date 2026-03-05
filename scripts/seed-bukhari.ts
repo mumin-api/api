@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 // Configuration
 const BUKHARI_COLLECTION = {
-    slug: 'sahih-bukhari',
+    slug: 'bukhari',
     nameEnglish: 'Sahih al-Bukhari',
     nameArabic: 'صحيح البخاري',
     description: 'The most authentic collection of Hadith, compiled by Imam Muhammad ibn Ismail al-Bukhari.',
