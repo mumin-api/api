@@ -1,11 +1,12 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["fullTextIndex", "fullTextSearch"]
+  previewFeatures = ["fullTextIndex", "fullTextSearch", "postgresqlExtensions"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [vector]
 }
 
 model Collection {
@@ -23,21 +24,21 @@ model Collection {
 }
 
 model Hadith {
-  id             Int           @id @default(autoincrement())
-  collection     String        @db.VarChar(50)
-  collectionId   Int?          @map("collection_id")
-  bookNumber     Int           @map("book_number")
-  hadithNumber   Int           @map("hadith_number")
-  arabicText     String        @map("arabic_text")
-  arabicNarrator String?       @map("arabic_narrator")
+  id             Int                 @id @default(autoincrement())
+  collection     String              @db.VarChar(50)
+  collectionId   Int?                @map("collection_id")
+  bookNumber     Int                 @map("book_number")
+  hadithNumber   Int                 @map("hadith_number")
+  arabicText     String              @map("arabic_text")
+  arabicNarrator String?             @map("arabic_narrator")
   metadata       Json?
-  createdAt      DateTime      @default(now()) @map("created_at")
-  updatedAt      DateTime      @updatedAt @map("updated_at")
-  topics         HadithTopic[]
-  collectionRef  Collection?   @relation(fields: [collectionId], references: [id])
-  translations   Translation[]
-  explanations   HadithExplanation[]
   embedding      Unsupported("vector(768)")?
+  createdAt      DateTime            @default(now()) @map("created_at")
+  updatedAt      DateTime            @updatedAt @map("updated_at")
+  explanations   HadithExplanation[]
+  topics         HadithTopic[]
+  collectionRef  Collection?         @relation(fields: [collectionId], references: [id])
+  translations   Translation[]
 
   @@unique([collection, bookNumber, hadithNumber])
   @@index([collection])
@@ -104,23 +105,21 @@ model User {
   emailVerified           Boolean                  @default(false) @map("email_verified")
   emailVerifiedAt         DateTime?                @map("email_verified_at")
   telegramId              String?                  @unique @map("telegram_id") @db.VarChar(50)
-  
-  // Notification Preferences
-  lowBalanceAlerts        Boolean                  @default(true) @map("low_balance_alerts")
-  usageReports            Boolean                  @default(true) @map("usage_reports")
-  securityAlerts          Boolean                  @default(true) @map("security_alerts")
   lowBalanceAlertSent     Boolean                  @default(false) @map("low_balance_alert_sent")
+  lowBalanceAlerts        Boolean                  @default(true) @map("low_balance_alerts")
+  securityAlerts          Boolean                  @default(true) @map("security_alerts")
+  usageReports            Boolean                  @default(true) @map("usage_reports")
   accountDeletionRequests AccountDeletionRequest[]
   apiKeys                 ApiKey[]
   dataExportRequests      DataExportRequest[]
   emailLogs               EmailLog[]
+  explanationFeedbacks    ExplanationFeedback[]
   fraudEvents             FraudEvent[]
   payments                Payment[]
   requestLogs             RequestLog[]
   transactions            Transaction[]
   verificationCodes       VerificationCode[]
   verificationlogs        VerificationLog[]
-  explanationFeedbacks   ExplanationFeedback[]
 
   @@map("users")
 }
@@ -494,7 +493,7 @@ model telegram_users {
 
 model SystemSetting {
   key   String @id @db.VarChar(100)
-  value String @db.Text
+  value String
 
   @@map("system_settings")
 }
@@ -503,14 +502,14 @@ model HadithExplanation {
   id           Int                   @id @default(autoincrement())
   hadithId     Int                   @map("hadith_id")
   languageCode String                @map("language_code") @db.VarChar(5)
-  content      Json // Structure: { meaning: "", benefit: "", sources: "" }
+  content      Json
   provider     String                @default("openai") @db.VarChar(50)
   model        String                @db.VarChar(50)
   isApproved   Boolean               @default(false) @map("is_approved")
   createdAt    DateTime              @default(now()) @map("created_at")
   updatedAt    DateTime              @updatedAt @map("updated_at")
-  hadith       Hadith                @relation(fields: [hadithId], references: [id], onDelete: Cascade)
   feedbacks    ExplanationFeedback[]
+  hadith       Hadith                @relation(fields: [hadithId], references: [id], onDelete: Cascade)
 
   @@unique([hadithId, languageCode])
   @@index([hadithId])
@@ -522,11 +521,11 @@ model ExplanationFeedback {
   id            Int               @id @default(autoincrement())
   explanationId Int               @map("explanation_id")
   userId        Int?              @map("user_id")
-  message       String            @db.Text
-  status        String            @default("pending") @db.VarChar(20) // pending, resolved, rejected
+  message       String
+  status        String            @default("pending") @db.VarChar(20)
   createdAt     DateTime          @default(now()) @map("created_at")
   explanation   HadithExplanation @relation(fields: [explanationId], references: [id], onDelete: Cascade)
-  user          User?             @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user          User?             @relation(fields: [userId], references: [id])
 
   @@index([explanationId])
   @@index([status])
