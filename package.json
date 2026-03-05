@@ -29,7 +29,7 @@
         "seed:json": "ts-node scripts/seed-json.ts",
         "seed:xml": "ts-node scripts/seed-xml.ts",
         "sync:meili": "ts-node scripts/sync-meilisearch.ts",
-        "generate:embeddings": "ts-node scripts/generate-embeddings.ts"
+        "generate:embeddings": "ts-node -r tsconfig-paths/register scripts/generate-embeddings.ts"
     },
     "dependencies": {
         "@anthropic-ai/sdk": "^0.78.0",
