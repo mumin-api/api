@@ -64,4 +64,44 @@ export class AiService {
           update: { value: provider }
       });
   }
+
+  async setActiveVectorProvider(provider: 'openai' | 'gemini'): Promise<void> {
+    await (this.prisma as any).systemSetting.upsert({
+        where: { key: 'active_vector_provider' },
+        create: { key: 'active_vector_provider', value: provider },
+        update: { value: provider }
+    });
+}
+
+  private async getActiveVectorProviderName(): Promise<string> {
+    try {
+      const setting = await (this.prisma as any).systemSetting.findUnique({
+        where: { key: 'active_vector_provider' },
+      });
+      return setting?.value || 'gemini';
+    } catch (e) {
+      return 'gemini';
+    }
+  }
+
+  /**
+   * Generates vector embeddings for a given text.
+   * Can use a different provider than the main explanation AI to optimize costs.
+   */
+  async generateEmbedding(text: string): Promise<number[]> {
+    const providerName = await this.getActiveVectorProviderName();
+    const provider = this.providers.get(providerName) || this.gemini;
+
+    try {
+      return await provider.generateEmbedding(text);
+    } catch (error: any) {
+      this.logger.error(`Failed to generate embedding with ${providerName}: ${error.message}.`);
+      // Fallback to whichever is not the current one
+      if (providerName === 'gemini') {
+        return await this.openai.generateEmbedding(text);
+      } else {
+        return await this.gemini.generateEmbedding(text);
+      }
+    }
+  }
 }

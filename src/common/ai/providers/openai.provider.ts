@@ -54,6 +54,14 @@ export class OpenAiProvider implements AiProvider {
     };
   }
 
+  async generateEmbedding(text: string): Promise<number[]> {
+    const response = await this.client.embeddings.create({
+      model: 'text-embedding-3-small',
+      input: text,
+    });
+    return response.data[0].embedding;
+  }
+
   private getSystemPrompt(language: string): string {
     const languageNames: Record<string, string> = {
       ru: 'Russian (Русский)',

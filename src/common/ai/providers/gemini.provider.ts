@@ -22,7 +22,7 @@ export class GeminiProvider implements AiProvider {
     collection: string,
     language: string,
   ): Promise<ExplanationResult> {
-    const modelName = 'gemini-2.5-flash';
+    const modelName = 'gemini-2.0-flash'; // Updated from 1.5/2.5 to standard 2.0 Flash
     const model = this.genAI.getGenerativeModel({ 
         model: modelName,
         generationConfig: { responseMimeType: 'application/json' }
@@ -44,6 +44,12 @@ export class GeminiProvider implements AiProvider {
       model: modelName,
       provider: this.getName(),
     };
+  }
+
+  async generateEmbedding(text: string): Promise<number[]> {
+    const model = this.genAI.getGenerativeModel({ model: 'text-embedding-004' });
+    const result = await model.embedContent(text);
+    return result.embedding.values;
   }
 
   private getSystemPrompt(language: string): string {

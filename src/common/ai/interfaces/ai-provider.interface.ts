@@ -17,4 +17,5 @@ export interface AiProvider {
     collection: string,
     language: string,
   ): Promise<ExplanationResult>;
+  generateEmbedding(text: string): Promise<number[]>;
 }

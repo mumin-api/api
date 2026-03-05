@@ -53,6 +53,10 @@ export class AnthropicProvider implements AiProvider {
     };
   }
 
+  async generateEmbedding(text: string): Promise<number[]> {
+    throw new Error('Anthropic does not provide an embedding API yet. Please use Gemini or OpenAI.');
+  }
+
   private getSystemPrompt(language: string): string {
     const languageNames: Record<string, string> = {
       ru: 'Russian (Русский)',
