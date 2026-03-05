@@ -292,6 +292,19 @@ export class HadithsService {
         return this.mapHadithResponse(hadith);
     }
 
+    private normalizeArabic(text: string): string {
+        // Remove Arabic diacritics (tashkeel/harakat): U+064B–U+065F, U+0670
+        return text
+            .replace(/[\u064B-\u065F\u0670]/g, '')
+            // Normalize alef variants to plain alef
+            .replace(/[أإآ]/g, 'ا')
+            // Normalize teh marbuta
+            .replace(/ة/g, 'ه')
+            // Normalize yaa variants
+            .replace(/ى/g, 'ي')
+            .trim();
+    }
+
     async search(query: string = '', language: string = 'en', page: number = 1, limit: number = 20, collection?: string, grade?: string) {
         const trimmed = (query || '').trim();
         if (!trimmed) {
@@ -308,8 +321,12 @@ export class HadithsService {
             return this.searchWithNumberPriority(hadithNumber, trimmed, language, page, limit, collection, grade);
         }
 
+        // Normalize Arabic text for better matching
+        const normalizedQuery = this.normalizeArabic(trimmed);
+        const isArabic = /[\u0600-\u06FF]/.test(trimmed);
+
         // Cache key for search results
-        const cacheKey = `search:meili:${trimmed}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
+        const cacheKey = `search:meili:${normalizedQuery}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
         
         try {
             const cached = await this.redis.get(cacheKey);
@@ -326,42 +343,96 @@ export class HadithsService {
         if (grade) filter.push(`grade = "${grade}"`);
         if (language) filter.push(`languageCode = "${language}"`);
 
-        const meiliResults = await this.meilisearch.search(trimmed, {
-            filter: filter.length > 0 ? filter.join(' AND ') : undefined,
-            offset: (page - 1) * limit,
-            limit: limit,
-        });
+        let meiliResults: any = { hits: [], estimatedTotalHits: 0 };
+        try {
+            meiliResults = await this.meilisearch.search(normalizedQuery, {
+                filter: filter.length > 0 ? filter.join(' AND ') : undefined,
+                offset: (page - 1) * limit,
+                limit: limit,
+            });
+        } catch (e) {
+            console.error('Meilisearch error, falling back to Prisma:', e);
+        }
 
+        // If Meilisearch returns results, use them
+        if (meiliResults.hits && meiliResults.hits.length > 0) {
+            const results = {
+                data: meiliResults.hits.map(hit => ({
+                    id: hit.id,
+                    collection: hit.collection,
+                    bookNumber: hit.bookNumber,
+                    hadithNumber: hit.hadithNumber,
+                    arabicText: hit.arabicText,
+                    translation: {
+                        text: hit.translations ? (hit.translations[0]?.text || '') : (hit.text || ''),
+                        grade: hit.grade,
+                        languageCode: hit.languageCode
+                    }
+                })),
+                pagination: {
+                    page,
+                    limit,
+                    total: meiliResults.totalHits || meiliResults.estimatedTotalHits || 0,
+                    totalPages: Math.ceil((meiliResults.totalHits || meiliResults.estimatedTotalHits || 0) / limit),
+                    hasNext: page < Math.ceil((meiliResults.totalHits || meiliResults.estimatedTotalHits || 0) / limit),
+                    hasPrev: page > 1,
+                },
+            };
+
+            try {
+                await this.redis.set(cacheKey, JSON.stringify(results), 'EX', 86400);
+            } catch (e) { /* ignore cache errors */ }
+
+            return results;
+        }
+
+        // Fallback: Prisma full-text search with normalized Arabic
+        const skip = (page - 1) * limit;
+        const searchTerms = [trimmed];
+        if (isArabic && normalizedQuery !== trimmed) searchTerms.push(normalizedQuery);
+
+        const orConditions: any[] = searchTerms.flatMap(term => [
+            { arabicText: { contains: term, mode: 'insensitive' } },
+            { translations: { some: { text: { contains: term, mode: 'insensitive' }, languageCode: language } } },
+        ]);
+
+        const where: any = { OR: orConditions };
+        if (collection) where.AND = [{ OR: [{ collection }, { collectionRef: { slug: collection } }] }];
+        if (grade) {
+            where.AND = [...(where.AND || []), { translations: { some: { grade, languageCode: language } } }];
+        }
+
+        const [hadiths, total] = await Promise.all([
+            this.prisma.hadith.findMany({
+                where,
+                skip,
+                take: limit,
+                include: {
+                    translations: { where: { languageCode: language } },
+                    collectionRef: true,
+                },
+                orderBy: [{ bookNumber: 'asc' }, { hadithNumber: 'asc' }],
+            }),
+            this.prisma.hadith.count({ where }),
+        ]);
+
+        const totalPages = Math.ceil(total / limit);
         const results = {
-            data: meiliResults.hits.map(hit => ({
-                id: hit.id,
-                collection: hit.collection,
-                bookNumber: hit.bookNumber,
-                hadithNumber: hit.hadithNumber,
-                arabicText: hit.arabicText,
-                translation: {
-                    text: hit.translations ? (hit.translations[0]?.text || '') : (hit.text || ''),
-                    grade: hit.grade,
-                    languageCode: hit.languageCode
-                }
-            })),
+            data: hadiths.map(h => this.mapHadithResponse(h)),
             pagination: {
                 page,
                 limit,
-                total: meiliResults.totalHits || meiliResults.estimatedTotalHits || 0,
-                totalPages: Math.ceil((meiliResults.totalHits || meiliResults.estimatedTotalHits || 0) / limit),
-                hasNext: page < Math.ceil((meiliResults.totalHits || meiliResults.estimatedTotalHits || 0) / limit),
+                total,
+                totalPages,
+                hasNext: page < totalPages,
                 hasPrev: page > 1,
             },
         };
 
-        // Cache if results found
         if (results.data.length > 0) {
             try {
-                await this.redis.set(cacheKey, JSON.stringify(results), 'EX', 86400); // 24 hours
-            } catch (e) {
-                console.error('Search cache write error:', e);
-            }
+                await this.redis.set(cacheKey, JSON.stringify(results), 'EX', 3600);
+            } catch (e) { /* ignore */ }
         }
 
         return results;
