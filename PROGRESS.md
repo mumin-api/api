@@ -135,16 +135,13 @@ We're building a production-ready, legal-compliant NestJS API with comprehensive
   - [x] Implement `normalizeArabic` in API
   - [x] Add Prisma fallback to search
   - [x] Fix TS build error (implicit any)
-- [x] Implement Vector Search Support
-  - [x] Add `generateEmbedding` to interface
-  - [x] Support separate `VECTOR_API_KEY` for embeddings
-  - [x] Set Gemini 2.5 as default for vector indexing
-  - [/] Prepare Database for Vectors
-    - [ ] Update `schema.prisma` with embedding field
-    - [ ] Create and run migration
-  - [/] Create Embedding Generation Script
-    - [ ] Implement `scripts/generate-embeddings.ts`
-    - [ ] Add batching and rate limiting
+- [/] Implement Vector Search Support (Phase 2: Custom Service)
+  - [x] Research platform limitations (Railway standard PG lacks pgvector)
+  - [ ] Set up New Database Service on Railway using `pgvector/pgvector:16` image
+  - [ ] Migrate data from old DB to new DB (or re-seed)
+  - [ ] Update `DATABASE_URL` in API
+  - [ ] Re-apply `schema.prisma` vector field and `extensions`
+  - [ ] Generate embeddings for all hadiths
 
 ### 13. Billing & Payments
 
