@@ -3,6 +3,48 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as cheerio from 'cheerio';
 
+const COLLECTION_METADATA: Record<string, { name: string, description: string }> = {
+  'bukhari': {
+    name: 'Sahih al-Bukhari',
+    description: 'The most authentic collection of Hadith, compiled by Imam Muhammad ibn Ismail al-Bukhari.'
+  },
+  'muslim': {
+    name: 'Sahih Muslim',
+    description: 'One of the Kutub al-Sittah (six major hadith collections), compiled by Imam Muslim ibn al-Hajjaj.'
+  },
+  'tirmidhi': {
+    name: 'Jami` at-Tirmidhi',
+    description: 'A comprehensive collection of hadith compiled by Imam Abu `Isa Muhammad at-Tirmidhi.'
+  },
+  'abudawud': {
+    name: 'Sunan Abi Dawud',
+    description: 'A major collection of hadith focusing on legal rulings, compiled by Imam Abu Dawud.'
+  },
+  'nasai': {
+    name: 'Sunan an-Nasa\'i',
+    description: 'A distinguished collection of hadith noted for its strict criteria, compiled by Imam an-Nasa\'i.'
+  },
+  'ibnmajah': {
+    name: 'Sunan Ibn Majah',
+    description: 'One of the six major hadith collections, compiled by Imam Ibn Majah.'
+  },
+  'malik': {
+    name: 'Muwatta Malik',
+    description: 'One of the earliest and most authoritative collections of hadith and legal rulings by Imam Malik.'
+  },
+  'shamail': {
+    name: 'Shama\'il Muhammadiyah',
+    description: 'A beautiful collection detailing the physical appearance and noble character of the Prophet (ﷺ).'
+  },
+  'saliheen': {
+    name: 'Riyadh as-Saliheen',
+    description: 'The Meadows of the Righteous; a world-renowned collection of hadith on piety and morals by Imam an-Nawawi.'
+  },
+  'adab': {
+    name: 'Al-Adab Al-Mufrad',
+    description: 'A dedicated collection focusing on Islamic etiquette and social conduct, compiled by Imam al-Bukhari.'
+  }
+};
 const prisma = new PrismaClient();
 const DATA_DIR = path.join(__dirname, '../data');
 
@@ -19,7 +61,7 @@ async function processXmlFile(filePath: string) {
   const $ = cheerio.load(fileContent, { xmlMode: true });
 
   const collectionCode = $('hadithCollection > code').text().trim();
-  const collectionName = $('hadithCollection > name').text().trim();
+  const collectionNameFromXml = $('hadithCollection > name').text().trim();
 
   if (!collectionCode) {
     console.warn(`⚠️ Warning: Could not find collection code in ${filePath}. Skipping.`);
@@ -27,15 +69,22 @@ async function processXmlFile(filePath: string) {
   }
 
   const slug = collectionCode.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const meta = COLLECTION_METADATA[slug] || {
+    name: collectionNameFromXml || collectionCode,
+    description: `A collection of prophetic traditions inherited from the ${collectionCode} source.`
+  };
 
   // 1. Ensure Collection Exists
   const collection = await prisma.collection.upsert({
     where: { slug },
-    update: {},
+    update: {
+      nameEnglish: meta.name,
+      description: meta.description,
+    },
     create: {
       slug,
-      nameEnglish: collectionName || collectionCode,
-      description: `Collection imported from ${collectionCode} XML file.`,
+      nameEnglish: meta.name,
+      description: meta.description,
     },
   });
   console.log(`✅ Collection ready: ${collection.nameEnglish} (ID: ${collection.id})`);
@@ -156,7 +205,7 @@ async function processXmlFile(filePath: string) {
     data: { totalHadith: processedCount },
   });
 
-  console.log(`\n🎉 Completed ${collectionName}! Processed: ${processedCount}`);
+  console.log(`\n🎉 Completed ${collectionNameFromXml}! Processed: ${processedCount}`);
 }
 
 async function main() {
