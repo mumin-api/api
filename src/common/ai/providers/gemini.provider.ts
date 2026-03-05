@@ -6,11 +6,14 @@ import { AiProvider, ExplanationResult } from '../interfaces/ai-provider.interfa
 @Injectable()
 export class GeminiProvider implements AiProvider {
   private genAI: GoogleGenerativeAI;
+  private vectorAI: GoogleGenerativeAI;
 
   constructor(private configService: ConfigService) {
-    this.genAI = new GoogleGenerativeAI(
-      this.configService.get<string>('GEMINI_API_KEY') || '',
-    );
+    const mainKey = this.configService.get<string>('GEMINI_API_KEY') || '';
+    const vectorKey = this.configService.get<string>('VECTOR_API_KEY') || mainKey;
+
+    this.genAI = new GoogleGenerativeAI(mainKey);
+    this.vectorAI = new GoogleGenerativeAI(vectorKey);
   }
 
   getName(): string {
@@ -22,7 +25,7 @@ export class GeminiProvider implements AiProvider {
     collection: string,
     language: string,
   ): Promise<ExplanationResult> {
-    const modelName = 'gemini-2.0-flash'; // Updated from 1.5/2.5 to standard 2.0 Flash
+    const modelName = 'gemini-2.5-flash';
     const model = this.genAI.getGenerativeModel({ 
         model: modelName,
         generationConfig: { responseMimeType: 'application/json' }
@@ -47,7 +50,7 @@ export class GeminiProvider implements AiProvider {
   }
 
   async generateEmbedding(text: string): Promise<number[]> {
-    const model = this.genAI.getGenerativeModel({ model: 'text-embedding-004' });
+    const model = this.vectorAI.getGenerativeModel({ model: 'text-embedding-004' });
     const result = await model.embedContent(text);
     return result.embedding.values;
   }
