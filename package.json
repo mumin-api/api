@@ -27,6 +27,7 @@
         "seed:bukhari": "ts-node scripts/seed-bukhari.ts",
         "seed:muslim": "ts-node scripts/seed-muslim.ts",
         "seed:json": "ts-node scripts/seed-json.ts",
+        "seed:xml": "ts-node scripts/seed-xml.ts",
         "sync:meili": "ts-node scripts/sync-meilisearch.ts"
     },
     "dependencies": {
