@@ -1,12 +1,11 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["fullTextIndex", "fullTextSearch", "postgresqlExtensions"]
+  previewFeatures = ["fullTextIndex", "fullTextSearch"]
 }
 
 datasource db {
-  provider   = "postgresql"
-  url        = env("DATABASE_URL")
-  extensions = [vector]
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Collection {
@@ -32,7 +31,6 @@ model Hadith {
   arabicText     String              @map("arabic_text")
   arabicNarrator String?             @map("arabic_narrator")
   metadata       Json?
-  embedding      Unsupported("vector(768)")?
   createdAt      DateTime            @default(now()) @map("created_at")
   updatedAt      DateTime            @updatedAt @map("updated_at")
   explanations   HadithExplanation[]
