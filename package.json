@@ -28,7 +28,8 @@
         "seed:muslim": "ts-node scripts/seed-muslim.ts",
         "seed:json": "ts-node scripts/seed-json.ts",
         "seed:xml": "ts-node scripts/seed-xml.ts",
-        "sync:meili": "ts-node scripts/sync-meilisearch.ts"
+        "sync:meili": "ts-node scripts/sync-meilisearch.ts",
+        "generate:embeddings": "ts-node scripts/generate-embeddings.ts"
     },
     "dependencies": {
         "@anthropic-ai/sdk": "^0.78.0",

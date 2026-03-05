@@ -641,6 +641,52 @@ export class HadithsService {
         };
     }
 
+  /**
+   * Performs semantic search using vector embeddings.
+   * Finds hadiths that are semantically similar to the search query.
+   */
+  async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
+    // 1. Generate embedding for the query
+    const queryVector = await this.aiService.generateEmbedding(query);
+    const vectorString = `[${queryVector.join(',')}]`;
 
+    // 2. Search using pgvector cosine distance (<=>)
+    // We order by distance ascending (smaller distance = more similar)
+    const results = await this.prisma.$queryRawUnsafe<any[]>(`
+      SELECT id, 1 - (embedding <=> $1::vector) as similarity
+      FROM hadiths
+      WHERE embedding IS NOT NULL
+      ORDER BY embedding <=> $1::vector
+      LIMIT $2
+    `, vectorString, limit);
+
+    if (results.length === 0) {
+      return { data: [], total: 0 };
+    }
+
+    const ids = results.map(r => r.id);
+
+    // 3. Fetch full hadith objects
+    const hadiths = await this.prisma.hadith.findMany({
+      where: { id: { in: ids } },
+      include: {
+        translations: { where: { languageCode: language } },
+        collectionRef: true,
+      }
+    });
+
+    // 4. Sort hadiths back to match similarity ranking
+    const sortedHadiths = ids
+      .map(id => hadiths.find(h => h.id === id))
+      .filter((h): h is NonNullable<typeof h> => !!h);
+
+    return {
+      data: sortedHadiths.map(h => ({
+        ...this.mapHadithResponse(h),
+        similarity: results.find(r => r.id === h.id)?.similarity
+      })),
+      total: results.length
+    };
+  }
 }
 

@@ -56,6 +56,19 @@ export class HadithsController {
         return this.hadithsService.search(query, language, page, limit, collection, grade);
     }
 
+    @Get('semantic-search')
+    @ApiOperation({ summary: 'Semantic search hadiths by meaning using vector embeddings' })
+    @ApiQuery({ name: 'q', required: true, description: 'Search query' })
+    @ApiQuery({ name: 'language', required: false, example: 'ru' })
+    @ApiQuery({ name: 'limit', required: false, example: 10 })
+    async semanticSearch(
+        @Query('q') query: string,
+        @Query('language') language?: string,
+        @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
+    ) {
+        return this.hadithsService.semanticSearch(query, language, limit);
+    }
+
     @Get('suggestions')
     @ApiOperation({ summary: 'Get search suggestions based on topics' })
     @ApiQuery({ name: 'q', required: true, description: 'Search query' })

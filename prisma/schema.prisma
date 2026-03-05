@@ -37,6 +37,7 @@ model Hadith {
   collectionRef  Collection?   @relation(fields: [collectionId], references: [id])
   translations   Translation[]
   explanations   HadithExplanation[]
+  embedding      Unsupported("vector(768)")?
 
   @@unique([collection, bookNumber, hadithNumber])
   @@index([collection])
