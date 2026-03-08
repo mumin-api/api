@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, Inject } from '@nestjs/common';
+import { Injectable, NotFoundException, Inject, Logger } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
 import { GetHadithsDto } from './dto/get-hadiths.dto';
 import Redis from 'ioredis';
@@ -14,6 +14,7 @@ import { PartialJsonHelper } from '@/common/utils/partial-json-helper';
 
 @Injectable()
 export class HadithsService {
+    private readonly logger = new Logger(HadithsService.name);
     private readonly l1Cache: LRUCache<string, any>;
     private readonly singleFlight: SingleFlight;
 
@@ -385,7 +386,7 @@ export class HadithsService {
                 }
                 return; // Meili results are superior and faster
             }
-        } catch (e) {
+        } catch (e: any) {
             this.logger.warn(`Meilisearch stream fallback: ${e.message}`);
         }
 
