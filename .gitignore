@@ -50,3 +50,6 @@ lerna-debug.log*
 
 # Local sandbox for diagnostic/one-off scripts
 scripts/sandbox/
+
+# Exported data dumps (large JSON files, not for the repo)
+exports/
