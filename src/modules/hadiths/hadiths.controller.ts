@@ -92,26 +92,6 @@ export class HadithsController {
     }
 
 
-    @Get(':id')
-    @ApiOperation({ summary: 'Get hadith by ID' })
-    @ApiQuery({ name: 'language', required: false, example: 'en' })
-    async findOne(
-        @Param('id', ParseIntPipe) id: number,
-        @Query('language') language?: string,
-    ) {
-        return this.hadithsService.findOne(id, language);
-    }
-
-    @Sse(':id/explain-stream')
-    @ApiOperation({ summary: 'Stream AI explanation for a hadith (SSE)' })
-    @ApiQuery({ name: 'language', required: false, example: 'ru' })
-    explainStream(
-        @Param('id', ParseIntPipe) id: number,
-        @Query('language') language: string = 'ru',
-    ) {
-        return this.hadithsService.streamExplanation(id, language);
-    }
-
     @Sse('search-stream')
     @ApiOperation({ summary: 'Progressive search returns hadiths as they are found (SSE)' })
     @ApiQuery({ name: 'q', required: true })
@@ -136,6 +116,26 @@ export class HadithsController {
                 }
             })();
         });
+    }
+
+    @Sse(':id/explain-stream')
+    @ApiOperation({ summary: 'Stream AI explanation for a hadith (SSE)' })
+    @ApiQuery({ name: 'language', required: false, example: 'ru' })
+    explainStream(
+        @Param('id', ParseIntPipe) id: number,
+        @Query('language') language: string = 'ru',
+    ) {
+        return this.hadithsService.streamExplanation(id, language);
+    }
+
+    @Get(':id')
+    @ApiOperation({ summary: 'Get hadith by ID' })
+    @ApiQuery({ name: 'language', required: false, example: 'en' })
+    async findOne(
+        @Param('id', ParseIntPipe) id: number,
+        @Query('language') language?: string,
+    ) {
+        return this.hadithsService.findOne(id, language);
     }
 
     @Get(':id/explain')
