@@ -99,7 +99,7 @@ export class GeminiProvider implements AiProvider {
     language: string,
   ): Promise<ReadableStream<any>> {
       const instance = this.genAIs[this.currentGenIndex];
-      const modelName = 'gemini-3.1-flash-lite';
+      const modelName = 'gemini-3.1-flash-lite-preview';
       const model = instance.getGenerativeModel({ 
           model: modelName,
           generationConfig: { responseMimeType: 'application/json' }

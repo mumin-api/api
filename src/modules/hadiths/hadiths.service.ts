@@ -10,6 +10,7 @@ import { ConfigService } from '@nestjs/config';
 import { LRUCache } from 'lru-cache';
 import { ArabicStemmer } from '@/common/utils/arabic-stemmer';
 import { SingleFlight } from '@/common/utils/single-flight';
+import { PartialJsonHelper } from '@/common/utils/partial-json-helper';
 
 @Injectable()
 export class HadithsService {
@@ -124,6 +125,8 @@ export class HadithsService {
 
         return new (require('rxjs').Observable)((subscriber: any) => {
             const reader = stream.getReader();
+            let accumulated = '';
+
             async function read() {
                 try {
                     const { done, value } = await reader.read();
@@ -132,7 +135,13 @@ export class HadithsService {
                         return;
                     }
                     const chunkStr = new TextDecoder().decode(value);
-                    subscriber.next({ data: chunkStr });
+                    accumulated += chunkStr;
+
+                    // Repair the accumulated partial JSON and emit it
+                    const repaired = PartialJsonHelper.repair(accumulated);
+                    // Wrap the flat structure from Gemini into a 'content' property to match frontend/DB
+                    subscriber.next({ data: JSON.stringify({ content: repaired }) });
+                    
                     read();
                 } catch (err) {
                     subscriber.error(err);
