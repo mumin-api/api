@@ -68,14 +68,16 @@ export class ApiKeyGuard implements CanActivate {
         }
 
         // Validate key format
-        // Allow 41 chars (production) or 42 chars (dev test key)
-        if (!apiKey.startsWith('sk_mumin_') || (apiKey.length !== 41 && apiKey.length !== 42)) {
+        // Supports legacy (41-42 chars) and new secure keys (73 chars)
+        const isValid = apiKey.startsWith('sk_mumin_') && (apiKey.length === 41 || apiKey.length === 42 || apiKey.length === 73);
+        
+        if (!isValid) {
             this.logger.error(`Invalid API key format: received length ${apiKey.length}, starts with ${apiKey.substring(0, 9)}`);
             throw new UnauthorizedException({
                 statusCode: 401,
                 error: 'INVALID_API_KEY_FORMAT',
                 message: 'Invalid API key format',
-                details: `Expected length 41 or 42, got ${apiKey.length}`,
+                details: `Expected length 41, 42 or 73, got ${apiKey.length}`,
             });
         }
 

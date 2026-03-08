@@ -219,9 +219,18 @@ export class ApiKeysService {
      * Update API key settings
      */
     async updateSettings(apiKeyId: number, settings: { allowedIPs?: string[]; webhookUrl?: string }) {
+        // Force Mass Assignment protection: only allow specific fields
+        const allowedData: any = {};
+        if (settings.allowedIPs !== undefined) allowedData.allowedIPs = settings.allowedIPs;
+        if (settings.webhookUrl !== undefined) allowedData.webhookUrl = settings.webhookUrl;
+
+        if (Object.keys(allowedData).length === 0) {
+            return { message: 'No valid settings to update' };
+        }
+
         await this.prisma.apiKey.update({
             where: { id: apiKeyId },
-            data: settings,
+            data: allowedData,
         });
 
         this.logger.log(`Settings updated for API key ID ${apiKeyId}`);

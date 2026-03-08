@@ -18,4 +18,9 @@ export interface AiProvider {
     language: string,
   ): Promise<ExplanationResult>;
   generateEmbedding(text: string): Promise<number[]>;
+  streamExplanation?(
+    hadithText: string,
+    collection: string,
+    language: string,
+  ): Promise<ReadableStream<any>>;
 }

@@ -9,7 +9,7 @@ export class MeilisearchService implements OnModuleInit {
 
     constructor(private configService: ConfigService) {
         const host = this.configService.get<string>('MEILISEARCH_HOST') || 'http://localhost:7700';
-        const apiKey = this.configService.get<string>('MEILISEARCH_API_KEY') || 'masterKey';
+        const apiKey = this.configService.get<string>('MEILISEARCH_API_KEY');
         
         this.client = new MeiliSearch({
             host,
@@ -18,38 +18,43 @@ export class MeilisearchService implements OnModuleInit {
     }
 
     async onModuleInit() {
-        this.hadithIndex = this.client.index('hadiths');
-        
-        // Settings for the index
-        await this.hadithIndex.updateSettings({
-            searchableAttributes: [
-                'arabicText',
-                'translations.text',
-                'collection',
-                'metadata.chapterEnglish',
-                'metadata.chapterArabic'
-            ],
-            filterableAttributes: [
-                'collection',
-                'grade',
-                'languageCode'
-            ],
-            rankingRules: [
-                'words',
-                'typo',
-                'proximity',
-                'attribute',
-                'sort',
-                'exactness'
-            ],
-            typoTolerance: {
-                enabled: true,
-                minWordSizeForTypos: {
-                    oneTypo: 5,
-                    twoTypos: 9
+        try {
+            this.hadithIndex = this.client.index('hadiths');
+            
+            // Settings for the index
+            await this.hadithIndex.updateSettings({
+                searchableAttributes: [
+                    'arabicText',
+                    'translations.text',
+                    'collection',
+                    'metadata.chapterEnglish',
+                    'metadata.chapterArabic'
+                ],
+                filterableAttributes: [
+                    'collection',
+                    'grade',
+                    'languageCode'
+                ],
+                rankingRules: [
+                    'words',
+                    'typo',
+                    'proximity',
+                    'attribute',
+                    'sort',
+                    'exactness'
+                ],
+                typoTolerance: {
+                    enabled: true,
+                    minWordSizeForTypos: {
+                        oneTypo: 5,
+                        twoTypos: 9
+                    }
                 }
-            }
-        });
+            });
+            console.log('Meilisearch index settings updated successfully.');
+        } catch (error: any) {
+            console.warn(`Meilisearch initialization failed: ${error.message}. Search features may be unavailable.`);
+        }
     }
 
     getClient(): MeiliSearch {

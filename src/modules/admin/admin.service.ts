@@ -75,10 +75,41 @@ export class AdminService {
     async getKeyDetails(id: number) {
         const key = await this.prisma.apiKey.findUnique({
             where: { id },
-            include: {
+            select: {
+                id: true,
+                keyPrefix: true,
+                userEmail: true,
+                isActive: true,
+                suspendedAt: true,
+                suspendReason: true,
+                createdAt: true,
+                lastUsedAt: true,
+                trustScore: true,
+                fraudFlags: true,
+                maxDailyRequests: true,
+                allowedIPs: true,
+                webhookUrl: true,
+                user: {
+                    select: {
+                        id: true,
+                        email: true,
+                        balance: true,
+                        totalRequests: true,
+                        createdAt: true,
+                    },
+                },
                 requestLogs: {
                     take: 100,
                     orderBy: { timestamp: 'desc' },
+                    select: {
+                        id: true,
+                        method: true,
+                        endpoint: true,
+                        responseStatus: true,
+                        responseTimeMs: true,
+                        timestamp: true,
+                        // ipAddress and userAgent OMITTED for privacy
+                    },
                 },
                 transactions: {
                     take: 50,

@@ -1,16 +1,28 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import Anthropic from '@anthropic-ai/sdk';
 import { AiProvider, ExplanationResult } from '../interfaces/ai-provider.interface';
 
 @Injectable()
 export class AnthropicProvider implements AiProvider {
-  private anthropic: Anthropic;
+  private anthropic: Anthropic | null = null;
+  private readonly logger = new Logger(AnthropicProvider.name);
 
-  constructor(private configService: ConfigService) {
+  constructor(private configService: ConfigService) {}
+
+  private getClient(): Anthropic {
+    if (this.anthropic) return this.anthropic;
+
+    const apiKey = this.configService.get<string>('ANTHROPIC_API_KEY');
+    if (!apiKey) {
+      this.logger.error('ANTHROPIC_API_KEY is not set in environment variables');
+      throw new Error('Missing credentials. Please pass an `apiKey`, or set the `ANTHROPIC_API_KEY` environment variable.');
+    }
+
     this.anthropic = new Anthropic({
-      apiKey: this.configService.get<string>('ANTHROPIC_API_KEY'),
+      apiKey,
     });
+    return this.anthropic;
   }
 
   getName(): string {
@@ -22,9 +34,9 @@ export class AnthropicProvider implements AiProvider {
     collection: string,
     language: string,
   ): Promise<ExplanationResult> {
-    const model = 'claude-3-haiku-20240307';
+    const model = 'claude-4.5-haiku';
     
-    const response = await this.anthropic.messages.create({
+    const response = await this.getClient().messages.create({
       model: model,
       max_tokens: 1024,
       system: this.getSystemPrompt(language),
@@ -51,6 +63,31 @@ export class AnthropicProvider implements AiProvider {
       model: model,
       provider: this.getName(),
     };
+  }
+
+  async streamExplanation(
+    hadithText: string,
+    collection: string,
+    language: string,
+  ): Promise<ReadableStream<any>> {
+    const model = 'claude-4.5-haiku';
+    
+    // Anthropic streaming uses messages.stream() or just messages.create({ stream: true })
+    const stream = await this.getClient().messages.create({
+      model: model,
+      max_tokens: 1024,
+      system: this.getSystemPrompt(language),
+      messages: [
+        {
+          role: 'user',
+          content: `Hadith from ${collection}:\n${hadithText}`,
+        },
+      ],
+      stream: true,
+    });
+
+    // Convert Anthropic stream to a generic ReadableStream
+    return stream.toReadableStream();
   }
 
   async generateEmbedding(text: string): Promise<number[]> {

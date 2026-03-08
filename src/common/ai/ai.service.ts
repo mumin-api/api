@@ -45,6 +45,31 @@ export class AiService {
     }
   }
 
+  async streamExplanation(
+    hadithText: string,
+    collection: string,
+    language: string,
+  ): Promise<ReadableStream<any>> {
+    const providerName = await this.getActiveProviderName();
+    const provider = this.providers.get(providerName) || this.openai;
+
+    this.logger.log(`Streaming explanation for using ${provider.getName()} in ${language}`);
+
+    if (!provider.streamExplanation) {
+        throw new Error(`Provider ${providerName} does not support streaming.`);
+    }
+
+    try {
+      return await provider.streamExplanation(hadithText, collection, language);
+    } catch (error: any) {
+      this.logger.error(`AI Provider streaming failed: ${error.message}`);
+      if (providerName !== 'openai' && this.openai.streamExplanation) {
+          return await this.openai.streamExplanation(hadithText, collection, language);
+      }
+      throw error;
+    }
+  }
+
   private async getActiveProviderName(): Promise<string> {
     try {
       // Prisma usually maps SystemSetting to systemSetting
@@ -93,15 +118,17 @@ export class AiService {
     const provider = this.providers.get(providerName) || this.gemini;
 
     try {
-      return await provider.generateEmbedding(text);
-    } catch (error: any) {
-      this.logger.error(`Failed to generate embedding with ${providerName}: ${error.message}.`);
-      // Fallback to whichever is not the current one
-      if (providerName === 'gemini') {
-        return await this.openai.generateEmbedding(text);
-      } else {
-        return await this.gemini.generateEmbedding(text);
+      let embedding = await provider.generateEmbedding(text);
+      // Force dimension to 768 to match the database schema
+      if (embedding.length !== 768) {
+        this.logger.warn(`Provider ${providerName} returned ${embedding.length} dimensions. Truncating to 768.`);
+        embedding = embedding.slice(0, 768);
       }
+      this.logger.log(`Generated embedding with ${providerName}. Final Dimension: ${embedding.length}`);
+      return embedding;
+    } catch (error: any) {
+      this.logger.error(`Failed to generate embedding with ${providerName}: ${error.message}`);
+      throw error; // Rethrow to prevent inconsistent fallbacks
     }
   }
 }

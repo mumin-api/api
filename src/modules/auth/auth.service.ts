@@ -104,6 +104,12 @@ export class AuthService {
     }
 
     async login(dto: LoginDto) {
+        const lockKey = `auth:lock:${dto.email}`;
+        const isLocked = await this.redis.get(lockKey);
+        if (isLocked) {
+            throw new UnauthorizedException('Account temporarily locked due to multiple failed attempts. Please try again in 15 minutes.');
+        }
+
         const user = await this.prisma.user.findUnique({
             where: {
                 email: dto.email,
@@ -118,10 +124,19 @@ export class AuthService {
             },
         });
 
-        if (!user) throw new UnauthorizedException('Invalid credentials');
+        if (!user) {
+            await this.handleFailedLogin(dto.email);
+            throw new UnauthorizedException('Invalid credentials');
+        }
 
         const passwordMatches = await bcrypt.compare(dto.password, user.password);
-        if (!passwordMatches) throw new UnauthorizedException('Invalid credentials');
+        if (!passwordMatches) {
+            await this.handleFailedLogin(dto.email);
+            throw new UnauthorizedException('Invalid credentials');
+        }
+
+        // Clear failed attempts on success
+        await this.redis.del(`auth:failed:${dto.email}`);
 
         // Check if email is verified
         if (!user.emailVerified) {
@@ -144,6 +159,19 @@ export class AuthService {
             },
             ...tokens,
         };
+    }
+
+    private async handleFailedLogin(email: string) {
+        const failedKey = `auth:failed:${email}`;
+        const lockKey = `auth:lock:${email}`;
+        const attempts = await this.redis.incr(failedKey);
+        await this.redis.expire(failedKey, 3600); // 1 hour window
+
+        if (attempts >= 10) {
+            await this.redis.set(lockKey, '1', 'EX', 15 * 60); // 15m lock
+            await this.redis.del(failedKey);
+            console.warn(`[AuthService] Account locked for ${email} due to 10 failed attempts.`);
+        }
     }
 
     async logout(userId: number) {
@@ -262,6 +290,12 @@ export class AuthService {
         });
         if (existing) throw new BadRequestException('Email already taken');
 
+        // Find current user for old email notification
+        const user = await this.prisma.user.findUnique({
+            where: { id: userId },
+        });
+        if (!user) throw new NotFoundException('User not found');
+
         // Generate code
         const code = crypto.randomInt(100000, 999999).toString();
         const hashCode = await bcrypt.hash(code, 10);
@@ -270,8 +304,14 @@ export class AuthService {
         const key = `auth:email-change:${userId}`;
         await this.redis.set(key, JSON.stringify({ newEmail, code: hashCode }), 'EX', 15 * 60);
 
-        // Send email
+        // Send email to new address
         await this.emailService.sendVerificationCode(newEmail, code);
+
+        // Send security notice to old address
+        await this.emailService.sendSecurityAlert(
+            user.email,
+            'A request to change your email address has been initiated. If this was not you, please contact support immediately.'
+        );
 
         return { success: true, message: 'Verification code sent to your new email' };
     }

@@ -1,4 +1,5 @@
 import { Controller, Get, Query, UseGuards, ParseIntPipe, Post, Body, Headers, DefaultValuePipe } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { BillingService } from './billing.service';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
@@ -53,6 +54,7 @@ export class BillingController {
 
     @Post('crypto/create-invoice')
     @ApiOperation({ summary: 'Create CryptoBot invoice' })
+    @Throttle({ default: { limit: 30, ttl: 60000 } })
     async createInvoice(
         @CurrentUser() user: AuthenticatedUser,
         @Body('amount', ParseIntPipe) amount: number
@@ -62,7 +64,8 @@ export class BillingController {
 
     @Public()
     @Post('crypto/webhook')
-    @ApiOperation({ summary: 'CryptoBot webhook' })
+    @Throttle({ default: { limit: 30, ttl: 60000 } }) // 30 per min
+    @ApiOperation({ summary: 'CryptoBot webhook for payment status' })
     async handleWebhook(
         @Body() payload: CryptoPayWebhook,
         @Headers('crypto-pay-api-signature') signature: string

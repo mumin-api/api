@@ -312,36 +312,54 @@ export class BillingService {
 
         const invoice = payload.payload;
 
-        // 2. Find Payment
-        const payment = await this.prisma.payment.findUnique({
-            where: { providerPaymentId: invoice.invoice_id.toString() },
-            include: { user: true }
+        // 2. Replay Protection - check request_date (reject if older than 5 minutes)
+        const requestDate = new Date(payload.request_date);
+        const now = new Date();
+        const diffMs = now.getTime() - requestDate.getTime();
+        if (diffMs > 5 * 60 * 1000) {
+            this.logger.error(`Replay attack detected or request too old: ${invoice.invoice_id} (${diffMs}ms old)`);
+            throw new BadRequestException('Request too old');
+        }
+
+        // 3. Atomic Update Payment Status (TOCTOU prevention)
+        const updateResult = await this.prisma.payment.updateMany({
+            where: {
+                providerPaymentId: invoice.invoice_id.toString(),
+                status: 'PENDING',
+            },
+            data: {
+                status: 'PAID',
+                completedAt: new Date(),
+                metadata: invoice as any,
+            },
         });
 
-        if (!payment) {
-            this.logger.error(`Payment not found for invoice ${invoice.invoice_id}`);
-            throw new BadRequestException('Payment record not found');
+        if (updateResult.count === 0) {
+            // Already processed or doesn't exist
+            const existing = await this.prisma.payment.findUnique({
+                where: { providerPaymentId: invoice.invoice_id.toString() },
+            });
+            if (existing?.status === 'PAID') {
+                this.logger.log(`Payment already processed: ${invoice.invoice_id}`);
+                return { success: true, message: 'Already processed' };
+            }
+            throw new BadRequestException('Payment not found or cannot be updated');
         }
 
-        if (payment.status === 'PAID') {
-            return { success: true, message: 'Already processed' };
+        // 4. Complete Credit Addition (Safe to proceed since we own the 'PAID' transition)
+        const payment = await this.prisma.payment.findUnique({
+            where: { providerPaymentId: invoice.invoice_id.toString() },
+            include: { user: true },
+        });
+
+        if (!payment || !payment.user) {
+            throw new BadRequestException('User or payment record lost after atomic update');
         }
 
-        // 3. Complete Payment & Add Credits
-        const amount = Number(invoice.amount);
-        
         await this.prisma.$transaction([
-            this.prisma.payment.update({
-                where: { id: payment.id },
-                data: {
-                    status: 'PAID',
-                    completedAt: new Date(),
-                    metadata: invoice as any
-                }
-            }),
             this.prisma.user.update({
                 where: { id: payment.userId },
-                data: { balance: payment.user.balance + payment.credits }
+                data: { balance: { increment: payment.credits } },
             }),
             this.prisma.transaction.create({
                 data: {
@@ -351,9 +369,9 @@ export class BillingService {
                     amount: payment.credits,
                     balanceBefore: payment.user.balance,
                     balanceAfter: payment.user.balance + payment.credits,
-                    description: `CryptoBot payment #${invoice.invoice_id} (${invoice.asset})`
-                }
-            })
+                    description: `CryptoBot payment #${invoice.invoice_id} (${invoice.asset})`,
+                },
+            }),
         ]);
 
         this.logger.log(`✅ Payment COMPLETED: user ${payment.userId}, credits +${payment.credits}`);

@@ -1,16 +1,28 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import OpenAI from 'openai';
 import { AiProvider, ExplanationResult } from '../interfaces/ai-provider.interface';
 
 @Injectable()
 export class OpenAiProvider implements AiProvider {
-  private client: OpenAI;
+  private client: OpenAI | null = null;
+  private readonly logger = new Logger(OpenAiProvider.name);
 
-  constructor(private configService: ConfigService) {
+  constructor(private configService: ConfigService) {}
+
+  private getClient(): OpenAI {
+    if (this.client) return this.client;
+
+    const apiKey = this.configService.get<string>('OPENAI_API_KEY');
+    if (!apiKey) {
+      this.logger.error('OPENAI_API_KEY is not set in environment variables');
+      throw new Error('Missing credentials. Please pass an `apiKey`, or set the `OPENAI_API_KEY` environment variable.');
+    }
+
     this.client = new OpenAI({
-      apiKey: this.configService.get<string>('OPENAI_API_KEY'),
+      apiKey,
     });
+    return this.client;
   }
 
   getName(): string {
@@ -22,9 +34,9 @@ export class OpenAiProvider implements AiProvider {
     collection: string,
     language: string,
   ): Promise<ExplanationResult> {
-    const model = 'gpt-4o-mini';
+    const model = 'o4-mini';
     
-    const response = await this.client.chat.completions.create({
+    const response = await this.getClient().chat.completions.create({
       model: model,
       messages: [
         {
@@ -54,8 +66,34 @@ export class OpenAiProvider implements AiProvider {
     };
   }
 
+  async streamExplanation(
+    hadithText: string,
+    collection: string,
+    language: string,
+  ): Promise<ReadableStream<any>> {
+    const model = 'o4-mini';
+    
+    const stream = await this.getClient().chat.completions.create({
+      model: model,
+      messages: [
+        {
+          role: 'system',
+          content: this.getSystemPrompt(language),
+        },
+        {
+          role: 'user',
+          content: `Hadith from ${collection}:\n${hadithText}`,
+        },
+      ],
+      response_format: { type: 'json_object' },
+      stream: true,
+    });
+
+    return stream.toReadableStream();
+  }
+
   async generateEmbedding(text: string): Promise<number[]> {
-    const response = await this.client.embeddings.create({
+    const response = await this.getClient().embeddings.create({
       model: 'text-embedding-3-small',
       input: text,
     });

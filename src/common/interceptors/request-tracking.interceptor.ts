@@ -24,12 +24,10 @@ export class RequestTrackingInterceptor implements NestInterceptor {
         const startTime = Date.now();
 
         // Only log requests that have an API key ID.
-        // This automatically excludes dashboard requests (JWT-based), health checks, and public unauthenticated routes.
         if (!request.user?.apiKeyId) {
             return next.handle();
         }
 
-        // Extract request data
         const requestData = {
             apiKeyId: request.user?.apiKeyId,
             userId: request.user?.userId,
@@ -45,72 +43,67 @@ export class RequestTrackingInterceptor implements NestInterceptor {
 
         return next.handle().pipe(
             tap({
-                next: async (responseData) => {
-                    const responseTime = Date.now() - startTime;
-                    const response = context.switchToHttp().getResponse();
+                next: (responseData) => {
+                    // Log in background to avoid blocking
+                    setImmediate(async () => {
+                        try {
+                            const responseTime = Date.now() - startTime;
+                            const response = context.switchToHttp().getResponse();
 
-                    // Calculate data transferred
-                    const responseSize = JSON.stringify(responseData).length;
+                            const responseString = typeof responseData === 'object' ? JSON.stringify(responseData) : String(responseData);
+                            const responseSize = responseString.length;
 
-                    // Truncate response body for storage (max 5KB)
-                    const truncatedResponse =
-                        responseSize > 5120
-                            ? {
-                                _truncated: true,
-                                _originalSize: responseSize,
-                                _preview: JSON.stringify(responseData).substring(0, 500),
-                            }
-                            : responseData;
+                            const truncatedResponse = responseSize > 5120
+                                ? {
+                                    _truncated: true,
+                                    _originalSize: responseSize,
+                                    _preview: responseString.substring(0, 500),
+                                }
+                                : responseData;
 
-                    // Determine if response was from cache
-                    const wasFromCache = response.getHeader('X-Cache-Hit') === 'true';
+                            const wasFromCache = response.getHeader('X-Cache-Hit') === 'true';
 
-                    // Log request to database (async, don't block response)
-                    this.logRequest({
-                        ...requestData,
-                        responseStatus: response.statusCode,
-                        responseBody: truncatedResponse,
-                        responseTimeMs: responseTime,
-                        dataTransferred: responseSize,
-                        wasFromCache,
-                        billingImpact: wasFromCache ? 0 : 1, // Cached requests don't count
-                    }).catch((error) => {
-                        this.logger.error('Failed to log request:', error);
-                    });
-
-                    // Update User data transferred counter
-                    if (request.user?.userId) {
-                        this.prisma.user
-                            .update({
-                                where: { id: request.user.userId },
-                                data: {
-                                    totalDataTransferred: {
-                                        increment: responseSize,
-                                    },
-                                },
-                            })
-                            .catch((error) => {
-                                this.logger.error('Failed to update data transferred:', error);
+                            await this.logRequest({
+                                ...requestData,
+                                responseStatus: response.statusCode,
+                                responseBody: truncatedResponse,
+                                responseTimeMs: responseTime,
+                                dataTransferred: responseSize,
+                                wasFromCache,
+                                billingImpact: wasFromCache ? 0 : 1,
                             });
-                    }
-                },
-                error: async (error) => {
-                    const responseTime = Date.now() - startTime;
 
-                    // Log failed request
-                    this.logRequest({
-                        ...requestData,
-                        responseStatus: error.status || 500,
-                        responseBody: {
-                            error: error.message,
-                            code: error.code,
-                        },
-                        responseTimeMs: responseTime,
-                        dataTransferred: 0,
-                        wasFromCache: false,
-                        billingImpact: 0, // Don't charge for errors
-                    }).catch((logError) => {
-                        this.logger.error('Failed to log error request:', logError);
+                            if (request.user?.userId) {
+                                await this.prisma.user.update({
+                                    where: { id: request.user.userId },
+                                    data: {
+                                        totalDataTransferred: {
+                                            increment: responseSize,
+                                        },
+                                    },
+                                }).catch(e => this.logger.error('Failed to update data counter:', e));
+                            }
+                        } catch (error) {
+                            this.logger.error('Background logging error:', error);
+                        }
+                    });
+                },
+                error: (error) => {
+                    setImmediate(async () => {
+                        try {
+                            const responseTime = Date.now() - startTime;
+                            await this.logRequest({
+                                ...requestData,
+                                responseStatus: error.status || 500,
+                                responseBody: { error: error.message, code: error.code },
+                                responseTimeMs: responseTime,
+                                dataTransferred: 0,
+                                wasFromCache: false,
+                                billingImpact: 0,
+                            });
+                        } catch (e) {
+                            this.logger.error('Background error logging failed:', e);
+                        }
                     });
                 },
             }),
@@ -125,9 +118,7 @@ export class RequestTrackingInterceptor implements NestInterceptor {
                     userId: data.userId,
                     endpoint: data.endpoint,
                     method: data.method,
-                    requestHeaders: {
-                        userAgent: data.userAgent,
-                    },
+                    requestHeaders: { userAgent: data.userAgent },
                     queryParams: data.queryParams,
                     responseStatus: data.responseStatus,
                     responseBody: data.responseBody,
@@ -143,17 +134,13 @@ export class RequestTrackingInterceptor implements NestInterceptor {
                 },
             });
         } catch (error: any) {
-            // Handle foreign key violation (P2003) - user or api key record might be missing
             if (error.code === 'P2003') {
                 try {
-                    // Retry without userId and apiKeyId
                     await this.prisma.requestLog.create({
                         data: {
                             endpoint: data.endpoint,
                             method: data.method,
-                            requestHeaders: {
-                                userAgent: data.userAgent,
-                            },
+                            requestHeaders: { userAgent: data.userAgent },
                             queryParams: data.queryParams,
                             responseStatus: data.responseStatus,
                             responseBody: data.responseBody,
@@ -168,14 +155,12 @@ export class RequestTrackingInterceptor implements NestInterceptor {
                             requestId: data.requestId,
                         },
                     });
-                    this.logger.warn(`Logged request with orphan userId/apiKeyId (P2003): ${data.endpoint}`);
-                    return;
                 } catch (retryError) {
-                    this.logger.error('Database logging retry failed:', retryError);
+                    this.logger.error('Log retry failed:', retryError);
                 }
+            } else {
+                this.logger.error('Log creation failed:', error);
             }
-            // If DB write fails for other reasons, log to console as backup
-            this.logger.error('Database logging failed:', error);
         }
     }
 }

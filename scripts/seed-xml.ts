@@ -106,110 +106,105 @@ async function processXmlFile(filePath: string) {
   const hadithNodes = $('hadith');
   console.log(`   - Found ${hadithNodes.length} hadith entries.`);
 
+  const BATCH_SIZE = 50; // Smaller batch size to prevent transaction timeouts
   let processedCount = 0;
 
-  for (let i = 0; i < hadithNodes.length; i++) {
-    const node = $(hadithNodes[i]);
+  for (let i = 0; i < hadithNodes.length; i += BATCH_SIZE) {
+    const chunk = hadithNodes.slice(i, i + BATCH_SIZE);
+    const hadithData: any[] = [];
 
-    // Extract Reference Number (Primary)
-    let primaryRef = 0;
-    node.find('references > reference').each((_, refNode) => {
-      if ($(refNode).find('code').text().trim() === 'Reference') {
-        const part = $(refNode).find('parts > part').first().text().trim();
-        primaryRef = parseInt(part, 10);
-        return false; // break
-      }
-    });
-
-    if (!primaryRef || isNaN(primaryRef)) {
-      primaryRef = i + 1; // Fallback to index-based numbering
-    }
-
-    const arabicTextRows: string[] = [];
-    node.find('arabic > text').each((_, t) => {
-      arabicTextRows.push($(t).text().trim());
-    });
-    const arabicText = arabicTextRows.join('\n');
-
-    const englishTextRows: string[] = [];
-    node.find('english > text').each((_, t) => {
-      englishTextRows.push($(t).text().trim());
-    });
-    const englishText = englishTextRows.join('\n');
-
-    if (!arabicText && !englishText) {
-      continue;
-    }
-
-    // 3. Import Data
-    const bookNumber = 1; // Defaulting to 1 for flat collections
-    const hadithNumber = primaryRef;
-
-    const metadata: any = {
-      source: 'xml_import',
-      original_code: collectionCode,
-    };
-
-    // Extract verse references if any
-    const verseRefs: any[] = [];
-    node.find('verseReferences > reference').each((_, vRef) => {
-      verseRefs.push({
-        chapter: $(vRef).find('chapter').text().trim(),
-        firstVerse: $(vRef).find('firstVerse').text().trim(),
-        lastVerse: $(vRef).find('lastVerse').text().trim(),
+    for (let j = 0; j < chunk.length; j++) {
+      const node = $(chunk[j]);
+      
+      let primaryRef = 0;
+      node.find('references > reference').each((_, refNode) => {
+        if ($(refNode).find('code').text().trim() === 'Reference') {
+          const part = $(refNode).find('parts > part').first().text().trim();
+          primaryRef = parseInt(part, 10);
+          return false;
+        }
       });
-    });
-    if (verseRefs.length > 0) {
-      metadata.verseReferences = verseRefs;
-    }
 
-    // Create/Update Hadith
-    const hadith = await prisma.hadith.upsert({
-      where: {
-        collection_bookNumber_hadithNumber: {
-          collection: slug,
-          bookNumber: bookNumber,
-          hadithNumber: hadithNumber,
-        },
-      },
-      update: {
-        arabicText: arabicText || '',
-        metadata: metadata,
-      },
-      create: {
+      if (!primaryRef || isNaN(primaryRef)) {
+        primaryRef = (i + j) + 1;
+      }
+
+      const arabicText = node.find('arabic > text').map((_, t) => $(t).text().trim()).get().join('\n');
+      const englishText = node.find('english > text').map((_, t) => $(t).text().trim()).get().join('\n');
+
+      if (!arabicText && !englishText) continue;
+
+      const verseRefs: any[] = [];
+      node.find('verseReferences > reference').each((_, vRef) => {
+        verseRefs.push({
+          chapter: $(vRef).find('chapter').text().trim(),
+          firstVerse: $(vRef).find('firstVerse').text().trim(),
+          lastVerse: $(vRef).find('lastVerse').text().trim(),
+        });
+      });
+
+      const metadata: any = {
+        source: 'xml_import',
+        original_code: collectionCode,
+      };
+      if (verseRefs.length > 0) metadata.verseReferences = verseRefs;
+
+      hadithData.push({
         collection: slug,
         collectionId: collection.id,
-        bookNumber: bookNumber,
-        hadithNumber: hadithNumber,
+        bookNumber: 1,
+        hadithNumber: primaryRef,
         arabicText: arabicText || '',
+        englishText, // temporary for internal use
         metadata: metadata,
-      },
-    });
-
-    // Handle English Translation
-    if (englishText) {
-      await prisma.translation.upsert({
-        where: {
-          hadithId_languageCode: {
-            hadithId: hadith.id,
-            languageCode: 'en',
-          },
-        },
-        update: {
-          text: englishText,
-        },
-        create: {
-          hadithId: hadith.id,
-          languageCode: 'en',
-          text: englishText,
-        },
       });
     }
 
-    processedCount++;
-    if (processedCount % 100 === 0) {
-      process.stdout.write(`\r⏳ Processed ${processedCount}/${hadithNodes.length} ...`);
-    }
+    // 3. Bulk Upsert Hadiths with explicit timeout
+    await prisma.$transaction(async (tx) => {
+      for (const data of hadithData) {
+        const { englishText, ...hadithBase } = data;
+        const hadith = await tx.hadith.upsert({
+          where: {
+            collection_bookNumber_hadithNumber: {
+              collection: hadithBase.collection,
+              bookNumber: hadithBase.bookNumber,
+              hadithNumber: hadithBase.hadithNumber,
+            },
+          },
+          update: {
+            arabicText: hadithBase.arabicText,
+            metadata: hadithBase.metadata,
+          },
+          create: hadithBase,
+          select: { id: true },
+        });
+        
+        if (englishText) {
+          await tx.translation.upsert({
+            where: {
+              hadithId_languageCode: {
+                hadithId: hadith.id,
+                languageCode: 'en',
+              },
+            },
+            update: {
+              text: englishText,
+            },
+            create: {
+              hadithId: hadith.id,
+              languageCode: 'en',
+              text: englishText,
+            },
+          });
+        }
+      }
+    }, {
+      timeout: 30000 // 30 seconds
+    });
+
+    processedCount += chunk.length;
+    process.stdout.write(`\r⏳ Processed ${processedCount}/${hadithNodes.length} ...`);
   }
 
   // Update total count

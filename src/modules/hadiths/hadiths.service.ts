@@ -7,9 +7,15 @@ import { MeilisearchService } from '@/common/meilisearch/meilisearch.service';
 import { AiService } from '@/common/ai/ai.service';
 import { EmailService } from '@/modules/email/email.service';
 import { ConfigService } from '@nestjs/config';
+import { LRUCache } from 'lru-cache';
+import { ArabicStemmer } from '@/common/utils/arabic-stemmer';
+import { SingleFlight } from '@/common/utils/single-flight';
 
 @Injectable()
 export class HadithsService {
+    private readonly l1Cache: LRUCache<string, any>;
+    private readonly singleFlight: SingleFlight;
+
     constructor(
         private prisma: PrismaService,
         @Inject(REDIS_CLIENT) private redis: Redis,
@@ -18,11 +24,72 @@ export class HadithsService {
         private emailService: EmailService,
         private config: ConfigService,
     ) { 
-        // Logic moved to MeilisearchService onModuleInit
+        this.l1Cache = new LRUCache({
+            max: 500, // Store 500 hottest queries
+            ttl: 1000 * 60 * 5, // 5 minutes TTL
+        });
+        this.singleFlight = new SingleFlight();
     }
 
     async getExplanation(id: number, language: string = 'en') {
-        // 1. Check cache
+        const flightKey = `explanation:${id}:${language}`;
+        return this.singleFlight.do(flightKey, async () => {
+            // 1. Check cache
+            const cache = await (this.prisma as any).hadithExplanation.findUnique({
+                where: {
+                    hadithId_languageCode: {
+                        hadithId: id,
+                        languageCode: language,
+                    },
+                },
+            });
+
+            if (cache) {
+                return cache;
+            }
+
+            // 2. Not in cache, get hadith text
+            const hadith = await this.prisma.hadith.findUnique({
+                where: { id },
+                include: { collectionRef: true },
+            });
+
+            if (!hadith) {
+                throw new NotFoundException(`Hadith with ID ${id} not found`);
+            }
+
+            const collectionName = hadith.collectionRef?.nameEnglish || hadith.collection;
+            
+            // 3. Generate explanation
+            const result = await this.aiService.generateExplanation(
+                hadith.arabicText,
+                hadith.id,
+                collectionName,
+                language,
+            );
+
+            // 4. Save to cache
+            return (this.prisma as any).hadithExplanation.create({
+                data: {
+                    hadithId: id,
+                    languageCode: language,
+                    content: {
+                        short_meaning: result.short_meaning,
+                        long_meaning: result.long_meaning,
+                        context: result.context,
+                        legal_note: result.legal_note,
+                        benefit: result.benefit,
+                        certainty_level: result.certainty_level,
+                        notes: result.notes,
+                    },
+                    provider: result.provider,
+                    model: result.model,
+                },
+            });
+        });
+    }
+
+    async streamExplanation(id: number, language: string = 'en') {
         const cache = await (this.prisma as any).hadithExplanation.findUnique({
             where: {
                 hadithId_languageCode: {
@@ -33,10 +100,12 @@ export class HadithsService {
         });
 
         if (cache) {
-            return cache;
+            return new (require('rxjs').Observable)((subscriber: any) => {
+                subscriber.next({ data: JSON.stringify(cache) });
+                subscriber.complete();
+            });
         }
 
-        // 2. Not in cache, get hadith text
         const hadith = await this.prisma.hadith.findUnique({
             where: { id },
             include: { collectionRef: true },
@@ -47,37 +116,33 @@ export class HadithsService {
         }
 
         const collectionName = hadith.collectionRef?.nameEnglish || hadith.collection;
-        
-        // 3. Generate explanation
-        const result = await this.aiService.generateExplanation(
+        const stream = await this.aiService.streamExplanation(
             hadith.arabicText,
-            hadith.id,
             collectionName,
             language,
         );
 
-        // 4. Save to cache
-        return (this.prisma as any).hadithExplanation.create({
-            data: {
-                hadithId: id,
-                languageCode: language,
-                content: {
-                    short_meaning: result.short_meaning,
-                    long_meaning: result.long_meaning,
-                    context: result.context,
-                    legal_note: result.legal_note,
-                    benefit: result.benefit,
-                    certainty_level: result.certainty_level,
-                    notes: result.notes,
-                },
-                provider: result.provider,
-                model: result.model,
-            },
+        return new (require('rxjs').Observable)((subscriber: any) => {
+            const reader = stream.getReader();
+            async function read() {
+                try {
+                    const { done, value } = await reader.read();
+                    if (done) {
+                        subscriber.complete();
+                        return;
+                    }
+                    const chunkStr = new TextDecoder().decode(value);
+                    subscriber.next({ data: chunkStr });
+                    read();
+                } catch (err) {
+                    subscriber.error(err);
+                }
+            }
+            read();
         });
     }
 
     async reportExplanation(id: number, message: string, userId?: number) {
-        // Find existing explanation
         const explanation = await (this.prisma as any).hadithExplanation.findFirst({
             where: { hadithId: id },
         });
@@ -94,7 +159,6 @@ export class HadithsService {
             },
         });
 
-        // Send admin notification
         const adminEmail = this.config.get('email.adminEmail');
         if (adminEmail) {
             this.emailService.sendEmail({
@@ -105,13 +169,12 @@ export class HadithsService {
                     <p><strong>Hadith ID:</strong> ${id}</p>
                     <p><strong>Explanation ID:</strong> ${explanation.id}</p>
                     <p><strong>Message:</strong> ${message}</p>
-                    <p><strong>User ID:</strong> ${userId || 'Anonymous'}</p>
                     <hr>
                     <p>Please review the explanation in the database.</p>
                 `,
                 emailType: 'admin_report',
-                apiKeyId: 1, // System-level (placeholder for system logs)
-                userId: userId || 1, // System-level
+                apiKeyId: 1,
+                userId: userId || 1,
             }).catch(err => console.error('Failed to send admin report email:', err));
         }
 
@@ -137,17 +200,14 @@ export class HadithsService {
         const skip = (page - 1) * limit;
 
         const where: any = {};
-
         if (collection) {
             where.OR = [
                 { collection: collection },
                 { collectionRef: { slug: collection } }
             ];
         }
-
         if (bookNumber) where.bookNumber = bookNumber;
         if (hadithNumber) where.hadithNumber = hadithNumber;
-
         if (grade) {
             where.translations = {
                 some: {
@@ -156,7 +216,6 @@ export class HadithsService {
                 },
             };
         }
-
         if (topic) {
             where.topics = {
                 some: {
@@ -218,98 +277,134 @@ export class HadithsService {
 
     async findRandom(params: { language?: string; collection?: string; grade?: string } = {}) {
         const { language = 'en', collection, grade } = params;
-
         const where: any = {};
         if (collection) {
-            where.OR = [
-                { collection: collection },
-                { collectionRef: { slug: collection } }
-            ];
+            where.OR = [{ collection }, { collectionRef: { slug: collection } }];
         }
         if (grade) {
-            where.translations = {
-                some: {
-                    grade,
-                    languageCode: language,
-                },
-            };
+            where.translations = { some: { grade, languageCode: language } };
         }
 
         const count = await this.prisma.hadith.count({ where });
-        if (count === 0) {
-            return null;
-        }
+        if (count === 0) return null;
 
         const skip = Math.floor(Math.random() * count);
-
         const hadith = await this.prisma.hadith.findFirst({
             where,
             skip,
             include: {
-                translations: {
-                    where: { languageCode: language },
-                },
+                translations: { where: { languageCode: language } },
                 collectionRef: true,
             },
         });
 
-        if (!hadith) {
-            throw new NotFoundException('No hadiths found');
-        }
-
+        if (!hadith) throw new NotFoundException('No hadiths found');
         return this.mapHadithResponse(hadith);
     }
 
     async findDaily(language: string = 'en') {
         const count = await this.prisma.hadith.count();
-        if (count === 0) {
-            return null;
-        }
+        if (count === 0) return null;
 
         const now = new Date();
         const start = new Date(now.getFullYear(), 0, 0);
         const diff = now.getTime() - start.getTime();
         const oneDay = 1000 * 60 * 60 * 24;
         const dayOfYear = Math.floor(diff / oneDay);
-
         const skip = dayOfYear % count;
 
         const hadith = await this.prisma.hadith.findFirst({
             skip,
             include: {
-                translations: {
-                    where: { languageCode: language },
-                },
+                translations: { where: { languageCode: language } },
                 collectionRef: true,
             },
             orderBy: { id: 'asc' },
         });
 
-        if (!hadith) {
-            return null;
-        }
-
-        return this.mapHadithResponse(hadith);
+        return hadith ? this.mapHadithResponse(hadith) : null;
     }
 
     private normalizeArabic(text: string): string {
         if (!text) return '';
         return text
-            // Remove tatweel (kashida)
             .replace(/\u0640/g, '')
-            // Remove Arabic diacritics (tashkeel/harakat)
             .replace(/[\u064B-\u065F\u0670]/g, '')
-            // Normalize alef variants to plain alef
             .replace(/[أإآ]/g, 'ا')
-            // Normalize teh marbuta
             .replace(/ة/g, 'ه')
-            // Normalize yaa variants
             .replace(/ى/g, 'ي')
-            // Remove common Arabic punctuation that might be in copied text
             .replace(/[،؛؟«»"'.]/g, ' ')
-            // Normalize whitespace
             .replace(/\s+/g, ' ')
             .trim();
+    }
+
+    async *streamSearch(query: string, language: string = 'en', collection?: string, grade?: string) {
+        const trimmed = (query || '').trim();
+        if (!trimmed) return;
+
+        const normalizedQuery = this.normalizeArabic(trimmed);
+        const isArabic = /[\u0600-\u06FF]/.test(normalizedQuery);
+        const stemmedQuery = isArabic ? ArabicStemmer.stemSentence(normalizedQuery) : normalizedQuery;
+        const likeQuery = `%${normalizedQuery}%`;
+        const likeStemmedQuery = `%${stemmedQuery}%`;
+
+        // We use a generator to yield results progressively
+        // Using common search logic but yielding chunks
+        const limit = 50;
+        
+        // Use the search_view for maximum speed with fallback to raw tables
+        let resultsRaw: any[] = [];
+        try {
+            resultsRaw = await this.prisma.$queryRawUnsafe(`
+                SELECT id, collection_name, book_number, hadith_number, arabic_text, translation_text, grade
+                FROM search_view
+                WHERE (
+                    normalized_arabic ILIKE '${likeQuery}'
+                    OR normalized_arabic ILIKE '${likeStemmedQuery}'
+                    OR translation_text ILIKE '${likeQuery}'
+                )
+                AND language_code = '${language}'
+                ${collection ? `AND (collection = '${collection}' OR collection_name = '${collection}')` : ''}
+                ${grade ? `AND grade = '${grade}'` : ''}
+                ORDER BY book_number ASC, hadith_number ASC
+                LIMIT ${limit}
+            `);
+        } catch (e) {
+            // Fallback if VIEW search_view doesn't exist yet
+            resultsRaw = await this.prisma.$queryRawUnsafe(`
+                SELECT h.id, h.collection as collection_name, h.book_number, h.hadith_number, h.arabic_text, t.text as translation_text, t.grade
+                FROM hadiths h
+                LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
+                WHERE (
+                    h.normalized_arabic ILIKE '${likeQuery}'
+                    OR h.normalized_arabic ILIKE '${likeStemmedQuery}'
+                    OR t.text ILIKE '${likeQuery}'
+                )
+                ${collection ? `AND (h.collection = '${collection}' OR h.collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
+                ${grade ? `AND t.grade = '${grade}'` : ''}
+                ORDER BY h.book_number ASC, h.hadith_number ASC
+                LIMIT ${limit}
+            `);
+        }
+
+        for (const row of resultsRaw) {
+            yield {
+                data: JSON.stringify({
+                    id: row.id,
+                    collection: row.collection_name,
+                    bookNumber: row.book_number,
+                    hadithNumber: row.hadith_number,
+                    arabicText: row.arabic_text,
+                    translation: {
+                        text: row.translation_text,
+                        grade: row.grade,
+                        languageCode: language,
+                    },
+                }),
+            };
+            // Artificial tiny delay to simulate network stream if needed, 
+            // but for real high-load SSE, we just push as fast as possible.
+        }
     }
 
     async search(query: string = '', language: string = 'en', page: number = 1, limit: number = 20, collection?: string, grade?: string) {
@@ -321,25 +416,34 @@ export class HadithsService {
             };
         }
 
-        // Route to numeric search if pure number
+        const normalizedQuery = this.normalizeArabic(trimmed);
+        const isArabic = /[\u0600-\u06FF]/.test(normalizedQuery);
+        const stemmedQuery = isArabic ? ArabicStemmer.stemSentence(normalizedQuery) : normalizedQuery;
+
+        const cacheKey = `search:v5:${normalizedQuery.substring(0, 50)}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
+        
+        // 0. L1 Cache Check (<0.1ms)
+        const l1 = this.l1Cache.get(cacheKey);
+        if (l1) return l1;
+
+        // 1. Redis Cache Check (~2ms)
+        try {
+            const cached = await this.redis.get(cacheKey);
+            if (cached) {
+                const results = JSON.parse(cached);
+                this.l1Cache.set(cacheKey, results); // Backfill L1
+                return results;
+            }
+        } catch (e) {}
+
         const numericMatch = trimmed.match(/^\d+$/);
         if (numericMatch) {
             const hadithNumber = parseInt(trimmed, 10);
-            return this.searchWithNumberPriority(hadithNumber, trimmed, language, page, limit, collection, grade);
+            const results = await this.searchWithNumberPriority(hadithNumber, trimmed, language, page, limit, collection, grade);
+            if (results.data.length > 0) await this.cacheResults(cacheKey, results);
+            return results;
         }
 
-        const isArabic = /[\u0600-\u06FF]/.test(trimmed);
-        const normalizedQuery = this.normalizeArabic(trimmed);
-
-        // Cache key for search results
-        const cacheKey = `search:v3:${normalizedQuery.substring(0, 50)}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
-        
-        try {
-            const cached = await this.redis.get(cacheKey);
-            if (cached) return JSON.parse(cached);
-        } catch (e) {}
-
-        // 1. Try Meilisearch first with normalized query
         const filter: string[] = [];
         if (collection) filter.push(`collection = "${collection}"`);
         if (grade) filter.push(`grade = "${grade}"`);
@@ -352,9 +456,7 @@ export class HadithsService {
                 offset: (page - 1) * limit,
                 limit: limit,
             });
-        } catch (e) {
-            console.error('Meilisearch error:', e);
-        }
+        } catch (e) {}
 
         if (meiliResults.hits && meiliResults.hits.length > 0) {
             const results = this.formatSearchResponse(meiliResults, page, limit);
@@ -362,53 +464,35 @@ export class HadithsService {
             return results;
         }
 
-        // 2. If Meilisearch fails or query is long, use smart Prisma fallback
-        // For long Arabic texts, we search by tokens (first 5 words) to ensure match even with diacritics
         const skip = (page - 1) * limit;
-        const tokens = normalizedQuery.split(' ').filter(word => word.length > 2);
+        const likeQuery = `%${normalizedQuery}%`;
+        const likeStemmedQuery = `%${stemmedQuery}%`;
         
-        let prismaWhere: any = {};
-        if (isArabic && tokens.length > 0) {
-            // Smart token search (Search for first 5 significant words)
-            const mainTokens = tokens.slice(0, 5);
-            prismaWhere = {
-                AND: mainTokens.map(token => ({
-                    OR: [
-                        { arabicText: { contains: token, mode: 'insensitive' } },
-                        { translations: { some: { text: { contains: token, mode: 'insensitive' }, languageCode: language } } }
-                    ]
-                }))
-            };
-        } else {
-            // Global contains search for short or non-arabic text
-            prismaWhere = {
-                OR: [
-                    { arabicText: { contains: trimmed, mode: 'insensitive' } },
-                    { translations: { some: { text: { contains: trimmed, mode: 'insensitive' }, languageCode: language } } }
-                ]
-            };
-        }
+        const resultsRaw: any[] = await this.prisma.$queryRawUnsafe(`
+            SELECT h.id, COUNT(*) OVER() as full_count
+            FROM hadiths h
+            LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
+            WHERE (
+                h.normalized_arabic ILIKE '${likeQuery}'
+                OR h.normalized_arabic ILIKE '${likeStemmedQuery}'
+                OR t.text ILIKE '${likeQuery}'
+            )
+            ${collection ? `AND (h.collection = '${collection}' OR h.collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
+            ${grade ? `AND t.grade = '${grade}'` : ''}
+            ORDER BY h.book_number ASC, h.hadith_number ASC
+            LIMIT ${limit} OFFSET ${skip}
+        `);
 
-        if (collection) {
-            prismaWhere = { ...prismaWhere, AND: [...(prismaWhere.AND || []), { OR: [{ collection }, { collectionRef: { slug: collection } }] }] };
-        }
-        if (grade) {
-            prismaWhere = { ...prismaWhere, AND: [...(prismaWhere.AND || []), { translations: { some: { grade, languageCode: language } } }] };
-        }
-
-        const [hadiths, total] = await Promise.all([
-            this.prisma.hadith.findMany({
-                where: prismaWhere,
-                skip,
-                take: limit,
-                include: {
-                    translations: { where: { languageCode: language } },
-                    collectionRef: true,
-                },
-                orderBy: [{ bookNumber: 'asc' }, { hadithNumber: 'asc' }],
-            }),
-            this.prisma.hadith.count({ where: prismaWhere }),
-        ]);
+        const total = resultsRaw.length > 0 ? Number(resultsRaw[0].full_count) : 0;
+        const ids = resultsRaw.map(r => r.id);
+        const hadiths = ids.length > 0 ? await this.prisma.hadith.findMany({
+            where: { id: { in: ids } },
+            include: {
+                translations: { where: { languageCode: language } },
+                collectionRef: true,
+            },
+            orderBy: [{ bookNumber: 'asc' }, { hadithNumber: 'asc' }],
+        }) : [];
 
         const results = {
             data: hadiths.map(h => this.mapHadithResponse(h)),
@@ -454,239 +538,76 @@ export class HadithsService {
     private async cacheResults(key: string, results: any) {
         try {
             await this.redis.set(key, JSON.stringify(results), 'EX', 3600);
+            this.l1Cache.set(key, results);
         } catch (e) {}
     }
 
-    async getSuggestions(query: string, language: string = 'en') {
-        // Meilisearch placeholder for now
-        return [];
-    }
+    async getSuggestions(query: string, language: string = 'en') { return []; }
+    async spellSuggest(query: string, language: string = 'en') { return []; }
 
-    async spellSuggest(query: string, language: string = 'en') {
-        // Meilisearch handles typo tolerance automatically
-        return [];
-    }
-
-
-
-    private async searchWithNumberPriority(
-        hadithNumber: number,
-        query: string,
-        language: string,
-        page: number,
-        limit: number,
-        collection?: string,
-        grade?: string
-    ) {
+    private async searchWithNumberPriority(hadithNumber: number, query: string, language: string, page: number, limit: number, collection?: string, grade?: string) {
         const offset = (page - 1) * limit;
+        const likeQuery = `%${query}%`;
+        const results: any[] = await this.prisma.$queryRawUnsafe(`
+            WITH scored_results AS (
+                SELECT id, 100 as score FROM hadiths WHERE hadith_number = ${hadithNumber}
+                ${collection ? `AND (collection = '${collection}' OR collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
+                UNION ALL
+                SELECT id, 50 as score FROM hadiths WHERE CAST(hadith_number AS TEXT) LIKE '${likeQuery}' AND hadith_number != ${hadithNumber}
+                ${collection ? `AND (collection = '${collection}' OR collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
+                UNION ALL
+                SELECT h.id, 30 as score FROM hadiths h
+                LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
+                WHERE (h.normalized_arabic ILIKE '${likeQuery}' OR t.text ILIKE '${likeQuery}') AND h.hadith_number != ${hadithNumber}
+                ${collection ? `AND (h.collection = '${collection}' OR h.collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
+                ${grade ? `AND t.grade = '${grade}'` : ''}
+            )
+            SELECT DISTINCT ON (id) * FROM (SELECT id, MAX(score) as max_score FROM scored_results GROUP BY id) s
+            ORDER BY max_score DESC, id ASC LIMIT ${limit} OFFSET ${offset}
+        `);
 
-        // Base where for exact match
-        const exactWhere: any = { hadithNumber: hadithNumber };
-        if (collection) {
-            exactWhere.OR = [
-                { collection: collection },
-                { collectionRef: { slug: collection } }
-            ];
-        }
-        if (grade) {
-            exactWhere.translations = { some: { grade, languageCode: language } };
-        }
+        const totalRaw: any[] = await this.prisma.$queryRawUnsafe(`
+            SELECT COUNT(DISTINCT id) as total FROM (
+                SELECT id FROM hadiths WHERE hadith_number = ${hadithNumber} UNION
+                SELECT id FROM hadiths WHERE CAST(hadith_number AS TEXT) LIKE '${likeQuery}' UNION
+                SELECT h.id FROM hadiths h
+                LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
+                WHERE (h.normalized_arabic ILIKE '${likeQuery}' OR t.text ILIKE '${likeQuery}')
+            ) s
+        `);
+        const total = Number(totalRaw[0].total);
+        const ids = results.map(r => r.id);
+        const hadiths = ids.length > 0 ? await this.prisma.hadith.findMany({
+            where: { id: { in: ids } },
+            include: { translations: { where: { languageCode: language } }, collectionRef: true }
+        }) : [];
 
-        // Get count of exact matches
-        const exactCount = await this.prisma.hadith.count({ where: exactWhere });
-
-        let exactHadiths: any[] = [];
-        let otherHadiths: any[] = [];
-
-        // Fetch Exact Matches if within range
-        if (offset < exactCount) {
-            const take = Math.min(limit, exactCount - offset);
-            exactHadiths = await this.prisma.hadith.findMany({
-                where: exactWhere,
-                skip: offset,
-                take: take,
-                include: {
-                    translations: { where: { languageCode: language } },
-                    collectionRef: true,
-                },
-                orderBy: [{ bookNumber: 'asc' }, { hadithNumber: 'asc' }]
-            });
-        }
-
-        // Calculate if we need "Other" matches
-        const spotsRemaining = limit - exactHadiths.length;
-        const otherOffset = Math.max(0, offset - exactCount);
-
-        if (spotsRemaining > 0) {
-            // Find IDs for partial number matches using Raw Query
-            // We need to find hadiths where CAST(hadithNumber as TEXT) LIKE '%query%' but NOT equal to query
-            // Prisma doesn't support casting in where easily, so we use queryRaw for ID retrieval
-
-            // Note: This raw query needs to be careful with SQL injection, but 'query' is validated as numeric digit string above.
-            // Using parameterized query is safer.
-            const likeQuery = `%${query}%`;
-
-            // We need to handle collection filtering in raw query if present.
-            // This gets complicated with raw queries. 
-            // Alternative: Fetch ALL IDs matching partial number (it shouldn't be too huge) and filter in Prisma?
-            // "1027", "270", "271"... could be many.
-
-            // Simpler approach that covers 90% cases without raw query complexity for filtering:
-            // Use prisma to search text fields, and ONLY use raw query to finding IDs for partial hadith numbers, then combine.
-
-            const partialNumberIdsRaw: { id: number }[] = await this.prisma.$queryRaw`
-                SELECT id FROM hadiths 
-                WHERE CAST(hadith_number AS TEXT) LIKE ${likeQuery}
-                AND hadith_number != ${hadithNumber}
-            `;
-            const partialNumberIds = partialNumberIdsRaw.map(r => r.id);
-
-            // Construct Other Query
-            const otherWhere: any = {
-                AND: [
-                    {
-                        OR: [
-                            { arabicText: { contains: query, mode: 'insensitive' } },
-                            { translations: { some: { text: { contains: query, mode: 'insensitive' }, languageCode: language } } },
-                            { id: { in: partialNumberIds } }
-                        ]
-                    },
-                    // Exclude exact matches we already counted (redundant if using hadithNumber != above, but good for safety)
-                    { hadithNumber: { not: hadithNumber } }
-                ]
-            };
-
-            if (collection) {
-                otherWhere.AND.push({
-                    OR: [
-                        { collection: collection },
-                        { collectionRef: { slug: collection } }
-                    ]
-                });
-            }
-            if (grade) {
-                otherWhere.AND.push({
-                    translations: { some: { grade, languageCode: language } }
-                });
-            }
-
-            otherHadiths = await this.prisma.hadith.findMany({
-                where: otherWhere,
-                skip: otherOffset,
-                take: spotsRemaining,
-                include: {
-                    translations: { where: { languageCode: language } },
-                    collectionRef: true,
-                },
-                // Order by relevance is hard without search engine. Default ordering.
-                orderBy: [{ bookNumber: 'asc' }, { hadithNumber: 'asc' }]
-            });
-        }
-
-        // Total Count for Pagination
-        // We need total count of "Others" to add to exactCount
-        // Re-construct the 'otherWhere' purely for counting (it's the same object)
-        // Re-calculating the partial IDs might be needed if we need total count distinct from the fetch logic
-        // But we already have the logic above.
-        // Wait, to get TOTAL count efficiently:
-
-        const likeQueryForCount = `%${query}%`;
-        const partialIdsForCountRaw: { id: number }[] = await this.prisma.$queryRaw`
-             SELECT id FROM hadiths 
-             WHERE CAST(hadith_number AS TEXT) LIKE ${likeQueryForCount}
-             AND hadith_number != ${hadithNumber}
-         `;
-        const partialNumberIdsCount = partialIdsForCountRaw.map(r => r.id);
-
-        const otherWhereCount: any = {
-            AND: [
-                {
-                    OR: [
-                        { arabicText: { contains: query, mode: 'insensitive' } },
-                        { translations: { some: { text: { contains: query, mode: 'insensitive' }, languageCode: language } } },
-                        { id: { in: partialNumberIdsCount } }
-                    ]
-                },
-                { hadithNumber: { not: hadithNumber } }
-            ]
-        };
-        if (collection) {
-            otherWhereCount.AND.push({
-                OR: [
-                    { collection: collection },
-                    { collectionRef: { slug: collection } }
-                ]
-            });
-        }
-        if (grade) {
-            otherWhereCount.AND.push({
-                translations: { some: { grade, languageCode: language } }
-            });
-        }
-
-        const otherCount = await this.prisma.hadith.count({ where: otherWhereCount });
-        const total = exactCount + otherCount;
-        const totalPages = Math.ceil(total / limit);
-
+        const ordered = ids.map(id => hadiths.find(h => h.id === id)).filter(Boolean);
         return {
-            data: [...exactHadiths, ...otherHadiths].map(h => this.mapHadithResponse(h)),
-            pagination: {
-                page,
-                limit,
-                total,
-                totalPages,
-                hasNext: page < totalPages,
-                hasPrev: page > 1,
-            },
+            data: ordered.map(h => this.mapHadithResponse(h as any)),
+            pagination: { page, limit, total, totalPages: Math.ceil(total / limit), hasNext: page < Math.ceil(total / limit), hasPrev: page > 1 }
         };
     }
 
-  /**
-   * Performs semantic search using vector embeddings.
-   * Finds hadiths that are semantically similar to the search query.
-   */
-  async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
-    // 1. Generate embedding for the query
-    const queryVector = await this.aiService.generateEmbedding(query);
-    const vectorString = `[${queryVector.join(',')}]`;
+    async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
+        const queryVector = await this.aiService.generateEmbedding(query);
+        const vectorString = `[${queryVector.join(',')}]`;
+        const results = await this.prisma.$queryRawUnsafe<any[]>(`
+            SELECT id, 1 - (embedding <=> '$1'::vector) as similarity
+            FROM hadiths WHERE embedding IS NOT NULL ORDER BY embedding <=> '$1'::vector LIMIT $2
+        `.replace(/\$1/g, vectorString).replace(/\$2/g, limit.toString()));
 
-    // 2. Search using pgvector cosine distance (<=>)
-    // We order by distance ascending (smaller distance = more similar)
-    const results = await this.prisma.$queryRawUnsafe<any[]>(`
-      SELECT id, 1 - (embedding <=> $1::vector) as similarity
-      FROM hadiths
-      WHERE embedding IS NOT NULL
-      ORDER BY embedding <=> $1::vector
-      LIMIT $2
-    `, vectorString, limit);
+        if (results.length === 0) return { data: [], total: 0 };
+        const ids = results.map(r => r.id);
+        const hadiths = await this.prisma.hadith.findMany({
+            where: { id: { in: ids } },
+            include: { translations: { where: { languageCode: language } }, collectionRef: true }
+        });
 
-    if (results.length === 0) {
-      return { data: [], total: 0 };
+        const sorted = ids.map(id => hadiths.find(h => h.id === id)).filter((h): h is any => !!h);
+        return {
+            data: sorted.map(h => ({ ...this.mapHadithResponse(h), similarity: results.find(r => r.id === h.id)?.similarity })),
+            total: results.length
+        };
     }
-
-    const ids = results.map(r => r.id);
-
-    // 3. Fetch full hadith objects
-    const hadiths = await this.prisma.hadith.findMany({
-      where: { id: { in: ids } },
-      include: {
-        translations: { where: { languageCode: language } },
-        collectionRef: true,
-      }
-    });
-
-    // 4. Sort hadiths back to match similarity ranking
-    const sortedHadiths = ids
-      .map(id => hadiths.find(h => h.id === id))
-      .filter((h): h is NonNullable<typeof h> => !!h);
-
-    return {
-      data: sortedHadiths.map(h => ({
-        ...this.mapHadithResponse(h),
-        similarity: results.find(r => r.id === h.id)?.similarity
-      })),
-      total: results.length
-    };
-  }
 }
-

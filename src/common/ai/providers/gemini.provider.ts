@@ -1,23 +1,62 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AiProvider, ExplanationResult } from '../interfaces/ai-provider.interface';
 
 @Injectable()
 export class GeminiProvider implements AiProvider {
-  private genAI: GoogleGenerativeAI;
-  private vectorAI: GoogleGenerativeAI;
+  private readonly logger = new Logger(GeminiProvider.name);
+  private genAIs: GoogleGenerativeAI[] = [];
+  private vectorAIs: GoogleGenerativeAI[] = [];
+  private currentGenIndex = 0;
+  private currentVectorIndex = 0;
 
   constructor(private configService: ConfigService) {
-    const mainKey = this.configService.get<string>('GEMINI_API_KEY') || '';
-    const vectorKey = this.configService.get<string>('VECTOR_API_KEY') || mainKey;
+    const mainKeys = (this.configService.get<string>('GEMINI_API_KEY') || '').split(',').map(k => k.trim()).filter(k => k);
+    const vectorKeysRaw = this.configService.get<string>('VECTOR_API_KEY') || '';
+    const vectorKeys = vectorKeysRaw ? vectorKeysRaw.split(',').map(k => k.trim()).filter(k => k) : mainKeys;
 
-    this.genAI = new GoogleGenerativeAI(mainKey);
-    this.vectorAI = new GoogleGenerativeAI(vectorKey);
+    this.genAIs = mainKeys.length > 0 ? mainKeys.map(key => new GoogleGenerativeAI(key)) : [new GoogleGenerativeAI('')];
+    this.vectorAIs = vectorKeys.length > 0 ? vectorKeys.map(key => new GoogleGenerativeAI(key)) : [new GoogleGenerativeAI('')];
   }
 
   getName(): string {
     return 'gemini';
+  }
+
+  private async runWithRotation<T>(
+    instances: GoogleGenerativeAI[],
+    indexRef: { index: number },
+    operation: (instance: GoogleGenerativeAI) => Promise<T>
+  ): Promise<T> {
+    const startIdx = indexRef.index;
+    let lastError: any;
+
+    for (let i = 0; i < instances.length; i++) {
+      const currentIdx = (startIdx + i) % instances.length;
+      const instance = instances[currentIdx];
+      
+      try {
+        const result = await operation(instance);
+        indexRef.index = currentIdx; // Persist successful index for next time
+        return result;
+      } catch (error: any) {
+        lastError = error;
+        // Check for 429 / quota or 404 / not found errors to rotate
+        const errMsg = error.message?.toLowerCase() || '';
+        if (
+          errMsg.includes('429') || 
+          errMsg.includes('quota') || 
+          errMsg.includes('404') || 
+          errMsg.includes('not found')
+        ) {
+          this.logger.warn(`Gemini key index ${currentIdx} hit an error (${errMsg.substring(0, 50)}...). Rotating to next key...`);
+          continue;
+        }
+        throw error; // Immediate fail for other errors
+      }
+    }
+    throw lastError; // All keys exhausted
   }
 
   async generateExplanation(
@@ -25,34 +64,63 @@ export class GeminiProvider implements AiProvider {
     collection: string,
     language: string,
   ): Promise<ExplanationResult> {
-    const modelName = 'gemini-2.5-flash';
-    const model = this.genAI.getGenerativeModel({ 
+    const result = await this.runWithRotation(this.genAIs, { index: this.currentGenIndex }, async (instance) => {
+      const modelName = 'gemini-3.1-flash-lite';
+      const model = instance.getGenerativeModel({ 
+          model: modelName,
+          generationConfig: { responseMimeType: 'application/json' }
+      });
+
+      const prompt = `${this.getSystemPrompt(language)}\n\nHadith from ${collection}:\n${hadithText}`;
+      const genResult = await model.generateContent(prompt);
+      const response = await genResult.response;
+      const content = JSON.parse(response.text() || '{}');
+
+      return {
+        short_meaning: content.short_meaning || '',
+        long_meaning: content.long_meaning || '',
+        context: content.context || '',
+        legal_note: content.legal_note || '',
+        benefit: content.benefit || '',
+        certainty_level: content.certainty_level || 'medium',
+        notes: content.notes || '',
         model: modelName,
-        generationConfig: { responseMimeType: 'application/json' }
+        provider: this.getName(),
+      };
     });
 
-    const prompt = `${this.getSystemPrompt(language)}\n\nHadith from ${collection}:\n${hadithText}`;
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const content = JSON.parse(response.text() || '{}');
+    this.currentGenIndex = (this.currentGenIndex + 1) % this.genAIs.length;
+    return result;
+  }
 
-    return {
-      short_meaning: content.short_meaning || '',
-      long_meaning: content.long_meaning || '',
-      context: content.context || '',
-      legal_note: content.legal_note || '',
-      benefit: content.benefit || '',
-      certainty_level: content.certainty_level || 'medium',
-      notes: content.notes || '',
-      model: modelName,
-      provider: this.getName(),
-    };
+  async streamExplanation(
+    hadithText: string,
+    collection: string,
+    language: string,
+  ): Promise<ReadableStream<any>> {
+      const instance = this.genAIs[this.currentGenIndex];
+      const modelName = 'gemini-3.1-flash-lite';
+      const model = instance.getGenerativeModel({ 
+          model: modelName,
+          generationConfig: { responseMimeType: 'application/json' }
+      });
+
+      const prompt = `${this.getSystemPrompt(language)}\n\nHadith from ${collection}:\n${hadithText}`;
+      const streamResult = await model.generateContentStream(prompt);
+      
+      return streamResult.stream as unknown as ReadableStream<any>;
   }
 
   async generateEmbedding(text: string): Promise<number[]> {
-    const model = this.vectorAI.getGenerativeModel({ model: 'text-embedding-004' });
-    const result = await model.embedContent(text);
-    return result.embedding.values;
+    const result = await this.runWithRotation(this.vectorAIs, { index: this.currentVectorIndex }, async (instance) => {
+      // Switched to gemini-embedding-001 based on diagnostic results
+      const model = instance.getGenerativeModel({ model: 'models/gemini-embedding-001' });
+      const embedResult = await model.embedContent(text);
+      return embedResult.embedding.values.slice(0, 768);
+    });
+
+    this.currentVectorIndex = (this.currentVectorIndex + 1) % this.vectorAIs.length;
+    return result;
   }
 
   private getSystemPrompt(language: string): string {

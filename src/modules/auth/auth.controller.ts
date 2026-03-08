@@ -1,4 +1,5 @@
 import { Body, Controller, HttpCode, HttpStatus, Post, UseGuards, Res, Req, Get, Patch, Query, Param, UnauthorizedException } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import { AuthService } from './auth.service';
 import { RegisterDto, LoginDto, UpdateProfileDto, ClaimTelegramDto, RequestEmailChangeDto, VerifyEmailChangeDto } from './dto/auth.dto';
 import { Response, Request } from 'express';
@@ -30,6 +31,7 @@ export class AuthController {
     }
 
     @Post('login')
+    @Throttle({ default: { limit: 5, ttl: 60000 } })
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Login user' })
     async login(@Body() dto: LoginDto, @Res({ passthrough: true }) res: Response) {
@@ -135,8 +137,9 @@ export class AuthController {
         const secretHeader = req.headers['x-internal-key'];
         const secret = Array.isArray(secretHeader) ? secretHeader[0] : secretHeader;
         
-        if (secret !== process.env.INTERNAL_BOT_KEY) {
-            console.warn(`[Auth] Internal Sync Failed: Key Mismatch. Received: ${secret ? secret.substring(0, 5) + '...' : 'NONE'}, Expected: ${process.env.INTERNAL_BOT_KEY ? 'DEFINED' : 'UNDEFINED'}`);
+        const botKey = process.env.INTERNAL_BOT_KEY;
+        if (!botKey || secret !== botKey) {
+            console.warn(`[Auth] Internal Sync Failed: Key Mismatch or Missing. Received: ${secret ? secret.substring(0, 5) + '...' : 'NONE'}`);
             throw new UnauthorizedException('Invalid internal key');
         }
         
@@ -149,6 +152,7 @@ export class AuthController {
 
     @Public()
     @Post('verify-email')
+    @Throttle({ default: { limit: 5, ttl: 60000 } })
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Verify email with code' })
     async verifyEmail(
@@ -169,6 +173,7 @@ export class AuthController {
 
     @Public()
     @Post('resend-code')
+    @Throttle({ default: { limit: 5, ttl: 60000 } })
     @HttpCode(HttpStatus.OK)
     @ApiOperation({ summary: 'Resend verification code' })
     async resendCode(

@@ -5,6 +5,15 @@ import * as cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 
 async function bootstrap() {
+    // 0. ENV Validation (Fail-fast if critical secrets are missing)
+    const requiredEnv = ['JWT_SECRET', 'INTERNAL_BOT_KEY', 'MEILISEARCH_API_KEY'];
+    for (const key of requiredEnv) {
+        if (!process.env[key]) {
+            console.error(`❌ CRITICAL STARTUP ERROR: Missing environment variable: ${key}`);
+            process.exit(1);
+        }
+    }
+
     const app = await NestFactory.create(AppModule)
 
     // 1. Manual CORS/OPTIONS handling for early response (Bypasses complexity)

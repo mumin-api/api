@@ -329,6 +329,37 @@ curl -H "Authorization: Bearer YOUR_API_KEY" \\
   }
 
   /**
+   * Send security alert
+   */
+  async sendSecurityAlert(email: string, message: string): Promise<void> {
+    const html = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #d9534f;">⚠️ Security Alert</h2>
+        <p>Security notice for your Mumin account:</p>
+        <div style="background: #f2dede; border: 1px solid #ebccd1; color: #a94442; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <strong>${message}</strong>
+        </div>
+        <p>If you did not authorize this action, please secure your account immediately or contact support.</p>
+      </div>
+    `;
+
+    // Attempt to find user for logging
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+      select: { id: true },
+    });
+
+    await this.sendEmail({
+      to: email,
+      subject: '⚠️ Security Alert - Mumin Hadith API',
+      html,
+      emailType: 'security_alert',
+      apiKeyId: 0,
+      userId: user?.id || 0,
+    });
+  }
+
+  /**
    * Send verification code email
    */
   async sendVerificationCode(email: string, code: string): Promise<void> {

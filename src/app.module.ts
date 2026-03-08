@@ -49,6 +49,8 @@ import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 import { TimeoutInterceptor } from './common/interceptors/timeout.interceptor';
 import { RequestTrackingInterceptor } from './common/interceptors/request-tracking.interceptor';
+import { ZstdCompressionInterceptor } from './common/interceptors/zstd-compression.interceptor';
+import { MessagePackInterceptor } from './common/interceptors/message-pack.interceptor';
 
 // Utilities
 import { GeolocationUtil } from './common/utils/geolocation.util';
@@ -126,6 +128,14 @@ import { GeolocationUtil } from './common/utils/geolocation.util';
         {
             provide: APP_INTERCEPTOR,
             useClass: RequestTrackingInterceptor,
+        },
+        {
+            provide: APP_INTERCEPTOR,
+            useClass: ZstdCompressionInterceptor,
+        },
+        {
+            provide: APP_INTERCEPTOR,
+            useClass: MessagePackInterceptor,
         },
 
         // Utilities

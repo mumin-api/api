@@ -47,3 +47,6 @@ lerna-debug.log*
 # Temp files
 *.tmp
 *.temp
+
+# Local sandbox for diagnostic/one-off scripts
+scripts/sandbox/

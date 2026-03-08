@@ -1,3 +1,4 @@
+import * as crypto from 'crypto';
 import { createHash } from 'crypto';
 
 /**
@@ -19,12 +20,9 @@ export function hashApiKey(apiKey: string): string {
  * Generate random API key
  */
 export function generateApiKey(): string {
-    const randomPart = createHash('sha256')
-        .update(Date.now().toString() + Math.random().toString())
-        .digest('hex')
-        .substring(0, 32);
-
-    return `sk_mumin_${randomPart}`;
+    // 32 bytes = 64 hex chars. Total length = 9 + 64 = 73
+    const random = crypto.randomBytes(32).toString('hex');
+    return `sk_mumin_${random}`;
 }
 
 /**

@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, UseGuards, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards, ParseIntPipe, Sse } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { HadithsService } from './hadiths.service';
 import { GetHadithsDto } from './dto/get-hadiths.dto';
@@ -102,15 +102,43 @@ export class HadithsController {
         return this.hadithsService.findOne(id, language);
     }
 
-    @Get(':id/explain')
-    @ApiOperation({ summary: 'Get or generate AI explanation for a hadith' })
+    @Sse(':id/explain-stream')
+    @ApiOperation({ summary: 'Stream AI explanation for a hadith (SSE)' })
     @ApiQuery({ name: 'language', required: false, example: 'ru' })
-    async explain(
+    explainStream(
         @Param('id', ParseIntPipe) id: number,
         @Query('language') language: string = 'ru',
     ) {
-        return this.hadithsService.getExplanation(id, language);
+        return this.hadithsService.streamExplanation(id, language);
     }
+
+    @Sse('search-stream')
+    @ApiOperation({ summary: 'Progressive search returns hadiths as they are found (SSE)' })
+    @ApiQuery({ name: 'q', required: true })
+    @ApiQuery({ name: 'language', required: false, example: 'ru' })
+    @ApiQuery({ name: 'collection', required: false })
+    @ApiQuery({ name: 'grade', required: false })
+    searchStream(
+        @Query('q') q: string,
+        @Query('language') language: string = 'ru',
+        @Query('collection') col?: string,
+        @Query('grade') grade?: string,
+    ) {
+        return new (require('rxjs').Observable)((subscriber: any) => {
+            (async () => {
+                try {
+                    for await (const result of this.hadithsService.streamSearch(q, language, col, grade)) {
+                        subscriber.next(result);
+                    }
+                    subscriber.complete();
+                } catch (err) {
+                    subscriber.error(err);
+                }
+            })();
+        });
+    }
+
+    @Get(':id/explain')
 
     @Get(':id/explain/report') // Using GET/POST interchangeably for simplicity if needed, but following REST
     @ApiOperation({ summary: 'Report an error in AI explanation' })

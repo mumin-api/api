@@ -6,6 +6,7 @@ generator client {
 datasource db {
   provider   = "postgresql"
   url        = env("DATABASE_URL")
+  directUrl  = env("DIRECT_URL")
   extensions = [vector]
 }
 
@@ -33,12 +34,13 @@ model Hadith {
   arabicNarrator String?             @map("arabic_narrator")
   metadata       Json?
   createdAt      DateTime            @default(now()) @map("created_at")
-  updatedAt      DateTime            @updatedAt @map("updated_at")
-  explanations   HadithExplanation[]
-  embedding      Unsupported("vector(768)")?
-  topics         HadithTopic[]
-  collectionRef  Collection?         @relation(fields: [collectionId], references: [id])
-  translations   Translation[]
+  updatedAt        DateTime            @updatedAt @map("updated_at")
+  explanations     HadithExplanation[]
+  embedding        Unsupported("vector(768)")?
+  normalizedArabic String?             @map("normalized_arabic") @db.Text
+  topics           HadithTopic[]
+  collectionRef    Collection?         @relation(fields: [collectionId], references: [id])
+  translations     Translation[]
 
   @@unique([collection, bookNumber, hadithNumber])
   @@index([collection])
