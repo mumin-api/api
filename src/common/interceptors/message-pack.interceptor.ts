@@ -22,19 +22,18 @@ export class MessagePackInterceptor implements NestInterceptor {
 
     return next.handle().pipe(
       map((data) => {
-        if (!data) return data;
+        if (!data || response.headersSent) return data;
 
         // Skip binary serialization for streams (SSE)
-        if (request.url.includes('stream')) {
+        if (request.url.includes('stream') || response.getHeader('Content-Type') === 'text/event-stream') {
           return data;
         }
 
         const packed = pack(data);
         response.setHeader('Content-Type', 'application/x-msgpack');
         
-        // We need to send as buffer to avoid stringification
         response.send(Buffer.from(packed));
-        return undefined; // Handled manually
+        return undefined;
       }),
     );
   }

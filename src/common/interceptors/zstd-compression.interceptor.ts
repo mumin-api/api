@@ -45,10 +45,11 @@ export class ZstdCompressionInterceptor implements NestInterceptor {
 
     return next.handle().pipe(
       map((data) => {
-        if (!data) return data;
+        if (!data || response.headersSent) return data;
 
         // Don't compress streams (SSE handles its own chunking)
-        if (request.url.includes('explain-stream')) {
+        // Check for common stream paths or SSE content type
+        if (request.url.includes('stream') || response.getHeader('Content-Type') === 'text/event-stream') {
             return data;
         }
 
@@ -62,11 +63,8 @@ export class ZstdCompressionInterceptor implements NestInterceptor {
           response.header('Content-Encoding', 'zstd');
           response.header('Content-Type', 'application/json');
           
-          // Return the raw compressed buffer
-          // Note: NestJS might try to JSON.stringify this again if we're not careful.
-          // To send raw binary, we might need to use response.send() directly.
           response.send(Buffer.from(compressed));
-          return undefined; // Handled manually
+          return undefined; 
         } catch (error) {
           this.logger.error('Zstd compression failed', error);
           return data;

@@ -14,14 +14,22 @@ export class TransformInterceptor<T> implements NestInterceptor<T, ApiResponse<T
         const request = context.switchToHttp().getRequest();
 
         return next.handle().pipe(
-            map((data) => ({
-                success: true,
-                data,
-                meta: {
-                    requestId: request['id'],
-                    timestamp: new Date().toISOString(),
-                },
-            })),
+            map((data) => {
+                // If response was already handled by other interceptors (like Zstd or MessagePack)
+                // or via SSE, skip transformation
+                if (context.switchToHttp().getResponse().headersSent) {
+                    return data;
+                }
+
+                return {
+                    success: true,
+                    data,
+                    meta: {
+                        requestId: request['id'],
+                        timestamp: new Date().toISOString(),
+                    },
+                };
+            }),
         );
     }
 }

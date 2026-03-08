@@ -47,9 +47,9 @@ export class ApiKeyGuard implements CanActivate {
 
         const authHeader = request.headers.authorization;
         const xApiKey = request.headers['x-api-key'];
+        const queryApiKey = request.query.apiKey;
 
-        this.logger.log(`Auth Debug: AuthHeader=${authHeader ? 'YES' : 'NO'}, X-API-Key=${xApiKey ? 'YES' : 'NO'}`);
-        if (xApiKey) this.logger.log(`Received X-API-Key: ${xApiKey}`);
+        this.logger.debug(`Auth Check - Header: ${!!authHeader}, X-API-Key: ${!!xApiKey}, Query: ${!!queryApiKey}`);
 
         let apiKey: string;
 
@@ -57,13 +57,15 @@ export class ApiKeyGuard implements CanActivate {
             apiKey = authHeader.substring(7).trim();
         } else if (xApiKey) {
             apiKey = (Array.isArray(xApiKey) ? xApiKey[0] : xApiKey).trim();
+        } else if (queryApiKey) {
+            apiKey = (Array.isArray(queryApiKey) ? queryApiKey[0] : queryApiKey).trim();
         } else {
-            this.logger.warn('Missing both Authorization and X-API-Key headers');
+            this.logger.warn(`Missing API key in request to ${request.url}`);
             throw new UnauthorizedException({
                 statusCode: 401,
                 error: 'MISSING_API_KEY',
                 message: 'API Key required',
-                details: 'Use header: "Authorization: Bearer <KEY>" or "X-API-Key: <KEY>"',
+                details: 'Use: Authorization: Bearer <KEY>, X-API-Key: <KEY>, or query param ?apiKey=<KEY>',
             });
         }
 
