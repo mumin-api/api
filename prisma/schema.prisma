@@ -7,7 +7,7 @@ datasource db {
   provider   = "postgresql"
   url        = env("DATABASE_URL")
   directUrl  = env("DIRECT_URL")
-  extensions = [vector]
+  extensions = [uuid_ossp(map: "uuid-ossp", schema: "extensions"), vector]
 }
 
 model Collection {
@@ -25,27 +25,29 @@ model Collection {
 }
 
 model Hadith {
-  id             Int                 @id @default(autoincrement())
-  collection     String              @db.VarChar(50)
-  collectionId   Int?                @map("collection_id")
-  bookNumber     Int                 @map("book_number")
-  hadithNumber   Int                 @map("hadith_number")
-  arabicText     String              @map("arabic_text")
-  arabicNarrator String?             @map("arabic_narrator")
-  metadata       Json?
-  createdAt      DateTime            @default(now()) @map("created_at")
-  updatedAt        DateTime            @updatedAt @map("updated_at")
+  id               Int                    @id @default(autoincrement())
+  collection       String                 @db.VarChar(50)
+  collectionId     Int?                   @map("collection_id")
+  bookNumber       Int                    @map("book_number")
+  hadithNumber     Int                    @map("hadith_number")
+  arabicText       String                 @map("arabic_text")
+  arabicNarrator   String?                @map("arabic_narrator")
+  metadata         Json?
+  createdAt        DateTime               @default(now()) @map("created_at")
+  updatedAt        DateTime               @updatedAt @map("updated_at")
+  embedding        Unsupported("vector")?
+  normalizedArabic String?                @map("normalized_arabic")
   explanations     HadithExplanation[]
-  embedding        Unsupported("vector(768)")?
-  normalizedArabic String?             @map("normalized_arabic") @db.Text
   topics           HadithTopic[]
-  collectionRef    Collection?         @relation(fields: [collectionId], references: [id])
+  collectionRef    Collection?            @relation(fields: [collectionId], references: [id])
   translations     Translation[]
 
   @@unique([collection, bookNumber, hadithNumber])
   @@index([collection])
   @@index([collectionId])
   @@index([bookNumber])
+  @@index([embedding], map: "hadith_embedding_hnsw")
+  @@index([normalizedArabic(ops: raw("gin_trgm_ops"))], map: "hadiths_normalized_trgm_idx", type: Gin)
   @@map("hadiths")
 }
 
@@ -485,7 +487,9 @@ model telegram_users {
   created_at           DateTime         @default(now())
   last_active_at       DateTime         @default(now())
   total_commands       Int              @default(0)
+  forum_mode           Boolean          @default(false)
   favorites            favorites[]
+  forum_topics         forum_topics[]
   search_history       search_history[]
 
   @@index([is_subscribed])
@@ -532,4 +536,15 @@ model ExplanationFeedback {
   @@index([explanationId])
   @@index([status])
   @@map("explanation_feedback")
+}
+
+model forum_topics {
+  id             Int            @id @default(autoincrement())
+  user_id        Int
+  type           String         @db.VarChar(50)
+  thread_id      Int
+  is_muted       Boolean        @default(false)
+  telegram_users telegram_users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@unique([user_id, type])
 }
