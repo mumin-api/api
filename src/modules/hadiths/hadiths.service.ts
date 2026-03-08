@@ -352,49 +352,63 @@ export class HadithsService {
         if (!trimmed) return;
 
         const normalizedQuery = this.normalizeArabic(trimmed);
+        const limit = 50;
+
+        // 1. Try Meilisearch first (Ultra Fast, ~10-50ms)
+        try {
+            const filter: string[] = [];
+            if (collection) filter.push(`collection = "${collection}"`);
+            if (grade) filter.push(`grade = "${grade}"`);
+            if (language) filter.push(`languageCode = "${language}"`);
+
+            const meiliResults = await this.meilisearch.search(normalizedQuery, {
+                filter: filter.length > 0 ? filter.join(' AND ') : undefined,
+                limit: limit,
+            });
+
+            if (meiliResults.hits && meiliResults.hits.length > 0) {
+                for (const hit of meiliResults.hits) {
+                    yield {
+                        data: JSON.stringify({
+                            id: hit.id,
+                            collection: hit.collection,
+                            bookNumber: hit.bookNumber,
+                            hadithNumber: hit.hadithNumber,
+                            arabicText: hit.arabicText,
+                            translation: {
+                                text: hit.translations ? (hit.translations[0]?.text || '') : (hit.text || ''),
+                                grade: hit.grade,
+                                languageCode: language,
+                            },
+                        }),
+                    };
+                }
+                return; // Meili results are superior and faster
+            }
+        } catch (e) {
+            this.logger.warn(`Meilisearch stream fallback: ${e.message}`);
+        }
+
+        // 2. Optimized SQL Fallback (Fast with GIN indexes, ~100-300ms)
         const isArabic = /[\u0600-\u06FF]/.test(normalizedQuery);
         const stemmedQuery = isArabic ? ArabicStemmer.stemSentence(normalizedQuery) : normalizedQuery;
         const likeQuery = `%${normalizedQuery}%`;
         const likeStemmedQuery = `%${stemmedQuery}%`;
 
-        // We use a generator to yield results progressively
-        // Using common search logic but yielding chunks
-        const limit = 50;
-        
-        // Use the search_view for maximum speed with fallback to raw tables
-        let resultsRaw: any[] = [];
-        try {
-            resultsRaw = await this.prisma.$queryRawUnsafe(`
-                SELECT id, collection_name, book_number, hadith_number, arabic_text, translation_text, grade
-                FROM search_view
-                WHERE (
-                    normalized_arabic ILIKE '${likeQuery}'
-                    OR normalized_arabic ILIKE '${likeStemmedQuery}'
-                    OR translation_text ILIKE '${likeQuery}'
-                )
-                AND language_code = '${language}'
-                ${collection ? `AND (collection = '${collection}' OR collection_name = '${collection}')` : ''}
-                ${grade ? `AND grade = '${grade}'` : ''}
-                ORDER BY book_number ASC, hadith_number ASC
-                LIMIT ${limit}
-            `);
-        } catch (e) {
-            // Fallback if VIEW search_view doesn't exist yet
-            resultsRaw = await this.prisma.$queryRawUnsafe(`
-                SELECT h.id, h.collection as collection_name, h.book_number, h.hadith_number, h.arabic_text, t.text as translation_text, t.grade
-                FROM hadiths h
-                LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
-                WHERE (
-                    h.normalized_arabic ILIKE '${likeQuery}'
-                    OR h.normalized_arabic ILIKE '${likeStemmedQuery}'
-                    OR t.text ILIKE '${likeQuery}'
-                )
-                ${collection ? `AND (h.collection = '${collection}' OR h.collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
-                ${grade ? `AND t.grade = '${grade}'` : ''}
-                ORDER BY h.book_number ASC, h.hadith_number ASC
-                LIMIT ${limit}
-            `);
-        }
+        const resultsRaw: any[] = await this.prisma.$queryRawUnsafe(`
+            SELECT id, collection_name, book_number, hadith_number, arabic_text, translation_text, grade
+            FROM search_view
+            WHERE (
+                normalized_arabic ILIKE '${likeQuery}'
+                OR normalized_arabic ILIKE '${likeStemmedQuery}'
+                OR translation_text ILIKE '${likeQuery}'
+            )
+            AND language_code = '${language}'
+            ${collection ? `AND (collection_slug = '${collection}' OR collection_name = '${collection}')` : ''}
+            ${grade ? `AND grade = '${grade}'` : ''}
+            ORDER BY book_number ASC, hadith_number ASC
+            LIMIT ${limit}
+        `);
 
         for (const row of resultsRaw) {
             yield {
@@ -411,8 +425,6 @@ export class HadithsService {
                     },
                 }),
             };
-            // Artificial tiny delay to simulate network stream if needed, 
-            // but for real high-load SSE, we just push as fast as possible.
         }
     }
 
