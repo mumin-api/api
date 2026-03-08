@@ -108,7 +108,21 @@ export class GeminiProvider implements AiProvider {
       const prompt = `${this.getSystemPrompt(language)}\n\nHadith from ${collection}:\n${hadithText}`;
       const streamResult = await model.generateContentStream(prompt);
       
-      return streamResult.stream as unknown as ReadableStream<any>;
+      return new ReadableStream({
+        async start(controller) {
+          try {
+            for await (const chunk of streamResult.stream) {
+              const text = chunk.text();
+              if (text) {
+                controller.enqueue(new TextEncoder().encode(text));
+              }
+            }
+            controller.close();
+          } catch (e) {
+            controller.error(e);
+          }
+        }
+      });
   }
 
   async generateEmbedding(text: string): Promise<number[]> {
