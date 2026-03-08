@@ -65,7 +65,7 @@ export class GeminiProvider implements AiProvider {
     language: string,
   ): Promise<ExplanationResult> {
     const result = await this.runWithRotation(this.genAIs, { index: this.currentGenIndex }, async (instance) => {
-      const modelName = 'gemini-3.1-flash-lite';
+      const modelName = 'gemini-3.1-flash-lite-preview';
       const model = instance.getGenerativeModel({ 
           model: modelName,
           generationConfig: { responseMimeType: 'application/json' }
