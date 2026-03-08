@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException, Inject, Logger } from '@nestjs/common';
+import { from, Observable } from 'rxjs';
 import { PrismaService } from '@/prisma/prisma.service';
 import { GetHadithsDto } from './dto/get-hadiths.dto';
 import Redis from 'ioredis';
@@ -102,8 +103,9 @@ export class HadithsService {
         });
 
         if (cache) {
-            return new (require('rxjs').Observable)((subscriber: any) => {
+            return new Observable<any>((subscriber) => {
                 subscriber.next({ data: JSON.stringify(cache) });
+                subscriber.next({ data: '[DONE]' });
                 subscriber.complete();
             });
         }
@@ -124,31 +126,38 @@ export class HadithsService {
             language,
         );
 
-        return new (require('rxjs').Observable)((subscriber: any) => {
+        return new Observable<any>((subscriber) => {
             const reader = stream.getReader();
             let accumulated = '';
+            let isCancelled = false;
 
-            async function read() {
+            const read = async () => {
                 try {
                     const { done, value } = await reader.read();
+                    if (isCancelled) return;
                     if (done) {
+                        subscriber.next({ data: '[DONE]' });
                         subscriber.complete();
                         return;
                     }
                     const chunkStr = new TextDecoder().decode(value);
                     accumulated += chunkStr;
 
-                    // Repair the accumulated partial JSON and emit it
                     const repaired = PartialJsonHelper.repair(accumulated);
-                    // Wrap the flat structure from Gemini into a 'content' property to match frontend/DB
                     subscriber.next({ data: JSON.stringify({ content: repaired }) });
                     
                     read();
                 } catch (err) {
-                    subscriber.error(err);
+                    if (!isCancelled) subscriber.error(err);
                 }
-            }
+            };
+            
             read();
+
+            return () => {
+                isCancelled = true;
+                reader.cancel().catch(() => {});
+            };
         });
     }
 
@@ -427,6 +436,8 @@ export class HadithsService {
                 }),
             };
         }
+
+        yield { data: '[DONE]' };
     }
 
     async search(query: string = '', language: string = 'en', page: number = 1, limit: number = 20, collection?: string, grade?: string) {

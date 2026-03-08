@@ -1,4 +1,6 @@
 import { Controller, Get, Param, Query, UseGuards, ParseIntPipe, Sse } from '@nestjs/common';
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { HadithsService } from './hadiths.service';
 import { GetHadithsDto } from './dto/get-hadiths.dto';
@@ -101,21 +103,10 @@ export class HadithsController {
     searchStream(
         @Query('q') q: string,
         @Query('language') language: string = 'ru',
-        @Query('collection') col?: string,
+        @Query('col') col?: string,
         @Query('grade') grade?: string,
-    ) {
-        return new (require('rxjs').Observable)((subscriber: any) => {
-            (async () => {
-                try {
-                    for await (const result of this.hadithsService.streamSearch(q, language, col, grade)) {
-                        subscriber.next(result);
-                    }
-                    subscriber.complete();
-                } catch (err) {
-                    subscriber.error(err);
-                }
-            })();
-        });
+    ): Observable<any> {
+        return from(this.hadithsService.streamSearch(q, language, col, grade));
     }
 
     @Sse(':id/explain-stream')
