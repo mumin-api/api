@@ -112,7 +112,7 @@ export class AiService {
         where: { key: 'active_vector_provider' },
       });
       this.cachedVectorProvider = setting?.value || 'gemini';
-      return this.cachedVectorProvider;
+      return this.cachedVectorProvider!;
     } catch (e) {
       return 'gemini';
     }
