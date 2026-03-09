@@ -111,6 +111,10 @@ export class HadithsController {
         res.raw.setHeader('Content-Type', 'text/event-stream');
         res.raw.setHeader('Cache-Control', 'no-cache');
         res.raw.setHeader('Connection', 'keep-alive');
+        res.raw.setHeader('Access-Control-Allow-Origin', res.request.headers.origin || '*');
+        res.raw.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+        res.raw.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-API-Key');
+        res.raw.setHeader('Access-Control-Allow-Credentials', 'true');
         res.raw.flushHeaders();
 
         const stream$ = from(this.hadithsService.streamSearch(q, language, col, grade));
@@ -144,6 +148,10 @@ export class HadithsController {
         res.raw.setHeader('Content-Type', 'text/event-stream');
         res.raw.setHeader('Cache-Control', 'no-cache');
         res.raw.setHeader('Connection', 'keep-alive');
+        res.raw.setHeader('Access-Control-Allow-Origin', res.request.headers.origin || '*');
+        res.raw.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+        res.raw.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-API-Key');
+        res.raw.setHeader('Access-Control-Allow-Credentials', 'true');
         // Fastify specific: prevents the response from ending immediately
         res.raw.flushHeaders();
 
