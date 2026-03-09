@@ -1,9 +1,10 @@
 import { NestFactory } from '@nestjs/core'
 import { ValidationPipe } from '@nestjs/common'
 import { AppModule } from './app.module'
-import * as cookieParser from 'cookie-parser'
-import helmet from 'helmet'
-import * as compression from 'compression'
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify'
+import fastifyCookie from '@fastify/cookie'
+import fastifyHelmet from '@fastify/helmet'
+import compression from '@fastify/compress'
 
 async function bootstrap() {
     // 0. ENV Validation (Fail-fast if critical secrets are missing)
@@ -15,26 +16,21 @@ async function bootstrap() {
         }
     }
 
-    const app = await NestFactory.create(AppModule)
+    const app = await NestFactory.create<NestFastifyApplication>(
+        AppModule,
+        new FastifyAdapter({ trustProxy: true })
+    )
 
-    // 1. Manual CORS/OPTIONS handling for early response (Bypasses complexity)
-    app.use((req: any, res: any, next: any) => {
-        if (req.method === 'OPTIONS') {
-            res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-            res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-            res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-API-Key, Accept, X-Requested-With, Origin');
-            res.header('Access-Control-Allow-Credentials', 'true');
-            return res.sendStatus(204);
-        }
-        next();
-    });
-
-    // 2. Security Middleware
-    app.use(helmet({
+    // 1. Security Middleware
+    await app.register(fastifyHelmet, {
         crossOriginResourcePolicy: false, // Allows cross-origin requests
-    }));
-    app.use(cookieParser())
-    app.use(compression())
+    })
+    
+    // 2. Cookie & Compression
+    await app.register(fastifyCookie, {
+        secret: process.env.JWT_SECRET || 'fallback-secret', // For signed cookies
+    })
+    await app.register(compression, { encodings: ['gzip', 'deflate'] })
 
     // 3. NestJS CORS (For GET/POST requests)
     app.enableCors({
