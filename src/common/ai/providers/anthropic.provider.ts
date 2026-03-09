@@ -86,8 +86,20 @@ export class AnthropicProvider implements AiProvider {
       stream: true,
     });
 
-    // Convert Anthropic stream to a generic ReadableStream
-    return stream.toReadableStream();
+    return new ReadableStream({
+      async start(controller) {
+        try {
+          for await (const chunk of stream) {
+            if (chunk.type === 'content_block_delta' && chunk.delta.type === 'text_delta') {
+              controller.enqueue(new TextEncoder().encode(chunk.delta.text));
+            }
+          }
+          controller.close();
+        } catch (e) {
+          controller.error(e);
+        }
+      }
+    });
   }
 
   async generateEmbedding(text: string): Promise<number[]> {

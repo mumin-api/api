@@ -89,7 +89,21 @@ export class OpenAiProvider implements AiProvider {
       stream: true,
     });
 
-    return stream.toReadableStream();
+    return new ReadableStream({
+      async start(controller) {
+        try {
+          for await (const chunk of stream) {
+            const content = chunk.choices[0]?.delta?.content;
+            if (content) {
+              controller.enqueue(new TextEncoder().encode(content));
+            }
+          }
+          controller.close();
+        } catch (e) {
+          controller.error(e);
+        }
+      }
+    });
   }
 
   async generateEmbedding(text: string): Promise<number[]> {
