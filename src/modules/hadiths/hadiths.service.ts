@@ -623,24 +623,64 @@ export class HadithsService {
     }
 
     async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
-        const queryVector = await this.aiService.generateEmbedding(query);
-        const vectorString = `[${queryVector.join(',')}]`;
-        const results = await this.prisma.$queryRawUnsafe<any[]>(`
-            SELECT id, 1 - (embedding <=> '$1'::vector) as similarity
-            FROM hadiths WHERE embedding IS NOT NULL ORDER BY embedding <=> '$1'::vector LIMIT $2
-        `.replace(/\$1/g, vectorString).replace(/\$2/g, limit.toString()));
+        const cacheKey = `semantic:v1:${query.trim().toLowerCase().substring(0, 100)}:${language}:${limit}`;
 
-        if (results.length === 0) return { data: [], total: 0 };
-        const ids = results.map(r => r.id);
-        const hadiths = await this.prisma.hadith.findMany({
-            where: { id: { in: ids } },
-            include: { translations: { where: { languageCode: language } }, collectionRef: true }
+        // 1. Проверяем L1 кэш (in-memory, <0.1ms)
+        const l1Hit = this.l1Cache.get(cacheKey);
+        if (l1Hit) return l1Hit;
+
+        // 2. Проверяем Redis кэш (~2ms)
+        try {
+            const cached = await this.redis.get(cacheKey);
+            if (cached) {
+                const result = JSON.parse(cached);
+                this.l1Cache.set(cacheKey, result);
+                return result;
+            }
+        } catch (e) {}
+
+        // 3. SingleFlight — защищаемся от дублирующих одновременных запросов
+        return this.singleFlight.do(cacheKey, async () => {
+            // Генерация эмбеддинга (использует Redis-кэш внутри ai.service)
+            const queryVector = await this.aiService.generateEmbedding(query);
+            const vectorString = `[${queryVector.join(',')}]`;
+
+            // Векторный поиск (быстрый если есть HNSW индекс)
+            const results = await this.prisma.$queryRawUnsafe<any[]>(`
+                SELECT id, 1 - (embedding <=> '${vectorString}'::vector) as similarity
+                FROM hadiths
+                WHERE embedding IS NOT NULL
+                ORDER BY embedding <=> '${vectorString}'::vector
+                LIMIT ${limit}
+            `);
+
+            if (results.length === 0) return { data: [], total: 0 };
+
+            const ids = results.map(r => r.id);
+            const hadiths = await this.prisma.hadith.findMany({
+                where: { id: { in: ids } },
+                include: { translations: { where: { languageCode: language } }, collectionRef: true }
+            });
+
+            const sorted = ids
+                .map(id => hadiths.find(h => h.id === id))
+                .filter((h): h is any => !!h);
+
+            const finalResult = {
+                data: sorted.map(h => ({
+                    ...this.mapHadithResponse(h),
+                    similarity: results.find(r => r.id === h.id)?.similarity,
+                })),
+                total: results.length,
+            };
+
+            // Сохраняем в Redis на 1 час
+            try {
+                await this.redis.set(cacheKey, JSON.stringify(finalResult), 'EX', 3600);
+                this.l1Cache.set(cacheKey, finalResult);
+            } catch (e) {}
+
+            return finalResult;
         });
-
-        const sorted = ids.map(id => hadiths.find(h => h.id === id)).filter((h): h is any => !!h);
-        return {
-            data: sorted.map(h => ({ ...this.mapHadithResponse(h), similarity: results.find(r => r.id === h.id)?.similarity })),
-            total: results.length
-        };
     }
 }

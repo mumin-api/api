@@ -1,20 +1,26 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, Inject } from '@nestjs/common';
+import { createHash } from 'crypto';
 import { PrismaService } from '../../prisma/prisma.service';
 import { OpenAiProvider } from './providers/openai.provider';
 import { GeminiProvider } from './providers/gemini.provider';
 import { AnthropicProvider } from './providers/anthropic.provider';
 import { AiProvider, ExplanationResult } from './interfaces/ai-provider.interface';
+import Redis from 'ioredis';
+import { REDIS_CLIENT } from '@/common/redis/redis.module';
 
 @Injectable()
 export class AiService {
   private readonly logger = new Logger(AiService.name);
   private readonly providers: Map<string, AiProvider> = new Map();
+  /** In-memory кэш имени активного вектор-провайдера, чтобы не лезть в БД каждый раз */
+  private cachedVectorProvider: string | null = null;
 
   constructor(
     private prisma: PrismaService,
     private openai: OpenAiProvider,
     private gemini: GeminiProvider,
     private anthropic: AnthropicProvider,
+    @Inject(REDIS_CLIENT) private redis: Redis,
   ) {
     this.providers.set(this.openai.getName(), this.openai);
     this.providers.set(this.gemini.getName(), this.gemini);
@@ -96,14 +102,17 @@ export class AiService {
         create: { key: 'active_vector_provider', value: provider },
         update: { value: provider }
     });
-}
+    this.cachedVectorProvider = provider; // сбрасываем in-memory кэш
+  }
 
   private async getActiveVectorProviderName(): Promise<string> {
+    if (this.cachedVectorProvider) return this.cachedVectorProvider;
     try {
       const setting = await (this.prisma as any).systemSetting.findUnique({
         where: { key: 'active_vector_provider' },
       });
-      return setting?.value || 'gemini';
+      this.cachedVectorProvider = setting?.value || 'gemini';
+      return this.cachedVectorProvider;
     } catch (e) {
       return 'gemini';
     }
@@ -114,6 +123,20 @@ export class AiService {
    * Can use a different provider than the main explanation AI to optimize costs.
    */
   async generateEmbedding(text: string): Promise<number[]> {
+    // Кэшируем эмбеддинги в Redis по SHA-256 хешу запроса (TTL 7 дней)
+    const hash = createHash('sha256').update(text.trim().toLowerCase()).digest('hex');
+    const cacheKey = `embedding:v1:${hash}`;
+
+    try {
+      const cached = await this.redis.get(cacheKey);
+      if (cached) {
+        this.logger.debug(`Embedding cache HIT for key ${cacheKey.slice(0, 20)}...`);
+        return JSON.parse(cached) as number[];
+      }
+    } catch (e) {
+      // Redis недоступен — продолжаем без кэша
+    }
+
     const providerName = await this.getActiveVectorProviderName();
     const provider = this.providers.get(providerName) || this.gemini;
 
@@ -125,10 +148,16 @@ export class AiService {
         embedding = embedding.slice(0, 768);
       }
       this.logger.log(`Generated embedding with ${providerName}. Final Dimension: ${embedding.length}`);
+
+      // Сохраняем в Redis на 7 дней
+      try {
+        await this.redis.set(cacheKey, JSON.stringify(embedding), 'EX', 60 * 60 * 24 * 7);
+      } catch (e) {}
+
       return embedding;
     } catch (error: any) {
       this.logger.error(`Failed to generate embedding with ${providerName}: ${error.message}`);
-      throw error; // Rethrow to prevent inconsistent fallbacks
+      throw error;
     }
   }
 }
