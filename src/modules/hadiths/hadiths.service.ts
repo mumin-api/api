@@ -623,13 +623,13 @@ export class HadithsService {
     }
 
     async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
-        const cacheKey = `semantic:v1:${query.trim().toLowerCase().substring(0, 100)}:${language}:${limit}`;
+        const cacheKey = `semantic:v2:${query.trim().toLowerCase().substring(0, 100)}:${language}:${limit}`;
 
-        // 1. Проверяем L1 кэш (in-memory, <0.1ms)
+        // 1. L1 кэш (in-memory, <0.1ms)
         const l1Hit = this.l1Cache.get(cacheKey);
         if (l1Hit) return l1Hit;
 
-        // 2. Проверяем Redis кэш (~2ms)
+        // 2. Redis кэш (~2ms)
         try {
             const cached = await this.redis.get(cacheKey);
             if (cached) {
@@ -639,39 +639,68 @@ export class HadithsService {
             }
         } catch (e) {}
 
-        // 3. SingleFlight — защищаемся от дублирующих одновременных запросов
+        // 3. SingleFlight — защита от дублирующих одновременных запросов
         return this.singleFlight.do(cacheKey, async () => {
-            // Генерация эмбеддинга (использует Redis-кэш внутри ai.service)
+            // Генерация эмбеддинга (с Redis-кэшем внутри, ~2ms на повторах)
             const queryVector = await this.aiService.generateEmbedding(query);
-            const vectorString = `[${queryVector.join(',')}]`;
+            const vec = `[${queryVector.join(',')}]`;
 
-            // Векторный поиск (быстрый если есть HNSW индекс)
-            const results = await this.prisma.$queryRawUnsafe<any[]>(`
-                SELECT id, 1 - (embedding <=> '${vectorString}'::vector) as similarity
-                FROM hadiths
-                WHERE embedding IS NOT NULL
-                ORDER BY embedding <=> '${vectorString}'::vector
-                LIMIT ${limit}
+            // Один SQL запрос вместо двух: вектор + данные хадиса + перевод + коллекция
+            const rows = await this.prisma.$queryRawUnsafe<any[]>(`
+                WITH ranked AS (
+                    SELECT
+                        h.id,
+                        1 - (h.embedding <=> '${vec}'::vector) AS similarity
+                    FROM hadiths h
+                    WHERE h.embedding IS NOT NULL
+                    ORDER BY h.embedding <=> '${vec}'::vector
+                    LIMIT ${limit}
+                )
+                SELECT
+                    r.similarity,
+                    h.id,
+                    h.collection,
+                    h.collection_id   AS "collectionId",
+                    h.book_number     AS "bookNumber",
+                    h.hadith_number   AS "hadithNumber",
+                    h.arabic_text     AS "arabicText",
+                    h.arabic_narrator AS "arabicNarrator",
+                    h.metadata,
+                    c.name_english    AS "collectionName",
+                    t.text            AS "translationText",
+                    t.grade           AS "translationGrade",
+                    t.language_code   AS "translationLanguage",
+                    t.narrator        AS "translationNarrator"
+                FROM ranked r
+                JOIN hadiths h ON h.id = r.id
+                LEFT JOIN collections c ON c.id = h.collection_id
+                LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
+                ORDER BY r.similarity DESC
             `);
 
-            if (results.length === 0) return { data: [], total: 0 };
+            const data = rows;
 
-            const ids = results.map(r => r.id);
-            const hadiths = await this.prisma.hadith.findMany({
-                where: { id: { in: ids } },
-                include: { translations: { where: { languageCode: language } }, collectionRef: true }
-            });
-
-            const sorted = ids
-                .map(id => hadiths.find(h => h.id === id))
-                .filter((h): h is any => !!h);
+            if (!data || data.length === 0) return { data: [], total: 0 };
 
             const finalResult = {
-                data: sorted.map(h => ({
-                    ...this.mapHadithResponse(h),
-                    similarity: results.find(r => r.id === h.id)?.similarity,
+                data: data.map((row: any) => ({
+                    id: row.id,
+                    collection: row.collectionName || row.collection,
+                    collectionId: row.collectionId,
+                    bookNumber: row.bookNumber,
+                    hadithNumber: row.hadithNumber,
+                    arabicText: row.arabicText,
+                    arabicNarrator: row.arabicNarrator,
+                    translation: row.translationText ? {
+                        text: row.translationText,
+                        grade: row.translationGrade,
+                        languageCode: row.translationLanguage,
+                        narrator: row.translationNarrator,
+                    } : null,
+                    metadata: row.metadata,
+                    similarity: Number(row.similarity),
                 })),
-                total: results.length,
+                total: data.length,
             };
 
             // Сохраняем в Redis на 1 час
