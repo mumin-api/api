@@ -210,7 +210,6 @@ export class HadithsService {
             arabicText: hadith.arabicText,
             arabicNarrator: hadith.arabicNarrator,
             translation: hadith.translations?.[0] || null,
-            metadata: hadith.metadata,
         };
     }
 
@@ -665,7 +664,6 @@ export class HadithsService {
                     h.hadith_number   AS "hadithNumber",
                     h.arabic_text     AS "arabicText",
                     h.arabic_narrator AS "arabicNarrator",
-                    h.metadata,
                     c.name_english    AS "collectionName",
                     t.text            AS "translationText",
                     t.grade           AS "translationGrade",
@@ -697,7 +695,6 @@ export class HadithsService {
                         languageCode: row.translationLanguage,
                         narrator: row.translationNarrator,
                     } : null,
-                    metadata: row.metadata,
                     similarity: Number(row.similarity),
                 })),
                 total: data.length,
