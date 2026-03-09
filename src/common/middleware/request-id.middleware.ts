@@ -1,12 +1,11 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class RequestIdMiddleware implements NestMiddleware {
-    use(req: Request, res: Response, next: NextFunction) {
+    use(req: any, res: any, next: () => void) {
         const requestId = uuidv4();
-        (req as any)['id'] = requestId;
+        req['id'] = requestId;
         res.setHeader('X-Request-ID', requestId);
         next();
     }
