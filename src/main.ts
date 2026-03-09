@@ -3,6 +3,7 @@ import { ValidationPipe } from '@nestjs/common'
 import { AppModule } from './app.module'
 import * as cookieParser from 'cookie-parser'
 import helmet from 'helmet'
+import * as compression from 'compression'
 
 async function bootstrap() {
     // 0. ENV Validation (Fail-fast if critical secrets are missing)
@@ -33,6 +34,7 @@ async function bootstrap() {
         crossOriginResourcePolicy: false, // Allows cross-origin requests
     }));
     app.use(cookieParser())
+    app.use(compression())
 
     // 3. NestJS CORS (For GET/POST requests)
     app.enableCors({
