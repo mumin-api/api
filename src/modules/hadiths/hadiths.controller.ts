@@ -1,4 +1,5 @@
-import { Controller, Get, Param, Query, UseGuards, ParseIntPipe, Sse } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards, ParseIntPipe, Sse, Res } from '@nestjs/common';
+import { FastifyReply } from 'fastify';
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiTags, ApiOperation, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
@@ -94,29 +95,78 @@ export class HadithsController {
     }
 
 
-    @Sse('search-stream')
+    @Get('search-stream')
     @ApiOperation({ summary: 'Progressive search returns hadiths as they are found (SSE)' })
     @ApiQuery({ name: 'q', required: true })
     @ApiQuery({ name: 'language', required: false, example: 'ru' })
     @ApiQuery({ name: 'collection', required: false })
     @ApiQuery({ name: 'grade', required: false })
-    searchStream(
+    async searchStream(
         @Query('q') q: string,
+        @Res() res: FastifyReply,
         @Query('language') language: string = 'ru',
         @Query('col') col?: string,
         @Query('grade') grade?: string,
-    ): Observable<any> {
-        return from(this.hadithsService.streamSearch(q, language, col, grade));
+    ) {
+        res.raw.setHeader('Content-Type', 'text/event-stream');
+        res.raw.setHeader('Cache-Control', 'no-cache');
+        res.raw.setHeader('Connection', 'keep-alive');
+        res.raw.flushHeaders();
+
+        const stream$ = from(this.hadithsService.streamSearch(q, language, col, grade));
+
+        const subscription = stream$.subscribe({
+            next: (data: any) => {
+                res.raw.write(`data: ${data.data}\n\n`);
+            },
+            error: (err) => {
+                console.error(`[SSE Error] Search for "${q}":`, err);
+                res.raw.end();
+            },
+            complete: () => {
+                res.raw.end();
+            }
+        });
+
+        res.raw.on('close', () => {
+            subscription.unsubscribe();
+        });
     }
 
-    @Sse(':id/explain-stream')
+    @Get(':id/explain-stream')
     @ApiOperation({ summary: 'Stream AI explanation for a hadith (SSE)' })
     @ApiQuery({ name: 'language', required: false, example: 'ru' })
-    explainStream(
+    async explainStream(
         @Param('id', ParseIntPipe) id: number,
+        @Res() res: FastifyReply,
         @Query('language') language: string = 'ru',
     ) {
-        return this.hadithsService.streamExplanation(id, language);
+        res.raw.setHeader('Content-Type', 'text/event-stream');
+        res.raw.setHeader('Cache-Control', 'no-cache');
+        res.raw.setHeader('Connection', 'keep-alive');
+        // Fastify specific: prevents the response from ending immediately
+        res.raw.flushHeaders();
+
+        const stream$ = await this.hadithsService.streamExplanation(id, language);
+
+        const subscription = stream$.subscribe({
+            next: (data: any) => {
+                res.raw.write(`data: ${data.data}\n\n`);
+            },
+            error: (err: any) => {
+                console.error(`[SSE Error] Hadith ${id}:`, err);
+                // Can't write SSE error properly if it's already streaming, but we close it
+                res.raw.end();
+            },
+            complete: () => {
+                res.raw.end();
+            }
+        });
+
+        // Cleanup on connection close
+        res.raw.on('close', () => {
+            subscription.unsubscribe();
+        });
     }
 
     @Get(':id')
