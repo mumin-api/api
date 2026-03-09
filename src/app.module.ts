@@ -129,14 +129,6 @@ import { GeolocationUtil } from './common/utils/geolocation.util';
             provide: APP_INTERCEPTOR,
             useClass: RequestTrackingInterceptor,
         },
-        {
-            provide: APP_INTERCEPTOR,
-            useClass: ZstdCompressionInterceptor,
-        },
-        {
-            provide: APP_INTERCEPTOR,
-            useClass: MessagePackInterceptor,
-        },
 
         // Utilities
         GeolocationUtil,

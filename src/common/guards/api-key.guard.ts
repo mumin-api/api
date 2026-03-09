@@ -7,12 +7,15 @@ import {
     HttpException,
     HttpStatus,
     Logger,
+    Inject,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { createHash } from 'crypto';
 import { PrismaService } from '@/prisma/prisma.service';
 import { FraudDetectionService } from '@/modules/fraud/fraud-detection.service';
 import { IS_PUBLIC_KEY } from '@/common/decorators/public.decorator';
+import { REDIS_CLIENT } from '@/common/redis/redis.module';
+import Redis from 'ioredis';
 import { EmailService } from '@/modules/email/email.service';
 
 @Injectable()
@@ -24,6 +27,7 @@ export class ApiKeyGuard implements CanActivate {
         private prisma: PrismaService,
         private fraudDetection: FraudDetectionService,
         private emailService: EmailService,
+        @Inject(REDIS_CLIENT) private readonly redis: Redis,
     ) { }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -175,17 +179,19 @@ export class ApiKeyGuard implements CanActivate {
             );
 
             // Get daily request count
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
+            // Get daily request count from Redis (Lightning fast)
+            const todayStr = new Date().toISOString().split('T')[0];
+            const dailyRateKey = `rate:daily:${dbKey.id}:${todayStr}`;
+            const dailyRequests = await this.redis.incr(dailyRateKey);
 
-            const dailyRequests = await this.prisma.requestLog.count({
-                where: {
-                    apiKeyId: dbKey.id,
-                    timestamp: { gte: today },
-                },
-            });
+            if (dailyRequests === 1) {
+                // Expire key slightly after the day ends (25 hours)
+                this.redis.expire(dailyRateKey, 90000).catch(e => this.logger.error(e));
+            }
 
-            if (dailyRequests >= dbKey.maxDailyRequests) {
+            if (dailyRequests > dbKey.maxDailyRequests) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
                 throw new HttpException(
                     {
                         statusCode: 429,
@@ -290,23 +296,23 @@ export class ApiKeyGuard implements CanActivate {
                 }
             }
 
-            // Update user balance and total requests (ATOMIC)
-            await this.prisma.user.update({
+            // Update user balance and total requests (FIRE-AND-FORGET)
+            this.prisma.user.update({
                 where: { id: user.id },
                 data: {
                     balance: isFreeMode ? undefined : { decrement: 1 },
                     totalRequests: { increment: 1 },
                 },
-            });
+            }).catch(e => this.logger.error('Failed to update user stats async', e));
 
-            // Update key last used (only)
-            await this.prisma.apiKey.update({
+            // Update key last used (FIRE-AND-FORGET)
+            this.prisma.apiKey.update({
                 where: { id: dbKey.id },
                 data: {
                     lastUsedAt: new Date(),
                     lastActivityDate: new Date(),
                 },
-            });
+            }).catch(e => this.logger.error('Failed to update apikey stats async', e));
 
             // Attach user info to request
             request.user = {
