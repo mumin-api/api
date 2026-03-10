@@ -17,10 +17,12 @@ import { IS_PUBLIC_KEY } from '@/common/decorators/public.decorator';
 import { REDIS_CLIENT } from '@/common/redis/redis.module';
 import Redis from 'ioredis';
 import { EmailService } from '@/modules/email/email.service';
+import { LRUCache } from 'lru-cache';
 
 @Injectable()
 export class ApiKeyGuard implements CanActivate {
     private readonly logger = new Logger(ApiKeyGuard.name);
+    private readonly cache: LRUCache<string, any>;
 
     constructor(
         private reflector: Reflector,
@@ -28,7 +30,12 @@ export class ApiKeyGuard implements CanActivate {
         private fraudDetection: FraudDetectionService,
         private emailService: EmailService,
         @Inject(REDIS_CLIENT) private readonly redis: Redis,
-    ) { }
+    ) {
+        this.cache = new LRUCache({
+            max: 1000,
+            ttl: 1000 * 60 * 2, // 2 minutes
+        });
+    }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
         // Check if endpoint is public
@@ -91,10 +98,21 @@ export class ApiKeyGuard implements CanActivate {
         const keyHash = createHash('sha256').update(apiKey).digest('hex');
 
         try {
-            const dbKey = await this.prisma.apiKey.findUnique({
-                where: { keyHash },
-                include: { user: true },
-            });
+            // 1. Check in-memory cache first (Ultra fast)
+            let dbKey = this.cache.get(keyHash);
+
+            if (!dbKey) {
+                // 2. Cache miss, query database
+                dbKey = await this.prisma.apiKey.findUnique({
+                    where: { keyHash },
+                    include: { user: true },
+                });
+
+                if (dbKey) {
+                    // Store in cache for 2 minutes
+                    this.cache.set(keyHash, dbKey);
+                }
+            }
 
             if (!dbKey) {
                 this.logger.warn(`Invalid API key attempt: ${apiKey.substring(0, 15)}...`);

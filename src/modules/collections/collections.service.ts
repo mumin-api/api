@@ -1,18 +1,28 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '@/prisma/prisma.service';
+import { LRUCache } from 'lru-cache';
 
 @Injectable()
 export class CollectionsService {
-    constructor(private prisma: PrismaService) { }
+    private readonly cache: LRUCache<string, any>;
+
+    constructor(private prisma: PrismaService) {
+        this.cache = new LRUCache({
+            max: 100,
+            ttl: 1000 * 60 * 5, // 5 minutes
+        });
+    }
 
     async findAll() {
+        const cacheKey = 'all_collections';
+        const cached = this.cache.get(cacheKey);
+        if (cached) return cached;
+
         const collections = await this.prisma.collection.findMany({
             orderBy: { nameEnglish: 'asc' },
         });
 
-        // If no collections are explicitly defined in the Collection table,
-        // we could potentially aggregate them from the Hadith table, 
-        // but for now we follow the new model structure.
+        this.cache.set(cacheKey, collections);
         return collections;
     }
 
