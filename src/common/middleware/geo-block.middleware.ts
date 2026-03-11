@@ -15,9 +15,14 @@ export class GeoBlockMiddleware implements NestMiddleware {
     this.blockedCountries = blocked.split(',').map(c => c.trim().toUpperCase());
   }
 
-  use(req: Request, res: Response, next: NextFunction) {
-    // Get IP from request (handled by proxy usually)
-    const ip = (req.headers['x-forwarded-for'] as string) || req.ip;
+  use(req: any, res: any, next: NextFunction) {
+    // 1. Always allow OPTIONS requests for CORS preflight
+    if (req.method === 'OPTIONS') {
+      return next();
+    }
+
+    // 2. Get IP from request (Middie provides .ip or headers)
+    const ip = req.headers['x-forwarded-for'] || req.ip || req.socket?.remoteAddress;
     
     if (!ip) {
       return next();

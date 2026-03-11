@@ -44,16 +44,25 @@ export class HttpExceptionFilter implements ExceptionFilter {
         }
 
         // Fastify / Express / Raw Response logic
+        const origin = request.headers.origin || '*';
+
         if (typeof response.status === 'function') {
             // Express/NestJS wrapped status()
+            response.header('Access-Control-Allow-Origin', origin);
+            response.header('Access-Control-Allow-Credentials', 'true');
             response.status(status).send(errorResponse);
         } else if (typeof (response as any).code === 'function') {
             // Native Fastify code()
-            (response as any).code(status).send(errorResponse);
+            const fastifyRes = response as any;
+            fastifyRes.header('Access-Control-Allow-Origin', origin);
+            fastifyRes.header('Access-Control-Allow-Credentials', 'true');
+            fastifyRes.code(status).send(errorResponse);
         } else {
-            // Raw Node.js response (happens in some middleware contexts)
+            // Raw Node.js response
             const rawResponse = response as any;
             rawResponse.statusCode = status;
+            rawResponse.setHeader('Access-Control-Allow-Origin', origin);
+            rawResponse.setHeader('Access-Control-Allow-Credentials', 'true');
             rawResponse.setHeader('Content-Type', 'application/json');
             rawResponse.end(JSON.stringify(errorResponse));
         }
