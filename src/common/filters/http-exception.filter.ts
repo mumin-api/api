@@ -43,6 +43,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
             this.logger.warn(`${request.method} ${request.url} ${status}`);
         }
 
-        response.status(status).send(errorResponse);
+        
+// Исправленная строка для Fastify:
+response.code(status).send(errorResponse);
     }
 }
