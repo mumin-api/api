@@ -3,6 +3,11 @@ import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class GetHadithsDto {
+    @ApiProperty({ required: false, description: 'Search query' })
+    @IsOptional()
+    @IsString()
+    q?: string;
+
     @ApiProperty({ required: false, default: 1 })
     @IsOptional()
     @Type(() => Number)

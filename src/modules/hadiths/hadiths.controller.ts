@@ -42,34 +42,14 @@ export class HadithsController {
 
     @Get('search')
     @ApiOperation({ summary: 'Search hadiths by text' })
-    @ApiQuery({ name: 'q', required: true, description: 'Search query' })
-    @ApiQuery({ name: 'language', required: false, example: 'en' })
-    @ApiQuery({ name: 'page', required: false, example: 1 })
-    @ApiQuery({ name: 'limit', required: false, example: 20 })
-    @ApiQuery({ name: 'collection', required: false })
-    @ApiQuery({ name: 'grade', required: false })
-    async search(
-        @Query('q') query: string,
-        @Query('language') language?: string,
-        @Query('page', new ParseIntPipe({ optional: true })) page?: number,
-        @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
-        @Query('collection') collection?: string,
-        @Query('grade') grade?: string,
-    ) {
-        return this.hadithsService.search(query, language, page, limit, collection, grade);
+    async search(@Query() dto: GetHadithsDto) {
+        return this.hadithsService.search(dto.q || '', dto.language, dto.page, dto.limit, dto.collection, dto.grade);
     }
 
     @Get('semantic-search')
     @ApiOperation({ summary: 'Semantic search hadiths by meaning using vector embeddings' })
-    @ApiQuery({ name: 'q', required: true, description: 'Search query' })
-    @ApiQuery({ name: 'language', required: false, example: 'ru' })
-    @ApiQuery({ name: 'limit', required: false, example: 10 })
-    async semanticSearch(
-        @Query('q') query: string,
-        @Query('language') language?: string,
-        @Query('limit', new ParseIntPipe({ optional: true })) limit?: number,
-    ) {
-        return this.hadithsService.semanticSearch(query, language, limit);
+    async semanticSearch(@Query() dto: GetHadithsDto) {
+        return this.hadithsService.semanticSearch(dto.q || '', dto.language, dto.limit);
     }
 
     @Get('suggestions')
@@ -188,8 +168,15 @@ export class HadithsController {
     }
 
     @Get(':id/explain')
+    @ApiOperation({ summary: 'Get AI explanation for a hadith' })
+    async getExplanation(
+        @Param('id', ParseIntPipe) id: number,
+        @Query('language') language: string = 'en',
+    ) {
+        return this.hadithsService.getExplanation(id, language);
+    }
 
-    @Get(':id/explain/report') // Using GET/POST interchangeably for simplicity if needed, but following REST
+    @Get(':id/explain/report')
     @ApiOperation({ summary: 'Report an error in AI explanation' })
     async report(
         @Param('id', ParseIntPipe) id: number,

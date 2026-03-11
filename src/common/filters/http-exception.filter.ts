@@ -43,8 +43,19 @@ export class HttpExceptionFilter implements ExceptionFilter {
             this.logger.warn(`${request.method} ${request.url} ${status}`);
         }
 
-        
-// Исправленная строка для Fastify:
-response.code(status).send(errorResponse);
+        // Fastify / Express / Raw Response logic
+        if (typeof response.status === 'function') {
+            // Express/NestJS wrapped status()
+            response.status(status).send(errorResponse);
+        } else if (typeof (response as any).code === 'function') {
+            // Native Fastify code()
+            (response as any).code(status).send(errorResponse);
+        } else {
+            // Raw Node.js response (happens in some middleware contexts)
+            const rawResponse = response as any;
+            rawResponse.statusCode = status;
+            rawResponse.setHeader('Content-Type', 'application/json');
+            rawResponse.end(JSON.stringify(errorResponse));
+        }
     }
 }
