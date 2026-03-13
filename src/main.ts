@@ -5,6 +5,7 @@ import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify
 import fastifyCookie from '@fastify/cookie'
 import fastifyHelmet from '@fastify/helmet'
 import compression from '@fastify/compress'
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
     // 0. ENV Validation (Fail-fast if critical secrets are missing)
@@ -43,7 +44,22 @@ async function bootstrap() {
         allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'X-API-Key'],
     })
 
-    // 4. Pipes & Prefix
+    // 4. Swagger Documentation
+    const config = new DocumentBuilder()
+        .setTitle('Mumin Hadith API')
+        .setDescription('API for Islamic Hadiths with AI explanations and semantic search')
+        .setVersion('2.0')
+        .addApiKey({ type: 'apiKey', name: 'X-API-Key', in: 'header' }, 'api-key')
+        .addBearerAuth()
+        .build();
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('v1/docs', app, document, {
+        swaggerOptions: {
+            persistAuthorization: true,
+        },
+    });
+
+    // 5. Pipes & Prefix
     app.useGlobalPipes(new ValidationPipe({
         whitelist: true,
         forbidNonWhitelisted: true,
