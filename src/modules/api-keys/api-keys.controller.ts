@@ -1,5 +1,5 @@
 import { Controller, Post, Get, Patch, Body, UseGuards } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBearerAuth, ApiExcludeController } from '@nestjs/swagger';
 import { ApiKeysService } from './api-keys.service';
 import { RegisterApiKeyDto } from './dto/register-key.dto';
 import { Public } from '@/common/decorators/public.decorator';
@@ -10,6 +10,7 @@ import { Req } from '@nestjs/common';
 import { GeolocationUtil } from '@/common/utils/geolocation.util';
 import { AuthenticatedUser } from '@/common/interfaces/user.interface';
 
+@ApiExcludeController()
 @ApiTags('api-keys')
 @Controller('keys')
 export class ApiKeysController {

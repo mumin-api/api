@@ -10,10 +10,11 @@ import {
     ParseIntPipe,
     DefaultValuePipe,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiHeader } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiHeader, ApiExcludeController } from '@nestjs/swagger';
 import { AdminService } from './admin.service';
 import { AdminGuard } from '@/common/guards/admin.guard';
 
+@ApiExcludeController()
 @ApiTags('admin')
 @Controller('admin')
 @UseGuards(AdminGuard)

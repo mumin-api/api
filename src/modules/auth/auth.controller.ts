@@ -4,13 +4,14 @@ import { AuthService } from './auth.service';
 import { RegisterDto, LoginDto, UpdateProfileDto, ClaimTelegramDto, RequestEmailChangeDto, VerifyEmailChangeDto } from './dto/auth.dto';
 import { Response, Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiExcludeController } from '@nestjs/swagger';
 import { VerificationService } from './verification.service';
 import { Public } from '@/common/decorators/public.decorator';
 import { ApiKeysService } from '../api-keys/api-keys.service';
 import { ConfigService } from '@nestjs/config';
 import { AuthenticatedUser } from '@/common/interfaces/user.interface';
 
+@ApiExcludeController()
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {

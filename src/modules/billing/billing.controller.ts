@@ -1,6 +1,6 @@
 import { Controller, Get, Query, UseGuards, ParseIntPipe, Post, Body, Headers, DefaultValuePipe } from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
-import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBearerAuth, ApiExcludeController } from '@nestjs/swagger';
 import { BillingService } from './billing.service';
 import { JwtAuthGuard } from '@/modules/auth/guards/jwt-auth.guard';
 import { CurrentUser } from '@/common/decorators/current-user.decorator';
@@ -8,6 +8,7 @@ import { Public } from '@/common/decorators/public.decorator';
 import { CryptoPayWebhook } from './billing.types';
 import { AuthenticatedUser } from '@/common/interfaces/user.interface';
 
+@ApiExcludeController()
 @ApiTags('billing')
 @Controller('billing')
 @UseGuards(JwtAuthGuard)

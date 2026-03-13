@@ -1,8 +1,9 @@
 import { Controller, Post, Body, Headers } from '@nestjs/common';
-import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiExcludeController } from '@nestjs/swagger';
 import { EmailService } from './email.service';
 import { Public } from '@/common/decorators/public.decorator';
 
+@ApiExcludeController()
 @ApiTags('webhooks')
 @Controller('webhooks')
 export class EmailController {

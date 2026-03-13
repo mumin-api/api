@@ -1,5 +1,5 @@
 import { Controller, Post, Get, Put, Delete, Param, Body, UseGuards, BadRequestException } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBearerAuth, ApiExcludeController } from '@nestjs/swagger';
 import { UnifiedAuthGuard } from '@/common/guards/unified-auth.guard';
 import { CurrentUser } from '@/common/decorators/current-user.decorator';
 import { DataExportService } from './data-export.service';
@@ -8,6 +8,7 @@ import { ConsentService } from './consent.service';
 import { Public } from '@/common/decorators/public.decorator';
 import { AuthenticatedUser } from '@/common/interfaces/user.interface';
 
+@ApiExcludeController()
 @ApiTags('gdpr')
 @Controller('user')
 export class GdprController {
