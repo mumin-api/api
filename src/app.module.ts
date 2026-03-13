@@ -1,4 +1,4 @@
-import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+import { Module, MiddlewareConsumer, NestModule, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD, APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
@@ -138,6 +138,6 @@ export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
             .apply(RequestIdMiddleware, LoggerMiddleware, DeviceFingerprintMiddleware, GeoBlockMiddleware)
-            .forRoutes('(.*)');
+            .forRoutes({ path: '(.*)', method: RequestMethod.ALL });
     }
 }
