@@ -138,6 +138,6 @@ export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer
             .apply(RequestIdMiddleware, LoggerMiddleware, DeviceFingerprintMiddleware, GeoBlockMiddleware)
-            .forRoutes('*');
+            .forRoutes('(.*)');
     }
 }
