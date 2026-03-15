@@ -1,4 +1,5 @@
-import { Injectable, Logger, Inject } from '@nestjs/common';
+import { Injectable, Logger, Inject, ServiceUnavailableException } from '@nestjs/common';
+import { SystemConfigService } from './../../common/utils/system-config.service';
 import { createHash } from 'crypto';
 import { PrismaService } from '../../prisma/prisma.service';
 import { OpenAiProvider } from './providers/openai.provider';
@@ -21,6 +22,7 @@ export class AiService {
     private gemini: GeminiProvider,
     private anthropic: AnthropicProvider,
     @Inject(REDIS_CLIENT) private redis: Redis,
+    private systemConfig: SystemConfigService,
   ) {
     this.providers.set(this.openai.getName(), this.openai);
     this.providers.set(this.gemini.getName(), this.gemini);
@@ -33,6 +35,9 @@ export class AiService {
     collection: string,
     language: string,
   ): Promise<ExplanationResult> {
+    if (!await this.systemConfig.isFeatureEnabled('feature_ai_enabled')) {
+      throw new ServiceUnavailableException('AI explanations are temporarily unavailable');
+    }
     const providerName = await this.getActiveProviderName();
     const provider = this.providers.get(providerName) || this.openai;
 
@@ -56,6 +61,9 @@ export class AiService {
     collection: string,
     language: string,
   ): Promise<ReadableStream<any>> {
+    if (!await this.systemConfig.isFeatureEnabled('feature_ai_enabled')) {
+      throw new ServiceUnavailableException('AI explanations are temporarily unavailable');
+    }
     const providerName = await this.getActiveProviderName();
     const provider = this.providers.get(providerName) || this.openai;
 

@@ -1,4 +1,5 @@
-import { Injectable, NotFoundException, Inject, Logger } from '@nestjs/common';
+import { Injectable, NotFoundException, Inject, Logger, ServiceUnavailableException } from '@nestjs/common';
+import { SystemConfigService } from '@/common/utils/system-config.service';
 import { from, Observable } from 'rxjs';
 import { PrismaService } from '@/prisma/prisma.service';
 import { GetHadithsDto } from './dto/get-hadiths.dto';
@@ -28,6 +29,7 @@ export class HadithsService {
         private vectorService: VectorService,
         private emailService: EmailService,
         private config: ConfigService,
+        private systemConfig: SystemConfigService,
     ) { 
         this.l1Cache = new LRUCache({
             max: 500,
@@ -249,6 +251,9 @@ export class HadithsService {
     }
 
     async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
+        if (!await this.systemConfig.isFeatureEnabled('feature_search_enabled')) {
+            throw new ServiceUnavailableException('Semantic search is temporarily unavailable');
+        }
     console.log(`[SemanticSearch] START: "${query}" (lang: ${language}, limit: ${limit})`);
     if (!query) return { data: [], total: 0 };
     

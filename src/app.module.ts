@@ -30,6 +30,7 @@ import { CollectionsModule } from './modules/collections/collections.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { EventsModule } from './modules/events/events.module';
 import { AiModule } from './common/ai/ai.module';
+import { SystemModule } from './modules/system/system.module';
 
 // Middleware
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
@@ -94,6 +95,7 @@ import { GeolocationUtil } from './common/utils/geolocation.util';
         AuthModule,
         EventsModule,
         AiModule,
+        SystemModule,
     ],
     providers: [
         // Global guard for rate limiting
