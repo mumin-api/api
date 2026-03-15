@@ -48,6 +48,7 @@ model Hadith {
   @@index([bookNumber])
   @@index([embedding], map: "hadith_embedding_hnsw")
   @@index([normalizedArabic(ops: raw("gin_trgm_ops"))], map: "hadiths_normalized_trgm_idx", type: Gin)
+  @@index([embedding], map: "hadiths_embedding_hnsw_idx")
   @@map("hadiths")
 }
 
@@ -90,6 +91,7 @@ model Translation {
   @@unique([hadithId, languageCode])
   @@index([languageCode])
   @@index([hadithId])
+  @@index([text(ops: raw("gin_trgm_ops"))], map: "translations_text_trgm_idx", type: Gin)
   @@map("translations")
 }
 

@@ -6,6 +6,7 @@ import Redis from 'ioredis';
 import { REDIS_CLIENT } from '@/common/redis/redis.module';
 import { MeilisearchService } from '@/common/meilisearch/meilisearch.service';
 import { AiService } from '@/common/ai/ai.service';
+import { VectorService } from '@/common/ai/vector.service';
 import { EmailService } from '@/modules/email/email.service';
 import { ConfigService } from '@nestjs/config';
 import { LRUCache } from 'lru-cache';
@@ -24,12 +25,13 @@ export class HadithsService {
         @Inject(REDIS_CLIENT) private redis: Redis,
         private meilisearch: MeilisearchService,
         private aiService: AiService,
+        private vectorService: VectorService,
         private emailService: EmailService,
         private config: ConfigService,
     ) { 
         this.l1Cache = new LRUCache({
-            max: 500, // Store 500 hottest queries
-            ttl: 1000 * 60 * 5, // 5 minutes TTL
+            max: 500,
+            ttl: 1000 * 60 * 5,
         });
         this.singleFlight = new SingleFlight();
     }
@@ -37,7 +39,6 @@ export class HadithsService {
     async getExplanation(id: number, language: string = 'en') {
         const flightKey = `explanation:${id}:${language}`;
         return this.singleFlight.do(flightKey, async () => {
-            // 1. Check cache
             const cache = await (this.prisma as any).hadithExplanation.findUnique({
                 where: {
                     hadithId_languageCode: {
@@ -47,23 +48,17 @@ export class HadithsService {
                 },
             });
 
-            if (cache) {
-                return cache;
-            }
+            if (cache) return cache;
 
-            // 2. Not in cache, get hadith text
             const hadith = await this.prisma.hadith.findUnique({
                 where: { id },
                 include: { collectionRef: true },
             });
 
-            if (!hadith) {
-                throw new NotFoundException(`Hadith with ID ${id} not found`);
-            }
+            if (!hadith) throw new NotFoundException(`Hadith with ID ${id} not found`);
 
             const collectionName = hadith.collectionRef?.nameEnglish || hadith.collection;
             
-            // 3. Generate explanation
             const result = await this.aiService.generateExplanation(
                 hadith.arabicText,
                 hadith.id,
@@ -71,7 +66,6 @@ export class HadithsService {
                 language,
             );
 
-            // 4. Save to cache
             return (this.prisma as any).hadithExplanation.create({
                 data: {
                     hadithId: id,
@@ -115,9 +109,7 @@ export class HadithsService {
             include: { collectionRef: true },
         });
 
-        if (!hadith) {
-            throw new NotFoundException(`Hadith with ID ${id} not found`);
-        }
+        if (!hadith) throw new NotFoundException(`Hadith with ID ${id} not found`);
 
         const collectionName = hadith.collectionRef?.nameEnglish || hadith.collection;
         const stream = await this.aiService.streamExplanation(
@@ -166,9 +158,7 @@ export class HadithsService {
             where: { hadithId: id },
         });
 
-        if (!explanation) {
-            throw new NotFoundException(`Explanation for hadith ${id} not found`);
-        }
+        if (!explanation) throw new NotFoundException(`Explanation for hadith ${id} not found`);
 
         const feedback = await (this.prisma as any).explanationFeedback.create({
             data: {
@@ -183,14 +173,7 @@ export class HadithsService {
             this.emailService.sendEmail({
                 to: adminEmail,
                 subject: `⚠️ Hadith Explanation Reported (#${id})`,
-                html: `
-                    <h3>AI Explanation Report</h3>
-                    <p><strong>Hadith ID:</strong> ${id}</p>
-                    <p><strong>Explanation ID:</strong> ${explanation.id}</p>
-                    <p><strong>Message:</strong> ${message}</p>
-                    <hr>
-                    <p>Please review the explanation in the database.</p>
-                `,
+                html: `<h3>AI Explanation Report</h3><p><strong>Hadith ID:</strong> ${id}</p><p><strong>Message:</strong> ${message}</p>`,
                 emailType: 'admin_report',
                 apiKeyId: 1,
                 userId: userId || 1,
@@ -219,29 +202,15 @@ export class HadithsService {
 
         const where: any = {};
         if (collection) {
-            where.OR = [
-                { collection: collection },
-                { collectionRef: { slug: collection } }
-            ];
+            where.OR = [{ collection: collection }, { collectionRef: { slug: collection } }];
         }
         if (bookNumber) where.bookNumber = bookNumber;
         if (hadithNumber) where.hadithNumber = hadithNumber;
         if (grade) {
-            where.translations = {
-                some: {
-                    grade,
-                    languageCode: language,
-                },
-            };
+            where.translations = { some: { grade, languageCode: language } };
         }
         if (topic) {
-            where.topics = {
-                some: {
-                    topic: {
-                        slug: topic,
-                    },
-                },
-            };
+            where.topics = { some: { topic: { slug: topic } } };
         }
 
         const [hadiths, total] = await Promise.all([
@@ -250,9 +219,7 @@ export class HadithsService {
                 skip,
                 take: limit,
                 include: {
-                    translations: {
-                        where: { languageCode: language },
-                    },
+                    translations: { where: { languageCode: language } },
                     collectionRef: true,
                 },
                 orderBy: [{ bookNumber: 'asc' }, { hadithNumber: 'asc' }],
@@ -264,14 +231,7 @@ export class HadithsService {
 
         return {
             data: hadiths.map(h => this.mapHadithResponse(h)),
-            pagination: {
-                page,
-                limit,
-                total,
-                totalPages,
-                hasNext: page < totalPages,
-                hasPrev: page > 1,
-            },
+            pagination: { page, limit, total, totalPages, hasNext: page < totalPages, hasPrev: page > 1 },
         };
     }
 
@@ -279,18 +239,63 @@ export class HadithsService {
         const hadith = await this.prisma.hadith.findUnique({
             where: { id },
             include: {
-                translations: {
-                    where: { languageCode: language },
-                },
+                translations: { where: { languageCode: language } },
                 collectionRef: true,
             },
         });
 
-        if (!hadith) {
-            throw new NotFoundException(`Hadith with ID ${id} not found`);
-        }
-
+        if (!hadith) throw new NotFoundException(`Hadith with ID ${id} not found`);
         return this.mapHadithResponse(hadith);
+    }
+
+    async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
+        if (!query) return [];
+        const cacheKey = `semantic:v3:${query.trim().toLowerCase().substring(0, 100)}:${language}:${limit}`;
+
+        const l1Hit = this.l1Cache.get(cacheKey);
+        if (l1Hit) return l1Hit;
+
+        try {
+            const cached = await this.redis.get(cacheKey);
+            if (cached) {
+                const result = JSON.parse(cached);
+                this.l1Cache.set(cacheKey, result);
+                return result;
+            }
+        } catch (e) {}
+
+        return this.singleFlight.do(cacheKey, async () => {
+            const queryVector = await this.aiService.generateEmbedding(query);
+            const matches = await this.vectorService.search(queryVector, limit);
+            
+            if (matches.length === 0) return { data: [], total: 0 };
+
+            const hadithIds = matches.map(m => m.id);
+            const hadiths = await this.prisma.hadith.findMany({
+                where: { id: { in: hadithIds } },
+                include: {
+                    translations: { where: { languageCode: language } },
+                    collectionRef: true,
+                }
+            });
+
+            const results = hadithIds.map(id => {
+                const h = hadiths.find(item => item.id === id);
+                if (!h) return null;
+                const match = matches.find(m => m.id === id);
+                return {
+                    ...this.mapHadithResponse(h),
+                    similarity: match?.score || 0
+                };
+            }).filter(Boolean);
+
+            const finalResult = { data: results, total: results.length };
+            try {
+                await this.redis.set(cacheKey, JSON.stringify(finalResult), 'EX', 3600);
+            } catch (e) {}
+
+            return finalResult;
+        });
     }
 
     async findRandom(params: { language?: string; collection?: string; grade?: string } = {}) {
@@ -324,11 +329,7 @@ export class HadithsService {
         const count = await this.prisma.hadith.count();
         if (count === 0) return null;
 
-        const now = new Date();
-        const start = new Date(now.getFullYear(), 0, 0);
-        const diff = now.getTime() - start.getTime();
-        const oneDay = 1000 * 60 * 60 * 24;
-        const dayOfYear = Math.floor(diff / oneDay);
+        const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
         const skip = dayOfYear % count;
 
         const hadith = await this.prisma.hadith.findFirst({
@@ -345,15 +346,7 @@ export class HadithsService {
 
     private normalizeArabic(text: string): string {
         if (!text) return '';
-        return text
-            .replace(/\u0640/g, '')
-            .replace(/[\u064B-\u065F\u0670]/g, '')
-            .replace(/[أإآ]/g, 'ا')
-            .replace(/ة/g, 'ه')
-            .replace(/ى/g, 'ي')
-            .replace(/[،؛؟«»"'.]/g, ' ')
-            .replace(/\s+/g, ' ')
-            .trim();
+        return text.replace(/\u0640/g, '').replace(/[\u064B-\u065F\u0670]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/[،؛؟«»"'.]/g, ' ').replace(/\s+/g, ' ').trim();
     }
 
     async *streamSearch(query: string, language: string = 'en', collection?: string, grade?: string) {
@@ -363,7 +356,6 @@ export class HadithsService {
         const normalizedQuery = this.normalizeArabic(trimmed);
         const limit = 50;
 
-        // 1. Try Meilisearch first (Ultra Fast, ~10-50ms)
         try {
             const filter: string[] = [];
             if (collection) filter.push(`collection = "${collection}"`);
@@ -392,13 +384,12 @@ export class HadithsService {
                         }),
                     };
                 }
-                return; // Meili results are superior and faster
+                return;
             }
         } catch (e: any) {
             this.logger.warn(`Meilisearch stream fallback: ${e.message}`);
         }
 
-        // 2. Optimized SQL Fallback (Fast with GIN indexes, ~100-300ms)
         const isArabic = /[\u0600-\u06FF]/.test(normalizedQuery);
         const stemmedQuery = isArabic ? ArabicStemmer.stemSentence(normalizedQuery) : normalizedQuery;
         const likeQuery = `%${normalizedQuery}%`;
@@ -407,11 +398,7 @@ export class HadithsService {
         const resultsRaw: any[] = await this.prisma.$queryRawUnsafe(`
             SELECT id, collection_name, book_number, hadith_number, arabic_text, translation_text, grade
             FROM search_view
-            WHERE (
-                normalized_arabic ILIKE '${likeQuery}'
-                OR normalized_arabic ILIKE '${likeStemmedQuery}'
-                OR translation_text ILIKE '${likeQuery}'
-            )
+            WHERE (normalized_arabic ILIKE '${likeQuery}' OR normalized_arabic ILIKE '${likeStemmedQuery}' OR translation_text ILIKE '${likeQuery}')
             AND language_code = '${language}'
             ${collection ? `AND (collection_slug = '${collection}' OR collection_name = '${collection}')` : ''}
             ${grade ? `AND grade = '${grade}'` : ''}
@@ -427,11 +414,7 @@ export class HadithsService {
                     bookNumber: row.book_number,
                     hadithNumber: row.hadith_number,
                     arabicText: row.arabic_text,
-                    translation: {
-                        text: row.translation_text,
-                        grade: row.grade,
-                        languageCode: language,
-                    },
+                    translation: { text: row.translation_text, grade: row.grade, languageCode: language },
                 }),
             };
         }
@@ -441,37 +424,26 @@ export class HadithsService {
 
     async search(query: string = '', language: string = 'en', page: number = 1, limit: number = 20, collection?: string, grade?: string) {
         const trimmed = (query || '').trim();
-        if (!trimmed) {
-            return {
-                data: [],
-                pagination: { page, limit, total: 0, totalPages: 0, hasNext: false, hasPrev: false },
-            };
-        }
+        if (!trimmed) return { data: [], pagination: { page, limit, total: 0, totalPages: 0, hasNext: false, hasPrev: false } };
 
         const normalizedQuery = this.normalizeArabic(trimmed);
-        const isArabic = /[\u0600-\u06FF]/.test(normalizedQuery);
-        const stemmedQuery = isArabic ? ArabicStemmer.stemSentence(normalizedQuery) : normalizedQuery;
-
-        const cacheKey = `search:v5:${normalizedQuery.substring(0, 50)}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
+        const cacheKey = `search:v6:${normalizedQuery.substring(0, 50)}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
         
-        // 0. L1 Cache Check (<0.1ms)
         const l1 = this.l1Cache.get(cacheKey);
         if (l1) return l1;
 
-        // 1. Redis Cache Check (~2ms)
         try {
             const cached = await this.redis.get(cacheKey);
             if (cached) {
                 const results = JSON.parse(cached);
-                this.l1Cache.set(cacheKey, results); // Backfill L1
+                this.l1Cache.set(cacheKey, results);
                 return results;
             }
         } catch (e) {}
 
         const numericMatch = trimmed.match(/^\d+$/);
         if (numericMatch) {
-            const hadithNumber = parseInt(trimmed, 10);
-            const results = await this.searchWithNumberPriority(hadithNumber, trimmed, language, page, limit, collection, grade);
+            const results = await this.searchWithNumberPriority(parseInt(trimmed, 10), trimmed, language, page, limit, collection, grade);
             if (results.data.length > 0) await this.cacheResults(cacheKey, results);
             return results;
         }
@@ -497,18 +469,10 @@ export class HadithsService {
         }
 
         const skip = (page - 1) * limit;
-        const likeQuery = `%${normalizedQuery}%`;
-        const likeStemmedQuery = `%${stemmedQuery}%`;
-        
         const resultsRaw: any[] = await this.prisma.$queryRawUnsafe(`
-            SELECT h.id, COUNT(*) OVER() as full_count
-            FROM hadiths h
+            SELECT h.id, COUNT(*) OVER() as full_count FROM hadiths h
             LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
-            WHERE (
-                h.normalized_arabic ILIKE '${likeQuery}'
-                OR h.normalized_arabic ILIKE '${likeStemmedQuery}'
-                OR t.text ILIKE '${likeQuery}'
-            )
+            WHERE (h.normalized_arabic ILIKE '%${normalizedQuery}%' OR t.text ILIKE '%${normalizedQuery}%')
             ${collection ? `AND (h.collection = '${collection}' OR h.collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
             ${grade ? `AND t.grade = '${grade}'` : ''}
             ORDER BY h.book_number ASC, h.hadith_number ASC
@@ -516,26 +480,15 @@ export class HadithsService {
         `);
 
         const total = resultsRaw.length > 0 ? Number(resultsRaw[0].full_count) : 0;
-        const ids = resultsRaw.map(r => r.id);
-        const hadiths = ids.length > 0 ? await this.prisma.hadith.findMany({
-            where: { id: { in: ids } },
-            include: {
-                translations: { where: { languageCode: language } },
-                collectionRef: true,
-            },
+        const hadiths = resultsRaw.length > 0 ? await this.prisma.hadith.findMany({
+            where: { id: { in: resultsRaw.map(r => r.id) } },
+            include: { translations: { where: { languageCode: language } }, collectionRef: true },
             orderBy: [{ bookNumber: 'asc' }, { hadithNumber: 'asc' }],
         }) : [];
 
         const results = {
             data: hadiths.map(h => this.mapHadithResponse(h)),
-            pagination: {
-                page,
-                limit,
-                total,
-                totalPages: Math.ceil(total / limit),
-                hasNext: page < Math.ceil(total / limit),
-                hasPrev: page > 1,
-            },
+            pagination: { page, limit, total, totalPages: Math.ceil(total / limit), hasNext: page < Math.ceil(total / limit), hasPrev: page > 1 },
         };
 
         if (results.data.length > 0) await this.cacheResults(cacheKey, results);
@@ -550,11 +503,7 @@ export class HadithsService {
                 bookNumber: hit.bookNumber,
                 hadithNumber: hit.hadithNumber,
                 arabicText: hit.arabicText,
-                translation: {
-                    text: hit.translations ? (hit.translations[0]?.text || '') : (hit.text || ''),
-                    grade: hit.grade,
-                    languageCode: hit.languageCode
-                }
+                translation: { text: hit.translations ? (hit.translations[0]?.text || '') : (hit.text || ''), grade: hit.grade, languageCode: hit.languageCode }
             })),
             pagination: {
                 page,
@@ -579,134 +528,23 @@ export class HadithsService {
 
     private async searchWithNumberPriority(hadithNumber: number, query: string, language: string, page: number, limit: number, collection?: string, grade?: string) {
         const offset = (page - 1) * limit;
-        const likeQuery = `%${query}%`;
         const results: any[] = await this.prisma.$queryRawUnsafe(`
             WITH scored_results AS (
-                SELECT id, 100 as score FROM hadiths WHERE hadith_number = ${hadithNumber}
-                ${collection ? `AND (collection = '${collection}' OR collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
+                SELECT id, 100 as score FROM hadiths WHERE hadith_number = ${hadithNumber} ${collection ? `AND (collection = '${collection}' OR collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
                 UNION ALL
-                SELECT id, 50 as score FROM hadiths WHERE CAST(hadith_number AS TEXT) LIKE '${likeQuery}' AND hadith_number != ${hadithNumber}
-                ${collection ? `AND (collection = '${collection}' OR collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
+                SELECT id, 50 as score FROM hadiths WHERE CAST(hadith_number AS TEXT) LIKE '%${query}%' AND hadith_number != ${hadithNumber} ${collection ? `AND (collection = '${collection}' OR collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
                 UNION ALL
-                SELECT h.id, 30 as score FROM hadiths h
-                LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
-                WHERE (h.normalized_arabic ILIKE '${likeQuery}' OR t.text ILIKE '${likeQuery}') AND h.hadith_number != ${hadithNumber}
-                ${collection ? `AND (h.collection = '${collection}' OR h.collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''}
-                ${grade ? `AND t.grade = '${grade}'` : ''}
+                SELECT h.id, 30 as score FROM hadiths h LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
+                WHERE (h.normalized_arabic ILIKE '%${query}%' OR t.text ILIKE '%${query}%') AND h.hadith_number != ${hadithNumber} ${collection ? `AND (h.collection = '${collection}' OR h.collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''} ${grade ? `AND t.grade = '${grade}'` : ''}
             )
             SELECT DISTINCT ON (id) * FROM (SELECT id, MAX(score) as max_score FROM scored_results GROUP BY id) s
             ORDER BY max_score DESC, id ASC LIMIT ${limit} OFFSET ${offset}
         `);
-
-        const totalRaw: any[] = await this.prisma.$queryRawUnsafe(`
-            SELECT COUNT(DISTINCT id) as total FROM (
-                SELECT id FROM hadiths WHERE hadith_number = ${hadithNumber} UNION
-                SELECT id FROM hadiths WHERE CAST(hadith_number AS TEXT) LIKE '${likeQuery}' UNION
-                SELECT h.id FROM hadiths h
-                LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
-                WHERE (h.normalized_arabic ILIKE '${likeQuery}' OR t.text ILIKE '${likeQuery}')
-            ) s
-        `);
+        const totalRaw: any[] = await this.prisma.$queryRawUnsafe(`SELECT COUNT(DISTINCT id) as total FROM (SELECT id FROM hadiths WHERE hadith_number = ${hadithNumber} UNION SELECT id FROM hadiths WHERE CAST(hadith_number AS TEXT) LIKE '%${query}%' UNION SELECT h.id FROM hadiths h LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}' WHERE (h.normalized_arabic ILIKE '%${query}%' OR t.text ILIKE '%${query}%')) s`);
         const total = Number(totalRaw[0].total);
         const ids = results.map(r => r.id);
-        const hadiths = ids.length > 0 ? await this.prisma.hadith.findMany({
-            where: { id: { in: ids } },
-            include: { translations: { where: { languageCode: language } }, collectionRef: true }
-        }) : [];
-
+        const hadiths = ids.length > 0 ? await this.prisma.hadith.findMany({ where: { id: { in: ids } }, include: { translations: { where: { languageCode: language } }, collectionRef: true } }) : [];
         const ordered = ids.map(id => hadiths.find(h => h.id === id)).filter(Boolean);
-        return {
-            data: ordered.map(h => this.mapHadithResponse(h as any)),
-            pagination: { page, limit, total, totalPages: Math.ceil(total / limit), hasNext: page < Math.ceil(total / limit), hasPrev: page > 1 }
-        };
-    }
-
-    async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
-        const cacheKey = `semantic:v2:${query.trim().toLowerCase().substring(0, 100)}:${language}:${limit}`;
-
-        // 1. L1 кэш (in-memory, <0.1ms)
-        const l1Hit = this.l1Cache.get(cacheKey);
-        if (l1Hit) return l1Hit;
-
-        // 2. Redis кэш (~2ms)
-        try {
-            const cached = await this.redis.get(cacheKey);
-            if (cached) {
-                const result = JSON.parse(cached);
-                this.l1Cache.set(cacheKey, result);
-                return result;
-            }
-        } catch (e) {}
-
-        // 3. SingleFlight — защита от дублирующих одновременных запросов
-        return this.singleFlight.do(cacheKey, async () => {
-            // Генерация эмбеддинга (с Redis-кэшем внутри, ~2ms на повторах)
-            const queryVector = await this.aiService.generateEmbedding(query);
-            const vec = `[${queryVector.join(',')}]`;
-
-            // Один SQL запрос вместо двух: вектор + данные хадиса + перевод + коллекция
-            const rows = await this.prisma.$queryRawUnsafe<any[]>(`
-                WITH ranked AS (
-                    SELECT
-                        h.id,
-                        1 - (h.embedding <=> '${vec}'::vector) AS similarity
-                    FROM hadiths h
-                    WHERE h.embedding IS NOT NULL
-                    ORDER BY h.embedding <=> '${vec}'::vector
-                    LIMIT ${limit}
-                )
-                SELECT
-                    r.similarity,
-                    h.id,
-                    h.collection,
-                    h.collection_id   AS "collectionId",
-                    h.book_number     AS "bookNumber",
-                    h.hadith_number   AS "hadithNumber",
-                    h.arabic_text     AS "arabicText",
-                    h.arabic_narrator AS "arabicNarrator",
-                    c.name_english    AS "collectionName",
-                    t.text            AS "translationText",
-                    t.grade           AS "translationGrade",
-                    t.language_code   AS "translationLanguage",
-                    t.narrator        AS "translationNarrator"
-                FROM ranked r
-                JOIN hadiths h ON h.id = r.id
-                LEFT JOIN collections c ON c.id = h.collection_id
-                LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
-                ORDER BY r.similarity DESC
-            `);
-
-            const data = rows;
-
-            if (!data || data.length === 0) return { data: [], total: 0 };
-
-            const finalResult = {
-                data: data.map((row: any) => ({
-                    id: row.id,
-                    collection: row.collectionName || row.collection,
-                    collectionId: row.collectionId,
-                    bookNumber: row.bookNumber,
-                    hadithNumber: row.hadithNumber,
-                    arabicText: row.arabicText,
-                    arabicNarrator: row.arabicNarrator,
-                    translation: row.translationText ? {
-                        text: row.translationText,
-                        grade: row.translationGrade,
-                        languageCode: row.translationLanguage,
-                        narrator: row.translationNarrator,
-                    } : null,
-                    similarity: Number(row.similarity),
-                })),
-                total: data.length,
-            };
-
-            // Сохраняем в Redis на 1 час
-            try {
-                await this.redis.set(cacheKey, JSON.stringify(finalResult), 'EX', 3600);
-                this.l1Cache.set(cacheKey, finalResult);
-            } catch (e) {}
-
-            return finalResult;
-        });
+        return { data: ordered.map(h => this.mapHadithResponse(h as any)), pagination: { page, limit, total, totalPages: Math.ceil(total / limit), hasNext: page < Math.ceil(total / limit), hasPrev: page > 1 } };
     }
 }
