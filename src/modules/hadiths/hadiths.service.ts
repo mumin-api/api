@@ -249,28 +249,45 @@ export class HadithsService {
     }
 
     async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
-        if (!query) return [];
-        const cacheKey = `semantic:v3:${query.trim().toLowerCase().substring(0, 100)}:${language}:${limit}`;
+    console.log(`[SemanticSearch] START: "${query}" (lang: ${language}, limit: ${limit})`);
+    if (!query) return { data: [], total: 0 };
+    
+    // Incrementing version to v4 to bypass any stale results
+    const cacheKey = `semantic:v4:${query.trim().toLowerCase().substring(0, 100)}:${language}:${limit}`;
 
-        const l1Hit = this.l1Cache.get(cacheKey);
-        if (l1Hit) return l1Hit;
+    const l1Hit = this.l1Cache.get(cacheKey);
+    if (l1Hit) {
+        console.log(`[SemanticSearch] L1 CACHE HIT for query: "${query}"`);
+        return l1Hit;
+    }
 
-        try {
-            const cached = await this.redis.get(cacheKey);
-            if (cached) {
-                const result = JSON.parse(cached);
-                this.l1Cache.set(cacheKey, result);
-                return result;
-            }
-        } catch (e) {}
+    try {
+        const cached = await this.redis.get(cacheKey);
+        if (cached) {
+            console.log(`[SemanticSearch] REDIS CACHE HIT for query: "${query}"`);
+            const result = JSON.parse(cached);
+            this.l1Cache.set(cacheKey, result);
+            return result;
+        }
+    } catch (e: any) {
+        console.error(`[SemanticSearch] Redis Error: ${e.message}`);
+    }
 
+    console.log(`[SemanticSearch] CACHE MISS. Fetching from Pinecone...`);
         return this.singleFlight.do(cacheKey, async () => {
             const queryVector = await this.aiService.generateEmbedding(query);
             const matches = await this.vectorService.search(queryVector, limit);
             
-            if (matches.length === 0) return { data: [], total: 0 };
+            console.log(`[SemanticSearch] Query: "${query}", Vector Length: ${queryVector.length}, Matches: ${matches.length}`);
+            
+            if (matches.length === 0) {
+                console.log('[SemanticSearch] No matches from VectorService');
+                return { data: [], total: 0 };
+            }
 
             const hadithIds = matches.map(m => m.id);
+            console.log(`[SemanticSearch] Hadith IDs from Pinecone: ${hadithIds.join(', ')}`);
+
             const hadiths = await this.prisma.hadith.findMany({
                 where: { id: { in: hadithIds } },
                 include: {
@@ -278,6 +295,8 @@ export class HadithsService {
                     collectionRef: true,
                 }
             });
+
+            console.log(`[SemanticSearch] Found ${hadiths.length} hadiths in DB for these IDs`);
 
             const results = hadithIds.map(id => {
                 const h = hadiths.find(item => item.id === id);
