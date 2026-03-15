@@ -125,7 +125,7 @@ export class AiService {
   async generateEmbedding(text: string): Promise<number[]> {
     // Кэшируем эмбеддинги в Redis по SHA-256 хешу запроса (TTL 7 дней)
     const hash = createHash('sha256').update(text.trim().toLowerCase()).digest('hex');
-    const cacheKey = `embedding:v1:${hash}`;
+    const cacheKey = `embedding:v2:${hash}`;
 
     try {
       const cached = await this.redis.get(cacheKey);

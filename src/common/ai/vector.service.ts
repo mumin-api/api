@@ -18,25 +18,25 @@ export class VectorService {
     const apiKey = this.configService.get<string>('PINECONE_API_KEY');
     this.indexName = this.configService.get<string>('PINECONE_INDEX') || 'mumin';
 
-    this.logger.log(`Initializing VectorService with index: ${this.indexName}`);
+    console.log(`[VectorService] Initializing with index: "${this.indexName}"`);
 
     if (!apiKey) {
-      this.logger.warn('PINECONE_API_KEY is not defined. Vector search will be disabled.');
+      console.log('[VectorService] PINECONE_API_KEY is missing!');
       return;
     }
 
     this.pc = new Pinecone({ apiKey });
-    this.logger.log('Pinecone client initialized.');
+    console.log('[VectorService] Pinecone client initialized.');
   }
 
   async search(vector: number[], limit: number = 10): Promise<VectorSearchResult[]> {
     if (!this.pc) return [];
 
     try {
-      const host = 'https://mumin-gljivs4.svc.aped-4627-b74a.pinecone.io';
+      const host = this.configService.get<string>('PINECONE_HOST') || 'https://mumin-gljivs4.svc.aped-4627-b74a.pinecone.io';
       const index = this.pc.index(this.indexName, host);
       
-      this.logger.log(`Querying Pinecone index "${this.indexName}" at host "${host}"...`);
+      console.log(`[VectorService] Querying index "${this.indexName}" at host "${host}"...`);
       
       const queryResponse = await index.query({
         vector,
@@ -44,7 +44,7 @@ export class VectorService {
         includeMetadata: true,
       });
 
-      this.logger.log(`Pinecone matches: ${queryResponse.matches?.length || 0}`);
+      console.log(`[VectorService] Query complete. Matches: ${queryResponse.matches?.length || 0}`);
 
       return queryResponse.matches.map(match => ({
         id: parseInt(match.id),

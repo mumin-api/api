@@ -252,8 +252,8 @@ export class HadithsService {
     console.log(`[SemanticSearch] START: "${query}" (lang: ${language}, limit: ${limit})`);
     if (!query) return { data: [], total: 0 };
     
-    // Incrementing version to v4 to bypass any stale results
-    const cacheKey = `semantic:v4:${query.trim().toLowerCase().substring(0, 100)}:${language}:${limit}`;
+    // Incrementing version to v5 to bypass any stale results
+    const cacheKey = `semantic:v5:${query.trim().toLowerCase().substring(0, 100)}:${language}:${limit}`;
 
     const l1Hit = this.l1Cache.get(cacheKey);
     if (l1Hit) {
