@@ -55,6 +55,11 @@ class MockAiService {
     });
 }
 
+// Mock VectorService
+class MockVectorService {
+    search = async () => [];
+}
+
 // Mock EmailService
 class MockEmailService {
     sendEmail = async () => {};
@@ -75,6 +80,7 @@ async function verify() {
         new MockRedis() as any, 
         new MockMeilisearchService() as any,
         new MockAiService() as any,
+        new MockVectorService() as any,
         new MockEmailService() as any,
         new MockConfigService() as any
     );
