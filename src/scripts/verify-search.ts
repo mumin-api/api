@@ -82,7 +82,8 @@ async function verify() {
         new MockAiService() as any,
         new MockVectorService() as any,
         new MockEmailService() as any,
-        new MockConfigService() as any
+        new MockConfigService() as any,
+        {} as any // SystemConfigService
     );
 
     console.log('--- TEST 1: Search "27" (Logic check) ---');

@@ -44,7 +44,7 @@ export class SystemConfigService {
       
       this.cache.set(featureKey, { value: isEnabled, timestamp: Date.now() });
       return isEnabled;
-    } catch (error) {
+    } catch (error: any) {
       this.logger.error(`Failed to fetch system setting ${featureKey}: ${error.message}`);
       // Fallback to true if DB is down but ENV isn't set
       return true;
