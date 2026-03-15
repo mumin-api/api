@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { SystemConfigService } from '../../common/utils/system-config.service';
 
-@Controller('v1/system')
+@Controller('system')
 export class SystemController {
   constructor(private readonly systemConfig: SystemConfigService) {}
 
