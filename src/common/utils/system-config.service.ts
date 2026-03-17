@@ -22,11 +22,19 @@ export class SystemConfigService {
    */
   async isFeatureEnabled(featureKey: string): Promise<boolean> {
     const envKey = featureKey.toUpperCase();
-    const envValue = this.config.get<string>(envKey);
+    const envValue = this.config.get<any>(envKey);
 
     // 1. Check ENV (Forced override if exists)
-    if (envValue !== undefined) {
-      return envValue === 'true' || envValue === '1';
+    if (envValue !== undefined && envValue !== null) {
+      const isEnabled = envValue === true || 
+                        envValue === 'true' || 
+                        envValue === '1' || 
+                        (typeof envValue === 'string' && envValue.toLowerCase() === 'true');
+      
+      if (!isEnabled) {
+        this.logger.warn(`Feature ${featureKey} disabled by ENV: ${envKey}=${envValue}`);
+      }
+      return isEnabled;
     }
 
     // 2. Check Database with simple caching
@@ -37,16 +45,24 @@ export class SystemConfigService {
 
     try {
       const setting = await this.prisma.systemSetting.findUnique({
-        where: { key: featureKey.toLowerCase() },
+        where: { key: featureKey.trim().toLowerCase() },
       });
 
-      const isEnabled = setting ? setting.value === 'true' || setting.value === '1' : true;
+      const val = setting?.value?.trim();
+      const isEnabled = val === undefined || 
+                        val === 'true' || 
+                        val === '1' || 
+                        (typeof val === 'string' && val.toLowerCase() === 'true');
       
       this.cache.set(featureKey, { value: isEnabled, timestamp: Date.now() });
+      
+      if (!isEnabled) {
+        this.logger.warn(`Feature ${featureKey} disabled by DB setting`);
+      }
+      
       return isEnabled;
     } catch (error: any) {
       this.logger.error(`Failed to fetch system setting ${featureKey}: ${error.message}`);
-      // Fallback to true if DB is down but ENV isn't set
       return true;
     }
   }
