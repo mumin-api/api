@@ -21,10 +21,27 @@ export class SystemConfigService {
    * 3. Default (Enabled)
    */
   async isFeatureEnabled(featureKey: string): Promise<boolean> {
+    const key = featureKey.trim().toLowerCase();
+    
+    // 1. Check if maintenance mode is enabled (Master Switch)
+    // We skip this check if we are currently checking for maintenance_mode to avoid infinite recursion
+    if (key !== 'maintenance_mode') {
+      const isMaintenance = await this.isFeatureEnabled('maintenance_mode');
+      if (isMaintenance) {
+        // If maintenance mode is active, heavy features are automatically disabled
+        // We can add exceptions here if we want some features to stay active during maintenance
+        const heavyFeatures = ['feature_search_enabled', 'feature_ai_enabled'];
+        if (heavyFeatures.includes(key)) {
+          this.logger.log(`Feature ${featureKey} automatically disabled by global Maintenance Mode`);
+          return false;
+        }
+      }
+    }
+
     const envKey = featureKey.toUpperCase();
     const envValue = this.config.get<any>(envKey);
 
-    // 1. Check ENV (Forced override if exists)
+    // 2. Check ENV (Forced override if exists)
     if (envValue !== undefined && envValue !== null) {
       const isEnabled = envValue === true || 
                         envValue === 'true' || 

@@ -39,6 +39,9 @@ export class HadithsService {
     }
 
     async getExplanation(id: number, language: string = 'en') {
+        if (!await this.systemConfig.isFeatureEnabled('feature_ai_enabled')) {
+            throw new ServiceUnavailableException('AI explanations are temporarily unavailable');
+        }
         const flightKey = `explanation:${id}:${language}`;
         return this.singleFlight.do(flightKey, async () => {
             const cache = await (this.prisma as any).hadithExplanation.findUnique({
@@ -89,6 +92,9 @@ export class HadithsService {
     }
 
     async streamExplanation(id: number, language: string = 'en') {
+        if (!await this.systemConfig.isFeatureEnabled('feature_ai_enabled')) {
+            throw new ServiceUnavailableException('AI explanations are temporarily unavailable');
+        }
         const cache = await (this.prisma as any).hadithExplanation.findUnique({
             where: {
                 hadithId_languageCode: {
