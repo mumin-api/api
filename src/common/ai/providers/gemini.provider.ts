@@ -130,7 +130,7 @@ export class GeminiProvider implements AiProvider {
       // Switched to gemini-embedding-001 based on diagnostic results
       const model = instance.getGenerativeModel({ model: 'models/gemini-embedding-001' });
       const embedResult = await model.embedContent(text);
-      return embedResult.embedding.values.slice(0, 768);
+      return embedResult.embedding.values;
     });
 
     this.currentVectorIndex = (this.currentVectorIndex + 1) % this.vectorAIs.length;

@@ -191,7 +191,13 @@ export class HadithsService {
         return feedback;
     }
 
-    private mapHadithResponse(hadith: any) {
+    private mapHadithResponse(hadith: any, preferredLanguage?: string) {
+        let translation = null;
+        if (hadith.translations && hadith.translations.length > 0) {
+            // Find preferred language or default to first one (usually English)
+            translation = hadith.translations.find((t: any) => t.languageCode === preferredLanguage) || hadith.translations[0];
+        }
+        
         return {
             id: hadith.id,
             collection: hadith.collectionRef?.nameEnglish || hadith.collection,
@@ -200,7 +206,7 @@ export class HadithsService {
             hadithNumber: hadith.hadithNumber,
             arabicText: hadith.arabicText,
             arabicNarrator: hadith.arabicNarrator,
-            translation: hadith.translations?.[0] || null,
+            translation: translation,
         };
     }
 
@@ -227,7 +233,7 @@ export class HadithsService {
                 skip,
                 take: limit,
                 include: {
-                    translations: { where: { languageCode: language } },
+                    translations: { where: { languageCode: { in: [language, 'en'] } } },
                     collectionRef: true,
                 },
                 orderBy: [{ bookNumber: 'asc' }, { hadithNumber: 'asc' }],
@@ -238,7 +244,7 @@ export class HadithsService {
         const totalPages = Math.ceil(total / limit);
 
         return {
-            data: hadiths.map(h => this.mapHadithResponse(h)),
+            data: hadiths.map(h => this.mapHadithResponse(h, language)),
             pagination: { page, limit, total, totalPages, hasNext: page < totalPages, hasPrev: page > 1 },
         };
     }
@@ -247,13 +253,13 @@ export class HadithsService {
         const hadith = await this.prisma.hadith.findUnique({
             where: { id },
             include: {
-                translations: { where: { languageCode: language } },
+                translations: { where: { languageCode: { in: [language, 'en'] } } },
                 collectionRef: true,
             },
         });
 
         if (!hadith) throw new NotFoundException(`Hadith with ID ${id} not found`);
-        return this.mapHadithResponse(hadith);
+        return this.mapHadithResponse(hadith, language);
     }
 
     async semanticSearch(query: string, language: string = 'ru', limit: number = 10) {
@@ -302,7 +308,7 @@ export class HadithsService {
             const hadiths = await this.prisma.hadith.findMany({
                 where: { id: { in: hadithIds } },
                 include: {
-                    translations: { where: { languageCode: language } },
+                    translations: { where: { languageCode: { in: [language, 'en'] } } },
                     collectionRef: true,
                 }
             });
@@ -314,7 +320,7 @@ export class HadithsService {
                 if (!h) return null;
                 const match = matches.find(m => m.id === id);
                 return {
-                    ...this.mapHadithResponse(h),
+                    ...this.mapHadithResponse(h, language),
                     similarity: match?.score || 0
                 };
             }).filter(Boolean);
@@ -407,9 +413,9 @@ export class HadithsService {
                             hadithNumber: hit.hadithNumber,
                             arabicText: hit.arabicText,
                             translation: {
-                                text: hit.translations ? (hit.translations[0]?.text || '') : (hit.text || ''),
+                                text: hit.text || '',
                                 grade: hit.grade,
-                                languageCode: language,
+                                languageCode: hit.languageCode || language,
                             },
                         }),
                     };
@@ -426,13 +432,16 @@ export class HadithsService {
         const likeStemmedQuery = `%${stemmedQuery}%`;
 
         const resultsRaw: any[] = await this.prisma.$queryRawUnsafe(`
-            SELECT id, collection_name, book_number, hadith_number, arabic_text, translation_text, grade
-            FROM search_view
-            WHERE (normalized_arabic ILIKE '${likeQuery}' OR normalized_arabic ILIKE '${likeStemmedQuery}' OR translation_text ILIKE '${likeQuery}')
-            AND language_code = '${language}'
+            WITH ranked_translations AS (
+                SELECT *,
+                    ROW_NUMBER() OVER(PARTITION BY id ORDER BY (language_code = '${language}') DESC, (language_code = 'en') DESC) as rank
+                FROM search_view
+                WHERE (hadith_number = ${parseInt(trimmed, 10) || -1} OR normalized_arabic ILIKE '${likeQuery}' OR normalized_arabic ILIKE '${likeStemmedQuery}' OR translation_text ILIKE '${likeQuery}')
+            )
+            SELECT * FROM ranked_translations WHERE rank = 1
             ${collection ? `AND (collection_slug = '${collection}' OR collection_name = '${collection}')` : ''}
             ${grade ? `AND grade = '${grade}'` : ''}
-            ORDER BY book_number ASC, hadith_number ASC
+            ORDER BY (hadith_number = ${parseInt(trimmed, 10) || -1}) DESC, book_number ASC, hadith_number ASC
             LIMIT ${limit}
         `);
 
@@ -444,7 +453,11 @@ export class HadithsService {
                     bookNumber: row.book_number,
                     hadithNumber: row.hadith_number,
                     arabicText: row.arabic_text,
-                    translation: { text: row.translation_text, grade: row.grade, languageCode: language },
+                    translation: { 
+                        text: row.translation_text || '', 
+                        grade: row.grade, 
+                        languageCode: row.language_code || language 
+                    },
                 }),
             };
         }
@@ -457,7 +470,7 @@ export class HadithsService {
         if (!trimmed) return { data: [], pagination: { page, limit, total: 0, totalPages: 0, hasNext: false, hasPrev: false } };
 
         const normalizedQuery = this.normalizeArabic(trimmed);
-        const cacheKey = `search:v6:${normalizedQuery.substring(0, 50)}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
+        const cacheKey = `search:v7:${normalizedQuery.substring(0, 50)}:${language}:${page}:${limit}:${collection || 'none'}:${grade || 'none'}`;
         
         const l1 = this.l1Cache.get(cacheKey);
         if (l1) return l1;
@@ -493,7 +506,7 @@ export class HadithsService {
         } catch (e) {}
 
         if (meiliResults.hits && meiliResults.hits.length > 0) {
-            const results = this.formatSearchResponse(meiliResults, page, limit);
+            const results = this.formatSearchResponse(meiliResults, page, limit, language);
             await this.cacheResults(cacheKey, results);
             return results;
         }
@@ -512,12 +525,17 @@ export class HadithsService {
         const total = resultsRaw.length > 0 ? Number(resultsRaw[0].full_count) : 0;
         const hadiths = resultsRaw.length > 0 ? await this.prisma.hadith.findMany({
             where: { id: { in: resultsRaw.map(r => r.id) } },
-            include: { translations: { where: { languageCode: language } }, collectionRef: true },
+            include: { translations: { where: { languageCode: { in: [language, 'en'] } } }, collectionRef: true },
             orderBy: [{ bookNumber: 'asc' }, { hadithNumber: 'asc' }],
         }) : [];
 
+        const ordered = resultsRaw.map(r => {
+            const h = hadiths.find(h => h.id === r.id);
+            return h ? this.mapHadithResponse(h, language) : null;
+        }).filter(Boolean);
+
         const results = {
-            data: hadiths.map(h => this.mapHadithResponse(h)),
+            data: ordered,
             pagination: { page, limit, total, totalPages: Math.ceil(total / limit), hasNext: page < Math.ceil(total / limit), hasPrev: page > 1 },
         };
 
@@ -525,7 +543,7 @@ export class HadithsService {
         return results;
     }
 
-    private formatSearchResponse(meiliResults: any, page: number, limit: number) {
+    private formatSearchResponse(meiliResults: any, page: number, limit: number, language: string = 'en') {
         return {
             data: meiliResults.hits.map((hit: any) => ({
                 id: hit.id,
@@ -533,7 +551,7 @@ export class HadithsService {
                 bookNumber: hit.bookNumber,
                 hadithNumber: hit.hadithNumber,
                 arabicText: hit.arabicText,
-                translation: { text: hit.translations ? (hit.translations[0]?.text || '') : (hit.text || ''), grade: hit.grade, languageCode: hit.languageCode }
+                translation: { text: hit.text || '', grade: hit.grade, languageCode: hit.languageCode || language }
             })),
             pagination: {
                 page,
@@ -567,14 +585,46 @@ export class HadithsService {
                 SELECT h.id, 30 as score FROM hadiths h LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}'
                 WHERE (h.normalized_arabic ILIKE '%${query}%' OR t.text ILIKE '%${query}%') AND h.hadith_number != ${hadithNumber} ${collection ? `AND (h.collection = '${collection}' OR h.collection_id IN (SELECT id FROM collections WHERE slug = '${collection}'))` : ''} ${grade ? `AND t.grade = '${grade}'` : ''}
             )
-            SELECT DISTINCT ON (id) * FROM (SELECT id, MAX(score) as max_score FROM scored_results GROUP BY id) s
+            SELECT * FROM (SELECT id, MAX(score) as max_score FROM scored_results GROUP BY id) s
             ORDER BY max_score DESC, id ASC LIMIT ${limit} OFFSET ${offset}
         `);
-        const totalRaw: any[] = await this.prisma.$queryRawUnsafe(`SELECT COUNT(DISTINCT id) as total FROM (SELECT id FROM hadiths WHERE hadith_number = ${hadithNumber} UNION SELECT id FROM hadiths WHERE CAST(hadith_number AS TEXT) LIKE '%${query}%' UNION SELECT h.id FROM hadiths h LEFT JOIN translations t ON t.hadith_id = h.id AND t.language_code = '${language}' WHERE (h.normalized_arabic ILIKE '%${query}%' OR t.text ILIKE '%${query}%')) s`);
-        const total = Number(totalRaw[0].total);
+        const totalRaw: any[] = await this.prisma.$queryRawUnsafe(`
+            SELECT COUNT(DISTINCT id) as total FROM (
+                SELECT id FROM hadiths WHERE hadith_number = ${hadithNumber} 
+                UNION 
+                SELECT id FROM hadiths WHERE CAST(hadith_number AS TEXT) LIKE '%${query}%' 
+                UNION 
+                SELECT h.id FROM hadiths h 
+                LEFT JOIN translations t ON t.hadith_id = h.id 
+                WHERE (h.normalized_arabic ILIKE '%${query}%' OR t.text ILIKE '%${query}%')
+            ) s
+        `);
+        const total = Number(totalRaw[0]?.total || 0);
         const ids = results.map(r => r.id);
-        const hadiths = ids.length > 0 ? await this.prisma.hadith.findMany({ where: { id: { in: ids } }, include: { translations: { where: { languageCode: language } }, collectionRef: true } }) : [];
-        const ordered = ids.map(id => hadiths.find(h => h.id === id)).filter(Boolean);
-        return { data: ordered.map(h => this.mapHadithResponse(h as any)), pagination: { page, limit, total, totalPages: Math.ceil(total / limit), hasNext: page < Math.ceil(total / limit), hasPrev: page > 1 } };
+        const hadiths = ids.length > 0 ? await this.prisma.hadith.findMany({ 
+            where: { id: { in: ids } }, 
+            include: { 
+                translations: { 
+                    orderBy: { languageCode: 'asc' } // This will put 'en' before 'ru' or vice-versa, but we'll map carefully
+                }, 
+                collectionRef: true 
+            } 
+        }) : [];
+        
+        const ordered = ids.map(id => {
+            const h = hadiths.find(h => h.id === id);
+            if (!h) return null;
+            // Prefer the requested language translation
+            const prefTranslation = h.translations.find(t => t.languageCode === language) || h.translations[0];
+            return {
+                ...this.mapHadithResponse(h),
+                translation: prefTranslation || null
+            };
+        }).filter(Boolean);
+        
+        return { 
+            data: ordered, 
+            pagination: { page, limit, total, totalPages: Math.ceil(total / limit), hasNext: page < Math.ceil(total / limit), hasPrev: page > 1 } 
+        };
     }
 }

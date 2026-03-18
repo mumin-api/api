@@ -133,7 +133,7 @@ export class AiService {
   async generateEmbedding(text: string): Promise<number[]> {
     // Кэшируем эмбеддинги в Redis по SHA-256 хешу запроса (TTL 7 дней)
     const hash = createHash('sha256').update(text.trim().toLowerCase()).digest('hex');
-    const cacheKey = `embedding:v2:${hash}`;
+    const cacheKey = `embedding:v3:${hash}`;
 
     try {
       const cached = await this.redis.get(cacheKey);
@@ -149,13 +149,8 @@ export class AiService {
     const provider = this.providers.get(providerName) || this.gemini;
 
     try {
-      let embedding = await provider.generateEmbedding(text);
-      // Force dimension to 768 to match the database schema
-      if (embedding.length !== 768) {
-        this.logger.warn(`Provider ${providerName} returned ${embedding.length} dimensions. Truncating to 768.`);
-        embedding = embedding.slice(0, 768);
-      }
-      this.logger.log(`Generated embedding with ${providerName}. Final Dimension: ${embedding.length}`);
+      const embedding = await provider.generateEmbedding(text);
+      this.logger.log(`Generated embedding with ${providerName}. Dimension: ${embedding.length}`);
 
       // Сохраняем в Redis на 7 дней
       try {

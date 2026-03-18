@@ -30,29 +30,50 @@ async function sync() {
             },
         });
 
-        const documents = hadiths.map(h => ({
-            id: h.id,
-            // Removed non-existent slug field
-            collection: h.collectionRef?.slug || h.collection,
-            collectionName: h.collectionRef?.nameEnglish || h.collection,
-            bookNumber: h.bookNumber,
-            hadithNumber: h.hadithNumber,
-            arabicText: h.arabicText,
-            arabicNarrator: h.arabicNarrator,
-            translations: h.translations.map(t => ({
-                text: t.text,
-                languageCode: t.languageCode,
-                grade: t.grade,
-            })),
-            // Flat fields for easier filtering in Meilisearch
-            grade: h.translations[0]?.grade || 'unknown',
-            languageCode: h.translations[0]?.languageCode || 'en',
-            text: h.translations[0]?.text || '',
-            metadata: h.metadata,
-        }));
+        const documents: any[] = [];
+        for (const h of hadiths) {
+            // Index each translation as a separate document
+            for (const t of h.translations) {
+                documents.push({
+                    id: `${h.id}_${t.languageCode}`, // Unique ID for Meilisearch
+                    hadithId: h.id,                  // Original hadith ID
+                    collection: h.collectionRef?.slug || h.collection,
+                    collectionName: h.collectionRef?.nameEnglish || h.collection,
+                    bookNumber: h.bookNumber,
+                    hadithNumber: h.hadithNumber,
+                    arabicText: h.arabicText,
+                    arabicNarrator: h.arabicNarrator,
+                    text: t.text,
+                    languageCode: t.languageCode,
+                    grade: t.grade || 'unknown',
+                    metadata: h.metadata,
+                });
+            }
 
-        const task = await index.addDocuments(documents);
-        console.log(`Sent batch ${i / batchSize + 1} (${documents.length} docs). Task UID: ${task.taskUid}`);
+            // Also index a document with just Arabic if no translations exist, 
+            // or just to have a "base" document (optional, but good for Arabic-only search)
+            if (h.translations.length === 0) {
+                documents.push({
+                    id: `${h.id}_ar`,
+                    hadithId: h.id,
+                    collection: h.collectionRef?.slug || h.collection,
+                    collectionName: h.collectionRef?.nameEnglish || h.collection,
+                    bookNumber: h.bookNumber,
+                    hadithNumber: h.hadithNumber,
+                    arabicText: h.arabicText,
+                    arabicNarrator: h.arabicNarrator,
+                    text: '',
+                    languageCode: 'ar',
+                    grade: 'unknown',
+                    metadata: h.metadata,
+                });
+            }
+        }
+
+        if (documents.length > 0) {
+            const task = await index.addDocuments(documents);
+            console.log(`Sent batch ${i / batchSize + 1} (${documents.length} docs). Task UID: ${task.taskUid}`);
+        }
     }
 
     console.log('Sync task submission complete.');
