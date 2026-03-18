@@ -427,17 +427,25 @@ export class HadithsService {
             this.logger.warn(`Meilisearch stream fallback: ${e.message}`);
         }
 
-        const isArabic = /[\u0600-\u06FF]/.test(normalizedQuery);
-        const stemmedQuery = isArabic ? ArabicStemmer.stemSentence(normalizedQuery) : normalizedQuery;
-        const likeQuery = `%${normalizedQuery}%`;
-        const likeStemmedQuery = `%${stemmedQuery}%`;
+        const isNumeric = /^\d+$/.test(trimmed);
+        let sqlWhere = '';
+
+        if (isNumeric) {
+            sqlWhere = `(hadith_number = ${parseInt(trimmed, 10)})`;
+        } else {
+            const isArabic = /[\u0600-\u06FF]/.test(normalizedQuery);
+            const stemmedQuery = isArabic ? ArabicStemmer.stemSentence(normalizedQuery) : normalizedQuery;
+            const likeQuery = `%${normalizedQuery}%`;
+            const likeStemmedQuery = `%${stemmedQuery}%`;
+            sqlWhere = `(hadith_number = ${parseInt(trimmed, 10) || -1} OR normalized_arabic ILIKE '${likeQuery}' OR normalized_arabic ILIKE '${likeStemmedQuery}' OR translation_text ILIKE '${likeQuery}')`;
+        }
 
         const resultsRaw: any[] = await this.prisma.$queryRawUnsafe(`
             WITH ranked_translations AS (
                 SELECT *,
                     ROW_NUMBER() OVER(PARTITION BY id ORDER BY (language_code = '${language}') DESC, (language_code = 'en') DESC) as rank
                 FROM search_view
-                WHERE (hadith_number = ${parseInt(trimmed, 10) || -1} OR normalized_arabic ILIKE '${likeQuery}' OR normalized_arabic ILIKE '${likeStemmedQuery}' OR translation_text ILIKE '${likeQuery}')
+                WHERE ${sqlWhere}
             )
             SELECT * FROM ranked_translations WHERE rank = 1
             ${collection ? `AND (collection_slug = '${collection}' OR collection_name = '${collection}')` : ''}
