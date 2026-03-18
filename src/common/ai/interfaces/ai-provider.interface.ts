@@ -1,5 +1,6 @@
 export interface ExplanationResult {
   short_meaning: string;
+  social_summary: string;
   long_meaning: string;
   context: string;
   legal_note: string;

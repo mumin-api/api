@@ -78,6 +78,7 @@ export class GeminiProvider implements AiProvider {
 
       return {
         short_meaning: content.short_meaning || '',
+        social_summary: content.social_summary || '',
         long_meaning: content.long_meaning || '',
         context: content.context || '',
         legal_note: content.legal_note || '',
@@ -163,6 +164,7 @@ export class GeminiProvider implements AiProvider {
 Стиль и Структура (Золотая середина):
 - Тон: Академичный, мудрый, лаконичный. Пиши емко, но выразительно.
 - short_meaning: Суть 1 мощным предложением.
+- social_summary: Емкая, вдохновляющая фраза для соцсетей (до 100 символов). Без лишних слов, максимально точно и красиво.
 - long_meaning: Компактный разбор (2-4 предложения). Избегай вводных фраз типа "Данный хадис говорит нам о том, что...". Сразу к сути.
 - context: Если терминов несколько, используй короткий список. 1 фраза на термин.
 - benefit: 1 яркое предложение о практической или духовной пользе.
@@ -172,6 +174,7 @@ ${languageInstruction}
 Выдай ответ СТРОГО в формате JSON, где каждое значение — это ОДНА ПЛОСКАЯ СТРОКА (string) на языке ${languageName}:
 {
   "short_meaning": "Краткий и точный смысл хадиса (для быстрого чтения)",
+  "social_summary": "Короткая, яркая фраза для карточки в соцсетях",
   "long_meaning": "Развёрнутое и глубокое объяснение со всеми нюансами",
   "context": "Точное определение терминов или исторический контекст",
   "legal_note": "Правовые или богословские выводы из классических шархов",

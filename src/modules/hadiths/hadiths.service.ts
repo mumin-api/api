@@ -77,6 +77,7 @@ export class HadithsService {
                     languageCode: language,
                     content: {
                         short_meaning: result.short_meaning,
+                        social_summary: result.social_summary,
                         long_meaning: result.long_meaning,
                         context: result.context,
                         legal_note: result.legal_note,
