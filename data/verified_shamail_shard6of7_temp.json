@@ -1,0 +1,665 @@
+[
+  {
+    "db_id": 42610,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في حجامة رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Cupping of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о кровопускании, которое делали Пророку, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 195,
+    "arabic": "حَدَّثَنَا هَارُونُ بْنُ إِسْحَاقَ، قَالَ‏:‏ حَدَّثَنَا عَبْدَةُ، عَنِ ابْنِ أَبِي لَيْلَى، عَنْ نَافِعٍ، عَنِ ابْنِ عُمَرَ، أَنَّ النَّبِيَّ صلى الله عليه وسلم، دَعَا حَجَّامًا فَحَجَمَهُ وَسَأَلَهُ‏:‏ كَمْ خَرَاجُكَ‏؟‏ فَقَالَ‏:‏ ثَلاثَةُ آصُعٍ، فَوَضَعَ عَنْهُ صَاعًا وَأَعْطَاهُ أَجْرَهُ‏.‏",
+    "english_translation": "Ibn 'Umar said:\n\"The Prophet (Allah bless him and give him peace) summoned a cupper, so he cupped him. Then he asked him: \"How much is your tax?\" He said: \"Three measures of grain,\" so he reduced his tax by one measure and gave him his fee.\"",
+    "russian_translation": "Ибн Умар рассказывал, что Пророк (мир ему и благословение Аллаха) позвал кровопускателя, и тот сделал ему кровопускание. Затем Пророк спросил его: «Каков твой оброк?». Тот ответил: «Три са’ (зерна)». Тогда Пророк уменьшил его оброк на один са’ и выплатил ему вознаграждение за работу."
+  },
+  {
+    "db_id": 42611,
+    "book_number": 27,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي حِجَامَةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related regarding the cupping of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается относительно хиджамы Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 194,
+    "arabic": "حَدَّثَنَا عَبْدُ الْقُدُّوسِ بْنُ مُحَمَّدٍ الْعَطَّارُ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا عَمْرُو بْنُ عَاصِمٍ، قَالَ‏:‏ حَدَّثَنَا هَمَّامٌ، وَجَرِيرُ بْنُ حَازِمٍ، قَالَ‏:‏ حَدَّثَنَا قَتَادَةُ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم يَحْتَجِمُ فِي الأَخْدَعَيْنِ وَالْكَاهِلِ، وَكَانَ يَحْتَجِمُ لِسَبْعَ عَشْرَةَ، وَتِسْعَ عَشْرَةَ، وَإِحْدَى وَعِشْرِينَ‏.‏",
+    "english_translation": "Anas ibn Malik said (may Allah be well pleased with him):\n\"Allah’s Messenger (Allah bless him and give him peace) used to have cupping performed between the two veins of the neck and in the upper back, and he used to undergo cupping on the seventeenth, nineteenth and twenty-first days of the month.\"",
+    "russian_translation": "Посланник Аллаха (мир ему и благословение Аллаха) делал кровопускание (хиджаму) на боковых венах шеи и на верхней части спины, и он делал кровопускание в семнадцатый, девятнадцатый и двадцать первый дни месяца."
+  },
+  {
+    "db_id": 42612,
+    "book_number": 19,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي حِجَامَةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Cupping of the Messenger of Allah",
+      "ru": "Глава о кровопускании (хиджаме) Посланника Аллаха"
+    },
+    "hadith_number": 197,
+    "arabic": "حَدَّثَنَا إِسْحَاقُ بْنُ مَنْصُورٍ، قَالَ‏:‏ أَنْبَأَنَا عَبْدُ الرَّزَّاقِ، عَنْ مَعْمَرٍ، عَنْ قَتَادَةَ، عَنْ أَنَسِ بْنِ مَالِكٍ‏:‏ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم احْتَجَمَ وَهُوَ مُحْرِمٌ بَمَلَلٍ عَلَى ظَهْرِ الْقَدَمِ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"Allah’s Messenger (Allah bless him and give him peace) underwent cupping on the top of the foot, while he was in the state of Pilgrim consecration in Malal [a place between Mecca and Medina].\"",
+    "russian_translation": "Посланник Аллаха (мир ему и благословение Аллаха) совершил кровопускание в состоянии ихрама в местечке Малаль на тыльной стороне стопы."
+  },
+  {
+    "db_id": 42613,
+    "book_number": 37,
+    "book_name": {
+      "ar": "بَاب مَا جَاءَ فِي أَسْمَاءِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Names of the Messenger of Allah (ﷺ)",
+      "ru": "Глава об именах Посланника Аллаха (ﷺ)"
+    },
+    "hadith_number": 354,
+    "arabic": "عن سَعِيدُ بْنُ عَبْدِ الرَّحْمَنِ الْمَخْزُومِيُّ، وَغَيْرُ وَاحِدٍ، قَالُوا‏:‏ حَدَّثَنَا سُفْيَانُ، عَنِ الزُّهْرِيِّ، عَنْ مُحَمَّدِ بْنِ جُبَيْرِ بْنِ مُطْعِمٍ، عَنْ أَبِيهِ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ إِنَّ لِي أَسْمَاءً، أَنَا مُحَمَّدٌ، وَأَنَا أَحْمَدُ، وَأَنَا الْمَاحِي الَّذِي يَمْحُو اللَّهُ بِيَ الْكُفْرَ، وَأَنَا الْحَاشِرُ الَّذِي يُحْشَرُ النَّاسُ عَلَى قَدَمِي، وَأَنَا الْعَاقِبُ الَّذِي لَيْسَ بَعْدَهُ نَبِيٌّ‏.‏",
+    "english_translation": "Muhammad ibn Jubair ibn Mut'im reported that his father said:\n\"Allah’s Messenger said (Allah bless him and give him peace): \"Verily I have several names: I am Muhammad; I am Ahmad; I am al-Mahi [the Eraser], with whom Allah erases unbelief; I am al-Hashir [the Gatherer], at whose feet the people will be gathered; and I am al-'Aqib [the Ultimate] (The name al-'Aqib [the Uhimate] means the one after whom there is no Prophet.)",
+    "russian_translation": "У меня есть несколько имён: я Мухаммад, я Ахмад, я аль-Махи (Стирающий), посредством которого Аллах стирает неверие; я аль-Хашир (Соберущий), у ног которого будут собраны люди; и я аль-‘Акыб (Завершающий), после которого уже не будет пророков."
+  },
+  {
+    "db_id": 42614,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي أَسْمَاءِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Names of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава об именах Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 345,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ طَرِيفٍ الْكُوفِيُّ، قَالَ‏:‏ حَدَّثَنَا أَبُو بَكْرِ بْنُ عَيَّاشٍ، عَنْ عَاصِمٍ، عَنْ أَبِي وَائِلٍ، عَنْ حُذَيْفَةَ، قَالَ‏:‏ لَقِيتُ النَّبِيَّ صلى الله عليه وسلم، فِي بَعْضِ طُرُقِ الْمَدِينَةِ، فَقَالَ‏:‏ أَنَا مُحَمَّدٌ، وَأَنَا أَحْمَدُ، وَأَنَا نَبِيُّ الرَّحْمَةِ، وَنَبِيُّ التَّوْبَةِ، وَأَنَا الْمُقَفَّى، وَأَنَا الْحَاشِرُ، وَنَبِيُّ الْمَلاحِمِ‏.‏ حَدَّثَنَا إِسْحَاقُ بْنُ مَنْصُورٍ، قَالَ‏:‏ حَدَّثَنَا النَّضْرُ بْنُ شُمَيْلٍ، قَالَ‏:‏ أَنْبَأَنَا حَمَّادُ بْنُ سَلَمَةَ، عَنْ عَاصِمٍ، عَنْ زِرٍّ، عَنْ حُذَيْفَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم، نَحْوَهُ بِمَعْنَاهُ، هَكَذَا، قَالَ حَمَّادُ بْنُ سَلَمَةَ، عَنْ عَاصِمٍ، عَنْ زِرٍّ، عَنْ حُذَيْفَةَ‏.‏",
+    "english_translation": "Hudhaifa said:\n\"I encountered the Prophet (Allah bless him and give him peace) in one of the streets of Medina, and he said: \"I am Muhammad; I am Ahmad; I am the Prophet of Mercy and the Prophet of Repentance; I am the Follower [of the earlier Prophets]; I am the Gatherer and the Prophet of the Fierce Battles.\"",
+    "russian_translation": "Хузайфа рассказывал: «Я встретил Пророка (мир ему и благословение Аллаха) на одной из дорог Медины, и он сказал: „Я — Мухаммад, я — Ахмад, я — пророк милости, пророк покаяния, я — завершающий, я — собранный и пророк великих сражений“»."
+  },
+  {
+    "db_id": 42615,
+    "book_number": 32,
+    "book_name": {
+      "ar": "كتاب ما جاء في صفة أكل رسول الله صلى الله عليه وسلم",
+      "en": "The Book on the Description of the Food of the Messenger of Allah",
+      "ru": "Книга об описании пищи Посланника Аллаха"
+    },
+    "hadith_number": 196,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا أَبُو الأَحْوَصِ، عَنْ سِمَاكِ بْنِ حَرْبٍ، قَالَ‏:‏ سَمِعْتُ النُّعْمَانَ بْنَ بَشِيرٍ، يَقُولُ‏:‏ أَلَسْتُمْ فِي طَعَامٍ وَشَرَابٍ مَا شِئِتُمْ‏؟‏ لَقَدْ رَأَيْتُ نَبِيَّكُمْ صلى الله عليه وسلم، وَمَا يَجِدُ مِنَ الدَّقَلِ، مَا يَمْلأُ بَطْنَهُ‏.‏",
+    "english_translation": "An-Nu'man ibn Bashir say:\n\"Do you not have what you want in the way of food and drink? I have seen your Prophet (Allah bless him and give him peace), and the poor-quality dates [daqal] that he finds are what fills his stomach.\"",
+    "russian_translation": "Ан-Нуман ибн Башир сказал: «Разве вы не едите и не пьете всё, что пожелаете? Я же видел вашего Пророка (да благословит его Аллах и приветствует), который не мог найти даже плохих фиников, чтобы наполнить ими свой живот»."
+  },
+  {
+    "db_id": 42616,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي عَيْشِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Life of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава об образе жизни Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 139,
+    "arabic": "حَدَّثَنَا هَارُونُ بْنُ إِسْحَاقَ، قَالَ‏:‏ حَدَّثَنَا عَبْدَةُ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ إِنْ كُنَّا آلَ مُحَمَّدٍ نَمكُثُ شَهْرًا مَا نَسْتَوْقِدُ بِنَارٍ، إِنْ هُوَ إِلا التَّمْرُ وَالْمَاءُ‏.‏",
+    "english_translation": "A’isha said:\n‘We, Muhammad’s wives, would go an entire month without cooking anything over a fire, and with nothing to eat and drink but dates and water.\"",
+    "russian_translation": "Аиша рассказывала: «Мы, семейство Мухаммада, бывало, проводили целый месяц, не разводя огня, питаясь лишь финиками и водой»."
+  },
+  {
+    "db_id": 42617,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في عيش رسول الله صلى الله عليه وسلم",
+      "en": "The Chapter on the Life of the Messenger of Allah (pbuh)",
+      "ru": "Глава о жизни Посланника Аллаха (мир ему и благословение)"
+    },
+    "hadith_number": 228,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ أَبِي زِيَادٍ، قَالَ‏:‏ حَدَّثَنَا سَيَّارٌ، قَالَ‏:‏ حَدَّثَنَا سَهْلُ بْنُ أَسْلَمَ، عَنْ يَزِيدَ بْنِ أَبِي مَنْصُورٍ، عَنْ أَنَسٍ، عَنْ أَبِي طَلْحَةَ، قَالَ‏:‏ شَكَوْنَا إِلَى رَسُولِ اللهِ صلى الله عليه وسلم، الْجُوعَ وَرَفَعْنَا عَنْ بُطُونِنَا عَنْ حَجَرٍ، فَرَفَعَ رَسُولُ اللهِ صلى الله عليه وسلم، عَنْ بَطْنِهِ عَنْ حَجَرَيْنِ قَالَ أَبُو عِيسَى‏:‏ هَذَا حَدِيثٌ غَرِيبٌ مِنْ حَدِيثِ أَبِي طَلْحَةَ لا نَعْرِفُهُ إِلا مِنْ هَذَا الْوَجْهِ، وَمَعْنَى قَوْلِهِ‏:‏ وَرَفَعْنَا عَنْ بُطُونِنَا عَنْ حَجَرٍ حَجَرٍ، كَانَ أَحَدُهُمْ يَشُدُّ فِي بَطْنِهِ الْحَجَرَ مِنَ الْجُهْدِ وَالضَّعْفِ الَّذِي بِهِ مِنَ الْجُوعِ‏.‏",
+    "english_translation": "Abu Talha said:\n\"We complained to Allah’s Messenger (Allah bless him and give him peace) of hunger, and we exposed our stomachs, each revealing a rock, so Allah’s Messenger (Allah bless him and give him peace) exposed his stomach, revealing two rocks.\"",
+    "russian_translation": "Мы пожаловались Посланнику Аллаха (мир ему и благословение) на голод и приподняли одежду на животах, под которой у каждого из нас был привязан камень. Тогда Посланник Аллаха (мир ему и благословение) приподнял одежду на своем животе, и у него оказалось два камня."
+  },
+  {
+    "db_id": 42618,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في صفة عيش رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Life of the Messenger of Allah (pbuh)",
+      "ru": "Глава об образе жизни Посланника Аллаха (мир ему и благословение)"
+    },
+    "hadith_number": 223,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ إِسْمَاعِيلَ، قَالَ‏:‏ حَدَّثَنَا آدَمُ بْنُ أَبِي إِيَاسٍ، قَالَ‏:‏ حَدَّثَنَا شَيْبَانُ أَبُو مُعَاوِيَةَ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الْمَلِكِ بْنُ عُمَيْرٍ، عَنْ أَبِي سَلَمَةَ بْنِ عَبْدِ الرَّحْمَنِ، عَنْ أَبِي هُرَيْرَةَ، قَالَ‏:‏ خَرَجَ رَسُولُ اللهِ صلى الله عليه وسلم، فِي سَاعَةٍ لا يَخْرُجُ فِيهَا، وَلا يَلْقَاهُ فِيهَا أَحَدٌ، فَأَتَاهُ أَبُو بَكْرٍ، فَقَالَ‏:‏ مَا جَاءَ بِكَ يَا أَبَا بَكْرٍ‏؟‏، قَالَ‏:‏ خَرَجْتُ أَلْقَى رَسُولَ اللهِ صلى الله عليه وسلم وَأَنْظُرُ فِي وَجْهِهِ، وَالتَّسْلِيمَ عَلَيْهِ، فَلَمْ يَلْبَثْ أَنْ جَاءَ عُمَرُ، فَقَالَ‏:‏ مَا جَاءَ بِكَ يَا عُمَرُ‏؟‏، قَالَ‏:‏ الْجُوعُ يَا رَسُولَ اللهِ، قَالَ صلى الله عليه وسلم‏:‏ وَأَنَا قَدْ وَجَدْتُ بَعْضَ ذَلِكَ، فَانْطَلَقُوا إِلَى مَنْزِلِ أَبِي الْهَيْثَمِ بْنِ التَّيْهَانِ الأَنْصَارِيِّ، وَكَانَ رَجُلا كَثِيرَ النَّخْلِ وَالشَّاءِ، وَلَمْ يَكُنْ لَهُ خَدَمٌ، فَلَمْ يَجِدُوهُ، فَقَالُوا لامْرَأَتِهِ‏:‏ أَيْنَ صَاحِبُكِ‏؟‏ فَقَالَتِ‏:‏ انْطَلَقَ يَسْتَعْذِبُ لَنَا الْمَاءَ، فَلَمْ يَلْبَثُوا أَنْ جَاءَ أَبُو الْهَيْثَمِ بِقِرْبَةٍ يَزْعَبُهَا، فَوَضَعَهَا ثُمَّ جَاءَ يَلْتَزِمُ النَّبِيَّ صلى الله عليه وسلم وَيُفَدِّيهِ بِأَبِيهِ وَأُمِّهِ، ثُمَّ انْطَلَقَ بِهِمْ إِلَى حَدِيقَتِهِ فَبَسَطَ لَهُمْ بِسَاطًا، ثُمَّ انْطَلَقَ إِلَى نَخْلَةٍ فَجَاءَ بِقِنْوٍ فَوَضَعَهُ، فَقَالَ النَّبِيُّ صلى الله عليه وسلم‏:‏ أَفَلا تَنَقَّيْتَ لَنَا مِنْ رُطَبِهِ‏؟‏ فَقَالَ‏:‏ يَا رَسُولَ اللهِ، إِنِّي أَرَدْتُ أَنْ تَخْتَارُوا، أَوْ تَخَيَّرُوا مِنْ رُطَبِهِ وَبُسْرِهِ، فَأَكَلُوا وَشَرِبُوا مِنْ ذَلِكَ الْمَاءِ فَقَالَ صلى الله عليه وسلم‏:‏ هَذَا وَالَّذِي نَفْسِي بِيَدِهِ مِنِ النَّعِيمِ الَّذِي تُسْأَلُونَ عَنْهُ يَوْمَ الْقِيَامَةِ ظِلٌّ بَارِدٌ، وَرُطَبٌ طَيِّبٌ، وَمَاءٌ بَارِدٌ فَانْطَلَقَ أَبُو الْهَيْثَمِ لِيَصْنَعَ لَهُمْ طَعَامًا فَقَالَ النَّبِيُّ صلى الله عليه وسلم‏:‏ لا تَذْبَحَنَّ ذَاتَ دَرٍّ، فَذَبَحَ لَهُمْ عَنَاقًا أَوْ جَدْيًا، فَأَتَاهُمْ بِهَا فَأَكَلُوا، فَقَالَ صلى الله عليه وسلم‏:‏ هَلْ لَكَ خَادِمٌ‏؟‏، قَالَ‏:‏ لا، قَالَ‏:‏ فَإِذَا أَتَانَا، سَبْيٌ، فَأْتِنَا فَأُتِيَ النَّبِيُّ صلى الله عليه وسلم بِرَأْسَيْنِ لَيْسَ مَعَهُمَا ثَالِثٌ، فَأَتَاهُ أَبُو الْهَيْثَمِ، فَقَالَ النَّبِيُّ صلى الله عليه وسلم‏:‏ اخْتَرْ مِنْهُمَا فَقَالَ‏:‏ يَا رَسُولَ اللهِ، اخْتَرْ لِي فَقَالَ النَّبِيُّ صلى الله عليه وسلم‏:‏ إِنَّ الْمُسْتَشَارَ مُؤْتَمَنٌ، خُذْ هَذَا، فَإِنِّي رَأَيْتُهُ يُصَلِّي، وَاسْتَوْصِ بِهِ مَعْرُوفًا فَانْطَلَقَ أَبُو الْهَيْثَمِ إِلَى امْرَأَتِهِ، فَأَخْبَرَهَا بِقَوْلِ رَسُولِ اللهِ صلى الله عليه وسلم، فَقَالَتِ امْرَأَتُهُ‏:‏ مَا أَنْتَ بِبَالِغٍ حَقَّ مَا، قَالَ فِيهِ النَّبِيُّ صلى الله عليه وسلم إِلا بِأَنْ تَعْتِقَهُ، قَالَ‏:‏ فَهُوَ عَتِيقٌ، فَقَالَ صلى الله عليه وسلم‏:‏ إِنَّ اللَّهَ لَمْ يَبْعَثْ نَبِيًّا وَلا خَلِيفَةً إِلا وَلَهُ بِطَانَتَانِ‏:‏ بِطَانَةٌ تَأْمُرُهُ بِالْمَعْرُوفِ وَتَنْهَاهُ عَنِ الْمُنْكَرِ، وَبِطَانَةٌ لا تَأْلُوهُ خَبَالا، وَمَنْ يُوقَ بِطَانَةَ السُّوءِ فَقَدْ وُقِيَ‏.‏",
+    "english_translation": "Abu Huraira said:\n\"Allah’s Messenger (Allah bless him and give him peace) went out during an hour in which he did not usually go out, and in which no one used to meet him, but Abu Bakr came to him, so he said: \"What has brought you forth, O Abu Bakr?\" He replied: \"I came out to meet Allah’s Messenger (Allah bless him and give him peace), behold his face, and greet him with the salutation of peace.\" Shortly thereafter \"Umar came along, so he said: \"What has brought you forth, O 'Umar?\" He replied: \"Hunger, O Messenger of Allah!\" He said (Allah bless him and give him peace): \"I have also experienced some of that!\" Then they went to the house of Ibn at-Tihan al-Ansari, who was owned many date palms and sheep, but who had no servants, so they did not find him. They therefore asked his wife: \"Where is your mate?\" She said: \"He has gone to draw sweet water for us.\" They did not have to wait long before Abu’l-Haitham brought a waterskin that he was carrying full, so he set it down, and came to embrace the Prophet (Allah bless him and give him peace), offering his father and his mother as ransom for him. Then he took them to his garden, and spread a carpet for them. Then he went to a date palm, brought a bunch of dates and set it down. The Prophet said (Allah bless him and give him peace): \"Have you not selected for us some of its ripe dates?\" He replied: \"O Messenger of Allah, I intended to let you choose or prefer some of its ripe and its unripe dates,\" so they ate dates and drank from that water. Then the Prophet said (Allah bless him and give him peace): \"By the One in whose Hand is my soul, this is some of the gracious favor about which you shall be asked on the Day of Resurrection: cool shade, good dates and cold water!\" Then Abu’l-Haitham went to make a meal for them, so the Prophet said (Allah bless him and give him peace): \"Do not slaughter a milch-animal for us.\" He therefore slaughtered a young she-goat or a young billy goat, and brought it to them, so they ate. The Prophet said (Allah bless him and give him peace): \"Do you have a servant?\" When the answer was \"No,\" he said: \"If a prisoner of war comes to us, come to us!\" Then he (Allah bless him and give him peace) was brought two captives, unaccompanied by a third. Abu’l-Haitham then came to him, and the Prophet said (Allah bless him and give him peace): \"Choose from the pair of them,\" so he said: \"O Messenger of Allah, choose for me!\" The Prophet said (Allah bless him and give him peace): \"The person whose opinion is requested deserves to be trusted. Take this one, for I have seen him performing the ritual prayer, and expect well of him!\" Abu l-Haitham then went to his wife and told her what Allah’s Messenger had said, so his wife said: \"You cannot arrive at the truth of what the Prophet (Allah bless him and give him peace) said about him, except by setting him free!\" He said: \"He is free, then!\" The Prophet said (Allah bless him and give him peace): \"Allah has not sent any Prophet, nor any Caliph, without his having two intimate friends: one who commands him to do what is right and fair, and forbids him to do what is wrong and unfair, and one who will spare no effort to corrupt him. If one is wary of the evil companion, he will be preserved from harm.\"",
+    "russian_translation": "Передают со слов Абу Хурейры, что однажды Посланник Аллаха (мир ему и благословение) вышел в такое время, когда он обычно не выходил и никто не мог его встретить. В это время к нему пришел Абу Бакр, и он спросил: «Что привело тебя сюда, о Абу Бакр?». Тот ответил: «Я вышел, чтобы встретить Посланника Аллаха, посмотреть на его лицо и поприветствовать его». Вскоре после этого пришел Умар, и он спросил: «Что привело тебя сюда, о Умар?». Тот ответил: «Голод, о Посланник Аллаха». Пророк (мир ему и благословение) сказал: «Я тоже ощутил нечто подобное». Они отправились к дому Абу аль-Хайсама ибн ат-Тайхана аль-Ансари. У него было много пальм и овец, но не было слуг. Не застав его дома, они спросили его жену: «Где твой муж?». Она ответила: «Он пошел набрать для нас пресной воды». Вскоре вернулся Абу аль-Хайсам с бурдюком, полным воды, поставил его и поспешил обнять Пророка (мир ему и благословение), предлагая в жертву за него своих отца и мать. Затем он повел их в свой сад и расстелил для них подстилку. После этого он подошел к пальме, срезал гроздь фиников и положил перед ними. Пророк (мир ему и благословение) спросил: «Разве ты не отобрал для нас спелых плодов?». Тот ответил: «О Посланник Аллаха, я хотел, чтобы вы сами выбрали из его спелых и недозрелых фиников». Они поели и попили той воды, после чего Пророк (мир ему и благословение) сказал: «Клянусь Тем, в Чьей длани моя душа, это и есть те блага, о которых вы будете спрошены в День воскресения: прохладная тень, вкусные финики и холодная вода!». Абу аль-Хайсам собрался приготовить им еду, но Пророк (мир ему и благословение) сказал: «Только не режь дойное животное». Он зарезал для них молодого козленка, принес его, и они поели. Затем Пророк (мир ему и благословение) спросил: «Есть ли у тебя слуга?». Когда тот ответил «нет», Пророк сказал: «Когда к нам придут пленные, приходи к нам». Позже к Пророку (мир ему и благословение) привели двух пленников. Пришел Абу аль-Хайсам, и Пророк (мир ему и благословение) сказал ему: «Выбирай любого из них». Тот ответил: «О Посланник Аллаха, выбери за меня». Пророк (мир ему и благословение) сказал: «Тот, с кем советуются, должен быть достоин доверия. Возьми этого, ибо я видел, как он совершал намаз, и относись к нему по-доброму». Абу аль-Хайсам пришел к своей жене и сообщил ей слова Посланника Аллаха. Жена сказала: «Ты не сможешь исполнить должным образом то, что сказал о нем Пророк, кроме как если отпустишь его на свободу». Он сказал: «Тогда он свободен». Пророк (мир ему и благословение) сказал: «Аллах не посылал ни пророка, ни халифа, не наделив его двумя внутренними советниками: одним, который побуждает его к одобряемому и удерживает от порицаемого, и другим, который не упускает случая, чтобы навредить. И кто защищен от дурного советника, тот под защитой»."
+  },
+  {
+    "db_id": 42619,
+    "book_number": 32,
+    "book_name": {
+      "ar": "كتاب صفة النبي صلى الله عليه وسلم",
+      "en": "The Book of the Description of the Prophet",
+      "ru": "Книга об описании Пророка"
+    },
+    "hadith_number": 273,
+    "arabic": "حدثنا عمر بن إسماعيل بن مجالد بن سعيد، حدثني أبي عن بيان حدثني قيس بن حازم، قال‏:‏ سمعت سعد بن أبي وقاص يقول‏:‏ إني لأَوْل رَجل أَهْرَقَ دَمًا فِي سَبِيلِ اللهِ ‏,‏ وَإِنْي لأَوْل رَجلٍ رَمَى بِسَهْمٍ فِى سَبِيلِ اللهِ َلقَدْ رَأَيْتُنِي أغزوا فِي الْعِصَابَةَ مِنْ أَصْحَابِ مُحَمْدٍ صلى الله عليه وسلم مَا نَأكُلْ إلاَّ وَرَقَ الشَجَرِ وَالْحُبْلَةَ حَتَّى تَقَرَحَتْ أَشْدَاقُنَا وَإِنْ أَحَدُنَا لَيَضَعُ كَمَا تَضَعُ الشَّاةُ وَالبَعِير وَأَصْبَحَتْ بَنُو أَسَدٍ يَعَزِّرُونَنِى فِي الدِّينِ ‏,‏ لَقَدْ خِبْتُ إذَنْ وَخَسِرْت وَضَلَ عَمَلِي‏.‏‏.‏",
+    "english_translation": "Sa'd ibn Abi Waqqas said:\n\"I am the first man who shed blood in the cause of Allah (Almighty and Glorious is He), and I am the first man who shot an arrow in Allah’s cause. I had seen myself going forth to war in the troop of the Companions of Muhammad (blessing and peace be upon him). We ate nothing but tree-leaves and a kind of bean-fruit until the corners of our mouths were covered with ulcers, and one of us would excrete as the sheep and the camel excrete. The Banu Asad started instructing me in the religion. I had therefore failed and lost my way, and my work had come to naught.\"",
+    "russian_translation": "Са’д ибн Абу Ваккас сказал: «Я — первый, кто пролил кровь на пути Аллаха, и я — первый, кто пустил стрелу на пути Аллаха. Мне довелось выступать в поход с отрядом сподвижников Мухаммада (да благословит его Аллах и приветствует), когда мы не ели ничего, кроме древесных листьев и плодов хаблы, так что уголки наших ртов покрылись язвами. Бывало, что кто-то из нас испражнялся так, как испражняются овцы или верблюды. И вот теперь [люди из племени] Бану Асад поучают меня в вопросах религии? Значит, я потерпел неудачу, проиграл и все мои деяния оказались тщетными»."
+  },
+  {
+    "db_id": 42620,
+    "book_number": 34,
+    "book_name": {
+      "ar": "كتاب ما جاء في تواضع رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Humility of the Messenger of Allah",
+      "ru": "Книга о смирении Посланника Аллаха"
+    },
+    "hadith_number": 305,
+    "arabic": "حدثنا محمد بن بشار ‏,‏ حدثنا صفوان بن عيسى ‏,‏ حدثنا محمد بن عمرو بن عيسى أبو نعامة العدوي ‏,‏ قال‏:‏ سمعت خَالِدِ بْنِ عُمَيْرٍ ‏,‏ وشويسًا ‏,‏ أبا الرقاد قالا‏:‏ بعث عمر بن الخطاب عُتْبَةُ بْنُ غَزْوَانَ وقَالَ انطلق أنت ومن معك ‏,‏ حتى إذا كنتم في أقصى أرض العرب ‏,‏ وأدنى بلاد أرض العجم ‏,‏ فأقبلوا حتى إذا كانوا بالمربد وجدوا هذا المكان ‏,‏ فقالوا‏:‏ ما هذه‏؟‏ هذه البصرة‏.‏ فسارواحتى إذا بلغوا حيال الجسر الصغير ‏,‏ فقالوا‏:‏ هاهنا أمرتم ‏,‏ فنزلوا فذكروا الحديث بطوله‏.‏‏.‏",
+    "english_translation": "Khalid ibn 'Umair and Shuwais Abur-Ruqad said:\n\"'Umar ibn al-Khattab dispatched 'Utba ibn Ghazwan, and he said: ‘Go away, you and whoever is with you, until you reach the most remote countries of the Arabs and the nearest countries of the non-Arabs!’ They therefore advanced until, when they reached al-Mirbad, they found this soft stone-like clay, so they said: ‘What is this?’ They were told: ‘This is Basra,’ so they traveled until they were in the vicinity of the small bridge. They said: ‘Here is our appointed destination,’ so they alighted and related the story from beginning to end. 'Utba ibn Ghazwan said: ‘I found myself the seventh of seven with Allah’s Messenger (Allah bless him and give him peace). We ate nothing but tree-leaves until the corners of our mouths were covered with ulcers, so I picked up a garment which I divided between me and Sa'd, for there was not one of us among those seven who was not the governor of a city, and you will put the governors to the test after us.\"",
+    "russian_translation": "Халид ибн Умайр и Шувайс Абу ар-Рукад рассказывали: «Умар ибн аль-Хаттаб отправил Утбу ибн Газвана, сказав ему: „Отправляйся вместе со своими людьми, пока не достигнете самых отдаленных земель арабов, граничащих с землями неарабов“. Они двинулись в путь, и когда достигли аль-Мирбада, то увидели каменистую почву и спросили: „Что это?“ Им ответили: „Это Басра“. Они продолжили путь, пока не оказались неподалеку от малого моста, где сказали: „Нам было велено остановиться здесь“. Они расположились там и рассказали историю целиком. Утба ибн Газван сказал: „Я был одним из семерых, кто находился рядом с Посланником Аллаха, да благословит его Аллах и приветствует. Мы не ели ничего, кроме листьев деревьев, отчего углы наших ртов покрылись язвами. Однажды я нашел плащ и разделил его между собой и Са’дом. И не было ни одного из нас семерых, кто не стал бы впоследствии правителем города, но после нас вы испытаете правителей на прочность“»."
+  },
+  {
+    "db_id": 42621,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي عَيْشِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Life of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава об образе жизни Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 234,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، قَالَ‏:‏ حَدَّثَنَا رَوْحُ بْنُ أَسْلَمَ أَبُو حَاتِمٍ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا حَمَّادُ بْنُ سَلَمَةَ، قَالَ‏:‏ حَدَّثَنَا ثَابِتٌ، عَنْ أَنَسٍ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ لَقَدْ أُخِفْتُ فِي اللهِ وَمَا يَخَافُ أَحَدٌ، وَلَقَدْ أُوذِيتُ فِي اللهِ وَمَا يُؤْذَى أَحَدٌ، وَلَقَدْ أَتَتْ عَلَيَّ ثَلاثُونَ مِنْ بَيْنِ لَيْلَةٍ وَيَوْمٍ، وَمَا لِي وَلِبِلالٍ طَعَامٌ يَأْكُلُهُ ذُو كَبِدٍ، إِلا شَيْءٌ يُوَارَيِهِ إِبِطُ بِلالٍ‏.‏",
+    "english_translation": "Anas said:\n\"Allah’s Messenger said (Allah bless him and give him peace): \"I have been put in fear for Allah’s sake, while no one was afraid, and I have been troubled for Allah’s sake, while no one was troubled. Thirty intervals between a night and a day came upon me, and for me and Bilal there was no food for the owner of a liver to eat, except something tucked beneath the Bilal’s armpit.\"",
+    "russian_translation": "Посланник Аллаха (мир ему и благословение Аллаха) сказал: «Меня запугивали ради Аллаха, и никто другой не был так запуган, и мне причиняли страдания ради Аллаха, и никто другой не был так преследуем. Прошло тридцать дней и ночей, когда у меня и у Биляля не было никакой еды, которую могло бы съесть живое существо, за исключением того малого, что Биляль мог спрятать под своей мышкой»."
+  },
+  {
+    "db_id": 42622,
+    "book_number": 23,
+    "book_name": {
+      "ar": "باب ما جاء في صفة خبز رسول الله صلى الله عليه وسلم",
+      "en": "Chapter: Regarding the description of the bread of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава об описании хлеба Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 154,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، قَالَ‏:‏ حَدَّثَنَا عَفَّانُ بْنُ مُسْلِمٍ، قَالَ‏:‏ حَدَّثَنَا أَبَانُ بْنُ يَزِيدَ الْعَطَّارُ، قَالَ‏:‏ حَدَّثَنَا قَتَادَةُ، عَنْ أَنَسِ بْنِ مَالِكٍ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم، لَمْ يَجْتَمِعْ عِنْدَهُ غَدَاءٌ وَلا عَشَاءٌ مِنْ خُبْزٍ وَلَحْمٍ، إِلا عَلَى ضَفَفٍ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"Neither a morning nor an evening meal of bread and meat was assembled in the presence of the Prophet (Allah bless him and give him peace), except in the case of a repast attended by a throng.’\"",
+    "russian_translation": "Анас ибн Малик рассказывал: «У Пророка (мир ему и благословение Аллаха) никогда не собиралось одновременно ни обеда, ни ужина, состоящих из хлеба и мяса, кроме как в тех случаях, когда еда предназначалась для большой группы людей»."
+  },
+  {
+    "db_id": 42623,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في صفة عيش رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Life of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава об образе жизни Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 139,
+    "arabic": "حَدَّثَنَا عَبْدُ بْنُ حُمَيْدٍ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ إِسْمَاعِيلَ بْنِ أَبِي فُدَيْكٍ، قَالَ‏:‏ حَدَّثَنَا ابْنُ أَبِي ذِئْبٍ، عَنْ مُسْلِمِ بْنِ جُنْدُبٍ، عَنْ نَوْفَلِ بْنِ إِيَاسٍ الْهُذَلِيِّ، قَال‏:‏ كَانَ عَبْدُ الرَّحْمَنِ بْنُ عَوْفٍ لَنَا جَلِيسًا، وَكَانَ نِعْمَ الْجَلِيسُ، وَإِنَّهُ انْقَلَبَ بِنَا ذَاتَ يَوْمٍ، حَتَّى إِذَا دَخَلْنَا بَيْتَهُ وَدَخَلَ فَاغْتَسَلَ، ثُمَّ خَرَجَ وَأُتَيْنَا بِصَحْفَةٍ فِيهَا خُبْزٌ وَلَحْمٌ، فَلَمَّا وُضِعَتْ بَكَى عَبْدُ الرَّحْمَنِ، فَقُلْتُ لَهُ‏:‏ يَا أَبَا مُحَمَّدٍ، مَا يُبْكِيكَ‏؟‏ فَقَالَ‏:‏ هَلكَ رَسُولُ اللهِ صلى الله عليه وسلم، وَلَمْ يَشْبَعْ هُوَ وَأَهْلُ بَيْتِهِ مِنْ خُبْزِ الشَّعِيرِ فَلا أَرَانَا أُخِّرْنَا لِمَا هُوَ خَيْرٌ لَنَا‏.‏",
+    "english_translation": "Nawfal ibn lyas al-Hudhali said:\n\"Abd ar-Rahman ibn 'Awf was a table companion of ours, and an excellent table companion was he! After he had returned from a journey with us one day, we entered his house. Then he went inside and performed the major ritual ablution, and came out again. We brought a vessel containing bread and meat, and when it was served, Abd ar-Rahman wept, so I said: ‘O Abu Muhammad, what is making you weep?’ He replied: Allah’s Messenger (Allah bless him and give him peace) has died. When he was alive, he and the people of his household did not even eat their fill of barley-bread. But I do not think our [comfortable] circumstances are any better for us.\"",
+    "russian_translation": "Науфаль ибн Ийас аль-Хузали рассказывал: «Абд ар-Рахман ибн ‘Ауф был нашим собеседником, и прекрасным же собеседником он был! Однажды, когда мы возвращались вместе, мы зашли к нему домой. Он вошел внутрь, совершил полное омовение и вышел к нам. Нам принесли блюдо с хлебом и мясом, и когда его поставили перед нами, ‘Абд ар-Рахман заплакал. Я спросил его: «О Абу Мухаммад, что заставило тебя плакать?» Он ответил: «Посланник Аллаха (мир ему и благословение Аллаха) ушел из этого мира, так и не насытившись даже ячменным хлебом ни сам, ни члены его семьи. И я боюсь, что наше нынешнее благополучие — это вовсе не то, что лучше для нас»."
+  },
+  {
+    "db_id": 42624,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي سِنِّ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Age of the Messenger of Allah (pbuh)",
+      "ru": "Глава о возрасте Посланника Аллаха (мир ему и благословение)"
+    },
+    "hadith_number": 1,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا رَوْحُ بْنُ عُبَادَةَ، قَالَ‏:‏ حَدَّثَنَا زَكَرِيَا بْنُ إِسْحَاقَ، قَالَ‏:‏ حَدَّثَنَا عَمْرُو بْنُ دِينَارٍ، عَنِ ابْنِ عَبَّاسٍ، قَالَ‏:‏ مَكَثَ النَّبِيُّ صلى الله عليه وسلم بِمَكَّةَ ثَلاثَ عَشْرَةَ سَنَةً يُوحَى إِلَيْهِ، وَ بِالْمَدِينَةِ عَشْرًا، وَتُوُفِّيَ وَهُوَ ابْنُ ثَلاثٍ وَسِتِّينَ‏.‏",
+    "english_translation": "Ibn Abbas said:\n\"The Prophet (Allah bless him and give him peace) stayed in Mecca for thirteen years, during which he was inspired with Divine revelation, and in Medina for ten, and he died when he was sixty-three years of age.\"",
+    "russian_translation": "Ибн Аббас сказал: «Пророк (да благословит его Аллах и приветствует) пребывал в Мекке тринадцать лет, в течение которых к нему ниспосылалось откровение, а в Медине — десять лет, и он скончался, когда ему было шестьдесят три года»."
+  },
+  {
+    "db_id": 42625,
+    "book_number": 1,
+    "book_name": {
+      "ar": "باب ما جاء في سن رسول الله صلى الله عليه وسلم",
+      "en": "The Chapter on the Age of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о возрасте Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 2,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، عَنْ شُعْبَةَ، عَنْ أَبِي إِسْحَاقَ، عَنْ عَامِرِ بْنِ سَعْدٍ، عَنْ جَرِيرٍ، عَنْ مُعَاوِيَةَ، أَنَّهُ سَمِعَهُ يَخْطُبُ، قَالَ‏:‏ مَاتَ رَسُولُ اللهِ صلى الله عليه وسلم وَهُوَ ابْنُ ثَلاثٍ وَسِتِّينَ وَأَبُو بَكْرٍ وَعُمَرُ، وَأَنَا ابْنُ ثَلاثٍ وَسِتِّينَ سنة‏.‏",
+    "english_translation": "Mu'awiya said in a sermon:\n\"The Prophet died (Allah bless him and give him peace) when he was sixty-three years of age, as did Abu Bakr and 'Umar, and I am now sixty-three years of age.\"",
+    "russian_translation": "Муавия сказал во время своей проповеди: «Посланник Аллаха, да благословит его Аллах и приветствует, скончался в возрасте шестидесяти трех лет. Абу Бакр и Умар также скончались в возрасте шестидесяти трех лет, и сейчас мне шестьдесят три года»."
+  },
+  {
+    "db_id": 42626,
+    "book_number": 43,
+    "book_name": {
+      "ar": "باب ما جاء في وفاة رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Death of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о кончине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 357,
+    "arabic": "حَدَّثَنَا حُسَيْنُ بْنُ مَهْدِيٍّ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّزَّاقِ، عَنِ ابْنِ جُرَيْجٍ، عَنِ الزُّهْرِيِّ، عَنْ عُرْوَةَ، عَنْ عَائِشَةَ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم، مَاتَ وَهُوَ ابْنُ ثَلاثٍ وَسِتِّينَ سَنَةً‏.‏",
+    "english_translation": "'A’isha said:\n\"The Prophet died (Allah bless him and give him peace) when he was sixty-three years of age.\"",
+    "russian_translation": "Аиша сообщила, что Пророк, да благословит его Аллах и приветствует, скончался в возрасте шестидесяти трех лет."
+  },
+  {
+    "db_id": 42627,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي سِنِّ رَسُولِ اللهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Age of the Messenger of Allah",
+      "ru": "Глава о возрасте Посланника Аллаха"
+    },
+    "hadith_number": 2,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، وَيَعْقُوبُ بْنُ إِبْرَاهِيمَ الدَّوْرَقِيُّ، قَالا‏:‏ حَدَّثَنَا إِسْمَاعِيلُ بْنُ عُلَيَّةَ، عَنْ خَالِدٍ الْحَذَّاءِ، قَالَ‏:‏ أَنْبَأَنَا عَمَّارٌ مَوْلَى بَنِي هَاشِمٍ، قَالَ‏:‏ سَمِعْتُ ابْنَ عَبَّاسٍ، يَقُولُ‏:‏ تُوُفِّيَ رَسُولُ اللَّه ِصلى الله عليه وسلم، وَهُوَ ابْنُ خَمْسٍ وَسِتِّينَ‏.‏",
+    "english_translation": "Ibn 'Abbas said:\n\"Allah’s Messenger died (Allah bless him and give him peace) when he was sixty-five years of age.\"",
+    "russian_translation": "Ибн ‘Аббас сказал: «Посланник Аллаха, да благословит его Аллах и приветствует, скончался в возрасте шестидесяти пяти лет»."
+  },
+  {
+    "db_id": 42628,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي سِنِّ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Age of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о возрасте Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 3,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، وَمُحَمَّدُ بْنُ أَبَانَ، قَالا‏:‏ حَدَّثَنَا مُعَاذُ بْنُ هِشَامٍ، قَالَ‏:‏ حَدَّثَنِي أَبِي، عَنْ قَتَادَةَ، عَنِ الْحَسَنِ، عَنْ دَغْفَلِ بْنِ حَنْظَلَةَ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم، قُبِضَ وَهُوَ ابْنُ خَمْسٍ وَسِتِّينَ، قَالَ أَبُو عِيسَى‏:‏ وَدَغْفَلُ، لا نَعْرِفُ لَهُ سَمَاعًا مِنَ النَّبِيِّ صلى الله عليه وسلم، وَكَانَ فِي زَمَنِ النَّبِيِّ صلى الله عليه وسلم‏.‏",
+    "english_translation": "Daghfal ibn Hanzala said:\n\"The Prophet died (Allah bless him and give him peace) when he was sixty-five years of age.\"",
+    "russian_translation": "Пророк (мир ему и благословение Аллаха) скончался в возрасте шестидесяти пяти лет."
+  },
+  {
+    "db_id": 42629,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خَلْقِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Description of the Messenger of Allah (pbuh)",
+      "ru": "Глава о внешности Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 2,
+    "arabic": "حَدَّثَنَا إِسْحَاقُ بْنُ مُوسَى الأَنْصَارِيُّ، قَالَ‏:‏ حَدَّثَنَا مَعْنٌ، حَدَّثَنَا مَالِكُ بْنُ أَنَسٍ، عَنْ رَبِيعَةَ بْنِ أَبِي عَبْدِ الرَّحْمَنِ، عَنْ أَنَسِ بْنِ مَالِكٍ، أَنَّهُ سَمِعَهُ، يَقُولُ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، لَيْسَ بِالطَّوِيلِ الْبَائِنِ، وَلا بِالْقَصِيرِ، وَلا بِالأَبْيَضِ الأَمْهَقِ، وَلا بِالآدَمِ، وَلا بِالْجَعْدِ الْقَطَطِ، وَلا بِالسَّبْطِ، بَعَثَهُ اللَّهُ تَعَالَى عَلَى رَأْسِ أَرْبَعِينَ سَنَةً، فَأَقَامَ بِمَكَّةَ عَشْرَ سِنِينَ، وَبِالْمَدِينَةِ عَشْرَ سِنِينَ، وَتَوَفَّاهُ اللَّهُ عَلَى رَأْسِ سِتِّينَ سَنَةً، وَلَيْسَ فِي رَأْسِهِ وَلِحْيَتِهِ عِشْرُونَ شَعَرَةً بَيْضَاءَ‏.‏ حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، عَنْ مَالِكِ بْنِ أَنَسٍ، عَنْ رَبِيعَةَ بْنِ أَبِي عَبْدِ الرَّحْمَنِ، عَنْ أَنَسِ بْنِ مَالِكٍ، نَحْوَهُ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"Allah’s Messenger (Allah bless him and give him peace) was neither very tall of stature, nor short. His skin was neither pale white, nor tawny, and his hair was neither crisply curled, nor lank. Allah (Exalted is He) sent him [to serve as His Messenger] at the end of forty years of life, so he stayed in Mecca for ten years and in Medina for ten years, and Allah took him unto Himself at the end of sixty years, with fewer than twenty white hairs on his head and in his beard.\"",
+    "russian_translation": "Анас ибн Малик рассказывал: «Посланник Аллаха (мир ему и благословение Аллаха) не был ни чрезмерно высоким, ни низким. Его кожа не была ни ослепительно белой, ни смуглой, а его волосы не были ни сильно кудрявыми, ни прямыми. Аллах Всевышний ниспослал его пророком, когда ему исполнилось сорок лет. Он прожил в Мекке десять лет, а в Медине — еще десять, и Аллах упокоил его в возрасте шестидесяти лет. На его голове и бороде было менее двадцати седых волос»."
+  },
+  {
+    "db_id": 42630,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي وَفَاةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Death of the Messenger of Allah (pbuh)",
+      "ru": "Глава о кончине Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 353,
+    "arabic": "حَدَّثَنَا أَبُو عَمَّارٍ الْحُسَيْنُ بْنُ حُرَيْثٍ، وَقُتَيْبَةُ بْنُ سَعِيدٍ، وَغَيْرُ وَاحِدٍ، قَالُوا‏:‏ حَدَّثَنَا سُفْيَانُ بْنُ عُيَيْنَةَ، عَنِ الزُّهْرِيِّ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ آخِرُ نَظْرَةٍ نَظَرْتُهَا إِلَى رَسُولِ اللهِ صلى الله عليه وسلم، كَشْفُ السِّتَارَةِ يَوْمَ الاثْنَيْنِ، فَنَظَرْتُ إِلَى وَجْهِهِ كَأَنَّهُ وَرَقَةُ مُصْحَفٍ، وَالنَّاسُ خَلْفَ أَبِي بَكْرٍ، فَكَادَ النَّاسُ أَنْ يَضْطَربُوا، فَأَشَارَ إِلَى النَّاسِ أَنِ اثْبُتُوا، وَأَبُو بَكْرٍ يَؤُمُّهُمْ وَأَلْقَى السِّجْفَ، وَتُوُفِّيَ رَسُولُ اللهِ صلى الله عليه وسلم مِنْ آخِرِ ذَلِكَ الْيَوْمِ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"The last occasion when I caught sight of Allah’s Messenger (Allah bless him and give him peace) was the unveiling of the curtain on a Monday. I looked at his face as if it were a parchment of the Qur’an, as the people were performing the ritual prayer behind Abu Bakr. The people were about to get restless, so he gestured to them to keep calm, as Abu Bakr led them in prayer, and he cast the curtain aside. Allah’s Messenger (Allah bless him and give him peace) died at the end of that day.\"",
+    "russian_translation": "Анас ибн Малик рассказывал: «В последний раз, когда я смотрел на Посланника Аллаха (мир ему и благословение Аллаха), он приоткрыл занавеску в понедельник. Я взглянул на его лицо, которое было подобно листу свитка Корана, в то время как люди молились позади Абу Бакра. Люди были готовы прийти в смятение, но он сделал им знак рукой, чтобы они оставались спокойны, так как Абу Бакр совершал с ними намаз, а затем он опустил занавесь. Посланник Аллаха (мир ему и благословение Аллаха) скончался в конце того же дня»."
+  },
+  {
+    "db_id": 42631,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي وَفَاةِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Death of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о смерти Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 349,
+    "arabic": "حَدَّثَنَا حُمَيْدُ بْنُ مَسْعَدَةَ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا سُلَيْمُ بْنُ أَخْضَرَ، عَنِ ابْنِ عَوْنٍ، عَنِ إِبْرَاهِيمَ، عَنِ الأَسْوَدِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ كُنْتُ مُسْنِدَةً النَّبِيَّ صلى الله عليه وسلم، إِلَى صَدْرِي أَوْ قَالَتْ‏:‏ إِلَى حِجْرِي فَدَعَا بِطَسْتٍ لِيَبُولَ فِيهِ، ثُمَّ بِالَ، فَمَاتَ‏.‏",
+    "english_translation": "A’isha said:\n\"I was resting the Prophet (Allah bless him and give him peace) on my chest (or: on my lap), when he called for a basin in which to urinate. Then he urinated and died soon after.\"",
+    "russian_translation": "Аиша рассказывала: «Я прислонила Пророка, да благословит его Аллах и приветствует, к своей груди — или она сказала: к своим коленям, — после чего он попросил принести сосуд, чтобы помочиться, и когда он помочился, то скончался»."
+  },
+  {
+    "db_id": 42632,
+    "book_number": 43,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي وَفَاةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Death of the Messenger of Allah (pbuh)",
+      "ru": "Глава о кончине Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 339,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ ‏,‏ حَدَّثَنَا اللَّيْثُ، عَنِ ابْنِ الْهَادِ، عَنْ مُوسَى بْنِ سَرْجِسَ، عَنِ الْقَاسِمِ بْنِ مُحَمَّدٍ، عَنْ عَائِشَةَ، أَنَّهَا قَالَتْ‏:‏ رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم، وَهُوَ بِالْمَوْتِ وَعِنْدَهُ قَدَحٌ فِيهِ مَاءٌ، وَهُوَ يُدْخِلُ يَدَهُ فِي الْقَدَحِ، ثُمَّ يَمْسَحُ وَجْهَهُ بِالْمَاءِ، ثُمَّ يَقُولُ‏:‏ اللَّهُمَّ أَعِنِّي عَلَى مُنْكَرَاتِ أَوْ قَالَ‏:‏ عَلَى سَكَرَاتِ الْمَوْتِ‏.‏",
+    "english_translation": "A’isha said:\n\"I saw Allah’s Messenger (Allah bless him and give him peace) when he was at the point of death, and beside him there was a vessel containing water. He would dip his hand into the vessel, then wipe his face with the water, saying: 'O Allah, help me against the atrocities of death (or: the agonies of death)!’\"",
+    "russian_translation": "Сообщается, что Аиша (да будет доволен ею Аллах) сказала: «Я видела Посланника Аллаха (мир ему и благословение Аллаха) во время его предсмертной агонии, когда рядом с ним стоял сосуд с водой. Он погружал руку в воду, затем протирал ею свое лицо и говорил: О Аллах, помоги мне преодолеть тяготы — или он сказал: агонию — смерти»."
+  },
+  {
+    "db_id": 42633,
+    "book_number": 34,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي وَفَاةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "The Chapter on the Passing of the Messenger of Allah (peace and blessings of Allah be upon him)",
+      "ru": "Глава о кончине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 348,
+    "arabic": "حَدَّثَنَا الْحَسَنُ بْنُ الصَّبَّاحِ الْبَزَّازُ، قَالَ‏:‏ حَدَّثَنَا مُبَشِّرُ بْنُ إِسْمَاعِيلَ، عَنْ عَبْدِ الرَّحْمَنِ بْنِ الْعَلاءِ، عَنْ أَبِيهِ، عَنِ ابْنِ عُمَرَ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ لا أَغْبِطُ أَحَدًا بَهَوْنِ مَوْتٍ بَعْدَ الَّذِي رَأَيْتُ مِنْ شِدَّةِ مَوْتِ رَسُولِ اللهِ صلى الله عليه وسلم‏.‏ قال أبو عيسى: سألت أبا زرعه فقلت له: من عبد الرحمن بن العلاء هذا؟ فقال: هو عبد الرحمن بن العلاء اللجلاج.",
+    "english_translation": "'A’isha said:\n\"No more will I envy anyone for an easy death now that I have seen how the Messenger of Allah (Allah bless him and give him peace) suffered in his passing.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Я больше не завидую никому из-за легкой смерти после того, как увидела, сколь тяжкой была смерть Посланника Аллаха, да благословит его Аллах и приветствует»."
+  },
+  {
+    "db_id": 42634,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في وفاة رسول الله صلى الله عليه وسلم",
+      "en": "The Chapter on the Death of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о кончине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 331,
+    "arabic": "حَدَّثَنَا أَبُو كُرَيْبٍ مُحَمَّدُ بْنُ الْعَلاءِ، قَالَ‏:‏ حَدَّثَنَا أَبُو مُعَاوِيَةَ، عَنْ عَبْدِ الرَّحْمَنِ بْنِ أَبِي بَكْرٍ وَهُوَ ابْنُ الْمُلَيْكِيِّ، عَنِ ابْنِ أَبِي مُلَيْكَةَ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ لَمَّا قُبِضَ رَسُولُ اللهِ صلى الله عليه وسلم، اخْتَلَفُوا فِي دَفْنِهِ، فَقَالَ أَبُو بَكْرٍ‏:‏ سَمِعْتُ مِنْ رَسُولِ اللهِ صلى الله عليه وسلم، شَيْئًا مَا نَسِيتُهُ، قَالَ‏:‏ مَا قَبَضَ اللَّهُ نَبِيًّا إِلا فِي الْمَوْضِعِ الَّذِي يُحِبُّ أَنْ يُدْفَنَ فِيهِ، ادْفِنُوهُ فِي مَوْضِعِ فِرَاشِهِ‏.‏",
+    "english_translation": "A’isha said:\n\"When Allah’s Messenger died (Allah bless him and give him peace), they disagreed over where to bury him, so Abu Bakr said: \"I heard Allah’s Messenger (Allah bless him and give him peace) say something I have never forgotten. He said: ‘Never has Allah taken a Prophet [from this world], but in the place where he would want to be buried.’ So bury him in the spot where his pallet is!'\"",
+    "russian_translation": "Аиша передала: «Когда Посланник Аллаха, да благословит его Аллах и приветствует, скончался, люди разошлись во мнениях относительно места его погребения. Тогда Абу Бакр сказал: «Я слышал от Посланника Аллаха, да благословит его Аллах и приветствует, слова, которые никогда не забывал. Он сказал: «Аллах не забирает пророка иначе, как в том месте, где он хотел бы быть похороненным. Похороните же его там, где стояло его ложе»."
+  },
+  {
+    "db_id": 42635,
+    "book_number": 38,
+    "book_name": {
+      "ar": "كتاب ما جاء في بكاء رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Weeping of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Книга о том, что передается относительно плача Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 259,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، وعياش العنبرى ‏,‏ وسوار بن عبد الله ‏,‏ وغير واحد ‏,‏ قالوا‏:‏ أخبرنا يحيي بن سعيد ‏,‏ عن سفيان الثورى ‏,‏ عن موسى بن أبي عائشة ‏,‏ عن عبيد الله ‏,‏ عن ابن عباس وعائشة‏:‏ أن أبا بكر قبل النبي صلى الله عليه وسلم بعدما مات‏.‏",
+    "english_translation": "Ibn 'Abbas and ‘A’isha report:\n\"Abu Bakr kissed the Prophet (Allah bless him and give him peace) after he died.\"",
+    "russian_translation": "Ибн Аббас и Аиша передали, что Абу Бакр поцеловал Пророка, да благословит его Аллах и приветствует, после того как он скончался."
+  },
+  {
+    "db_id": 42636,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في بكاء رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Weeping of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о плаче Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 312,
+    "arabic": "حدثنا نصر بن علي الجهضمي، حدثنا مرحوم بن عبد العزيز العطار، عن يزيد بن بابنوس، عن عائشة أن أبا بكر دخل على النبي صلى الله عليه وسلم بعد وفاته فوضع فمه بين عينيه، ووضع يديه على ساعديه، وقال‏:‏ وانبياه ‏,‏ واصفياه، واخليلاه‏.‏",
+    "english_translation": "A’isha said:\n\"Abu Bakr entered the presence of the Prophet (Allah bless him and give him peace) after his demise, whereupon he placed his mouth between his eyes, and his hands on his forearms, exclaiming: 'O Prophet! O best friend! O bosom friend!'\"",
+    "russian_translation": "Передают со слов Аиши, что Абу Бакр вошел к Пророку, да благословит его Аллах и приветствует, после его кончины. Он припал губами к области между его глаз и положил свои руки на его предплечья, воскликнув: «О мой Пророк! О мой избранник! О мой задушевный друг!»"
+  },
+  {
+    "db_id": 42637,
+    "book_number": 43,
+    "book_name": {
+      "ar": "كتاب وفاة رسول الله صلى الله عليه وسلم",
+      "en": "The Book on the Death of the Messenger of Allah (may Allah bless him and give him peace)",
+      "ru": "Книга о кончине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 395,
+    "arabic": "حَدَّثَنَا بِشْرُ بْنُ هِلالٍ الصَّوَّافُ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا جَعْفَرُ بْنُ سُلَيْمَانَ، عَنْ ثَابِتٍ، عَنْ أَنَسٍ، قَالَ‏:‏ لَمَّا كَانَ الْيَوْمُ الَّذِي دَخَلَ فِيهِ رَسُولُ اللهِ صلى الله عليه وسلم الْمَدِينَةَ أَضَاءَ مِنْهَا كُلُّ شَيْءٍ، فَلَمَّا كَانَ الْيَوْمُ الَّذِي مَاتَ فِيهِ أَظْلَمَ مِنْهَا كُلُّ شَيْءٍ، وَمَا نَفَضْنَا أَيْدِيَنَا مِنَ التُّرَابِ، وَإِنَا لَفِي دَفْنِهِ صلى الله عليه وسلم، حَتَّى أَنْكَرْنَا قُلُوبَنَا‏.‏",
+    "english_translation": "Anas said:\n\"On the day when Allah’s Messenger (Allah bless him and give him peace) entered Medina, every part of it shone bright, and on the day when he died, every part of it was gloomy. We did not shake the dust off our hands, and we were engaged in his burial until we no longer recognized our own hearts.\"",
+    "russian_translation": "Анас передал: «В тот день, когда Посланник Аллаха, да благословит его Аллах и приветствует, вошел в Медину, всё в ней озарилось светом. А в тот день, когда он скончался, всё в ней погрузилось во мрак. И мы еще не успели отряхнуть руки от земли после того, как завершили его погребение, как почувствовали, что наши сердца изменились»."
+  },
+  {
+    "db_id": 42638,
+    "book_number": 48,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي وَفَاةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Death of the Messenger of Allah (peace and blessings be upon him)",
+      "ru": "Глава о кончине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 339,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ حَاتِمٍ، قَالَ‏:‏ حَدَّثَنَا عَامِرُ بْنُ صَالِحٍ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ تُوُفِّيَ رَسُولُ اللهِ صلى الله عليه وسلم يَوْمَ الاثْنَيْنِ‏.‏",
+    "english_translation": "A’isha said:\n\"Allah’s Messenger died (Allah bless him and give him peace) on a Monday.\"",
+    "russian_translation": "Сообщается, что Аиша сказала: «Посланник Аллаха, да благословит его Аллах и приветствует, скончался в понедельник»."
+  },
+  {
+    "db_id": 42639,
+    "book_number": 38,
+    "book_name": {
+      "ar": "باب ما جاء في وفاة رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Death of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о кончине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 348,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ أَبِي عُمَرَ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ بْنُ عُيَيْنَةَ، عَنْ جَعْفَرِ بْنِ مُحَمَّدٍ، عَنْ أَبِيهِ، قَالَ‏:‏ قُبِضَ رَسُولُ اللهِ صلى الله عليه وسلم يَوْمَ الاثْنَيْنِ فَمَكَثَ ذَلِكَ الْيَوْمَ وَلَيْلَةَ الثُّلاثَاءِ، وَدُفِنَ مِنَ اللَّيْلِ، وَقَالَ سُفْيَانُ‏:‏ وَقَالَ غَيْرُهُ‏:‏ يُسْمَعُ صَوْتُ الْمَسَاحِي مِنْ آخِرِ اللَّيْلِ‏.‏",
+    "english_translation": "Ja'far ibn Muhammad reported that his father said:\n\"Allah’s Messenger (Allah bless him and give him peace) died on Monday, after which he remained that day and Tuesday night, and he was buried during the night.\" According to Sufyan [ibn 'Uyaina], someone else said: \"The sound of the iron shovels could be heard during the latter part of the night.\"",
+    "russian_translation": "Джафар ибн Мухаммад передал со слов своего отца: «Посланник Аллаха, да благословит его Аллах и приветствует, скончался в понедельник. Он оставался (непогребенным) в течение этого дня и ночи вторника, а похоронили его ночью». Суфьян также добавил со слов другого передатчика: «Под конец ночи был слышен звук лопат»."
+  },
+  {
+    "db_id": 42640,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي وَفَاةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Death of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о кончине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 344,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الْعَزِيزِ بْنُ مُحَمَّدٍ، عَنْ شَرِيكِ بْنِ عَبْدِ اللهِ بْنِ أَبِي نَمِرٍ، عَنْ أَبِي سَلَمَةَ بْنِ عَبْدِ الرَّحْمَنِ بْنِ عَوْفٍ، قَالَ‏:‏ تُوُفِّيَ رَسُولُ اللهِ صلى الله عليه وسلم يَوْمَ الاثْنَيْنِ، وَدُفِنَ يَوْمَ الثُّلاثَاءِ‏.‏ قَالَ أَبُو عِيسَى‏:‏ هَذَا حَدِيثٌ غَرِيبٌ‏.‏",
+    "english_translation": "Abu Salama ibn 'Abd ar-Rahman ibn 'Awf said:\n\"Allah’s Messenger (Allah bless him and give him peace) died on Monday and he was buried on Tuesday.\"",
+    "russian_translation": "Абу Салама ибн Абд ар-Рахман ибн Ауф сообщил: «Посланник Аллаха, да благословит его Аллах и приветствует, скончался в понедельник, а был погребен во вторник»."
+  },
+  {
+    "db_id": 42641,
+    "book_number": 42,
+    "book_name": {
+      "ar": "كتاب الوفاة",
+      "en": "The Book of the Death of the Messenger of Allah",
+      "ru": "Книга о кончине Посланника Аллаха"
+    },
+    "hadith_number": 328,
+    "arabic": "حَدَّثَنَا نَصْرُ بْنُ عَلِيٍّ الْجَهْضَمِيُّ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ اللهِ بْنُ دَاوُدَ، قَالَ‏:‏ حَدَّثَنَا سَلَمَةُ بْنُ نُبَيْطٍ، عَنْ نُعَيْمِ بْنِ أَبِي هِنْدَ، عَنْ نُبَيْطِ بْنِ شَرِيطٍ، عَنْ سَالِمِ بْنِ عُبَيْدٍ، وَكَانَتْ لَهُ صُحْبَةٌ، قَالَ‏:‏ أُغْمِيَ عَلَى رَسُولِ اللهِ صلى الله عليه وسلم، فِي مَرَضِهِ فَأَفَاقَ، فَقَالَ‏:‏ حَضَرَتِ الصَّلاةُ‏؟‏ فَقَالُوا‏:‏ نَعَمْ فَقَالَ‏:‏ مُرُوا بِلالا فَلْيُؤَذِّنْ، وَمُرُوا أَبَا بَكْرٍ أَنْ يُصَلِّيَ للنَّاسِ أَوْ قَالَ‏:‏ بِالنَّاسِ، قَالَ‏:‏ ثُمَّ أُغْمِيَ عَلَيْهِ، فَأَفَاقَ، فَقَالَ‏:‏ حَضَرَتِ الصَّلاةُ‏؟‏ فَقَالُوا‏:‏ نَعَمْ فَقَالَ‏:‏ مُرُوا بِلالا فَلْيُؤَذِّنْ، وَمُرُوا أَبَا بَكْرٍ فَلْيُصَلِّ بِالنَّاسِ، فَقَالَتْ عَائِشَةُ‏:‏ إِنَّ أَبِي رَجُلٌ أَسِيفٌ، إِذَا قَامَ ذَلِكَ الْمَقَامَ بَكَى فَلا يَسْتَطِيعُ، فَلَوْ أَمَرْتَ غَيْرَهُ، قَالَ‏:‏ ثُمَّ أُغْمِيَ عَلَيْهِ فَأَفَاقَ فَقَالَ‏:‏ مُرُوا بِلالا فَلْيُؤَذِّنْ، وَمُرُوا أَبَا بَكْرٍ فَلْيُصَلِّ بِالنَّاسِ، فَإِنَّكُنَّ صَوَاحِبُ أَوْ صَوَاحِبَاتُ يُوسُفَ، قَالَ‏:‏ فَأُمِرَ بِلالٌ فَأَذَّنَ، وَأُمِرَ أَبُو بَكْرٍ فَصَلَّى بِالنَّاسِ، ثُمَّ إِنَّ رَسُولَ اللهِ صلى الله عليه وسلم، وَجَدَ خِفَّةً، فَقَالَ‏:‏ انْظُرُوا لِي مَنْ أَتَّكِئِ عَلَيْهِ، فَجَاءَتْ بَرِيرَةُ، وَرَجُلٌ آخَرُ، فَاتَّكَأَ عَلَيْهِمَا فَلَمَّا رَآهُ أَبُو بَكْرٍ ذَهَبَ لِينْكُصَ فَأَوْمَأَ إِلَيْهِ أَنْ يَثْبُتَ مَكَانَهُ، حَتَّى قَضَى أَبُو بَكْرٍ صَلاتَهُ‏.‏‏.‏ ثُمَّ إِنَّ رَسُولَ اللهِ صلى الله عليه وسلم قُبِضَ، فَقَالَ عُمَرُ‏:‏ وَاللَّهِ لا أَسْمَعُ أَحَدًا يَذْكُرُ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، قُبِضَ إِلا ضَرَبْتُهُ بِسَيْفِي هَذَا، قَالَ‏:‏ وَكَانَ النَّاسُ أُمِّيِّينَ لَمْ يَكُنْ فِيهِمْ نَبِيٌّ قَبْلَهُ، فَأَمْسَكَ النَّاسُ، فَقَالُوا‏:‏ يَا سَالِمُ، انْطَلِقْ إِلَى صَاحِبِ رَسُولِ اللهِ صلى الله عليه وسلم فَادْعُهُ، فَأَتَيْتُ أَبَا بَكْرٍ وَهُوَ فِي الْمَسْجِدِ فَأَتَيْتُهُ أَبْكِي دَهِشًا، فَلَمَّا رَآنِي، قَالَ‏:‏ أَقُبِضَ رَسُولُ اللهِ صلى الله عليه وسلم‏؟‏ قُلْتُ‏:‏ إِنَّ عُمَرَ، يَقُولُ‏:‏ لا أَسْمَعُ أَحَدًا يَذْكُرُ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم قُبِضَ إِلا ضَرَبْتُهُ بِسَيْفِي هَذَا، فَقَالَ لِي‏:‏ انْطَلِقْ، فَانْطَلَقْتُ مَعَهُ، فَجَاءَ هُوَ وَالنَّاسُ قَدْ دَخَلُوا عَلَى رَسُولِ اللهِ صلى الله عليه وسلم، فَقَالَ‏:‏ يَا أَيُّهَا النَّاسُ، أَفْرِجُوا لِي، فَأَفْرَجُوا لَهُ فَجَاءَ حَتَّى أَكَبَّ عَلَيْهِ وَمَسَّهُ، فَقَالَ‏:‏ إِنَّكَ مَيِّتٌ وَإِنَّهُمْ مَيِّتُونَ، ثُمَّ قَالُوا‏:‏ يَا صَاحِبَ رَسُولِ اللهِ صلى الله عليه وسلم، أَقُبِضَ رَسُولُ اللهِ صلى الله عليه وسلم‏؟‏ قَالَ‏:‏ نَعَمْ، فَعَلِمُوا أَنْ قَدْ صَدَقَ، قَالُوا‏:‏ يَا صَاحِبَ رَسُولِ اللهِ صلى الله عليه وسلم، أَيُصَلَّى عَلَى رَسُولِ اللهِ‏؟‏ قَالَ‏:‏ نَعَمْ، قَالُوا‏:‏ وَكَيْفَ‏؟‏ قَالَ‏:‏ يَدْخُلُ قَوْمٌ فَيُكَبِّرُونَ وَيُصَلُّونَ، وَيَدْعُونَ، ثُمَّ يَخْرُجُونَ، ثُمَّ يَدْخُلُ قَوْمٌ فَيُكَبِّرُونَ وَيُصَلُّونَ وَيَدْعُونَ، ثُمَّ يَخْرُجُونَ، حَتَّى يَدْخُلَ النَّاسُ، قَالُوا‏:‏ يَا صَاحِبَ رَسُولِ اللهِ صلى الله عليه وسلم، أَيُدْفَنُ رَسُولُ اللهِ صلى الله عليه وسلم‏؟‏ قَالَ‏:‏ نَعَمْ، قَالُوا‏:‏ أَينَ‏؟‏ قَالَ‏:‏ فِي الْمكَانِ الَّذِي قَبَضَ اللَّهُ فِيهِ رُوحَهُ، فَإِنَّ اللَّهَ لَمْ يَقْبِضْ رُوحَهُ إِلا فِي مَكَانٍ طَيِّبٍ فَعَلِمُوا أَنْ قَدْ صَدَقَ، ثُمَّ أَمَرَهُمْ أَنْ يَغْسِلَهُ بَنُو أَبِيهِ، وَاجْتَمَعَ الْمُهَاجِرُونَ يَتَشَاوَرُونَ، فَقَالُوا‏:‏ انْطَلِقْ بِنَا إِلَى إِخْوانِنَا مِنَ الأَنْصَارِ نُدْخِلُهُمْ مَعَنَا فِي هَذَا الأَمْرِ، فَقَالَتِ الأَنْصَارُ‏:‏ مِنَّا أَمِيرٌ وَمِنْكُمْ أَمِيرٌ، فَقَالَ عُمَرُ بْنُ الْخَطَّابِ‏:‏ مَنْ لَهُ مِثْلُ هَذِهِ الثَّلاثِ ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا مَنْ هُمَا‏؟‏ قَالَ‏:‏ ثُمَّ بَسَطَ يَدَهُ فَبَايَعَهُ وَبَايَعَهُ النَّاسُ بَيْعَةً حَسَنَةً جَمِيلَةً‏.‏",
+    "english_translation": "Salim ibn 'Ubaida said:\n\"Allah’s Messenger (Allah bless him and give him peace) lost consciousness in his illness, then he regained consciousness and said: ‘Has the ritual prayer arrived?’ They said: ‘Yes,’ so he said: ‘Command Bilal to give the call to prayer, and command Abu Bakr to lead the people in prayer.’ Then he lost consciousness, and when he recovered, he said: ‘Has the ritual prayer arrived?’ They said: ‘Yes,’ so he said: ‘Command Bilal to give the call to prayer, and command Abu Bakr to lead the people in prayer.’ 'A'isha then said: ‘My father is a melancholy man. If he is given that responsibility, he will weep and lose command of himself. SO if only you would appoint someone else!' He [Salim] said: \"Then he lost consciousness and recovered, so he said: ‘Command Bilal to give the call to prayer, and command Abu Bakr to lead the people in prayer, for you are the female companions of Yusuf!’ Bilal was therefore commanded, so he gave the call to prayer, and Abu Bakr was commanded, so he led the people in prayer. Then Allah’s Messenger (Allah bless him and give him peace) felt light in the head, so he said: ‘Find me someone I can lean on!’ Barira and another man therefore came to him, so he leaned on them. When Abu Bakr saw him, the man was about to withdraw, but he signaled for him to stay in his place until Abu Bakr completed his ritual prayer. Then Allah’s Messenger died (Allah bless him and give him peace), so 'Umar said: ‘If I hear anyone mention that Allah’s Messenger (Allah bless him and give him peace) has died, I will strike him with this sword of mine!\"’ He [Salim] said: \"The people were unlettered folk among whom there had never come a prophet before, so they held their tongues. But then they said: ‘O Salim, go to the Companion of Allah’s Messenger (Allah bless him and give him peace) and summon him.’ So I went to see Abu Bakr, in the mosque. I came to him weeping and perplexed, so when he saw me, he said: ‘Has Allah’s Messenger died (Allah bless him and give him peace)?’ I replied: 'Umar says: \"If anyone mentions that Allah’s Messenger (Allah bless him and give him peace) has died, I will strike him with this sword of mine!\" He then said to me: ‘Go outside,’ so I went outside with him. Then he came and found the people in the presence of Allah’s Messenger (Allah bless him and give him peace). \"He therefore said: ‘O people, get out of my way,’ so they got out of his way. Then he leaned over him and touched him, saying: \"You will surely die, and they will surely die.\" [inna-ka mayyitun wa inna-hum mayyitun].\" (Al-Qur'an.39:3O). Then they said: ‘O Companion of Allah’s Messenger (Allah bless him and give him peace), should the funeral prayer be performed for Allah’s Messenger?’ When he said: ‘Yes,’ they asked: And how?’ He said: A group will enter, proclaim the Supreme Greatness of Allah, perform the ritual prayer and offer supplication. Then they will go out, so that other people may enter.’ They said: ‘O Companion of Allah’s Messenger (Allah bless him and give him peace), should Allah’s Messenger (Allah bless him and give him peace) be buried?’ When he said: ‘Yes,’ they asked: ‘Where?’ He said: ‘In the place in which Allah took his spirit, for Allah would not take his spirit in a place that was not good,’ and they knew that he had spoken the truth.’ Then he gave instructions for the sons of his father to bathe him, and the Emigrants [al-Muhajirun] assembled, consulting with one another. They said: ‘Take us to our brethren among the Helpers [al-Ansar], so that we may include them with us in this business.' The Helpers then said: ‘There should be a commander among us and a commander among you,’ so 'Umar ibn al-Khattab said: ‘Who has the like of these three [excellent merits of Abu Bakr]? [In the words of the Qur’an]: \"The second of the two; when the two of them were in the cave, when he said to his companion: ‘Do not grieve. Allah is with us [thaniya’thnaini idh huma fi’l-ghari idh yaqulu li-sahibi-hi la tahzan inna’llaha ma'a-na].’\" (Al-Qur'an.9:4O). Who are the two of them?’ Then he extended his hand, so they pledged allegiance to him, and the people paid him a beautiful homage.\"",
+    "russian_translation": "Передает Салим ибн Убайд: «Однажды Посланник Аллаха, да благословит его Аллах и приветствует, потерял сознание во время своей болезни, а когда пришел в себя, спросил: «Настало ли время молитвы?» Они ответили: «Да». Тогда он сказал: «Велиле Билялю прочитать азан, а Абу Бакру велите стать имамом для людей». Затем он снова потерял сознание, а очнувшись, вновь спросил: «Настало ли время молитвы?» Ему ответили: «Да». Он повторил: «Велиле Билялю прочитать азан, а Абу Бакру велите стать имамом для людей». Аиша же сказала: «Мой отец — человек мягкосердечный, и если он встанет на это место, то будет плакать и не сможет продолжать, поэтому попроси кого-нибудь другого». Он сказал: «Затем он снова потерял сознание, а придя в себя, произнес: «Велиле Билялю прочитать азан, а Абу Бакру велите стать имамом для людей, ибо вы — словно спутницы Юсуфа». И был отдан приказ Билялю, и он совершил азан, а Абу Бакр совершил молитву с людьми. Затем Посланник Аллаха, да благословит его Аллах и приветствует, почувствовал облегчение и сказал: «Найдите мне тех, на кого я смогу опереться». Пришли Барира и еще один человек, и он оперся на них. Когда Абу Бакр увидел его, он хотел было отступить, но тот сделал ему знак оставаться на месте, пока Абу Бакр не завершит свою молитву. Затем Посланник Аллаха, да благословит его Аллах и приветствует, скончался. Умар воскликнул: «Клянусь Аллахом, если я услышу, что кто-то говорит, будто Посланник Аллаха, да благословит его Аллах и приветствует, скончался, я отрублю ему голову этим своим мечом». Салим сказал: «Люди были невежественными, среди них не было пророка до него, и они молчали. Затем они сказали: «О Салим, иди к сподвижнику Посланника Аллаха, да благословит его Аллах и приветствует, и позови его». Я пришел к Абу Бакру в мечеть, плача от смятения. Увидев меня, он спросил: «Посланник Аллаха, да благословит его Аллах и приветствует, скончался?» Я ответил: «Умар говорит: если кто-то упомянет, что Посланник Аллаха, да благословит его Аллах и приветствует, скончался, он отрубит ему голову мечом». Абу Бакр сказал мне: «Идем». Мы вышли, и он пришел, когда люди уже вошли к Посланнику Аллаха, да благословит его Аллах и приветствует. Он сказал: «О люди, расступитесь передо мной», и они расступились. Он подошел, склонился над ним, коснулся его и прочел: «Ты смертен, и они смертны» (Коран 39:30). Затем спросили: «О сподвижник Посланника Аллаха, совершается ли погребальная молитва по Посланнику Аллаха?» Он ответил: «Да». Они спросили: «Как именно?» Он сказал: «Группа людей входит, произносит такбиры, совершает молитву, взывает с мольбой и выходит, затем входит другая группа, произносит такбиры, совершает молитву, взывает с мольбой и выходит, пока все люди не совершат молитву». Они спросили: «О сподвижник Посланника Аллаха, будет ли предан земле Посланник Аллаха?» Он ответил: «Да». Они спросили: «Где?» Он сказал: «На том месте, где Аллах забрал его душу, ибо Аллах не забирает душу иначе как в благом месте». И они поняли, что он сказал истину. Затем он велел его родственникам омыть его. Мухаджиры собрались, советуясь друг с другом, и сказали: «Пойдем к нашим братьям из числа ансаров, чтобы они были с нами в этом деле». Ансары же ответили: «Пусть будет эмир от нас и эмир от вас». Тогда Умар ибн аль-Хаттаб сказал: «Кто может сравниться с этим, [удостоившимся трех достоинств]: он один из двоих, когда они были в пещере, когда он сказал своему спутнику: «Не печалься, ибо Аллах с нами» (Коран 9:40). Кто эти двое?» Затем он протянул руку, присягнул ему, и люди присягнули ему прекрасно и благопристойно»."
+  },
+  {
+    "db_id": 42642,
+    "book_number": 51,
+    "book_name": {
+      "ar": "كِتَابُ وَفَاةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "The Book of the Death of the Messenger of Allah (pbuh)",
+      "ru": "Книга о кончине Посланника Аллаха"
+    },
+    "hadith_number": 435,
+    "arabic": "حَدَّثَنَا نَصْرُ بْنُ عَلِيٍّ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ اللهِ بْنُ الزُّبَيْرِ، شَيْخٌ بَاهِلِيٌّ قَدِيمٌ بَصْرِيٌّ قَالَ‏:‏ حَدَّثَنَا ثَابِتٌ الْبُنَانِيُّ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ لَمَّا وَجَدَ رَسُولُ اللهِ صلى الله عليه وسلم، مِنْ كُرَبِ الْمَوْتِ مَا وَجَدَ، قَالَتْ فَاطِمَةُ‏:‏ وَاكَرْبَاهُ، فَقَالَ النَّبِيُّ صلى الله عليه وسلم‏:‏ لا كَرْبَ عَلَى أَبِيكِ بَعْدَ الْيَوْمِ، إِنَّهُ قَدْ حَضَرَ مِنْ أَبِيكِ مَا لَيْسَ بِتَارِكٍ مِنْهُ أَحَدًا الْمُوافَاةُ يَوْمَ الْقِيَامَةِ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"When Allah’s Messenger (Allah bless him and give him peace) was enduring of the agony of death, Fatima (may Allah be well pleased with her) exclaimed: 'Alas for his agony!' to which the Prophet replied (Allah bless him and give him peace): 'Your father will suffer no agony from this day forth. Your father has met the fate from which no one is exempt, and which precedes ones appearance before Allah on the Day of Resurrection.'\"",
+    "russian_translation": "Анас ибн Малик передал: «Когда Посланник Аллаха, да благословит его Аллах и приветствует, испытывал предсмертные муки, Фатима воскликнула: О, какая тяжкая скорбь! На это Пророк, да благословит его Аллах и приветствует, ответил: Твоего отца больше не постигнет скорбь после этого дня. Твоего отца постигло то, что неизбежно для каждого, и это встреча в День воскресения»."
+  },
+  {
+    "db_id": 42643,
+    "book_number": 31,
+    "book_name": {
+      "ar": "كتاب ما جاء في وفاة رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Death of the Messenger of Allah",
+      "ru": "Книга о кончине Посланника Аллаха"
+    },
+    "hadith_number": 384,
+    "arabic": "حَدَّثَنَا أَبُو الْخَطَّابِ زِيَادُ بْنُ يَحْيَى الْبَصْرِيُّ، وَنَصْرُ بْنُ عَلِيٍّ، قَالا‏:‏ حَدَّثَنَا عَبْدُ رَبِّهِ بْنُ بَارِقٍ الْحَنَفِيُّ، قَالَ‏:‏ سَمِعْتُ جَدِّي أَبَا أُمِّي سِمَاكَ بْنَ الْوَلِيدِ يُحَدِّثُ، أَنَّهُ سَمِعَ ابْنَ عَبَّاسٍ، يُحَدِّثُ أَنَّهُ سَمِعَ رَسُولَ اللهِ صلى الله عليه وسلم، يَقُولُ‏:‏ مَنْ كَانَ لَهُ فَرَطَانِ مِنْ أُمَّتِي أَدْخَلَهُ اللَّهُ تَعَالَى بِهِمَا الْجَنَّةَ، فَقَالَتْ عَائِشَةُ‏:‏ فَمَنْ كَانَ لَهُ فَرَطٌ مِنْ أُمَّتِكَ‏؟‏ قَالَ‏:‏ وَمَنْ كَانَ لَهُ فَرَطٌ يَا مُوَفَّقَةُ قَالَتْ‏:‏ فَمَنْ لَمْ يَكُنْ لَهُ فَرَطٌ مِنْ أُمَّتِكَ‏؟‏ قَالَ‏:‏ فَأَنَا فَرَطٌ لأُمَّتِي، لَنْ يُصَابُوا بِمِثْلِي‏.‏",
+    "english_translation": "Ibn 'Abbas (may Allah the Exalted be well pleased with him and his father) related that:\nhe heard Allah’s Messenger say (Allah bless him and give him peace): 'If someone has two children from my Community who died an untimely death, Allah will cause him to enter the Garden of Paradise on their account,' so 'A'isha said (may Allah be well pleased with her): 'What about someone who has only one child from your Community who has died an untimely death?' He said: 'Also someone who has only one child who has died young, O favored one!' She said: 'So what about someone who does not have any child from your Community who has died as an infant?' He said: 'I am a child of my Community who died an untimely death. Never again will they be afflicted by the loss of the likes of me!'\"",
+    "russian_translation": "Ибн Аббас передал, что слышал, как Посланник Аллаха, да благословит его Аллах и приветствует, говорил: «Того из моей общины, кто потерял двоих детей, Аллах Всевышний введет за них в Рай». Аиша спросила: «А как же тот, у кого умер только один ребенок из твоей общины?» Он ответил: «И того, у кого умер один ребенок, о удостоенная успеха!» Она спросила: «А что же будет с теми, у кого из общины не умирало детей?» Он ответил: «Я — тот, кто ушел из общины раньше всех, и никогда они не постигнет их беды подобной утрате меня»."
+  },
+  {
+    "db_id": 42644,
+    "book_number": 37,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَرِكَةِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on what has been narrated regarding the inheritance of the Messenger of Allah, peace be upon him",
+      "ru": "Глава о том, что передается относительно наследства Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 361,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا حُسَيْنُ بْنُ مُحَمَّدٍ، قَالَ‏:‏ حَدَّثَنَا إِسْرَائِيلُ، عَنْ أَبِي إِسْحَاقَ، عَنْ عَمْرِو بْنِ الْحَارِثِ، أَخِي جُوَيْرِيَةَ لَهُ صُحْبَةٌ، قَالَ‏:‏ مَا تَرَكَ رَسُولُ اللهِ صلى الله عليه وسلم إِلا سِلاحَهُ، وَبَغْلَتَهُ، وَأَرْضًا جَعَلَهَا صَدَقَةً‏.‏",
+    "english_translation": "'Amr ibn al-Harith, the brother of Juwairiyya, told us:\n\"Allah’s Messenger (Allah bless him and give him peace) left nothing behind except his weaponry, his female mule and some land which he had others give away as charity.\"",
+    "russian_translation": "Амр ибн аль-Харис, брат Джувайрийи, да будет доволен ими обоими Аллах, сказал: «Посланник Аллаха, мир ему и благословение Аллаха, не оставил после себя ничего, кроме своего оружия, своей мулицы и земли, которую он завещал раздать в качестве садаки»."
+  },
+  {
+    "db_id": 42645,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي مِيرَاثِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: Regarding the Inheritance of the Messenger of Allah (ﷺ)",
+      "ru": "Глава: О том, что передается относительно наследства Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 393,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا أَبُو الْوَلِيدِ، قَالَ‏:‏ حَدَّثَنَا حَمَّادُ بْنُ سَلَمَةَ، عَنْ مُحَمَّدِ بْنِ عَمْرٍو، عَنْ أَبِي سَلَمَةَ، عَنْ أَبِي هُرَيْرَةَ، قَالَ‏:‏ جَاءَتْ فَاطِمَةُ إِلَى أَبِي بَكْرٍ، فَقَالَتْ‏:‏ مَنْ يَرِثُكَ‏؟‏ فَقَالَ‏:‏ أَهْلِي وَوَلَدِي، فَقَالَتْ‏:‏ مَا لِي لا أَرِثُ أَبِي‏؟‏ فَقَالَ أَبُو بَكْرٍ‏:‏ سَمِعْتُ رَسُولَ اللهِ صلى الله عليه وسلم، يَقُولُ‏:‏ لا نُورَثُ، وَلَكِنِّي أَعُولُ مَنْ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، يَعُولُهُ، وَأُنْفِقُ عَلَى مَنْ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم يُنْفِقُ عَلَيْهِ‏.‏",
+    "english_translation": "Abu Huraira said (may Allah be well pleased with him):\n\"Fatima came to Abu Bakr and said: ‘Who will inherit from you?’ He said: ‘My wives and my offspring,’ so she said: ‘Why should I not inherit from my father?’ Abu Bakr said: ‘I heard Allah’s Messenger say (Allah bless him and give him peace): \"We will not be inherited from,\" but I support those whom Allah’s Messenger (Allah bless him and give him peace) used to support, and I provide for those for whom Allah’s Messenger (Allah bless him and give him peace) used to provide.’\"",
+    "russian_translation": "Сообщается, что Абу Хурайра сказал: «Фатима пришла к Абу Бакру и спросила: Кто унаследует тебя? Он ответил: Мои близкие и мои дети. Она спросила: Почему же я не наследую своему отцу? Абу Бакр сказал: Я слышал, как Посланник Аллаха (мир ему и благословение Аллаха) говорил: Мы не оставляем наследства, однако я буду содержать тех, кого содержал Посланник Аллаха (мир ему и благословение Аллаха), и буду расходовать на тех, на кого расходовал Посланник Аллаха (мир ему и благословение Аллаха)»"
+  },
+  {
+    "db_id": 42647,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في ميراث رسول الله صلى الله عليه وسلم",
+      "en": "Chapter: What has been related regarding the inheritance of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается относительно наследства Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 339,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا صَفْوَانُ بْنُ عِيسَى، عَنِ أُسَامَةَ بْنِ زَيْدٍ، عَنِ الزُّهْرِيِّ، عَنْ عُرْوَةَ، عَنْ عَائِشَةَ، أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، قَالَ‏:‏ لا نُورَثُ مَا تَرَكْنَا فَهُوَ صَدَقَةٌ‏.‏",
+    "english_translation": "'A’isha said (may Allah be well pleased with her):\n\"Allah’s Messenger said (Allah bless him and give him peace): 'We are not inherited from. Whatever we leave behind is a charitable donation.’\"",
+    "russian_translation": "Сообщается со слов Аиши (да будет доволен ею Аллах), что Посланник Аллаха (мир ему и благословение Аллаха) сказал: «Нас не наследуют, то, что мы оставили — садака»."
+  },
+  {
+    "db_id": 42648,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في ميراث رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on what has been narrated regarding the inheritance of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о том, что передается относительно наследства Посланника Аллаха (да благословит его Аллах и приветствует)"
+    },
+    "hadith_number": 339,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، عَنْ أَبِي الزِّنَادِ، عَنِ الأَعْرَجِ، عَنْ أَبِي هُرَيْرَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم، قَالَ‏:‏ لا يَقْسِمُ وَرَثَتِي دِينَارًا وَلا دِرْهَمًا، مَا تَرَكْتُ بَعْدَ نَفَقَةِ نِسَائِي وَمُؤْنَةِ عَامِلِي فَهُوَ صَدَقَةٌ‏.‏",
+    "english_translation": "Abu Huraira (may Allah be well pleased with him) reported:\n\"The Prophet said (Allah bless him and give him peace): 'My legacy will not be distributed as gold coin, nor as silver coin. Whatever I leave beyond support for my wives and the provisions for my workman will be a charitable donation.'\"",
+    "russian_translation": "Сообщается, что Абу Хурейра (да будет доволен им Аллах) передал слова Пророка (да благословит его Аллах и приветствует): «Наследники мои не будут делить ни золотых, ни серебряных монет. Всё, что я оставлю после обеспечения моих жен и содержания моего работника, является милостыней»."
+  },
+  {
+    "db_id": 42649,
+    "book_number": 32,
+    "book_name": {
+      "ar": "كتاب ما جاء في ميراث رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Inheritance of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о наследстве Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 397,
+    "arabic": "حَدَّثَنَا الْحَسَنُ بْنُ عَلِيٍّ الْخَلالُ، قَالَ‏:‏ حَدَّثَنَا بِشْرُ بْنُ عُمَرَ، قَالَ‏:‏ سَمِعْتُ مَالِكَ بْنَ أَنَسٍ، عَنِ الزُّهْرِيِّ، عَنْ مَالِكِ بْنِ أَوْسِ بْنِ الْحَدَثَانِ، قَالَ‏:‏ دَخَلْتُ عَلَى عُمَرَ فَدَخَلَ عَلَيْهِ عَبْدُ الرَّحْمَنِ بْنُ عَوْفٍ، وَطَلْحَةُ، وَسَعْدٌ، وَجَاءَ عَلِيٌّ، وَالْعَبَّاسُ، يَخْتَصِمَانِ، فَقَالَ لَهُمْ عُمَرُ‏:‏ أَنْشُدُكُمْ بِالَّذِي بِإِذْنِهِ تَقُومُ السَّمَاءُ وَالأَرْضُ، أَتَعْلَمُونَ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، قَالَ‏:‏ لا نُورَثُ، مَا تَرَكْنَاهُ صَدَقَةٌ، فَقَالُوا‏:‏ اللَّهُمَّ نَعَمْ وَفِي الْحَدِيثِ قِصَّةٌ طَوِيلَةٌ‏.‏",
+    "english_translation": "Malik bin Aws ibn al-Hadtahan said:\n\"I entered the presence of 'Umar, after which 'Abd ar- Rahman ibn 'Awf and Talha and Sa'd entered his presence, and 'Ali and al-'Abbas came in quarreling, so 'Umar said to them: ‘I adjure you by the One with whose permission the heaven and the earth exist, do you know that Allah’s Messenger said (Allah bless him and give him peace): 'We are not inherited from. Whatever we leave behind is a charitable donation'?\"",
+    "russian_translation": "Малик ибн Аус ибн аль-Хадасан рассказывал: «Я вошел к Умару, затем к нему вошли Абдуррахман ибн Ауф, Тальха и Саад. А потом пришли Али и аль-Аббас, споря друг с другом. Умар сказал им: Заклинаю вас Аллахом, с чьего позволения держатся небо и земля, знаете ли вы, что Посланник Аллаха, да благословит его Аллах и приветствует, сказал: Мы не оставляем наследства, а то, что мы оставили, является садакой? Они ответили: О Аллах, да. И далее в хадисе приводится длинная история»"
+  },
+  {
+    "db_id": 42650,
+    "book_number": 32,
+    "book_name": {
+      "ar": "كتاب ما جاء في تركة رسول الله صلى الله عليه وسلم",
+      "en": "The Book About the Inheritance of the Messenger of Allah",
+      "ru": "Книга о том, что было оставлено Посланником Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 352,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، عَنْ عَاصِمِ ابْنِ بَهْدَلَةَ، عَنْ زِرِّ بْنِ حُبَيْشٍ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ مَا تَرَكَ رَسُولُ اللهِ صلى الله عليه وسلم دِينَارًا وَلا دِرْهَمًا وَلا شَاةً وَلا بَعِيرًا، قَالَ‏:‏ وَأَشُكُّ فِي الْعَبْدِ وَالأَمَةِ‏.‏",
+    "english_translation": "Zirr ibn Hubaish reports that A’isha said (may Allah be well pleased with her):\n\"Allah’s Messenger (Allah bless him and give him peace) did not leave behind a gold coin, nor a silver coin, nor a sheep, nor a camel.\" Then he added, \"And I suspect she said, 'nor a male and female slave.'\"",
+    "russian_translation": "Зирр ибн Хубайш передал со слов Аиши, да будет доволен ею Аллах, что она сказала: «Посланник Аллаха, да благословит его Аллах и приветствует, не оставил после себя ни золотого динара, ни серебряного дирхема, ни овцы, ни верблюда». Затем он добавил: «И я сомневаюсь, упомянула ли она раба и рабыню»."
+  },
+  {
+    "db_id": 42651,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في رؤية رسول الله صلى الله عليه وسلم في المنام",
+      "en": "Chapter on what has been related about seeing the Messenger of Allah in a dream",
+      "ru": "Глава о том, что передается относительно видения Посланника Аллаха во сне"
+    },
+    "hadith_number": 224,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، عَنْ أَبِي إِسْحَاقَ، عَنْ أَبِي الأَحْوَصِ، عَنْ عَبْدِ اللهِ بْنِ مَسْعُودٍ، عَنِ النَّبِيِّ صلى الله عليه وسلم، قَالَ‏:‏ مَنْ رَآنِي فِي الْمَنَامِ فَقَدْ رَآنِي فَإِنَّ الشَّيْطَانَ لا يَتَمَثَّلُ بِي‏.‏",
+    "english_translation": "'Abdullah ibn Mas'ud, that the Prophet said (Allah bless him and give him peace):\n\"If someone sees me in his sleep, he has indeed seen me, for Satan cannot imitate me!\"",
+    "russian_translation": "Сообщается со слов Абдуллаха ибн Масуда, что Пророк, да благословит его Аллах и приветствует, сказал: «Тот, кто увидел меня во сне, тот действительно видел меня, ибо шайтан не может принять мой облик»."
+  },
+  {
+    "db_id": 42652,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في رؤيا رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the vision of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о видении Посланника Аллаха, да благословит его Аллах и приветствует, во сне"
+    },
+    "hadith_number": 232,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، وَمُحَمَّدُ بْنُ الْمُثَنَّى، قَالا‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي حُصَينٍ، عَنْ أَبِي صَالِحٍ، عَنْ أَبِي هُرَيْرَةَ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ مَنْ رَآنِي فِي الْمَنَامِ فَقَدْ رَآنِي، فَإِنَّ الشَّيْطَانَ لا يَتَصَوَّرُ أَوْ قَالَ‏:‏ لا يَتَشَبَّهُ بِي‏.‏",
+    "english_translation": "Abu Huraira (may Allah be well pleased with him) said:\n\"Allah’s Messenger said (Allah bless him and give him peace): ‘If someone sees me in his sleep, he has indeed seen me, for Satan cannot appear in disguise as me’(or: ‘cannot imitate me’).\"",
+    "russian_translation": "Передают со слов Абу Хурайры, да будет доволен им Аллах, что Посланник Аллаха, да благословит его Аллах и приветствует, сказал: «Кто увидел меня во сне, тот поистине увидел меня, ибо шайтан не может принять мой облик» — или же он сказал: «не может уподобиться мне»."
+  },
+  {
+    "db_id": 42653,
+    "book_number": 37,
+    "book_name": {
+      "ar": "كتاب الرؤيا",
+      "en": "The Book of Dreams",
+      "ru": "Книга о сновидениях"
+    },
+    "hadith_number": 284,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ، قَالَ‏:‏ حَدَّثَنَا خَلَفُ بْنُ خَلِيفَةَ، عَنْ أَبِي مَالِكٍ الأَشْجَعِيِّ، عَنْ أَبِيهِ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ مَنْ رَآنِي فِي الْمَنَامِ فَقَدْ رَآنِي، قَالَ أَبُو عِيسَى‏:‏ وَأَبُو مَالِكٍ هَذَا هُوَ‏:‏ سَعْدُ بْنُ طَارِقِ بْنِ أَشْيَمَ، وَطَارِقُ بْنُ أَشْيَمَ هُوَ مِنْ أَصْحَابِ النَّبِيِّ صلى الله عليه وسلم، وَقَدْ رَوَى عَنِ النَّبِيِّ صلى الله عليه وسلم أَحَادِيثَ",
+    "english_translation": "Abu Malik al-Ashja'i reported that his father said:\n\"Allah’s Messenger said (Allah bless him and give him peace): \"If someone sees me in his sleep, he has indeed seen me!\"",
+    "russian_translation": "Сообщается, что Абу Малик аль-Ашджа‘и сказал: «Мой отец передал, что Посланник Аллаха, да благословит его Аллах и приветствует, сказал: «Тот, кто увидел меня во сне, поистине, увидел меня»»."
+  },
+  {
+    "db_id": 42654,
+    "book_number": 37,
+    "book_name": {
+      "ar": "كتاب ما جاء في رؤية رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on Seeing the Messenger of Allah",
+      "ru": "Глава о видении Посланника Аллаха"
+    },
+    "hadith_number": 353,
+    "arabic": "سَمِعْتُ عَلِيَّ بْنَ حُجْرٍ، يَقُولُ‏:‏ قَالَ خَلَفُ بْنُ خَلِيفَةَ‏:‏ رَأَيْتُ عَمْرَو بْنَ حُرَيْثٍ صَاحِبَ النَّبِيِّ صلى الله عليه وسلم، وَأَنَا غُلامٌ صَغِيرٌ‏",
+    "english_translation": "Khalaf ibn Khalifa said:\n\"I saw Amr ibn Huraith, the Companion of the Prophet (Allah bless him and give him peace), when I was a little boy.\"",
+    "russian_translation": "Я слышал, как Али ибн Хаджр говорил: «Халаф ибн Халифа сказал: Я видел Амра ибн Хурайса, сподвижника Пророка, да благословит его Аллах и приветствует, когда я был еще маленьким мальчиком»."
+  },
+  {
+    "db_id": 42655,
+    "book_number": 32,
+    "book_name": {
+      "ar": "كِتَابُ رُؤْيَا رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "The Book of the Dream of the Messenger of Allah (pbuh)",
+      "ru": "Книга о сновидениях Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 234,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ هُوَ ابْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الْوَاحِدِ بْنُ زِيَادٍ، عَنْ عَاصِمِ بْنِ كُلَيْبٍ، قَالَ‏:‏ حَدَّثَنِي أَبِي، أَنَّهُ سَمِعَ أَبَا هُرَيْرَةَ، يَقُولُ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ مَنْ رَآنِي فِي الْمَنَامِ فَقَدْ رَآنِي، فَإِنَّ الشَّيْطَانَ لا يَتَمَثَّلُنِي، قَالَ أَبِي‏:‏ فَحَدَّثْتُ بِهِ ابْنَ عَبَّاسٍ، فَقُلْتُ‏:‏ قَدْ رَأَيْتُهُ، فَذَكَرْتُ الْحَسَنَ بْنَ عَلِيٍّ، فَقُلْتُ‏:‏ شَبَّهْتُهُ بِهِ، فَقَالَ ابْنُ عَبَّاسٍ‏:‏ إِنَّهُ كَانَ يُشْبِهُهُ‏.‏",
+    "english_translation": "'Asim ibn Kulaib’s father heard Abu Huraira say:\n\"Allah’s Messenger (Allah bless him and give him peace) said: ‘If someone sees me in his sleep, he has indeed seen me, for Satan cannot imitate me!’ The father then related this to Ibn Abbas, saying that he had seen the Prophet. He also mentioned al-Hasan ibn ‘Ali, noting that he resembled the Prophet. To this Ibn 'Abbas replied, ‘Yes, he resembled him.’\"",
+    "russian_translation": "Асим ибн Кулайб передал со слов своего отца, что тот слышал, как Абу Хурайра говорил: «Посланник Аллаха (мир ему и благословение Аллаха) сказал: „Кто увидел меня во сне, тот поистине увидел меня, ибо шайтан не может принять мой облик“. Мой отец сказал: „Я рассказал об этом Ибн Аббасу и добавил, что видел его (Пророка), а также упомянул Хасана ибн Али, заметив, что он был похож на него“. Ибн Аббас ответил: „Да, он действительно был похож на него“»."
+  },
+  {
+    "db_id": 42656,
+    "book_number": 32,
+    "book_name": {
+      "ar": "كتاب الرؤيا",
+      "en": "The Book of Dreams",
+      "ru": "Книга о сновидениях"
+    },
+    "hadith_number": 328,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا ابْنُ أَبِي عَدِيٍّ، وَمُحَمَّدُ بْنُ جَعْفَرٍ، قَالا‏:‏ حَدَّثَنَا عَوْفُ بْنُ أَبِي جَمِيلَةَ، عَنْ يَزِيدَ الْفَارِسِيِّ وَكَانَ يَكْتُبُ الْمَصَاحِفَ، قَالَ‏:‏ رَأَيْتُ النَّبِيَّ صلى الله عليه وسلم فِي الْمَنَامِ زَمَنَ ابْنِ عَبَّاسٍ، قَالَ‏:‏ فَقُلْتُ لابْنِ عَبَّاسٍ‏:‏ إِنِّي رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم فِي النَّوْمِ، فَقَالَ ابْنُ عَبَّاسٍ‏:‏ إِنَّ رَسُولَ اللهِ كَانَ، يَقُولُ‏:‏ إِنَّ الشَّيْطَانَ لا يَسْتَطِيعُ أَنْ يَتَشَبَّهَ بِي، فَمَنْ رَآنِي فِي النَّوْمِ فَقَدْ رَآنِي، هَلْ تَسْتَطِيعُ أَنْ تَنْعَتَ هَذَا الرَّجُلَ الَّذِي رَأَيْتَهُ فِي النَّوْمِ‏؟‏ قَالَ‏:‏ نَعَمْ، أَنْعَتُ لَكَ رَجُلا بَيْنَ الرَّجُلَيْنِ، جِسْمُهُ وَلَحْمُهُ أَسْمَرُ إِلَى الْبَيَاضِ، أَكْحَلُ الْعَيْنَيْنِ، حَسَنُ الضَّحِكِ، جَمِيلُ دَوَائِرِ الْوَجْهِ، مَلأَتْ لِحْيَتُهُ مَا بَيْنَ هَذِهِ إِلَى هَذِهِ، قَدْ مَلأَتْ نَحْرَهُ، قَالَ عَوْفٌ‏:‏ وَلا أَدْرِي مَا كَانَ مَعَ هَذَا النَّعْتِ، فَقَالَ ابْنُ عَبَّاسٍ‏:‏ لَوْ رَأَيْتَهُ فِي الْيَقَظَةِ مَا اسْتَطَعْتَ أَنْ تَنْعَتَهُ فَوْقَ هَذَا‏.‏‏ قال أبو عيسى: ويزيد الفارسي هو يزيد بن هرمز وهو أقدم من يزيد الرقاشي وروى يزيد الفارسي عن ابن عباس أحاديث. ويزيد الرقاشي لم يدرك ابن عباس، وهو يزيد بن أبان الرقاشي وهو يروي عن أنس بن مالك. ويزيد الفارسي ويزيد الرقاشي كلاهما من أهل البصرة وعوف بن أبي جميلة هو عوف الأعرابي.",
+    "english_translation": "Yazid al-Farisi, who used to inscribe copies of the Qur’an said:\n\"I saw the Prophet (Allah bless him and give him peace) in my sleep in the time of Ibn 'Abbas, so I said to Ibn 'Abbas: ‘I saw Allah’s Messenger (Allah bless him and give him peace) in my sleep!’ Ibn 'Abbas said: \"Allah’s Messenger (Allah bless him and give him peace) used to say: ‘Satan cannot imitate me, so if someone sees me in his sleep, he has indeed seen me!’ Can you describe this man whom you saw in your sleep?\" \"Yes,\" he said. \"I shall describe for you an average man: his body and his flesh were brown-to-white; he was black eyed, endowed with a pleasant smile and handsome facial features; his beard went from here to here, and it came down over the top of his chest.\" 'Awf said: \"I do not know what could be added to this description,\" and Ibn 'Abbas said: \"If you had seen him in the state of wakefulness, you could not have described him more accurately than this.\"",
+    "russian_translation": "Передает Язид аль-Фариси, который переписывал списки Корана: «Я увидел Пророка, да благословит его Аллах и приветствует, во сне во времена Ибн Аббаса. Я сказал Ибн Аббасу: Я видел Посланника Аллаха, да благословит его Аллах и приветствует, во сне. Ибн Аббас ответил: Посланник Аллаха, да благословит его Аллах и приветствует, говорил: Сатана не может принять мой облик, поэтому тот, кто увидел меня во сне, поистине увидел меня. Можешь ли ты описать этого человека, которого видел во сне? Я ответил: Да. Я опишу его как мужчину среднего телосложения. Его кожа была смуглой, переходящей в белизну, глаза — черными, с приятной улыбкой и прекрасными чертами лица. Его борода заполняла пространство отсюда и досюда, покрывая его грудь. Ауф добавил: Я не знаю, что еще можно было добавить к этому описанию. Ибн Аббас сказал: Если бы ты видел его наяву, то не смог бы описать его лучше, чем ты описал сейчас»"
+  },
+  {
+    "db_id": 42657,
+    "book_number": 34,
+    "book_name": {
+      "ar": "كتاب ما جاء في سن رسول الله ﷺ",
+      "en": "Chapter on the Age of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о возрасте Посланника Аллаха ﷺ"
+    },
+    "hadith_number": 169,
+    "arabic": "حدثنا أبو داود سليمان بن سلم البلخي، حدثنا النضر بن شميل‏.‏ قال‏:‏ قال عوف الأعرابي‏:‏ أنا أكبر من قتادة‏.‏‏.‏",
+    "english_translation": "(Regarding one of the narrators of the previous narration) `Awf (Abu Jamilah) al-A`rabi said:\n\"I am older then Qatadah.\"",
+    "russian_translation": "Передал нам Абу Давуд Сулейман ибн Сальм аль-Балхи, передал нам ан-Надр ибн Шумайль, который сказал: «Ауф аль-А‘раби говорил: Я старше Катады»."
+  },
+  {
+    "db_id": 42658,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي رُؤْيَا رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related concerning seeing the Messenger of Allah",
+      "ru": "Глава о видении Посланника Аллаха во сне"
+    },
+    "hadith_number": 232,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ أَبِي زِيَادٍ، قَالَ‏:‏ حَدَّثَنَا يَعْقُوبُ بْنُ إِبْرَاهِيمَ بْنِ سَعْدٍ، قَالَ‏:‏ حَدَّثَنَا ابْنُ أَخِي ابْنِ شِهَابٍ الزُّهْرِيُّ، عَنْ عَمِّهِ، قَالَ‏:‏ قَالَ أَبُو سَلَمَةَ‏:‏ قَالَ أَبُو قَتَادَةَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ مَنْ رَآنِي، يَعْنِي فِي النَّوْمِ، فَقَدْ رَأَى الْحَقَّ‏.‏‏.‏",
+    "english_translation": "Abu Qatada said:\n\"Allah’s Messenger said (Allah bless him and give him peace): ‘If someone sees me (meaning in his sleep), he has seen me truly!'\"",
+    "russian_translation": "Сообщается, что Абу Катада сказал: «Посланник Аллаха, да благословит его Аллах и приветствует, сказал: „Кто увидел меня во сне, тот поистине увидел истину“»."
+  },
+  {
+    "db_id": 42659,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي رُؤْيَا رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on what has been said regarding seeing the Messenger of Allah (ﷺ) in a dream",
+      "ru": "Глава о том, что передается о видении Посланника Аллаха ﷺ во сне"
+    },
+    "hadith_number": 226,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ الدَّارِمِيُّ، قَالَ‏:‏ حَدَّثَنَا مُعَلَّى بْنُ أَسَدٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الْعَزِيزِ بْنُ الْمُخْتَارِ، قَالَ‏:‏ حَدَّثَنَا ثَابِتٌ، عَنْ أَنَسٍ‏:‏ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، قَالَ‏:‏ مَنْ رَآنِي فِي الْمَنَامِ فَقَدْ رَآنِي، فَإِنَّ الشَّيْطَانَ لا يَتَخَيَّلُ بِي وَقَالَ‏:‏ وَرُؤْيَا الْمُؤْمِنِ جُزْءٌ مِنْ سِتَّةٍ وَأَرْبَعِينَ جُزْءًا مِنَ النُّبُوَّةِ‏.‏",
+    "english_translation": "Anas said:\n\"The Prophet said (Allah bless him and give him peace): 'If someone sees me in his sleep, he has indeed seen me, for Satan cannot impersonate me!' He also said: 'The vision of the believer is one of forty-six parts of Prophethood.'\"",
+    "russian_translation": "Анас передал, что Посланник Аллаха ﷺ сказал: «Кто увидел меня во сне, тот поистине увидел меня, ибо шайтан не может принять мой облик». И он также сказал: «Сновидение верующего — это одна из сорока шести частей пророчества»"
+  },
+  {
+    "db_id": 42660,
+    "book_number": 56,
+    "book_name": {
+      "ar": "كتاب القضاء",
+      "en": "The Book of Judgments",
+      "ru": "Книга о суде"
+    },
+    "hadith_number": 322,
+    "arabic": "حدثنا محمد بن علي، قال سمعت أبي يقول‏:‏ قال عبد الله ابن المبارك‏:‏ إذا ابتليت بالقضاء فعليك بالأثر‏.‏",
+    "english_translation": "Abdu llah ibn al-Mubarak said:\n\"If you are afflicted with the responsibility of judgeship, you must follow the [Prophetic] tradition [al-athar]!\"",
+    "russian_translation": "Мухаммад ибн Али рассказывал: «Я слышал, как мой отец говорил: Абдуллах ибн аль-Мубарак сказал: Если тебя постигло испытание должностью судьи, то тебе следует держаться за предания (ат-асар)»."
+  },
+  {
+    "db_id": 42661,
+    "book_number": 1,
+    "book_name": {
+      "ar": "مقدمة صحيح مسلم",
+      "en": "Introduction to Sahih Muslim",
+      "ru": "Введение к «Сахих» Муслима"
+    },
+    "hadith_number": 26,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ عَلِيٍّ ، قَالَ : حَدَّثَنَا النَّضْرُ بْنُ شُمَيْلٍ ، قَالَ : أَنْبَأَنَا ابْنُ عَوْنٍ ، عَنِ ابْنِ سِيرِينَ ، قَالَ :\n\" هَذَا الْحَدِيثُ دِينٌ ، فَانْظُرُوا عَمَّنْ تَأَخُذُونَ دِينَكُمْ \"\n.",
+    "english_translation": "Ibn Sirin said:\n\"This tradition [hadith] is religion, so consider from whom you accept your religion.\"",
+    "russian_translation": "Мухаммад ибн Сирин сказал: «Это знание — религия, поэтому смотрите, у кого вы берете свою религию»"
+  }
+]

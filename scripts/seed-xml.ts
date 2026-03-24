@@ -54,6 +54,7 @@ const SLUG_MAP: Record<string, string> = {
   'an-nasai': 'nasai',
   'ibn-majah': 'ibnmajah',
 };
+
 const prisma = new PrismaClient();
 const DATA_DIR = path.join(__dirname, '../data');
 
@@ -65,7 +66,6 @@ async function processXmlFile(filePath: string) {
 
   console.log(`\n📚 Processing XML file: ${path.basename(filePath)}`);
 
-  // Read UTF-16 encoded file
   const fileContent = fs.readFileSync(filePath, 'utf16le');
   const $ = cheerio.load(fileContent, { xmlMode: true });
 
@@ -81,7 +81,7 @@ async function processXmlFile(filePath: string) {
   if (SLUG_MAP[slug]) {
     slug = SLUG_MAP[slug];
   }
-  
+
   const meta = COLLECTION_METADATA[slug] || {
     name: collectionNameFromXml || collectionCode,
     description: `A collection of prophetic traditions inherited from the ${collectionCode} source.`
@@ -106,7 +106,7 @@ async function processXmlFile(filePath: string) {
   const hadithNodes = $('hadith');
   console.log(`   - Found ${hadithNodes.length} hadith entries.`);
 
-  const BATCH_SIZE = 50; // Smaller batch size to prevent transaction timeouts
+  const BATCH_SIZE = 50;
   let processedCount = 0;
 
   for (let i = 0; i < hadithNodes.length; i += BATCH_SIZE) {
@@ -115,19 +115,19 @@ async function processXmlFile(filePath: string) {
 
     for (let j = 0; j < chunk.length; j++) {
       const node = $(chunk[j]);
-      
-      let primaryRef = 0;
+
+      const allReferences: any[] = [];
       node.find('references > reference').each((_, refNode) => {
-        if ($(refNode).find('code').text().trim() === 'Reference') {
-          const part = $(refNode).find('parts > part').first().text().trim();
-          primaryRef = parseInt(part, 10);
-          return false;
-        }
+        const code = $(refNode).find('code').text().trim();
+        const suffix = $(refNode).find('suffix').text().trim();
+        const parts: string[] = [];
+        $(refNode).find('parts > part').each((_, p) => {
+          parts.push($(p).text().trim());
+        });
+        allReferences.push({ code, suffix, parts });
       });
 
-      if (!primaryRef || isNaN(primaryRef)) {
-        primaryRef = (i + j) + 1;
-      }
+      const primaryRef = (i + j) + 1;
 
       const arabicText = node.find('arabic > text').map((_, t) => $(t).text().trim()).get().join('\n');
       const englishText = node.find('english > text').map((_, t) => $(t).text().trim()).get().join('\n');
@@ -146,6 +146,7 @@ async function processXmlFile(filePath: string) {
       const metadata: any = {
         source: 'xml_import',
         original_code: collectionCode,
+        xml_references: allReferences,
       };
       if (verseRefs.length > 0) metadata.verseReferences = verseRefs;
 
@@ -155,53 +156,44 @@ async function processXmlFile(filePath: string) {
         bookNumber: 1,
         hadithNumber: primaryRef,
         arabicText: arabicText || '',
-        englishText, // temporary for internal use
+        englishText, // used below for translations, excluded from hadith insert
         metadata: metadata,
       });
     }
 
-    // 3. Bulk Upsert Hadiths with explicit timeout
-    await prisma.$transaction(async (tx) => {
-      for (const data of hadithData) {
-        const { englishText, ...hadithBase } = data;
-        const hadith = await tx.hadith.upsert({
-          where: {
-            collection_bookNumber_hadithNumber: {
-              collection: hadithBase.collection,
-              bookNumber: hadithBase.bookNumber,
-              hadithNumber: hadithBase.hadithNumber,
-            },
-          },
-          update: {
-            arabicText: hadithBase.arabicText,
-            metadata: hadithBase.metadata,
-          },
-          create: hadithBase,
-          select: { id: true },
-        });
-        
-        if (englishText) {
-          await tx.translation.upsert({
-            where: {
-              hadithId_languageCode: {
-                hadithId: hadith.id,
-                languageCode: 'en',
-              },
-            },
-            update: {
-              text: englishText,
-            },
-            create: {
-              hadithId: hadith.id,
-              languageCode: 'en',
-              text: englishText,
-            },
-          });
-        }
-      }
-    }, {
-      timeout: 30000 // 30 seconds
+    // STEP A: Insert hadiths only (fast, no findMany inside)
+    await prisma.hadith.createMany({
+      data: hadithData.map(({ englishText, ...h }) => h),
+      skipDuplicates: true,
     });
+
+    // STEP B: Fetch inserted hadiths to get their IDs (outside transaction)
+    const createdHadiths = await prisma.hadith.findMany({
+      where: {
+        collection: slug,
+        bookNumber: 1,
+        hadithNumber: { in: hadithData.map(h => h.hadithNumber) },
+      },
+      select: { id: true, hadithNumber: true },
+    });
+
+    const idMap = new Map(createdHadiths.map(h => [h.hadithNumber, h.id]));
+
+    // STEP C: Insert translations only (fast, separate operation)
+    const translations = hadithData
+      .filter(h => h.englishText && idMap.has(h.hadithNumber))
+      .map(h => ({
+        hadithId: idMap.get(h.hadithNumber)!,
+        languageCode: 'en',
+        text: h.englishText,
+      }));
+
+    if (translations.length > 0) {
+      await prisma.translation.createMany({
+        data: translations,
+        skipDuplicates: true,
+      });
+    }
 
     processedCount += chunk.length;
     process.stdout.write(`\r⏳ Processed ${processedCount}/${hadithNodes.length} ...`);
@@ -220,19 +212,17 @@ async function main() {
   const args = process.argv.slice(2);
 
   if (args.length > 0) {
-    // Process specific files passed as arguments
     for (const arg of args) {
       const filePath = path.resolve(process.cwd(), arg);
       await processXmlFile(filePath);
     }
   } else {
-    // Process all XML files in data directory
     console.log('🚀 Starting XML Hadiths Import Script...');
     const files = fs.readdirSync(DATA_DIR).filter((f) => f.endsWith('.xml'));
     console.log(`Found ${files.length} XML files in ${DATA_DIR} to process.`);
 
     for (const file of files) {
-      if (file === 'Shamail-utf8.xml') continue; // Skip my temporary file
+      if (file === 'Shamail-utf8.xml') continue;
       await processXmlFile(path.join(DATA_DIR, file));
     }
   }

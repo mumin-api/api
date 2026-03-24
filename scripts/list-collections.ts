@@ -3,25 +3,22 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  const collections = await prisma.collection.findMany({
-    select: {
-      nameEnglish: true,
-      slug: true,
-      id: true,
-    }
+  const counts = await prisma.hadith.groupBy({
+    by: ['collection'],
+    _count: { id: true },
+    orderBy: { _count: { id: 'desc' } }
   });
 
-  console.log('--- COLLECTIONS ---');
-  collections.forEach(c => {
-    console.log(`${c.id}: ${c.nameEnglish} -> slug: ${c.slug}`);
+  console.log('\nРеальное количество хадисов в таблице hadith:\n');
+  console.log('Кол-во\t\tCollection slug');
+  console.log('------\t\t---------------');
+  counts.forEach(r => {
+    console.log(`${r._count.id}\t\t${r.collection}`);
   });
+  const total = counts.reduce((s, r) => s + r._count.id, 0);
+  console.log(`\nИтого: ${total} хадисов`);
 }
 
 main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());

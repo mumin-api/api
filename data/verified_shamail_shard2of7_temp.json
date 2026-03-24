@@ -1,0 +1,756 @@
+[
+  {
+    "db_id": 42378,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "The Chapter on the Physical Appearance of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава об описании внешности Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 2,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا ابْنُ لَهِيعَةَ، عَنْ أَبِي يُونُسَ، عَنْ أَبِي هُرَيْرَةَ، قَالَ‏:‏ وَلا رَأَيْتُ شَيْئًا أَحْسَنَ مِنْ رَسُولِ اللهِ صلى الله عليه وسلم كَأَنَّ الشَّمْسَ تَجْرِي فِي وَجْهِهِ، وَمَا رَأَيْتُ أَحَدًا أَسْرَعَ فِي مِشْيَتِهِ مِنْ رَسُولِ اللهِ صلى الله عليه وسلم كَأَنَّمَا الأَرْضُ تُطْوَى لَهُ إِنَّا لَنُجْهِدُ أَنْفُسَنَا وَإِنَّهُ لَغَيْرُ مُكْتَرِثٍ‏.‏",
+    "english_translation": "Abu Huraira said:\n\"I have not seen anything more beautiful than Allah’s Messenger (Allah bless him and give him peace). The sun seemed to shine in his face. Nor have I seen anyone more rapid in his gait than Allah’s Messenger (Allah bless him and give him peace). The earth seemed to be folded up for him. We must strenuously exert ourselves, while he is not subject to any stress.\"",
+    "russian_translation": "Я не видел ничего прекраснее Посланника Аллаха, да благословит его Аллах и приветствует, словно солнце сияло на его лице. И я не видел никого, кто передвигался бы быстрее Посланника Аллаха, да благословит его Аллах и приветствует: казалось, будто земля сворачивается для него. Мы же шли изо всех сил, в то время как он вовсе не напрягался."
+  },
+  {
+    "db_id": 42379,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي مِشْيَةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the gait of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о походке Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 113,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، وَغَيْرُ وَاحِدٍ، قَالُوا‏:‏ حَدَّثَنَا عِيسَى بْنُ يُونُسَ، عَنْ عُمَرَ بْنِ عَبْدِ اللهِ مَوْلَى غُفْرَةَ، قَالَ‏:‏ أَخْبَرَنِي إِبْرَاهِيمُ بْنُ مُحَمَّدٍ مِنْ وَلَدِ عَلِيِّ بْنِ أَبِي طَالِبٍ، قَالَ‏:‏ كَانَ عَلِيٌّ إِذَا وَصَفَ النَّبِيَّ صلى الله عليه وسلم، قَالَ‏:‏ كَانَ إِذَا مَشَى تَقَلَّعَ كَأَنَّمَا يَنْحَطُّ مِنْ صَبَبٍ‏.‏",
+    "english_translation": "Ibrahim ibn Muhammad, one of the offspring of 'Ali ibn Abi Talib, told me:\n\"When \"Ali described the Prophet (Allah bless him and give him peace), he said: ‘When he walked, he moved as if he were descending a declivity'.\"",
+    "russian_translation": "Когда Али описывал Пророка (мир ему и благословение Аллаха), он говорил: «Когда он шел, он ступал уверенно, словно спускался по склону»."
+  },
+  {
+    "db_id": 42380,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي مِشْيَةِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the manner of the Prophet's walking",
+      "ru": "Глава о походке Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 113,
+    "arabic": "حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، قَالَ‏:‏ حَدَّثَنَا أَبِي، عَنِ الْمَسْعُودِيِّ، عَنْ عُثْمَانَ بْنِ مُسْلِمِ بْنِ هُرْمُزَ، عَنْ نَافِعِ بْنِ جُبَيْرِ بْنِ مُطْعِمٍ، عَنْ عَلِيِّ بْنِ أَبِي طَالِبٍ، قَالَ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم إِذَا مَشَى، تَكَفَّأَ تَكَفُّؤًا، كَأَنَّمَا يَنْحَطُّ مِنْ صَبَبٍ‏.‏",
+    "english_translation": "Ali ibn Abi Talib said (may Allah ennoble his countenance):\n\"When the Prophet (Allah bless him and give him peace) walked, he inclined forward as if he were descending a declivity.\"",
+    "russian_translation": "Когда Пророк (мир ему и благословение Аллаха) шел, он слегка наклонялся вперед, словно сходил с возвышенности."
+  },
+  {
+    "db_id": 42381,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Grooming of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о том, как Посланник Аллаха (мир ему и благословение Аллаха) расчесывал свои волосы"
+    },
+    "hadith_number": 32,
+    "arabic": "حَدَّثَنَا يُوسُفُ بْنُ عِيسَى، قَالَ‏:‏ حَدَّثَنَا وَكِيعٌ، قَالَ‏:‏ حَدَّثَنَا الرَّبِيعُ بْنُ صَبِيحٍ، عَنْ يَزِيدَ بْنِ أَبَانَ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم يُكْثِرُ الْقِنَاعَ، كَأَنَّ ثَوْبَهُ ثَوْبُ زَيَّاتٍ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"Allah’s Messenger (Allah bless him and give him peace) would often wear the head veil, as if his robe was the robe of an oil dealer.\"",
+    "russian_translation": "Анас ибн Малик передал: «Посланник Аллаха, да благословит его Аллах и приветствует, часто носил накидку на голове, и его одежда была похожа на одежду торговца маслом»."
+  },
+  {
+    "db_id": 42382,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي جِلْسَةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Manner of the Sitting of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава об образе сидения Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 213,
+    "arabic": "حَدَّثَنَا عَبْدُ بْنُ حُمَيْدٍ، قَالَ‏:‏ حَدَّثَنَا عَفَّانُ بْنُ مُسْلِمٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ اللهِ بْنُ حَسَّانَ، عَنْ، جَدَّتَيْهِ، عَنْ قَيْلَةَ بِنْتِ مَخْرَمَةَ، أَنَّهَا رَأَتْ رَسُولَ اللهِ صلى الله عليه وسلم فِي الْمَسْجِدِ، وَهُوَ قَاعِدٌ الْقُرْفُصَاءَ، قَالَتْ‏:‏ فَلَمَّا رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم، الْمُتَخَشِّعَ فِي الْجِلْسَةِ، أُرْعِدْتُ مِنَ الْفَرَقِ‏.‏",
+    "english_translation": "'Abdu’llah ibn Hassan reported on the authority of his grandmothers:\nQaila bint Makhrama said that she saw Allah’s Messenger (Allah bless him and give him peace) in the mosque squatting on his heels. She said: \"When I saw Allah’s Messenger (Allah bless him and give him peace) displaying humility in the mosque, I trembled with fright.\"",
+    "russian_translation": "Кайля бинт Махрама рассказывала, что она видела Посланника Аллаха (мир ему и благословение Аллаха) в мечети сидящим, обхватив руками колени (аль-курфуса). Она сказала: «Когда я увидела Посланника Аллаха (мир ему и благословение Аллаха), сидевшего в такой смиренной позе, я задрожала от трепета»."
+  },
+  {
+    "db_id": 42383,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في اتكاء رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on how the Messenger of Allah (peace be upon him) reclined",
+      "ru": "Глава о том, как Посланник Аллаха (мир ему и благословение Аллаха) возлегал"
+    },
+    "hadith_number": 218,
+    "arabic": "حَدَّثَنَا سَعِيدُ بْنُ عَبْدِ الرَّحْمَنِ الْمَخْزُومِيُّ، وَغَيْرُ وَاحِدٍ، قَالُوا‏:‏ حَدَّثَنَا سُفْيَانُ، عَنِ الزُّهْرِيِّ، عَنْ عَبَّادِ بْنِ تَمِيمٍ، عَنْ عَمِّهِ، أَنَّهُ رَأَى النَّبِيَّ صلى الله عليه وسلم مُسْتَلْقِيًا فِي الْمَسْجِدِ وَاضِعًا إِحْدَى رِجْلَيْهِ عَلَى الأُخْرَى‏.‏",
+    "english_translation": "'Abbad ibn Tamim reported:\nHis paternal uncle said that he saw the Prophet (Allah bless him and give him peace) lying on his back in the mosque, placing one of his legs over the other.",
+    "russian_translation": "Сообщается, что его дядя по отцовской линии видел, как Пророк (мир ему и благословение Аллаха) лежал в мечети на спине, положив одну ногу на другую."
+  },
+  {
+    "db_id": 42384,
+    "book_number": 8,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي جِلْسَةِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: How the Messenger of Allah (ﷺ) Used to Sit",
+      "ru": "Глава: О том, как сидел Посланник Аллаха ﷺ"
+    },
+    "hadith_number": 114,
+    "arabic": "حَدَّثَنَا سَلَمَةُ بْنُ شَبِيبٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ اللهِ بْنُ إِبْرَاهِيمَ الْمَدَنِيُّ، قَالَ‏:‏ حَدَّثَنَا إِسْحَاقُ بْنُ مُحَمَّدٍ الأَنْصَارِيُّ، عَنْ رُبَيْحِ بْنِ عَبْدِ الرَّحْمَنِ بْنِ أَبِي سَعِيدٍ، عَنْ أَبِيهِ، عَنْ جَدِّهِ أَبِي سَعِيدٍ الْخُدْرِيِّ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم إِذَا جَلَسَ فِي الْمَسْجِدِ، احْتَبَى بِيَدَيْهِ‏.‏",
+    "english_translation": "Abu Sa'id al-Khudri said:\n\"When Allah’s Messenger (Allah bless him and give him peace) sat in the mosque, he pressed his legs against his stomach with his hands.\"",
+    "russian_translation": "Когда Посланник Аллаха (мир ему и благословение Аллаха) сидел в мечети, он обхватывал колени руками."
+  },
+  {
+    "db_id": 42385,
+    "book_number": 34,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي اتِّكَاءِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Leaning of the Messenger of Allah (peace and blessings of Allah be upon him)",
+      "ru": "Глава о том, как опирался Посланник Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا عَبَّاسُ بْنُ مُحَمَّدٍ الدُّورِيُّ الْبَغْدَادِيُّ، قَالَ‏:‏ حَدَّثَنَا إِسْحَاقُ بْنُ مَنْصُورٍ، عَنِ إِسْرَائِيلَ، عَنْ سِمَاكِ بْنِ حَرْبٍ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ‏:‏ رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم، مُتَّكِئًا عَلَى وِسَادَةٍ عَلَى يَسَارِهِ‏.‏",
+    "english_translation": "Jabir ibn Samura said:\n\"I saw Allah’s Messenger (Allah bless him and give him peace) leaning on a cushion on his left side.\"",
+    "russian_translation": "Я видел Посланника Аллаха, да благословит его Аллах и приветствует, опирающимся на подушку, лежавшую слева от него."
+  },
+  {
+    "db_id": 42386,
+    "book_number": 33,
+    "book_name": {
+      "ar": "باب ما جاء في كلام رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Speech of the Messenger of Allah",
+      "ru": "Глава о речи Посланника Аллаха"
+    },
+    "hadith_number": 233,
+    "arabic": "حَدَّثَنَا حُمَيْدُ بْنُ مَسْعَدَةَ، قَالَ‏:‏ حَدَّثَنَا بِشْرُ بْنُ الْمُفَضَّلِ، قَالَ‏:‏ حَدَّثَنَا الْجُرَيْرِيُّ، عَنْ عَبْدِ الرَّحْمَنِ بْنِ أَبِي بَكْرَةَ، عَنْ أَبِيهِ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ أَلا أُحَدِّثُكُمْ بِأَكْبَرِ الْكَبَائِرِ‏؟‏ قَالُوا‏:‏ بَلَى يَا رَسُولَ اللهِ قَالَ‏:‏ الإِشْرَاكُ بِاللَّهِ، وَعُقُوقُ الْوَالِدَيْنِ قَالَ‏:‏ وَجَلَسَ رَسُولُ اللهِ صلى الله عليه وسلم، وَكَانَ مُتَّكِئًا، قَالَ‏:‏ وَشَهَادَةُ الزُّورِ، أَوْ قَوْلُ الزُّورِ، قَالَ‏:‏ فَمَا زَالَ رَسُولُ اللهِ صلى الله عليه وسلم، يَقُولُهَا حَتَّى قُلْنَا‏:‏ لَيْتَهُ سَكَتَ‏.‏",
+    "english_translation": "'Abd ar-Rahman ibn Abi Bakra reported that his father Abu Bakra said:\n\"Allah’s Messenger said (Allah bless him and give him peace): ‘Should I tell you about the greatest of the major sins?’ They said: ‘Yes indeed, O Messenger of Allah!’ He said: ‘Associating partners with Allah, and recalcitrance against parents.’ Allah’s Messenger (Allah bless him and give him peace) sat down, and he was leaning on a support. He added: '...and false testimony’ or: ‘false speech.’ Allah’s Messenger (Allah bless him and give him peace) went on speaking until we said: ‘If only he would keep silent!\"",
+    "russian_translation": "Сообщается, что Абд ар-Рахман ибн Абу Бакра передал со слов своего отца, что Посланник Аллаха (мир ему и благословение Аллаха) сказал: «Не сообщить ли мне вам о величайших из тяжких грехов?» Люди ответили: «Конечно, о Посланник Аллаха!» Он сказал: «Придание Аллаху сотоварищей и непочтительность к родителям». В это время Посланник Аллаха (мир ему и благословение Аллаха), который до этого полулежал, сел и добавил: «А также лжесвидетельство или ложные слова». И он продолжал повторять это до тех пор, пока мы не сказали: «О, если бы он замолчал!»"
+  },
+  {
+    "db_id": 42387,
+    "book_number": 27,
+    "book_name": {
+      "ar": "باب ما جاء في تواضع رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Humility of the Messenger of Allah",
+      "ru": "Глава о смирении Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 194,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا شَرِيكٌ، عَنْ عَلِيِّ بْنِ الأَقْمَرِ، عَنْ أَبِي جُحَيْفَةَ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ أَمَّا أَنَا، فَلا آكُلُ مُتَّكِئًا‏.‏",
+    "english_translation": "Abu Juhaifa said:\n\"Allah’s Messenger said (Allah bless him and give him peace):‘As for me, I do not eat while leaning on a support!’\"",
+    "russian_translation": "Сообщается, что Абу Джухайфа сказал: «Посланник Аллаха, да благословит его Аллах и приветствует, сказал: Что касается меня, то я не ем, опираясь на что-либо»."
+  },
+  {
+    "db_id": 42388,
+    "book_number": 26,
+    "book_name": {
+      "ar": "كتاب صفة أكل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Manner of the Messenger of Allah’s Eating",
+      "ru": "Глава об образе питания Посланника Аллаха"
+    },
+    "hadith_number": 191,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، عَنْ عَلِيِّ بْنِ الأَقْمَرِ، قَالَ‏:‏ سَمِعْتُ أَبَا جُحَيْفَةَ، يَقُولُ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ لا آكُلُ مُتَّكِئًا‏.‏",
+    "english_translation": "Abu Juhaifa said:\n\"Allah’s Messenger said (Allah bless him and give him peace): 'I do not eat while leaning on a support! I do not eat while leaning on a support'!\"",
+    "russian_translation": "Сообщается, что Абу Джухайфа сказал: «Посланник Аллаха ﷺ сказал: „Я не ем, опираясь на что-либо“»."
+  },
+  {
+    "db_id": 42389,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في اتكاء رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Leaning of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о том, как Посланник Аллаха, да благословит его Аллах и приветствует, опирался на подушку"
+    },
+    "hadith_number": 204,
+    "arabic": "حَدَّثَنَا يُوسُفُ بْنُ عِيسَى، قَالَ‏:‏ حَدَّثَنَا وَكِيعٌ، قَالَ‏:‏ حَدَّثَنَا إِسْرَائِيلُ، عَنْ سِمَاكِ بْنِ حَرْبٍ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ‏:‏ رَأَيْتُ النَّبِيَّ صلى الله عليه وسلم مُتَّكِئًا عَلَى وِسَادَةٍ،‏.‏",
+    "english_translation": "Jabir ibn Samura said:\n\"I saw Allah’s Messenger (Allah bless him and give him peace) leaning on a cushion.\"",
+    "russian_translation": "Джабир ибн Самура сообщил: «Я видел Посланника Аллаха, да благословит его Аллах и приветствует, опирающимся на подушку»"
+  },
+  {
+    "db_id": 42390,
+    "book_number": 38,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي لِبَاسِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Clothing of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава об одежде Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، قَالَ‏:‏ حَدَّثَنَا عَمْرُو بْنُ عَاصِمٍ، قَالَ‏:‏ حَدَّثَنَا حَمَّادُ بْنُ سَلَمَةَ، عَنْ حُمَيْدٍ، عَنْ أَنَسٍ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم كَانَ شَاكِيًا، فَخَرَجَ يَتَوَكَّأُ عَلَى أُسَامَةَ بْنِ زَيْدٍ وَعَلَيْهِ ثَوْبٌ قِطْرِيٌّ، قَدْ تَوَشَّحَ بِهِ فَصَلَّى بِهِمْ‏.‏",
+    "english_translation": "Anas said:\n\"The Prophet (Allah bless him and give him peace) was feeling ill, so he came out leaning on Usama ibn Zaid wearing an outer garment of coarse cotton fabric, which he had thrown on loosely, after which he led them in the ritual prayer.\"",
+    "russian_translation": "Анас передал, что когда Пророк, да благословит его Аллах и приветствует, был болен, он вышел, опираясь на Усаму ибн Зайда. На нём было одето ‹китри› — грубое хлопчатобумажное одеяние, которым он обернулся, после чего совершил с людьми молитву."
+  },
+  {
+    "db_id": 42391,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَعَمُّمِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on how the Messenger of Allah wore his turban",
+      "ru": "Глава о том, как Посланник Аллаха повязывал чалму"
+    },
+    "hadith_number": 128,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ الْمُبَارَكِ، قَالَ‏:‏ حَدَّثَنَا عَطَاءُ بْنُ مُسْلِمٍ الْخَفَّافُ الْحَلَبِيُّ، قَالَ‏:‏ حَدَّثَنَا جَعْفَرُ بْنُ بُرْقَانَ، عَنْ عَطَاءِ بْنِ أَبِي رَبَاحٍ، عَنِ الْفَضْلِ بْنِ عَبَّاسٍ، قَالَ‏:‏ دَخَلْتُ عَلَى رَسُولِ اللهِ صلى الله عليه وسلم، فِي مَرَضِهِ الَّذِي تُوُفِّيَ فِيهِ، وَعَلَى رَأْسِهِ عِصَابَةٌ صَفْرَاءُ، فَسَلَّمْتُ عَلَيْهِ، فَقَالَ‏:‏ يَا فَضْلُ قُلْتُ‏:‏ لَبَّيْكَ يَا رَسُولَ اللهِ، قَالَ‏:‏ اشْدُدْ بِهَذِهِ الْعِصَابَةِ رَأْسِي قَالَ‏:‏ فَفَعَلْتُ، ثُمَّ قَعَدَ فَوَضَعَ كَفَّهُ عَلَى مَنْكِبِي، ثُمَّ قَامَ فَدَخَلَ فِي الْمَسْجِدِ‏.‏",
+    "english_translation": "Al-Fadl ibn Abbas said:\n\"I went in to see Allah’s Messenger (Allah bless him and give him peace) during his illness in which he died, and on his head there was a yellow band. I greeted him with the salutation of peace, so he said: 'O Fadl!\"'I said: 'Doubly at your service, O Messenger of Allah!' He said: 'Wrap my head firmly with this band!' I acted accordingly, then he sat and placed the palm of his hand on my shoulder. Then he stood up and entered the mosque.\" (This tradition is part of a longer story.)",
+    "russian_translation": "Аль-Фадль ибн Аббас рассказывал: «Я вошел к Посланнику Аллаха, да благословит его Аллах и приветствует, во время болезни, которая стала для него смертельной. На голове у него была желтая повязка. Я поприветствовал его, и он сказал: О Фадль! Я ответил: Слушаю и повинуюсь, о Посланник Аллаха! Он сказал: Перевяжи этой повязкой мою голову. Я сделал это, после чего он сел, положил свою ладонь мне на плечо, затем встал и вошел в мечеть»."
+  },
+  {
+    "db_id": 42392,
+    "book_number": 12,
+    "book_name": {
+      "ar": "باب ما جاء في أكل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Manner of the Eating of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, как ел Посланник Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 133,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، عَنْ سُفْيَانَ، عَنْ سَعْدِ بْنِ إِبْرَاهِيمَ، عَنِ ابْنٍ لِكَعْبِ بْنِ مَالِكٍ، عَنْ أَبِيهِ، أَنَّ النَّبِيَّ صلى الله عليه وسلم كَانَ يَلْعَقُ أَصَابِعَهُ ثَلاثًا‏.‏",
+    "english_translation": "Reported on the authority of Ibn al-Ka'b ibn Malik, that his father said:\n\"The Prophet (Allah bless him and give him peace) used to lick his fingers three times.\"",
+    "russian_translation": "Сообщается от сына Ка‘ба ибн Малика, что его отец рассказывал: «Пророк (мир ему и благословение Аллаха) обычно облизывал свои пальцы трижды»."
+  },
+  {
+    "db_id": 42393,
+    "book_number": 12,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي أَكْلِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the manner of the Prophet's eating",
+      "ru": "Глава о том, как ел Посланник Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 133,
+    "arabic": "حَدَّثَنَا الْحَسَنُ بْنُ عَلِيٍّ الْخَلالُ، قَالَ‏:‏ حَدَّثَنَا عَفَّانُ، قَالَ‏:‏ حَدَّثَنَا حَمَّادُ بْنُ سَلَمَةَ، عَنْ ثَابِتٍ، عَنْ أَنَسٍ، قَالَ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم إِذَا أَكَلَ طَعَامًا لَعِقَ أَصَابِعَهُ الثَّلاثَ‏.‏",
+    "english_translation": "Anas said:\n\"When the Prophet (Allah bless him and give him peace) ate a meal, he used to lick his three fingers [the thumb, the index finger and the middle finger].\"",
+    "russian_translation": "Анас передал: «Когда Пророк, да благословит его Аллах и приветствует, заканчивал есть, он облизывал три своих пальца»."
+  },
+  {
+    "db_id": 42394,
+    "book_number": 20,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي جُلُوسِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on how the Messenger of Allah sat",
+      "ru": "Глава о том, как сидел Посланник Аллаха"
+    },
+    "hadith_number": 139,
+    "arabic": "حَدَّثَنَا الْحُسَيْنُ بْنُ عَلِيِّ بْنِ يَزِيدَ الصُّدَائِيُّ الْبَغْدَادِيُّ، قَالَ‏:‏ حَدَّثَنَا يَعْقُوبُ بْنُ إِسْحَاقَ يَعْنِي الْحَضْرَمِيَّ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ سُفْيَانَ الثَّوْرِيِّ، عَنْ عَلِيِّ بْنِ الأَقْمَرِ، عَنْ أَبِي جُحَيْفَةَ، قَالَ‏:‏ قَالَ النَّبِيُّ صلى الله عليه وسلم‏:‏ أَمَّا أَنَا فَلا آكُلُ مُتَّكِئًا‏.‏ حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، عَنْ عَلِيِّ بْنِ الأَقْمَرِ ‏,‏ نَحْوَهُ‏.‏",
+    "english_translation": "Abu Juhaifa said:\n\"The Prophet said (Allah bless him and give him peace): 'As for me, I do not eat while leaning on a support'!\"",
+    "russian_translation": "Сообщается от Абу Джухайфы, что Пророк ﷺ сказал: «Что касается меня, то я не ем, опираясь на что-либо»"
+  },
+  {
+    "db_id": 42395,
+    "book_number": 11,
+    "book_name": {
+      "ar": "باب ما جاء في أكل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the way the Messenger of Allah, peace and blessings of Allah be upon him, ate",
+      "ru": "Глава о том, как ел Посланник Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 130,
+    "arabic": "حَدَّثَنَا هَارُونُ بْنُ إِسْحَاقَ الْهَمْدَانِيُّ، قَالَ‏:‏ حَدَّثَنَا عَبْدَةُ بْنُ سُلَيْمَانَ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنِ ابْنٍ لِكَعْبِ بْنِ مَالِكٍ، عَنْ أَبِيهِ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم يَأْكُلُ بِأَصَابِعِهِ، الثَّلاثِ وَيَلْعَقُهُنَّ‏.‏",
+    "english_translation": "Ibn al-Ka'b ibn Malik reported that his father said:\n\"Allah’s Messenger (Allah bless him and give him peace) used to eat with his three fingers and afterwards he would lick them.\"",
+    "russian_translation": "Сообщается, что сын Ка‘ба ибн Малика передал со слов своего отца, что Посланник Аллаха, да благословит его Аллах и приветствует, обычно ел тремя пальцами, а поев, облизывал их."
+  },
+  {
+    "db_id": 42396,
+    "book_number": 24,
+    "book_name": {
+      "ar": "باب ما جاء في تواضع رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Humility of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о смирении Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 328,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا الْفَضْلُ بْنُ دُكَيْنٍ، قَالَ‏:‏ حَدَّثَنَا مُصْعَبُ بْنُ سُلَيْمٍ، قَالَ‏:‏ سَمِعْتُ أَنَسَ بْنَ مَالِكٍ، يَقُولُ‏:‏ أُتِيَ رَسُولُ اللهِ صلى الله عليه وسلم بِتَمْرٍ فَرَأَيْتُهُ يَأْكُلُ وَهُوَ مُقْعٍ مِنَ الْجُوعِ‏.‏",
+    "english_translation": "Anas ibn Malik say:\n\"Allah’s Messenger (Allah bless him and give him peace) was brought some dried dates, and I saw him eat while he was hunched over from hunger.\"",
+    "russian_translation": "Передают со слов Анаса ибн Малика, что Посланнику Аллаха, да благословит его Аллах и приветствует, принесли финики, и я видел, как он ел их, сидя на корточках от сильного голода."
+  },
+  {
+    "db_id": 42397,
+    "book_number": 23,
+    "book_name": {
+      "ar": "باب ما جاء في خبز رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Bread of the Messenger of Allah",
+      "ru": "Глава о хлебе Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 135,
+    "arabic": "حدثني مُحَمَّدُ بْنُ الْمُثَنَّى، وَمُحَمَّدُ بْنُ بَشَّارٍ، قَالا‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي إِسْحَاقَ، قَالَ‏:‏ سَمِعْتُ عَبْدَ الرَّحْمَنِ بْنَ يَزِيدَ، يُحَدِّثُ عَنِ الأَسْوَدِ بْنِ يَزِيدَ، عَنْ عَائِشَةَ، أَنَّهَا قَالَتْ‏:‏ مَا شَبِعَ آلُ مُحَمَّدٍ صلى الله عليه وسلم مِنْ خُبْزِ الشَّعِيرِ يَوْمَيْنِ مُتَتَابِعَيْنِ حَتَّى قُبِضَ رَسُولُ اللهِ صلى الله عليه وسلم‏.‏",
+    "english_translation": "'A’isha said:\n\"The family of Muhammad (Allah bless him and give him peace) did not satisfy their appetite with barley-bread for before even two consecutive days until Allah’s Messenger (Allah bless him and give him peace) was taken from this world.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Семья Мухаммада, да благословит его Аллах и приветствует, ни разу не насыщалась ячменным хлебом два дня подряд вплоть до самой кончины Посланника Аллаха, да благословит его Аллах и приветствует»."
+  },
+  {
+    "db_id": 42398,
+    "book_number": 26,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي عَيْشِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Life of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, как жил Посланник Аллаха ﷺ"
+    },
+    "hadith_number": 130,
+    "arabic": "حَدَّثَنَا عَبَّاسُ بْنُ مُحَمَّدٍ الدُّورِيُّ، قَالَ‏:‏ حَدَّثَنَا يَحْيَى بْنُ أَبِي بُكَيْرٍ، قَالَ‏:‏ حَدَّثَنَا حَرِيزُ بْنُ عُثْمَانَ، عَنْ سُلَيْمِ بْنِ عَامِرٍ، قَالَ‏:‏ سَمِعْتُ أَبَا أُمَامَةَ الْبَاهِلِيَّ، يَقُولُ‏:‏ مَا كَانَ يَفْضُلُ عَنِ أَهْلِ بَيْتِ رَسُولِ اللهِ صلى الله عليه وسلم خُبْزُ الشَّعِيرِ‏.‏",
+    "english_translation": "Abu Umama al-Bahili say:\n\"There was never more than a bare sufficiency of barley- bread for the people of the household of Allah’s Messenger (Allah bless him and give him peace).\"",
+    "russian_translation": "Абу Умама аль-Бахили рассказывал: «У семьи Посланника Аллаха ﷺ никогда не было излишков ячменного хлеба»."
+  },
+  {
+    "db_id": 42399,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي عَيْشِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related concerning the life of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о том, каким был образ жизни Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ مُعَاوِيَةَ الْجُمَحِيُّ، قَالَ‏:‏ حَدَّثَنَا ثَابِتُ بْنُ يَزِيدَ، عَنْ هِلاَلِ بْنِ خَبَّابٍ، عَنْ عِكْرِمَةَ، عَنِ ابْنِ عَبَّاسٍ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، يَبِيتُ اللَّيَالِيَ الْمُتَتَابِعَةَ طَاوِيًا هُوَ وَأَهْلُهُ، لا يَجِدُونُ عِشَاءً وَكَانَ أَكْثَرُ خُبْزِهِمْ، خُبْزَ الشَّعِيرِ‏.‏",
+    "english_translation": "Ibn 'Abbas said:\n\"Allah’s Messenger (Allah bless him and give him peace) used to spend night after night starving. He and his family would not have any supper to eat, and most of their bread was barley-bread.\"",
+    "russian_translation": "Ибн Аббас (да будет доволен им Аллах) рассказывал: «Посланник Аллаха (мир ему и благословение Аллаха) проводил много ночей подряд в состоянии голода, он и члены его семьи не находили еды для ужина, а их основным хлебом был ячменный хлеб»."
+  },
+  {
+    "db_id": 42400,
+    "book_number": 24,
+    "book_name": {
+      "ar": "بَاب مَا جَاءَ فِي خُبْزِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related regarding the bread of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о хлебе Посланника Аллаха ﷺ"
+    },
+    "hadith_number": 158,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، قَالَ‏:‏ حَدَّثَنَا عُبَيْدُ اللهِ بْنُ عَبْدِ الْمَجِيدِ الْحَنَفِيُّ، حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ عَبْدِ اللهِ بْنِ دِينَارٍ، قَالَ‏:‏ حَدَّثَنَا أَبُو حَازِمٍ، عَنْ سَهْلِ بْنِ سَعْدٍ، أَنَّهُ قِيلَ لَهُ‏:‏ أَكَلَ رَسُولُ اللهِ صلى الله عليه وسلم النَّقِيَّ‏؟‏ يَعْنِي الْحُوَّارَى فَقَالَ سَهْلٌ‏:‏ مَا رَأَى رَسُولُ اللهِ صلى الله عليه وسلم النَّقِيَّ حَتَّى لَقِيَ اللَّهَ عَزَّ وَجَلَّ تَعَالَى، فَقِيلَ لَهُ‏:‏ هَلْ كَانَتْ لَكُمْ مَنَاخِلُ عَلَى عَهْدِ رَسُولِ اللهِ صلى الله عليه وسلم‏؟‏",
+    "english_translation": "Sahl ibn Sa'd said that he was asked:\n\"Did Allah’s Messenger (Allah bless him and give him peace) eat the finest flour, meaning white bread?\" Sahl said: \"Allah’s Messenger (Allah bless him and give him peace) did not see the finest flour until he met Allah (Almighty and Glorious is He).\" Then he was asked: \"Did you have sieves in the time of Allah’s Messenger (Allah bless him and give him peace)?\" He said: \"We did not have sieves.\" He was asked: \"How did you treat barley?\" He said: \"We used to blow on it, so whatever flew would fly off it, and then we would knead it.\"",
+    "russian_translation": "Передают со слов Сахля ибн Сада, что его спросили: «Ел ли Посланник Аллаха ﷺ просеянную муку, то есть белую?» Сахль ответил: «Посланник Аллаха ﷺ не видел просеянной муки до самой смерти, пока не встретился с Аллахом Всемогущим и Великим». Его спросили: «А были ли у вас сита во времена Посланника Аллаха ﷺ?» Он ответил: «У нас не было сит». Его спросили: «Как же вы поступали с ячменем?» Он сказал: «Мы дули на него, и то, что улетало, улетало, а затем мы замешивали его»."
+  },
+  {
+    "db_id": 42401,
+    "book_number": 24,
+    "book_name": {
+      "ar": "باب ما جاء في أكل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter: On the manner of eating of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о том, как ел Посланник Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 139,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا مُعَاذُ بْنُ هِشَامٍ، قَالَ‏:‏ حَدَّثَنِي أَبِي، عَنْ يُونُسَ، عَنْ قَتَادَةَ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ مَا أَكَلَ نَبِيُّ اللهِ عَلَى خِوَانٍ، وَلا فِي سُكُرَّجَةٍ، وَلا خُبِزَ لَهُ مُرَقَّقٌ قَالَ‏:‏ فَقُلْتُ لِقَتَادَةَ‏:‏ فَعَلامَ كَانُوا يَأْكُلُونَ‏؟‏ قَالَ‏:‏ عَلَى هَذِهِ السُّفَرِ قَالَ مُحَمَّدُ بْنُ بَشَّارٍ‏:‏ يُونُسُ هَذَا الَّذِي رَوَى عَنْ قَتَادَةَ هُوَ يُونُسُ الإِسْكَافُ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"Allah’s Prophet (Allah bless him and give him peace) did not eat food on a table, nor in a bowl, and no bread rolled thin and flat was baked for him. I asked Qatada: ‘So on what were they used to eating?’ He said: ‘On these pieces of skin [on which food for the journey is put].\"",
+    "russian_translation": "Анас ибн Малик передал: «Пророк Аллаха, да благословит его Аллах и приветствует, никогда не ел за столом и не ел из глубокой чаши, и для него никогда не пекли тонкие лепешки». Я спросил у Катады: «А на чем же они ели?» Он ответил: «На таких кожаных скатертях»."
+  },
+  {
+    "db_id": 42402,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي عَيْشِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Life of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о жизни Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا عَبَّادُ بْنُ عَبَّادٍ الْمُهَلَّبِيُّ، عَنْ مُجَالِدٍ، عَنِ الشَّعْبِيِّ، عَنْ مَسْرُوقٍ، قَالَ‏:‏ دَخَلْتُ عَلَى عَائِشَةَ، فَدَعَتْ لِي بِطَعَامٍ وَقَالَتْ‏:‏ مَا أَشْبَعُ مِنْ طَعَامٍ فَأَشَاءُ أَنْ أَبْكِيَ إِلا بَكِيتُ قَالَ‏:‏ قُلْتُ لِمَ‏؟‏ قَالَتْ‏:‏ أَذْكُرُ الْحَالَ الَّتِي فَارَقَ عَلَيْهَا رَسُولُ اللهِ صلى الله عليه وسلم الدُّنْيَا، وَاللَّهِ مَا شَبِعَ مِنْ خُبْزٍ وَلَحْمٍ مَرَّتَيْنِ فِي يَوْمٍ‏.‏",
+    "english_translation": "Masruq said:\n\"I went in to see 'A'isha, so she ordered a meal for me, and she said: \"I do not eat my fill from a meal, for I feel like weeping, if I have not wept.\" I said: \"Why?\" She said: \"I remember the state in which Allah’s Messenger (Allah bless him and give him peace) departed from this world. By Allah, he did not eat his fill of bread and meat twice in one day!\"",
+    "russian_translation": "Масрук рассказывал: «Я зашел к Аише, и она попросила принести мне еды, а затем сказала: “Я не наедаюсь досыта, когда ем, так как, если мне хочется заплакать, я начинаю плакать”. Я спросил: “Почему?” Она ответила: “Я вспоминаю то состояние, в котором Посланник Аллаха, мир ему и благословение Аллаха, покинул этот мир. Клянусь Аллахом, он никогда не наедался досыта хлебом и мясом дважды за один день!”»"
+  },
+  {
+    "db_id": 42403,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خُبْزِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Bread of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о хлебе Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 133,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا أَبُو دَاوُدَ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي إِسْحَاقَ، قَالَ‏:‏ سَمِعْتُ عَبْدَ الرَّحْمَنِ بْنَ يَزِيدَ يُحَدِّثُ، عَنِ الأَسْوَدِ بْنِ يَزِيدَ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ مَا شَبِعَ رَسُولُ اللهِ صلى الله عليه وسلم مِنْ خُبْزِ الشَّعِيرِ يَوْمَيْنِ مُتَتَابِعَيْنِ حَتَّى قُبِضَ‏.‏",
+    "english_translation": "'A’isha said:\n\"Allah’s Messenger (Allah bless him and give him peace) did not eat his fill of barley-bread for two days in a row until he died.\"",
+    "russian_translation": "Аиша передала: «Посланник Аллаха (мир ему и благословение Аллаха) никогда не насыщался хлебом из ячменя два дня подряд вплоть до самой своей кончины»."
+  },
+  {
+    "db_id": 42404,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خُبْزِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on what has been reported regarding the bread of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о том, что передается о хлебе Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 142,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ اللهِ بْنُ عَمْرٍو أَبُو مَعْمَرٍ، حَدَّثَنَا عَبْدُ الْوَارِثِ، عَنْ سَعِيدِ بْنِ أَبِي عَرُوبَةَ، عَنْ قَتَادَةَ، عَنْ أَنَسٍ، قَالَ‏:‏ مَا أَكَلَ رَسُولُ اللهِ صلى الله عليه وسلم عَلَى خِوَانٍ، وَلا أَكَلَ خُبْزًا مُرَقَّقًا حَتَّى مَاتَ‏.‏",
+    "english_translation": "Anas said:\n\"Allah’s Messenger (Allah bless him and give him peace) did not eat food on a table, and he did not eat bread rolled thin and flat, until he died.\"",
+    "russian_translation": "Анас сказал: «Посланник Аллаха, да благословит его Аллах и приветствует, не ел за обеденным столом и не ел тонких лепешек до самой своей смерти»."
+  },
+  {
+    "db_id": 42405,
+    "book_number": 23,
+    "book_name": {
+      "ar": "باب ما جاء في إدام رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Condiment of the Messenger of Allah, peace be upon him",
+      "ru": "Глава о приправе Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 196,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ سَهْلِ بْنِ عَسْكَرٍ، وَعَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، قَالا‏:‏ حَدَّثَنَا يَحْيَى بْنُ حَسَّانَ، قَالَ‏:‏ حَدَّثَنَا سُلَيْمَانُ بْنُ بِلالٍ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، قَالَ‏:‏ نِعْمَ الإِدَامُ الْخَلُّ، قَالَ عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، فِي حَدِيثِهِ‏:‏ نِعْمَ الإِدَامُ أَوِ الأُدْمُ الْخَلُّ‏.‏",
+    "english_translation": "'A’isha said:\n\"Allah’s Messenger said (Allah bless him and give him peace): ‘What an excellent condiment vinegar is'!\"",
+    "russian_translation": "Передают со слов Аиши, что Посланник Аллаха (мир ему и благословение Аллаха) сказал: «Прекрасная приправа — уксус»."
+  },
+  {
+    "db_id": 42406,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي عَيْشِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "The Chapter on the Life of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о том, как жил Посланник Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 232,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ، قَالَ‏:‏ حَدَّثَنَا أَبُو الأَحْوَصِ، عَنْ سِمَاكِ بْنِ حَرْبٍ، قَالَ‏:‏ سَمِعْتُ النُّعْمَانَ بْنَ بَشِيرٍ، يَقُولُ‏:‏ أَلَسْتُمْ فِي طَعَامٍ وَشَرَابٍ مَا شِئِتُمْ‏؟‏ لَقَدْ رَأَيْتُ نَبِيَّكُمْ صلى الله عليه وسلم، وَمَا يَجِدُ مِنَ الدَّقَلِ مَا يَمْلأُ بَطْنَهُ‏.‏",
+    "english_translation": "An-Nu'man ibn Bashir said:\n\"Do you not have what you want in the way of food and drink? I have seen your Prophet (Allah bless him and give him peace), and the poor-quality dates [daqal] that he finds are what fills his stomach.\"",
+    "russian_translation": "Ан-Ну‘ман ибн Башир сказал: «Разве вы не едите и не пьете всё, что пожелаете? Я же видел вашего Пророка, да благословит его Аллах и приветствует, который не мог найти даже плохих фиников, чтобы наполнить ими свой желудок»."
+  },
+  {
+    "db_id": 42407,
+    "book_number": 12,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي إِدَامِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on what has been related concerning the condiments of the Messenger of Allah, peace and blessings of Allah be upon him",
+      "ru": "Глава о том, что передается о приправах Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 169,
+    "arabic": "حَدَّثَنَا عَبْدَةُ بْنُ عَبْدِ اللهِ الْخُزَاعِيُّ، قَالَ‏:‏ حَدَّثَنَا مُعَاوِيَةُ بْنُ هِشَامٍ، عَنْ سُفْيَانَ، عَنْ مُحَارِبِ بْنِ دِثَارٍ، عَنْ جَابِرِ بْنِ عَبْدِ اللهِ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ نِعْمَ الإِدَامُ‏:‏ الْخَلُّ‏.‏",
+    "english_translation": "Jabir ibn 'Abdi’llah said:\nAllah’s Messenger said (Allah bless him and give him peace): 'What an excellent condiment vinegar is!’\"",
+    "russian_translation": "Передают со слов Джабира ибн Абдуллаха, что Посланник Аллаха, да благословит его Аллах и приветствует, сказал: «Прекрасная приправа — уксус»"
+  },
+  {
+    "db_id": 42408,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في أكل الدجاج",
+      "en": "Chapter on Eating Chicken",
+      "ru": "Глава об употреблении в пищу куриного мяса"
+    },
+    "hadith_number": 196,
+    "arabic": "حَدَّثَنَا هَنَّادٌ، حَدَّثَنَا وَكِيعٌ، عَنْ سُفْيَانَ، عَنْ أَيُّوبَ، عَنْ أَبِي قِلابَةَ، عَنْ زَهْدَمٍ الْجَرْمِيِّ، قَالَ‏:‏ كُنَّا عِنْدَ أَبِي مُوسَى الأَشْعَرِيِّ، فَأُتِيَ بِلَحْمِ دَجَاجٍ فَتَنَحَّى رَجُلٌ مِنَ الْقَوْمِ، فَقَالَ‏:‏ مَا لَكَ‏؟‏ فَقَالَ‏:‏ إِنِّي رَأَيْتُهَا تَأْكُلُ شَيْئًا فَحَلَفْتُ أَنْ لا آكُلَهَا‏.‏",
+    "english_translation": "Zahdam al-Jarmi said:\n\"We were in the presence of Abu Musa al- Ash'ari when he was brought some chicken meat. A man among the people thereupon turned away, so he asked him: 'What is the matter?' He replied: 'I saw it eating something putrid, so I swore that I would not eat it.' He [Abu Musa] said: 'Draw near, for I have seen Allah’s Messenger (Allah bless him and give him peace) eating the meat of chickens'!\"",
+    "russian_translation": "Передают со слов Захдама аль-Джарми, который сказал: «Мы находились у Абу Мусы аль-Ашари, когда ему принесли куриное мясо. Один человек из присутствующих отстранился от еды, и Абу Муса спросил его: Что с тобой? Тот ответил: Я видел, как она ела нечистоты, и поклялся, что не буду её есть. Тогда Абу Муса сказал: Подойди и ешь, ибо я видел, как Посланник Аллаха, да благословит его Аллах и приветствует, ел куриное мясо»."
+  },
+  {
+    "db_id": 42409,
+    "book_number": 19,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي أَكْلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on what has been related regarding the eating of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается относительно того, что ел Посланник Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 164,
+    "arabic": "حَدَّثَنَا الْفَضْلُ بْنُ سَهْلٍ الأَعْرَجُ الْبَغْدَادِيُّ، قَالَ‏:‏ حَدَّثَنَا إِبْرَاهِيمُ بْنُ عَبْدِ الرَّحْمَنِ بْنِ مَهْدِيٍّ، عَنِ إِبْرَاهِيمَ بْنِ عُمَرَ بْنِ سَفِينَةَ، عَنْ أَبِيهِ، عَنْ جَدِّهِ، قَالَ‏:‏ أَكَلْتُ مَعَ رَسُولِ اللهِ صلى الله عليه وسلم لَحْمَ حُبَارَى‏.‏",
+    "english_translation": "Ibrahim ibn 'Umar ibn Safina, on the authority of his father reported that his grandfather said:\n\"I ate together with Allah’s Messenger (Allah bless him and give him peace) the meat of a bustard.\"",
+    "russian_translation": "Передают со слов Ибрахима ибн Умара ибн Сафины, который передал от своего отца, а тот — от своего деда, что он сказал: «Я ел вместе с Посланником Аллаха (мир ему и благословение Аллаха) мясо дрофы»."
+  },
+  {
+    "db_id": 42410,
+    "book_number": 15,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي أَكْلِ رَسُولِ اللهِ صلى الله عليه وسلم الدَّجَاجَ",
+      "en": "Chapter on what has been narrated regarding the Messenger of Allah eating chicken",
+      "ru": "Глава о том, что передается о поедании курицы Посланником Аллаха"
+    },
+    "hadith_number": 139,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ حَدَّثَنَا إِسْمَاعِيلُ بْنُ إِبْرَاهِيمَ، عَنْ أَيُّوبَ، عَنِ الْقَاسِمِ التَّمِيمِيِّ، عَنْ زَهْدَمٍ الْجَرْمِيِّ، قَالَ‏:‏ كُنَّا عِنْدَ أَبِي مُوسَى الأَشْعَرِيِّ، قَالَ‏:‏ فَقَدَّمَ طَعَامَهُ وَقَدَّمَ فِي طَعَامِهِ لَحْمَ دَجَاجٍ وَفِي الْقَوْمِ رَجُلٌ مِنْ بَنِي تَيْمِ اللهِ أَحْمَرُ كَأَنَّهُ مَوْلًى، قَالَ‏:‏ فَلَمْ يَدْنُ فَقَالَ لَهُ أَبُو مُوسَى‏:‏ ادْنُ، فَإِنِّي قَدْ رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم أَكَلَ مِنْهُ، فَقَالَ‏:‏ إِنِّي رَأَيْتُهُ يَأْكُلُ شَيْئًا، فَقَذِرْتُهُ فَحَلَفْتُ أَنْ لا أَطْعَمَهُ أَبَدًا‏.‏",
+    "english_translation": "Zahdam al-Jarmi said:\n\"We were in the presence of Abu Musa al-Ash'ari. Among the people there was a man from the Banu Taimi’llah, ruddy as if he were a freed slave, and he did not draw near, so Abu Musa said to him: 'Draw near, for I saw Allah’s Messenger (Allah bless him and give him peace) eat some of it,' but he said: 'I saw it eat something and I found it loathsome, so I swore that I would never taste it'!\"",
+    "russian_translation": "Передают от Захдама аль-Джарми, который сказал: «Мы находились у Абу Мусы аль-Ашари, и он подал к столу еду, среди которой было куриное мясо. В числе присутствующих был человек из племени Бану Тайм Аллах, рыжеватый, похожий на вольноотпущенника, который не приближался к еде. Абу Муса сказал ему: «Подойди, ибо я видел, как Посланник Аллаха, да благословит его Аллах и приветствует, ел это мясо». Тот ответил: «Я видел, как курица ела нечистоты, и мне стало противно, поэтому я поклялся, что никогда не буду ее есть»."
+  },
+  {
+    "db_id": 42411,
+    "book_number": 19,
+    "book_name": {
+      "ar": "باب ما جاء في دهن رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Oil Used by the Messenger of Allah (pbuh)",
+      "ru": "Глава о масле, использовавшемся Посланником Аллаха (да благословит его Аллах и приветствует)"
+    },
+    "hadith_number": 133,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا أَبُو أَحْمَدَ الزُّبَيْرِيُّ، وَأَبُو نُعَيْمٍ، قَالا‏:‏ حَدَّثَنَا سُفْيَانُ، عَنْ عَبْدِ اللهِ بْنِ عِيسَى، عَنْ رَجُلٍ مِنْ أَهْلِ الشَّامِ، يُقَالُ‏:‏ لَهُ عَطَاءٌ، عَنْ أَبِي أَسِيدٍ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ كُلُوا الزَّيْتَ، وَادَّهِنُوا بِهِ، فَإِنَّهُ مِنْ شَجَرَةٍ مُبَارَكَةٍ‏.‏",
+    "english_translation": "Ata’ ibn Abi Asid, said:\n\"Allah’s Messenger said (Allah bless him and give him peace): ‘Eat [olive] oil, and anoint with it, for it is from a blessed tree!’\"",
+    "russian_translation": "Передают со слов Абу Усайда, что Посланник Аллаха (да благословит его Аллах и приветствует) сказал: «Употребляйте в пищу оливковое масло и умащайтесь им, ибо оно — от благословенного дерева»."
+  },
+  {
+    "db_id": 42412,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي دُهْنِ رَسُولِ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Oil of the Messenger of Allah (pbuh)",
+      "ru": "Глава о масле, использовавшемся Посланником Аллаха (да благословит его Аллах и приветствует)"
+    },
+    "hadith_number": 194,
+    "arabic": "حَدَّثَنَا يَحْيَى بْنُ مُوسَى، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّزَّاقِ، قَالَ‏:‏ حَدَّثَنَا مَعْمَرٌ، عَنْ زَيْدِ بْنِ أَسْلَمَ، عَنْ أَبِيهِ، عَنْ عُمَرَ بْنِ الْخَطَّابِ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ كُلُوا الزَّيْتَ وَادَّهِنُوا بِهِ، فَإِنَّهُ مِنْ شَجَرَةٍ مُبَارَكَةٍ‏.‏",
+    "english_translation": "'Umar ibn al-Khattab (may Allah the Exalted be well pleased with him) said:\n\"Allah’s Messenger said (Allah bless him and give him peace): ‘Eat oil, and anoint with it, for it is from a blessed tree'!\"",
+    "russian_translation": "Умар ибн аль-Хаттаб (да будет доволен им Аллах) передал слова Посланника Аллаха (да благословит его Аллах и приветствует): «Употребляйте в пищу масло и умащайтесь им, ибо оно — от благословенного дерева»."
+  },
+  {
+    "db_id": 42413,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on how the Messenger of Allah (ﷺ) combed his hair",
+      "ru": "Глава о том, как Посланник Аллаха (да благословит его Аллах и приветствует) расчесывал волосы"
+    },
+    "hadith_number": 29,
+    "arabic": "حَدَّثَنَا السِّنْجِيُّ وَهُوَ أَبُو دَاوُدَ سُلَيْمَانُ بْنُ مَعْبَدٍ السِّنْجِيُّ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّزَّاقِ، عَنْ مَعْمَرٍ، عَنْ زَيْدِ بْنِ أَسْلَمَ، عَنْ أَبِيهِ، عَنِ النَّبِيِّ صلى الله عليه وسلم نَحْوَهُ، وَلَمْ يَذْكُرْ فِيهِ عَنْ عُمَرَ‏.‏",
+    "english_translation": "Another chain reports similar to the previous narration and it did not mention \"related from 'Umar (RA)\"",
+    "russian_translation": "Ас-Синджи, он же Абу Дауд Сулейман ибн Ма‘бад ас-Синджи, рассказал нам: «Абду-р-Раззак передал нам со слов Ма‘мара, а тот со слов Зайда ибн Аслама, а тот со слов своего отца, что подобное передается от Пророка (да благословит его Аллах и приветствует), однако в этой версии не упоминается 'от Умара'."
+  },
+  {
+    "db_id": 42414,
+    "book_number": 23,
+    "book_name": {
+      "ar": "باب ما جاء في أكل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Food of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о том, как питался Посланник Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 196,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، وَعَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، قَالا‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ قَتَادَةَ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم يُعْجِبُهُ الدُّبَّاءُ فَأُتِيَ بِطَعَامٍ، أَوْ دُعِيَ لَهُ فَجَعَلْتُ أَتَتَبَّعُهُ، فَأَضَعُهُ بَيْنَ يَدَيْهِ لِمَا أَعْلَمُ أَنَّهُ يُحِبُّهُ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"The Prophet (Allah bless him and give him peace) used to admire the gourd, so when he was brought a meal or invited to one, I would seek it out and set it in front of him, because I knew that he liked it.\"",
+    "russian_translation": "Анас ибн Малик передал: «Пророку, да благословит его Аллах и приветствует, нравилась тыква. И когда ему приносили еду или когда его приглашали на трапезу, я старался найти её и подкладывал ему, зная о его любви к ней»."
+  },
+  {
+    "db_id": 42415,
+    "book_number": 22,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي عَيْشِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Life of the Messenger of Allah (pbuh)",
+      "ru": "Глава о жизни Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 154,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا حَفْصُ بْنُ غِيَاثٍ، عَنْ إِسْمَاعِيلَ بْنُ أَبِي خَالِدٍ، عَنْ حَكِيمِ بْنِ جَابِرٍ، عَنْ أَبِيهِ، قَالَ‏:‏ دَخَلْتُ عَلَى النَّبِيِّ صلى الله عليه وسلم، فَرَأَيْتُ عِنْدَهُ دُبَّاءً يُقَطَّعُ، فَقُلْتُ‏:‏ مَا هَذَا‏؟‏ قَالَ‏:‏ نُكَثِّرُ بِهِ طَعَامَنَا‏.‏ قال أبو عيسى: وجابر هذا هو جابر بن طارق، ويقال ابن أبي طارق وهو رجل من أصحاب رسول الله صلى الله عليه وسلم ولا نعرف له إلا هذا الحديث الواحد وأبو خالد اسمه سعد.",
+    "english_translation": "Hakim ibn Jabir reported that his father said:\n\"I entered the presence of the Prophet (Allah bless him and give him peace), and I saw beside him a gourd being carved into pieces, so I said: 'What is this?' He said: 'We use it to augment our meal'.\"",
+    "russian_translation": "Хаким ибн Джабир передал со слов своего отца: «Я вошел к Пророку (мир ему и благословение Аллаха) и увидел, что перед ним нарезают тыкву. Я спросил: „Что это?“ Он ответил: „Мы добавляем ее, чтобы увеличить объем нашей еды“»."
+  },
+  {
+    "db_id": 42416,
+    "book_number": 24,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي طَعَامِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on what has been related regarding the food of the Messenger of Allah",
+      "ru": "Глава о том, что передается о еде Посланника Аллаха"
+    },
+    "hadith_number": 196,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، عَنْ مَالِكِ بْنِ أَنَسٍ، عَنِ إِسْحَاقَ بْنِ عَبْدِ اللهِ بْنِ أَبِي طَلْحَةَ، أَنَّهُ سَمِعَ أَنَسَ بْنَ مَالِكٍ، يَقُولُ‏:‏ إِنَّ خَيَّاطًا دَعَا رَسُولَ اللهِ صلى الله عليه وسلم، لِطَعَامٍ صَنَعَهُ، قَالَ أَنَسٌ‏:‏ فَذَهَبْتُ مَعَ رَسُولِ اللهِ صلى الله عليه وسلم، إِلَى ذَلِكَ الطَّعَامِ، فَقَرَّبَ إِلَى رَسُولِ اللهِ صلى الله عليه وسلم خُبْزًا مِنْ شَعِيرٍ، وَمَرَقًا فِيهِ دُبَّاءٌ وَقَدِيدٌ، قَالَ أَنَسُ‏:‏ فَرَأَيْتُ النَّبِيَّ صلى الله عليه وسلم يَتَتَبَّعُ الدُّبَّاءَ حَوَالَيِ الْقَصْعَةِ فَلَمْ أَزَلْ أُحِبُّ الدُّبَّاءَ مِنْ يَوْمِئِذٍ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"A tailor invited Allah’s Messenger (Allah bless him and give him peace) to a meal he had made, so I went with Allah’s Messenger (Allah bless him and give him peace) to that meal. He presented Allah's Messenger (Allah bless him and give him peace) with some barley-bread and broth containing a gourd and jerked meat. Then I saw the Prophet (Allah bless him and give him peace) looking for chunks of gourd all around the bowl, and and I've loved gourd ever since.\"",
+    "russian_translation": "Анас ибн Малик рассказывал: «Один портной пригласил Посланника Аллаха, мир ему и благословение Аллаха, на угощение, которое он приготовил. Я отправился вместе с Посланником Аллаха, мир ему и благословение Аллаха, к этому человеку. Он подал Посланнику Аллаха, мир ему и благословение Аллаха, ячменный хлеб и похлебку с тыквой и сушеным мясом. Я видел, как Пророк, мир ему и благословение Аллаха, искал кусочки тыквы по краям миски, и с того самого дня я полюбил тыкву»."
+  },
+  {
+    "db_id": 42417,
+    "book_number": 25,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي حُبِّ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ الْحَلْوَاءَ وَالْعَسَلَ",
+      "en": "Chapter on the Prophet's Love for Sweets and Honey",
+      "ru": "Глава о том, что передавалось относительно любви Посланника Аллаха (мир ему и благословение Аллаха) к сладостям и мёду"
+    },
+    "hadith_number": 196,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ إِبْرَاهِيمَ الدَّوْرَقِيُّ، وَسَلَمَةُ بْنُ شَبِيبٍ، وَمَحْمُودُ بْنُ غَيْلانَ، قَالُوا‏:‏ حَدَّثَنَا أَبُو أُسَامَةَ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم يُحِبُّ الْحَلْوَاءَ وَالْعَسَلَ‏.‏",
+    "english_translation": "'A’isha said:\n\"The Prophet (Allah bless him and give him peace) used to love sweets and honey.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Пророк, мир ему и благословение Аллаха, любил сладости и мёд»."
+  },
+  {
+    "db_id": 42418,
+    "book_number": 8,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صِفَةِ وُضُوءِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Description of the Messenger of Allah’s (peace and blessings of Allah be upon him) Wudu",
+      "ru": "Глава об описании омовения (вуду) Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 43,
+    "arabic": "حَدَّثَنَا الْحَسَنُ بْنُ مُحَمَّدٍ الزَّعْفَرَانِيُّ، قَالَ‏:‏ حَدَّثَنَا الْحَجَّاجُ بْنُ مُحَمَّدٍ، قَالَ‏:‏ قَالَ ابْنُ جُرَيْجٍ‏:‏ أَخْبَرَنِي مُحَمَّدُ بْنُ يُوسُفَ، أَنَّ عَطَاءَ بْنَ يَسَارٍ أَخْبَرَهُ، أَنَّ أُمَّ سَلَمَةَ أَخْبَرَتْهُ، أَنَّهَا قَرَّبَتْ إِلَى رَسُولِ اللهِ صلى الله عليه وسلم، جَنْبًا مَشْوِيًّا، فَأَكَلَ مِنْهُ، ثُمَّ قَامَ إِلَى الصَّلاةِ، وَمَا تَوَضَّأَ‏.‏",
+    "english_translation": "Umm Salama informed 'Ata ibn Yasar that she served Allah’s Messenger (Allah bless him and give him peace) a grilled flank, so he ate from it, then embarked on the ritual prayer and did not perform the minor ritual ablution.",
+    "russian_translation": "Сообщается, что Умм Саляма, да будет доволен ею Аллах, приготовила для Посланника Аллаха, да благословит его Аллах и приветствует, жареный бок (барана). Он поел его, затем встал на молитву и не совершил омовения."
+  },
+  {
+    "db_id": 42419,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي أَكْلِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the eating habits of the Messenger of Allah (pbuh)",
+      "ru": "Глава о том, как ел Посланник Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 194,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ، قَالَ‏:‏ حَدَّثَنَا ابْنُ لَهِيعَةَ، عَنْ سُلَيْمَانَ بْنِ زِيَادٍ، عَنْ عَبْدِ اللهِ بْنِ الْحَارِثِ، قَالَ‏:‏ أَكَلْنَا مَعَ رَسُولِ اللهِ صلى الله عليه وسلم شِوَاءً فِي الْمَسْجِدِ‏.‏",
+    "english_translation": "'Abdu’llah ibn al-Harith said:\n\"Together with Allah’s Messenger (Allah bless him and give him peace), we ate grilled meat in the mosque.\"",
+    "russian_translation": "Абдуллах ибн аль-Харис рассказывал: «Мы ели жареное мясо вместе с Посланником Аллаха, да благословит его Аллах и приветствует, в мечети»"
+  },
+  {
+    "db_id": 42420,
+    "book_number": 8,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خُفِّ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on what has been narrated about the footwear of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о том, что передается относительно усов и гигиены Посланника Аллаха"
+    },
+    "hadith_number": 156,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا وَكِيعٌ، قَالَ‏:‏ حَدَّثَنَا مِسْعَرٌ، عَنْ أَبِي صَخْرَةَ جَامِعِ بْنِ شَدَّادٍ، عَنِ الْمُغِيرَةِ بْنِ عَبْدِ اللهِ، عَنِ الْمُغِيرَةِ بْنِ شُعْبَةَ، قَالَ‏:‏ ضِفْتُ مَعَ رَسُولِ اللهِ صلى الله عليه وسلم ذَاتَ لَيْلَةٍ، فَأُتِيَ بِجَنْبٍ مَشْوِيٍّ، ثُمَّ أَخَذَ الشَّفْرَةَ فَجَعَلَ يَحُزُّ، فَحَزَّ لِي بِهَا مِنْهُ، قَالَ‏:‏ فَجَاءَ بِلالٌ يُؤْذِنُهُ بِالصَّلاةِ فَأَلْقَى الشَّفْرَةَ، فَقَالَ‏:‏ مَا لَهُ تَرِبَتْ يَدَاهُ‏؟‏، قَالَ‏:‏ وَكَانَ شَارِبُهُ قَدْ وَفَى، فَقَالَ لَهُ‏:‏ أَقُصُّهُ لَكَ عَلَى سِوَاكٍ أَوْ قُصُّهُ عَلَى سِوَاكٍ‏.‏",
+    "english_translation": "Al-Mughira ibn Shu'ba said:\n\"I was a guest one night together with Allah’s Messenger (Allah bless him and give him peace), so he was brought a grilled flank. Then he took the blade and set about carving, and he carved some for me. Bilal arrived calling him to prayer, so he threw the blade away, and he said: ‘Why have his hands been soiled?’ His mustache hung down close to his mouth, so he said to him: ‘I shall clip it for you over a tooth-stick,’ or: ‘Clip it over a tooth-stick'!\"",
+    "russian_translation": "Аль-Мугира ибн Шу‘ба рассказывал: «Однажды ночью я гостил у Посланника Аллаха, мир ему и благословение Аллаха. Ему принесли жареную баранью лопатку, и он взял нож и принялся резать мясо. Он отрезал для меня кусок. Тут пришел Билал, призывая его на молитву, и Пророк, мир ему и благословение Аллаха, отбросил нож. Он спросил: «Что с ним? Да будут его руки в пыли!» У него [Аль-Мугиры] были длинные усы, и он [Пророк] сказал ему: «Я подстригу их тебе, положив их на зубочистку» или «Подстриги их, положив на зубочистку»."
+  },
+  {
+    "db_id": 42421,
+    "book_number": 23,
+    "book_name": {
+      "ar": "باب ما جاء في أكل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on what has been mentioned about the eating of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается о пище Посланника Аллаха, мир ему и благословение"
+    },
+    "hadith_number": 194,
+    "arabic": "حَدَّثَنَا وَاصِلُ بْنُ عَبْدِ الأَعْلَى، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ فُضَيْلٍ، عَنْ أَبِي حَيَّانَ التَّيْمِيِّ، عَنْ أَبِي زُرْعَةَ، عَنْ أَبِي هُرَيْرَةَ، قَالَ‏:‏ أُتِيَ النَّبِيُّ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا‏.‏",
+    "english_translation": "Abu Huraira said:\n‘The Prophet (Allah bless him and give him peace) was brought some meat, so the foreleg was set before him, and he liked it, so he took a bite of it.\"",
+    "russian_translation": "Со слов Абу Хурайры передается, что Пророку, мир ему и благословение Аллаха, принесли мясо, и он взял переднюю часть ноги, которую очень любил, и откусил от нее кусочек."
+  },
+  {
+    "db_id": 42422,
+    "book_number": 23,
+    "book_name": {
+      "ar": "باب ما جاء في صفة أكل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Manner of the Prophet's (ﷺ) Eating",
+      "ru": "Глава об образе питания Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 154,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا أَبُو دَاوُدَ، عَنْ زُهَيْرٍ يَعْنِي ابْنَ مُحَمَّدٍ، عَنِ أَبِي إِسْحَاقَ، عَنْ سَعْدِ بْنِ عِيَاضٍ، عَنِ ابْنِ مَسْعُودٍ، قَالَ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم يُعْجِبُهُ الذِّرَاعُ، قَالَ‏:‏ وَسُمَّ فِي الذِّرَاعِ، وَكَانَ يَرَى أَنَّ الْيَهُودَ سَمُّوهُ‏.‏",
+    "english_translation": "Ibn Mas'ud said:\n\"The Prophet (Allah bless him and give him peace) used to like the foreleg [of the cooked sheep].\" He [Ibn Mas'ud] also said: \"He was poisoned with a foreleg, however, as he used to believe that the Jews had poisoned him.\"",
+    "russian_translation": "Передают со слов Ибн Мас‘уда, что Пророку, да благословит его Аллах и приветствует, нравилась передняя часть бараньей ноги. Ибн Мас‘уд также добавил: «В эту часть мяса был подмешан яд, и он считал, что это сделали иудеи»."
+  },
+  {
+    "db_id": 42423,
+    "book_number": 15,
+    "book_name": {
+      "ar": "باب ما جاء في صفة أكل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Manner of the Eating of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава об описании того, как принимал пищу Посланник Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 147,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا مُسْلِمُ بْنُ إِبْرَاهِيمَ، قَالَ‏:‏ حَدَّثَنَا أَبَانُ بْنُ يَزِيدَ، عَنْ قَتَادَةَ، عَنْ شَهْرِ بْنِ حَوْشَبٍ، عَنْ أَبِي عُبَيْدَةَ، قَالَ‏:‏ طَبَخْتُ لِلنَّبِيِّ صلى الله عليه وسلم، قِدْرًا، وَقَدْ كَانَ يُعْجِبُهُ الذِّرَاعُ، فَنَاوَلْتُهُ الذِّرَاعَ، ثُمَّ قَالَ‏:‏ نَاوِلْنِي الذِّرَاعَ، فَنَاوَلْتُهُ، ثُمَّ قَالَ‏:‏ نَاوِلْنِي الذِّرَاعَ، فَقُلْتُ‏:‏ يَا رَسُولَ اللهِ، وَكَمْ لِلشَّاةِ مِنْ ذِرَاعٍ، فَقَالَ‏:‏ وَالَّذِي نَفْسِي بِيَدِهِ لَوْ سَكَتَّ لَنَاوَلْتَنِي الذِّرَاعَ مَا دَعَوْتُ‏.‏",
+    "english_translation": "Abu 'Ubaid said:\n\"I cooked a dish for the Prophet (Allah bless him and give him peace), and he used to take great pleasure in the foreleg [of the cooked sheep],so I passed him the foreleg. Then he said: 'Pass me the foreleg,' so I passed it to him. Then he said: 'Pass me the foreleg,' so I said: 'O Messenger of Allah, how many forelegs does a sheep have?' He said: 'By the One in whose Hand is my soul, if you kept silent, you would surely pass me the foreleg whenever I asked for it!’\"",
+    "russian_translation": "Абу ‘Убайда рассказывал: «Я приготовил для Пророка, да благословит его Аллах и приветствует, котел с мясом, зная, что ему очень нравится лопаточная часть. Я подал ему лопатку. Затем он попросил: «Подай мне еще лопатку», и я подал ее. Потом он снова попросил: «Подай мне лопатку». Тогда я сказал: «О Посланник Аллаха, сколько же лопаток у одного барана?». На это он ответил: «Клянусь Тем, в Чьей длани моя душа, если бы ты промолчал, ты подавал бы мне лопатку всякий раз, когда я бы ее просил»."
+  },
+  {
+    "db_id": 42424,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي إِدَامِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been mentioned regarding the condiment of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается относительно приправы Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 150,
+    "arabic": "حَدَّثَنَا الْحَسَنُ بْنُ مُحَمَّدٍ الزَّعْفَرَانِيُّ، قَالَ‏:‏ حَدَّثَنَا يَحْيَى بْنُ عَبَّادٍ، عَنْ فُلَيْحِ بْنِ سُلَيْمَانَ، قَالَ‏:‏ حَدَّثَنِي رَجُلٌ، مِنْ بَنِي عَبَّادٍ يُقَالَ لَهُ‏:‏ عَبْدُ الْوَهَّابِ بْنُ يَحْيَى بْنُ عَبَّادٍ، عَنْ عَبْدِ اللهِ بْنِ الزُّبَيْرِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ مَا كَانَتِ الذِّرَاعُ أَحَبَّ اللَّحْمِ إِلَى رَسُولِ اللهِ صلى الله عليه وسلم، وَلَكِنَّهُ كَانَ لا يَجِدُ اللَّحْمَ إِلا غِبًّا، وَكَانَ يَعْجَلُ إِلَيْهَا، لأَنَّهَا أَعْجَلُهَا نُضْجًا‏.‏",
+    "english_translation": "'A’isha said (may Allah be well pleased with her):\n\"The foreleg was not the meat dearest to Allah’s Messenger (Allah bless him and give him peace), but he only got to have meat occasionally, so he would rush to it, because it was the part that got done the most quickly.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Передняя нога (барана) не была самым любимым мясом для Посланника Аллаха, мир ему и благословение Аллаха, но так как мясо доставалось ему лишь изредка, он спешил к ней, ибо она готовилась быстрее всего»."
+  },
+  {
+    "db_id": 42425,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي طَعَامِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on what has been reported regarding the food of the Messenger of Allah (saws)",
+      "ru": "Глава о еде Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 191,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا أَبُو أَحْمَدَ، قَالَ‏:‏ حَدَّثَنَا مِسْعَرٌ، قَالَ‏:‏ سَمِعْتُ شَيْخًا، مِنْ فَهْمٍ، قَالَ‏:‏ سَمِعْتُ عَبْدَ اللهِ بْنَ جَعْفَرٍ، يَقُولُ‏:‏ سَمِعْتُ رَسُولَ اللهِ صلى الله عليه وسلم، يَقُولُ‏:‏ إِنَّ أَطْيَبَ اللَّحْمِ لَحْمُ الظَّهْرِ‏.‏",
+    "english_translation": "'Abdu’llah ibn Ja'far said:\n\"I heard Allah’s Messenger say (Allah bless him and give him peace): ‘The best of the meat is the back'.\"",
+    "russian_translation": "Сообщается, что Абдуллах ибн Джафар сказал: «Я слышал, как Посланник Аллаха (мир ему и благословение Аллаха) говорил: „Самое лучшее мясо — это мясо со спины“»."
+  },
+  {
+    "db_id": 42426,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي إِدَامِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Condiment of the Messenger of Allah",
+      "ru": "Глава о приправе Посланника Аллаха"
+    },
+    "hadith_number": 194,
+    "arabic": "حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، قَالَ‏:‏ حَدَّثَنَا زَيْدُ بْنُ الْحُبَابِ، عَنْ عَبْدِ اللهِ بْنِ الْمَؤَمَّلِ، عَنِ ابْنِ أَبِي مُلَيْكَةَ، عَنْ عَائِشَةَ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم، قَالَ‏:‏ نِعْمَ الإِدَامُ الْخَلُّ‏.‏",
+    "english_translation": "'A’isha said (may Allah be well pleased with her):\n\"The Prophet said (Allah bless him and give him peace): 'What an excellent condiment vinegar is'!\"",
+    "russian_translation": "Сообщается со слов Аиши, что Пророк, да благословит его Аллах и приветствует, сказал: «Превосходная приправа — уксус»."
+  },
+  {
+    "db_id": 42427,
+    "book_number": 25,
+    "book_name": {
+      "ar": "باب ما جاء في إدام رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Condiments of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о приправах Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 194,
+    "arabic": "حَدَّثَنَا أَبُو كُرَيْبٍ مُحَمَّدُ بْنُ الْعَلاءِ، قَالَ‏:‏ حَدَّثَنَا أَبُو بَكْرِ بْنُ عَيَّاشٍ، عَنْ ثَابِتٍ أَبِي حَمْزَةَ الثُّمَالِيِّ، عَنِ الشَّعْبِيِّ، عَنْ أُمِّ هَانِئِ، قَالَتْ‏:‏ دَخَلَ عَلَيَّ النَّبِيُّ صلى الله عليه وسلم، فَقَالَ‏:‏ أَعِنْدَكِ شَيْءٌ‏؟‏ فَقُلْتُ‏:‏ لا، إِلا خُبْزٌ يَابِسٌ، وَخَلٌّ فَقَالَ‏:‏ هَاتِي، مَا أَقْفَرَ بَيْتٌ مِنْ أُدُمٍ فِيهِ الخل‏.‏",
+    "english_translation": "Umm Hani said:\n\"The Prophet (Allah bless him and give him peace) entered my presence and said: 'Do you have anything in your possession?' I said: 'No, apart from some dry bread and vinegar', so he said: 'Give me some! A household in which there is vinegar is not devoid of seasoning'!\"",
+    "russian_translation": "Передают со слов Умм Хани, что однажды Пророк, да благословит его Аллах и приветствует, зашел ко мне и спросил: «Есть ли у тебя что-нибудь?» Я ответила: «Нет, только сухой хлеб и уксус». Он сказал: «Неси его. Дом, в котором есть уксус, не бывает обделен приправой»."
+  },
+  {
+    "db_id": 42428,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَاب مَا جَاءَ فِي فَضْلِ عَائِشَةَ رَضِيَ اللَّهُ عَنْهَا",
+      "en": "Chapter on the Excellence of Aisha (ra)",
+      "ru": "Глава о достоинствах Аиши, да будет доволен ею Аллах"
+    },
+    "hadith_number": 331,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ عَمْرِو بْنِ مُرَّةَ، عَنْ مُرَّةَ الْهَمْدَانِيِّ، عَنْ أَبِي مُوسَى الأَشْعَرِيِّ، عَنِ النَّبِيِّ صلى الله عليه وسلم، قَالَ‏:‏ فَضْلُ عَائِشَةَ عَلَى النِّسَاءِ كَفَضْلِ الثَّرِيدِ عَلَى سَائِرِ الطَّعَامِ‏.‏",
+    "english_translation": "Abu Musa al-Ash'ari said that the Prophet said (Allah bless him and give him peace):\n\"The superiority of 'Aisha over all other women is like the superiority of tharid [a dish of sopped bread, meat and broth] over all other food.\"",
+    "russian_translation": "Сообщается, что Абу Муса аль-Аш‘ари сказал: «Пророк, да благословит его Аллах и приветствует, сказал: «Превосходство Аиши над другими женщинами подобно превосходству сарида над всей остальной едой»."
+  },
+  {
+    "db_id": 42429,
+    "book_number": 33,
+    "book_name": {
+      "ar": "باب ما جاء في فضل عائشة رضي الله عنها",
+      "en": "Chapter on the Excellence of 'A'isha, may Allah be pleased with her",
+      "ru": "Глава о достоинстве Аиши, да будет доволен ею Аллах"
+    },
+    "hadith_number": 196,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ حَدَّثَنَا إِسْمَاعِيلُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ بْنِ مَعْمَرٍ الأَنْصَارِيُّ أَبُو طُوَالَةَ، أَنَّهُ سَمِعَ أَنَسَ بْنَ مَالِكٍ، يَقُولُ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ فَضْلُ عَائِشَةَ عَلَى النِّسَاءِ كَفَضْلِ الثَّرِيدِ عَلَى سَائِرِ الطَّعَامِ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"Allah’s Messenger said (Allah bless him and give him peace):‘The superiority of 'A'isha over all other women is like the superiority of tharid [a dish of sopped bread, meat and broth] over all other food'.\"",
+    "russian_translation": "Посланник Аллаха ﷺ сказал: «Превосходство Аиши над остальными женщинами подобно превосходству ас-сарида над всей остальной пищей»"
+  },
+  {
+    "db_id": 42430,
+    "book_number": 13,
+    "book_name": {
+      "ar": "باب ما جاء في وضوء رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Wudu of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается относительно омовения Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 154,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الْعَزِيزِ بْنُ مُحَمَّدٍ، عَنْ سُهَيْلِ بْنِ أَبِي صَالِحٍ، عَنِ أَبِيهِ، عَنْ أَبِي هُرَيْرَةَ، أَنَّهُ رَأَى رَسُولَ اللهِ صلى الله عليه وسلم، تَوَضَّأَ مِنْ أَكْلِ ثَوْرِ أَقِطٍ، ثُمَّ رَآهُ أَكَلَ مِنْ كَتِفِ شَاةٍ، ثُمَّ صَلَّى، وَلَمْ يَتَوَضَّأْ‏.‏",
+    "english_translation": "Abu Huraira (may Allah be well pleased with him) said that he saw Allah’s Messenger (Allah bless him and give him peace) perform the minor ritual ablution because of eating cottage cheese. Then he saw him eat from the flank of a sheep, and then perform the ritual prayer without performing the minor ritual ablution.",
+    "russian_translation": "Сообщается, что Абу Хурайра видел, как Посланник Аллаха, да благословит его Аллах и приветствует, совершил омовение после того, как поел творога, а затем он видел, как пророк поел мяса с лопатки овцы и совершил молитву, не совершив при этом омовения."
+  },
+  {
+    "db_id": 42431,
+    "book_number": 27,
+    "book_name": {
+      "ar": "باب ما جاء في وليمته صلى الله عليه وسلم",
+      "en": "Chapter on the Wedding Banquet of the Prophet (pbuh)",
+      "ru": "Глава о свадебном угощении Пророка, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 150,
+    "arabic": "حَدَّثَنَا ابْنُ أَبِي عُمَرَ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ بْنُ عُيَيْنَةَ، عَنْ وَائِلِ بْنِ دَاوُدَ، عَنِ ابْنِهِ، وَهُوَ بَكْرُ بْنُ وَائِلٍ، عَنِ الزُّهْرِيِّ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ أَوْلَمَ رَسُولُ اللهِ صلى الله عليه وسلم عَلَى صَفِيَّةَ بِتَمْرٍ وَسَوِيقٍ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"Allah’s Messenger (Allah bless him and give him peace) gave a wedding banquet for Safiyya consisting of dried dates and parched barley.\"",
+    "russian_translation": "Анас ибн Малик передал: «По случаю свадьбы с Сафией Посланник Аллаха, да благословит его Аллах и приветствует, устроил угощение, состоявшее из фиников и савика»."
+  },
+  {
+    "db_id": 42432,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي عَيْشِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Life of the Messenger of Allah",
+      "ru": "Глава о жизни Посланника Аллаха"
+    },
+    "hadith_number": 158,
+    "arabic": "حَدَّثَنَا الْحُسَيْنُ بْنُ مُحَمَّدٍ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا الْفُضَيْلُ بْنُ سُلَيْمَانَ، قَالَ‏:‏ حَدَّثَنِي فَائِدٌ، مَوْلَى عُبَيْدِ اللهِ بْنِ عَلِيِّ بْنِ أَبِي رَافِعٍ مَوْلَى رَسُولِ اللهِ صلى الله عليه وسلم، قَالَ‏:‏ حَدَّثَنِي عُبَيْدُ اللهِ بْنُ عَلِيٍّ، عَنْ جَدَّتِهِ سَلْمَى، أَنَّ الْحَسَنَ بْنَ عَلِيٍّ، وَابْنَ عَبَّاسٍ، وَابْنَ جَعْفَرٍ أَتَوْهَا فَقَالُوا لَهَا‏:‏ اصْنَعِي لَنَا طَعَامًا مِمَّا كَانَ يُعْجِبُ رَسُولَ اللهِ صلى الله عليه وسلم، وَيُحْسِنُ أَكْلَهُ فَقَالَتْ‏:‏ يَا بُنَيَّ لا تَشْتَهِيهِ الْيَوْمَ، قَالَ‏:‏ بَلَى اصْنَعِيهِ لَنَا قَالَ‏:‏ فَقَامَتْ فَأَخَذَتْ مِنْ شَعِيرٍ فَطَحَنَتْهُ، ثُمَّ جَعَلَتْهُ فِي قِدْرٍ، وَصَبَّتْ عَلَيْهِ شَيْئًا مِنْ زَيْتٍ، وَدَقَّتِ الْفُلْفُلَ، وَالتَّوَابِلَ، فَقَرَّبَتْهُ إِلَيْهِمْ، فَقَالَتْ‏:‏ هَذَا مِمَّا كَانَ يُعْجِبُ رَسُولَ اللهِ صلى الله عليه وسلم، وَيُحْسِنُ أَكْلَهُ‏.‏",
+    "english_translation": "Salma said that al-Hasan ibn 'Ali, Ibn 'Abbas and Ibn Ja'far came to her and said to her:\n\"Make us a meal consisting of that which used to delight Allah’s Messenger (Allah bless him and give him peace), and which used to make his food more palatable!\" She replied: ‘O my dear son, do not wish for it today!’ He said: ‘Oh yes, you must make it for us!’ She therefore got up, took some barley and ground it. Then she put it into a pot, poured some oil over it, crushed the pepper and the spices, and presented it to them. She said: \"This is some of that which used to delight Allah’s Messenger (Allah bless him and give him peace), and which used to make his food more palatable!\"",
+    "russian_translation": "Передает Хусейн ибн Мухаммад аль-Басри со слов Фудайля ибн Сулеймана, а тот — от Фаида, вольноотпущенника Убайдуллы ибн Али ибн Аби Рафи, который был вольноотпущенником Посланника Аллаха (мир ему и благословение Аллаха). Передал мне Убайдулла ибн Али со слов своей бабушки Сальмы, что аль-Хасан ибн Али, Ибн Аббас и ибн Джафар пришли к ней и сказали: «Приготовь нам еду из того, что любил Посланник Аллаха (мир ему и благословение Аллаха) и что он с удовольствием ел». Она ответила: «О сынок, сегодня тебе этого не захочется». Он сказал: «Нет, приготовь это для нас». Тогда она встала, взяла ячмень и смолола его, затем положила в горшок, полила его маслом, растолкла перец и приправы, после чего подала им и сказала: «Это то, что любил Посланник Аллаха (мир ему и благословение Аллаха) и что он с удовольствием ел»."
+  },
+  {
+    "db_id": 42433,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي أَكْلِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related regarding the Prophet's eating",
+      "ru": "Глава о том, что передается относительно того, что ел Посланник Аллаха"
+    },
+    "hadith_number": 149,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا أَبُو أَحْمَدَ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، عَنِ الأَسْوَدِ بْنِ قَيْسٍ، عَنْ نُبَيْحٍ الْعَنَزِيِّ، عَنْ جَابِرِ بْنِ عَبْدِ اللهِ، قَالَ‏:‏ أَتَانَا النَّبِيُّ صلى الله عليه وسلم، فِي مَنْزِلِنَا، فَذَبَحْنَا لَهُ شَاةً، فَقَالَ‏:‏ كَأَنَّهُمْ عَلِمُوا أَنَّا نُحِبُّ اللَّحْمَ وَفِي الْحَدِيثِ قِصَّةٌ‏.‏",
+    "english_translation": "Jabir ibn 'Abdi’llah said:\n\"The Prophet (Allah bless him and give him peace) came to us in our house, so we slaughtered a sheep for him, and he said: ‘It is as if they knew that we love meat'!\" (This tradition is part of a longer story).",
+    "russian_translation": "Джабир ибн Абдаллах рассказывал: «Пророк, мир ему и благословение Аллаха, пришел к нам домой, и мы закололи для него овцу. Тогда он сказал: „Как будто они знали, что мы любим мясо“». В этом хадисе содержится и более длинная история."
+  },
+  {
+    "db_id": 42434,
+    "book_number": 13,
+    "book_name": {
+      "ar": "باب ما جاء في وضوء رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Wudu of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, как совершал омовение Посланник Аллаха (ﷺ)"
+    },
+    "hadith_number": 128,
+    "arabic": "حَدَّثَنَا ابْنُ أَبِي عُمَرَ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ اللهِ بْنُ مُحَمَّدِ بْنِ عَقِيلٍ، أَنَّهُ سمعَ جَابِرًا ‏(‏ح‏)‏ قَالَ سُفْيَانُ‏:‏ وَحَدَّثَنَا مُحَمَّدُ بْنُ الْمُنْكَدِرِ، عَنْ جَابِرٍ، قَالَ‏:‏ خَرَجَ رَسُولُ اللهِ صلى الله عليه وسلم، وَأَنَا مَعَهُ فَدَخَلَ عَلَى امْرَأَةٍ مِنَ الأَنْصَارِ، فذَبَحَتْ لَهُ شَاةً، فَأَكَلَ مِنْهَا، وَأَتَتْهُ بِقِنَاعٍ مِنْ رُطَبٍ، فَأَكَلَ مِنْهُ، ثُمَّ تَوَضَّأَ لِلظُّهْرِ، وَصَلَّى، صلى الله عليه وسلم، ثُمَّ انْصَرَفَ، فَأَتَتْهُ بِعُلالَةٍ مِنْ عُلالَةِ الشَّاةِ، فَأَكَلَ ثُمَّ صَلَّى الْعَصْرَ، وَلَمْ يَتَوَضَّأْ‏.‏",
+    "english_translation": "Jabir said:\n\"Allah’s Messenger (Allah bless him and give him peace) went out and I went with him, then he went in to see a woman from among the Helpers [al-Ansar], so she slaughtered a sheep for him and he ate some of it. She also brought him a dish of ripe dates, and he ate some of them. Then he performed the minor ritual ablution for the noon prayer, and performed it. Then he departed, and she brought him a leftover from the remnant of the sheep, and he ate. Then he performed the afternoon ritual prayer but did not perform the minor ritual ablution.\"",
+    "russian_translation": "Джабир рассказывал: «Однажды Посланник Аллаха (ﷺ) вышел из дома, и я последовал вместе с ним. Мы зашли к одной женщине из числа ансаров, которая зарезала для него овцу, и он поел её мяса. Затем она принесла ему блюдо со свежими финиками, и он поел их. После этого он совершил омовение к полуденной молитве (зухр) и помолился. Когда он уходил, она принесла ему остатки мяса овцы, и он поел, а затем совершил послеполуденную молитву (аср), не совершая при этом повторного омовения»."
+  },
+  {
+    "db_id": 42435,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي أَكْلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "What has been reported regarding the food of the Messenger of Allah",
+      "ru": "Глава о том, что передается о еде Посланника Аллаха"
+    },
+    "hadith_number": 194,
+    "arabic": "حَدَّثَنَا الْعَبَّاسُ بْنُ مُحَمَّدٍ الدُّورِيُّ، قَالَ‏:‏ حَدَّثَنَا يُونُسُ بْنُ مُحَمَّدٍ، قَالَ‏:‏ حَدَّثَنَا فُلَيْحُ بْنُ سُلَيْمَانَ، عَنْ عُثْمَانَ بْنِ عَبْدِ الرَّحْمَنِ، عَنْ يَعْقُوبَ بْنِ أَبِي يَعْقُوبَ، عَنْ أُمِّ الْمُنْذِرِ، قَالَتْ‏:‏ دَخَلَ عَلَيَّ رَسُولُ اللهِ صلى الله عليه وسلم، وَمَعَهُ عَلِيٌّ، وَلَنَا دَوَالٍ مُعَلَّقَةٌ، قَالَتْ‏:‏ فَجَعَلَ رَسُولُ اللهِ صلى الله عليه وسلم يَأْكُلُ وَعَلِيٌّ مَعَهُ يَأْكُلُ، فَقَالَ رَسُولُ اللهِ صلى الله عليه وسلم، لِعَلِيٍّ‏:‏ مَهْ يَا عَلِيُّ، فَإِنَّكَ نَاقَةٌ، قَالَتْ‏:‏ فَجَلَسَ عَلِيٌّ، وَالنَّبِيُّ صلى الله عليه وسلم يَأْكُلُ، قَالَتْ‏:‏ فَجَعَلْتُ لَهُمْ سِلْقًا وَشَعِيرًا، فَقَالَ النَّبِيُّ صلى الله عليه وسلم لِعَلِيٍّ‏:‏ مِنْ هَذَا فَأَصِبْ فَإِنَّ هَذَا أَوْفَقُ لَكَ‏.‏",
+    "english_translation": "Umm al-Mundhir said:\n\"Allah’s Messenger (Allah bless him and give him peace) came to see me with 'Ali. We had some suspended clusters of grapes, so Allah’s Messenger (Allah bless him and give him peace) started to eat, and 'Ali was eating with him. Allah’s Messenger (Allah bless him and give him peace) therefore said to 'Ali: ‘Take it easy, O ‘Ali, for you are a convalescent!’ So 'Ali sat down while the Prophet (Allah bless him and give him peace) ate, and I offered them some chard and barley. The Prophet (Allah bless him and give him peace) said to 'Ali: ‘Eat some of this, for this is more appropriate for you'!\"",
+    "russian_translation": "Передает Умм аль-Мунзир: «Посланник Аллаха, да благословит его Аллах и приветствует, пришел ко мне вместе с Али. У нас были подвешенные гроздья фиников, и Посланник Аллаха, да благословит его Аллах и приветствует, начал есть, и Али ел вместе с ним. Тогда Посланник Аллаха, да благословит его Аллах и приветствует, сказал Али: «Повремени, о Али, ибо ты недавно перенес болезнь». Али сел, а Пророк, да благословит его Аллах и приветствует, продолжал есть. Затем я приготовила для них свеклу и ячмень, и Пророк, да благословит его Аллах и приветствует, сказал Али: «Поешь этого, ибо это лучше для тебя»."
+  }
+]

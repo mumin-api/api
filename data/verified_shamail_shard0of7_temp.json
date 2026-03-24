@@ -1,0 +1,756 @@
+[
+  {
+    "db_id": 42262,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Description of the Messenger of Allah (pbuh)",
+      "ru": "Глава об описании Посланника Аллаха (мир ему и благословение)"
+    },
+    "hadith_number": 2,
+    "arabic": "حَدَّثَنَا أَبُو رَجَاءٍ قُتَيْبَةُ بْنُ سَعِيدٍ، عَنْ مَالِكِ بْنِ أَنَسٍ، عَنْ رَبِيعَةَ بْنِ أَبِي عَبْدِ الرَّحْمَنِ، عَنْ أَنَسِ بْنِ مَالِكٍ، أَنَّهُ سَمِعَهُ، يَقُولُ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، لَيْسَ بِالطَّوِيلِ الْبَائِنِ، وَلاَ بِالْقَصِيرِ، وَلاَ بِالأَبْيَضِ الأَمْهَقِ، وَلاَ بِالآدَمِ، وَلاَ بِالْجَعْدِ الْقَطَطِ، وَلاَ بِالسَّبْطِ، بَعَثَهُ اللَّهُ تَعَالَى عَلَى رَأْسِ أَرْبَعِينَ سَنَةً، فَأَقَامَ بِمَكَّةَ عَشْرَ سِنِينَ، وَبِالْمَدِينَةِ عَشْرَ سِنِينَ، وَتَوَفَّاهُ اللَّهُ تَعَالَى عَلَى رَأْسِ سِتِّينَ سَنَةً، وَلَيْسَ فِي رَأْسِهِ وَلِحْيَتِهِ عِشْرُونَ شَعَرَةً بَيْضَاءَ‏.‏",
+    "english_translation": "Anas ibn Malik (ra) reports:\n\"Allah’s Messenger (Allah bless him and give him peace) was neither very tall of stature, nor short. His skin was neither pale white, nor tawny, and his hair was neither crisply curled, nor lank. Allah (Exalted is He) sent him [to serve as His Messenger] at the end of forty years of life, so he stayed in Mecca for ten years and in Medina for ten years, and Allah took him unto Himself at the end of sixty years, with fewer than twenty white hairs on his head and his beard.\"",
+    "russian_translation": "Посланник Аллаха (мир ему и благословение Аллаха) не был ни слишком высокого роста, ни низкого. Цвет его кожи не был ни мертвенно-бледным, ни смуглым, а волосы его не были ни чрезмерно курчавыми, ни прямыми. Аллах Всевышний ниспослал его посланником, когда ему исполнилось сорок лет. Он пробыл в Мекке десять лет и в Медине десять лет, и Аллах забрал его к Себе, когда ему было шестьдесят лет, причем на его голове и в бороде было не более двадцати седых волос."
+  },
+  {
+    "db_id": 42263,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خَلْقِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Description of the Prophet's (ﷺ) Physical Appearance",
+      "ru": "Глава об описании внешности Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 1,
+    "arabic": "حَدَّثَنَا حُمَيْدُ بْنُ مَسْعَدَةَ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الْوَهَّابِ الثَّقَفِيُّ، عَنْ حُمَيْدٍ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم رَبْعَةً، لَيْسَ بِالطَّوِيلِ وَلا بِالْقَصِيرِ، حَسَنَ الْجِسْمِ، وَكَانَ شَعَرُهُ لَيْسَ بِجَعْدٍ، وَلا سَبْطٍ أَسْمَرَ اللَّوْنِ، إِذَا مَشَى يَتَكَفَّأُ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n‘Allah’s Messenger (Allah bless him and give him peace) was of medium height, neither tall nor short. He was of handsome physique, and his hair was neither crisply curled nor smooth, brown of color. When he walked, he used to stride confidently \"",
+    "russian_translation": "Анас ибн Малик рассказывал: «Посланник Аллаха (мир ему и благословение Аллаха) был среднего роста: не слишком высоким и не низким. У него было прекрасное телосложение, а волосы его не были ни кудрявыми, ни прямыми. Цвет его кожи был смуглым, и когда он ходил, то ступал уверенно, будто склоняясь вперед»."
+  },
+  {
+    "db_id": 42264,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Description of the Messenger of Allah",
+      "ru": "Книга об описании Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 2,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي إِسْحَاقَ، قَالَ‏:‏ سَمِعْتُ الْبَرَاءَ بْنَ عَازِبٍ، يَقُولُ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، رَجُلا مَرْبُوعًا، بَعِيدَ مَا بَيْنَ الْمَنْكِبَيْنِ، عَظِيمَ الْجُمَّةِ إِلَى شَحْمَةِ أُذُنَيْهِ الْيُسْرَى، عَلَيْهِ حُلَّةٌ حَمْرَاءُ، مَا رَأَيْتُ شَيْئًا قَطُّ أَحْسَنَ مِنْهُ‏.‏",
+    "english_translation": "Ibn Ishaq said:\n\"I heard al-Bara’ ibn 'Azib say: \"Allah’s Messenger(Allah bless him and give him peace)was neither curly nor lank-haired, of medium height, broad-shouldered, with luxuriant hair reaching the lobes of his ears, wearing a red suit of clothes. I have never seen anything more beautiful than him!\"",
+    "russian_translation": "Посланник Аллаха (мир ему и благословение Аллаха) был мужчиной среднего роста, с широкими плечами и густыми волосами, доходившими до мочек его ушей. На нем был красный костюм, и я никогда не видел никого прекраснее его."
+  },
+  {
+    "db_id": 42265,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Description of the Messenger of Allah",
+      "ru": "Книга об описании внешности Посланника Аллаха"
+    },
+    "hadith_number": 1,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا وَكِيعٌ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، عَنْ أَبِي إِسْحَاقَ، عَنِ الْبَرَاءِ بْنِ عَازِبٍ، قَالَ‏:‏ مَا رَأَيْتُ مِنْ ذِي لِمَّةٍ فِي حُلَّةٍ حَمْرَاءَ أَحْسَنَ مِنْ رَسُولِ اللهِ صلى الله عليه وسلم، لَهُ شَعَرٌ يَضْرِبُ مَنْكِبَيْهِ، بَعِيدُ مَا بَيْنَ الْمَنْكِبَيْنِ، لَمْ يَكُنْ بِالْقَصِيرِ، وَلا بِالطَّوِيلِ‏.‏",
+    "english_translation": "Al-Bara’ ibn 'Azib said:\n\"I have never seen anyone endowed with a lock of hair flowing below the ears, wearing a red suit of clothes, more handsome than Allah’s Messenger (Allah bless him and give him peace). He had some hair touching his shoulders. Broad-shouldered, he was neither short nor tall.\"",
+    "russian_translation": "Я не видел никого с волосами до мочек ушей в красном одеянии, кто был бы прекраснее Посланника Аллаха, мир ему и благословение Аллаха. Его волосы достигали плеч, плечи его были широкими, и он не был ни низкого, ни высокого роста."
+  },
+  {
+    "db_id": 42266,
+    "book_number": 1,
+    "book_name": {
+      "ar": "باب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Physical Description of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о внешности Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 2,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ إِسْمَاعِيلَ، قَالَ‏:‏ حَدَّثَنَا أَبُو نُعَيْمٍ، قَالَ‏:‏ حَدَّثَنَا الْمَسْعُودِيُّ، عَنْ عُثْمَانَ بْنِ مُسْلِمِ بْنِ هُرْمُزَ، عَنْ نَافِعِ بْنِ جُبَيْرِ بْنِ مُطْعِمٍ، عَنْ عَلِيِّ بْنِ أَبِي طَالِبٍ، قَالَ‏:‏ لَمْ يَكُنِ النَّبِيُّ صلى الله عليه وسلم بِالطَّوِيلِ، وَلا بِالْقَصِيرِ، شَثْنُ الْكَفَّيْنِ وَالْقَدَمَيْنِ، ضَخْمُ الرَّأْسِ، ضَخْمُ الْكَرَادِيسِ، طَوِيلُ الْمَسْرُبَةِ، إِذَا مَشَى تَكَفَّأَ تَكَفُّؤًا، كَأَنَّمَا يَنْحَطُّ مِنْ صَبَبٍ، لَمْ أَرَ قَبْلَهُ، وَلا بَعْدَهُ مِثْلَهُ، صلى الله عليه وسلم‏.‏ حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، قَالَ‏:‏ حَدَّثَنَا أَبِي، عَنِ الْمَسْعُودِيِّ، بِهَذَا الإِسْنَادِ، نَحْوَهُ، بِمَعْنَاهُ‏.‏",
+    "english_translation": "Ali ibn Abi Talib said:\n\"The Prophet (Allah bless him and give him peace) was neither tall nor short, endowed with sturdy hands and feet, stout head and limbs, and lengthy hair on the chest. When he walked, he inclined forward, as if he were descending a downward slope. I have never seen the like of him, neither before him nor after him.\"",
+    "russian_translation": "Али ибн Абу Талиб рассказывал: «Пророк (да благословит его Аллах и приветствует) не был ни слишком высоким, ни приземистым. Кисти его рук и ступни были плотными, голова — крупной, суставы — массивными, а волосы на груди — длинными. При ходьбе он слегка подавался вперед, словно сходил с возвышенности. И я никогда не видел никого подобного ему ни до, ни после него»."
+  },
+  {
+    "db_id": 42267,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كِتَابُ مَا جَاءَ فِي خَلْقِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "The Book of the Description of the Messenger of Allah (may Allah bless him and give him peace)",
+      "ru": "Книга об описании внешности Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 1,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ عَبْدَةَ الضَّبِّيُّ الْبَصْرِيُّ، وَعَلِيُّ بْنُ حُجْرٍ، وَأَبُو جَعْفَرٍ مُحَمَّدُ بْنُ الْحُسَيْنِ وَهُوَ ابْنُ أَبِي حَلِيمَةَ، وَالْمَعْنَى وَاحِدٌ، قَالُوا‏:‏ حَدَّثَنَا عِيسَى بْنُ يُونُسَ، عَنْ عُمَرَ بْنِ عَبْدِ اللهِ مَوْلَى غُفْرَةَ، قَالَ‏:‏ حَدَّثَنِي إِبْرَاهِيمُ بْنُ مُحَمَّدٍ مِنْ وَلَدِ عَلِيِّ بْنِ أَبِي طَالِبٍ، قَالَ‏:‏ كَانَ عَلِيٌّ إِذَا وَصَفَ رَسُولَ اللهِ صلى الله عليه وسلم، قَالَ‏:‏ لَمْ يَكُنْ رَسُولُ اللهِ صلى الله عليه وسلم بِالطَّوِيلِ الْمُمَّغِطِ، وَلا بِالْقَصِيرِ الْمُتَرَدِّدِ، وَكَانَ رَبْعَةً مِنَ الْقَوْمِ، لَمْ يَكُنْ بِالْجَعْدِ الْقَطَطِ، وَلا بِالسَّبْطِ، كَانَ جَعْدًا رَجِلا، وَلَمْ يَكُنْ بِالْمُطَهَّمِ، وَلا بِالْمُكَلْثَمِ، وَكَانَ فِي وَجْهِهِ تَدْوِيرٌ، أَبْيَضُ مُشَرَبٌ، أَدْعَجُ الْعَيْنَيْنِ، أَهْدَبُ الأَشْفَارِ، جَلِيلُ الْمُشَاشِ وَالْكَتَدِ، أَجْرَدُ، ذُو مَسْرُبَةٍ، شَثْنُ الْكَفَّيْنِ وَالْقَدَمَيْنِ، إِذَا مَشَى كَأَنَّمَا يَنْحَطُّ فِي صَبَبٍ، وَإِذَا الْتَفَتَ الْتَفَتَ مَعًا، بَيْنَ كَتِفَيْهِ خَاتَمُ النُّبُوَّةِ، وَهُوَ خَاتَمُ النَّبِيِّينَ، أَجْوَدُ النَّاسِ صَدْرًا، وَأَصْدَقُ النَّاسِ لَهْجَةً، وَأَلْيَنُهُمْ عَرِيكَةً، وَأَكْرَمُهُمْ عِشْرَةً، مَنْ رَآهُ بَدِيهَةً هَابَهُ، وَمَنْ خَالَطَهُ مَعْرِفَةً أَحَبَّهُ، يَقُولُ نَاعِتُهُ‏:‏ لَمْ أَرَ قَبْلَهُ، وَلا بَعْدَهُ مِثْلَهُ صلى الله عليه وسلم‏.‏",
+    "english_translation": "On the authority of 'Umar ibn 'Abdi’llah, the Mawla of Ghufra:\n1 have been told by Ibrahim ibn Muhammad, one of the offspring of 'Ali ibn Abi Talib (may Allah be well pleased with him): \"When 'Ali described Allah’s Messenger (Allah bless him and give him peace),he said: \"Allah’s Messenger (Allah bless him and give him peace) was neither assertively tall, nor reticently short, and he was an average-sized member of the population. His hair was neither crisply curled nor lank; it was loosely curled. He was neither plump nor chubby-cheeked, and in his face there was a rounded quality. He was white with a reddish tinge, dark black-eyed, with long eyelashes. He had splendid kneecaps, elbow joints and shoulder blades, free from hair. He had a strip of hair from the top of the chest to the navel. The palms of his hands and the soles of his feet were thickset. When he walked, he moved as if he were descending a declivity, and when he looked around, he looked around altogether. Between his shoulders was the Seal of Prophethood, for he is the Seal of the Prophets. He was the best of the people in generosity, the most truthful of the people in speech, the gentlest of them in temperament, and the noblest of them in social intercourse. If someone saw him unexpectedly, he was awestruck by him, and if someone came to know him, he loved him. His describer says: \"I have never seen the like of him (Allah bless him and give him peace), neither before him nor after him.\"",
+    "russian_translation": "Когда Али описывал Посланника Аллаха (мир ему и благословение Аллаха), он говорил: «Посланник Аллаха (мир ему и благословение Аллаха) не был чрезмерно высоким и не был низкорослым, он был среднего роста. Его волосы не были ни слишком кудрявыми, ни прямыми, они были волнистыми. Он не был полным, и щеки его не были пухлыми, а лицо его отличалось округлостью. Он был белокожим с красноватым оттенком, обладал очень черными глазами и длинными ресницами. Он был широкоплечим, а его суставы были крупными. Волос на его теле почти не было, за исключением тонкой полоски волос от груди до пупка. Его ладони и ступни были плотными. Когда он шел, он ступал уверенно, будто спускаясь с возвышенности. Когда он поворачивался, то поворачивался всем телом. Между его лопатками находилась Печать пророчества, ибо он — Печать пророков. Он был самым щедрым из людей, самым правдивым в речах, самым мягким по характеру и самым благородным в общении. Тот, кто видел его впервые, проникался к нему почтением, а тот, кто общался с ним, начинал любить его. И тот, кто описывал его, говорил: «Я не видел никого, подобного ему ни до, ни после него»."
+  },
+  {
+    "db_id": 42268,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Description of the Messenger of Allah (peace be upon him)",
+      "ru": "Книга об описании облика Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 7,
+    "arabic": "حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، قَالَ‏:‏ حَدَّثَنَا جُمَيْعُ بْنُ عُمَرَ بْنِ عَبْدِ الرَّحْمَنِ الْعِجْلِيُّ، إِمْلاءً عَلَيْنَا مِنْ كِتَابِهِ، قَالَ‏:‏ أَخْبَرَنِي رَجُلٌ مِنْ بَنِي تَمِيمٍ، مِنْ وَلَدِ أَبِي هَالَةَ زَوْجِ خَدِيجَةَ، يُكَنَى أَبَا عَبْدِ اللهِ، عَنِ ابْنٍ لأَبِي هَالَةَ، عَنِ الْحَسَنِ بْنِ عَلِيٍّ، قَالَ‏:‏ سَأَلْتُ خَالِي هِنْدَ بْنَ أَبِي هَالَةَ، وَكَانَ وَصَّافًا، عَنْ حِلْيَةِ رَسُولِ اللهِ صلى الله عليه وسلم، وَأَنَا أَشْتَهِي أَنْ يَصِفَ لِي مِنْهَا شَيْئًا أَتَعَلَّقُ بِهِ، فَقَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم فَخْمًا مُفَخَّمًا، يَتَلأْلأُ وَجْهُهُ، تَلأْلُؤَ الْقَمَرِ لَيْلَةَ الْبَدْرِ، أَطْوَلُ مِنَ الْمَرْبُوعِ، وَأَقْصَرُ مِنَ الْمُشَذَّبِ، عَظِيمُ الْهَامَةِ، رَجِلُ الشَّعْرِ، إِنِ انْفَرَقَتْ عَقِيقَتُهُ فَرَّقَهَا، وَإِلا فَلا يُجَاوِزُ شَعَرُهُ شَحْمَةَ أُذُنَيْهِ، إِذَا هُوَ وَفَّرَهُ، أَزْهَرُ اللَّوْنِ، وَاسِعُ الْجَبِينِ، أَزَجُّ الْحَوَاجِبِ، سَوَابِغَ فِي غَيْرِ قَرَنٍ، بَيْنَهُمَا عِرْقٌ، يُدِرُّهُ الْغَضَبُ، أَقْنَى الْعِرْنَيْنِ، لَهُ نُورٌ يَعْلُوهُ، يَحْسَبُهُ مَنْ لَمْ يَتَأَمَّلْهُ أَشَمَّ، كَثُّ اللِّحْيَةِ، سَهْلُ الْخدَّيْنِ، ضَلِيعُ الْفَمِ، مُفْلَجُ الأَسْنَانِ، دَقِيقُ الْمَسْرُبَةِ، كَأَنَّ عُنُقَهُ جِيدُ دُمْيَةٍ، فِي صَفَاءِ الْفِضَّةِ، مُعْتَدِلُ الْخَلْقِ، بَادِنٌ مُتَمَاسِكٌ، سَوَاءُ الْبَطْنِ وَالصَّدْرِ، عَرِيضُ الصَّدْرِ، بَعِيدُ مَا بَيْنَ الْمَنْكِبَيْنِ، ضَخْمُ الْكَرَادِيسِ، أَنْوَرُ الْمُتَجَرَّدِ، مَوْصُولُ مَا بَيْنَ اللَّبَّةِ وَالسُّرَّةِ بِشَعَرٍ يَجْرِي كَالْخَطِّ، عَارِي الثَّدْيَيْنِ وَالْبَطْنِ مِمَّا سِوَى ذَلِكَ، أَشْعَرُ الذِّرَاعَيْنِ، وَالْمَنْكِبَيْنِ، وَأَعَالِي الصَّدْرِ، طَوِيلُ الزَّنْدَيْنِ، رَحْبُ الرَّاحَةِ، شَثْنُ الْكَفَّيْنِ وَالْقَدَمَيْنِ، سَائِلُ الأَطْرَافِ أَوْ قَالَ‏:‏ شَائِلُ الأَطْرَافِ خَمْصَانُ الأَخْمَصَيْنِ، مَسِيحُ الْقَدَمَيْنِ، يَنْبُو عَنْهُمَا الْمَاءُ، إِذَا زَالَ، زَالَ قَلِعًا، يَخْطُو تَكَفِّيًا، وَيَمْشِي هَوْنًا، ذَرِيعُ الْمِشْيَةِ، إِذَا مَشَى كَأَنَّمَا يَنْحَطُّ مِنْ صَبَبٍ، وَإِذَا الْتَفَتَ الْتَفَتَ جَمِيعًا، خَافِضُ الطَّرْفِ، نَظَرُهُ إِلَى الأَرْضِ، أَطْوَلُ مِنْ نَظَرِهِ إِلَى السَّمَاءِ، جُلُّ نَظَرِهِ الْمُلاحَظَةُ، يَسُوقُ أَصْحَابَهُ، وَيَبْدَأُ مَنْ لَقِيَ بِالسَّلامِ‏.‏",
+    "english_translation": "Al-Hasan ibn 'Ali (may Allah be well pleased with him and his father) said:\n\"My maternal aunt Hind asked the son of Abu Hala, who was a describer of the finery of Allah’s Messenger (Allah bless him and give him peace), to describe something of it that would be of interest to me, so he said: Allah’s Messenger (Allah bless him and give him peace) was an honored dignitary, whose face shone with the radiance of the moon on the night of the full moon. He was taller than medium-sized, and shorter than the slender giant. His head was grand and impressive, with loosely curled hair. If his forelock became divided, he would part it. Otherwise his hair would not cross over his earlobes, and he would let it grow plentiful and long. He was bright of color, broad of forehead, endowed with arched eyebrows, perfect without being conjoined, with a vein between them that anger would cause to pulsate. The bridge of his nose was curved. He had a light that would rise over him, and someone who did not reflect on him would consider him haughty. He was thickly bearded, endowed with smooth cheeks, a wide mouth, cleft teeth, and a delicate strip of hair from the top of the chest to the navel. It was as if his neck were the neck of a statue shaped in pure silver. He was well proportioned in physique, firmly cohesive, with the stomach and the breast in even balance. He was wide-chested, broad-shouldered, endowed with stout limbs and very shiny bare skin. Between the top of the chest and the navel by a strip of hair like a line of writing, while his breasts and stomach were bare apart from that. He had hair on his arms and shoulders and the upper parts of his chest. His forearms were long. He had a sensitive touch of the hand. The palms of his hands and the soles of his feet were thickset. His extremities were well formed [sa’il (or he may have said sha’il)]. The hollows of his soles were very deep-set. His feet were so smooth that water bounced off them. When he left a place, he would go away striding decisively. He would tread inclining forward and walk comfortably. His gait was brisk. When he walked, it was as if he were descending a declivity, and when he looked around, he looked around altogether. He lowered his eyesight, and he spent more time looking at the ground than he did looking at the sky. The majority of his looking was observation. He would urge his Companions to proceed ahead of him, and he would be the first to greet anyone he encountered with the salutation of peace.\"",
+    "russian_translation": "Аль-Хасан ибн Али сказал: «Я попросил своего дядю со стороны матери, Хинда ибн Абу Халу, который был искусен в описании качеств Посланника Аллаха, чтобы он описал мне нечто из его облика, за что я мог бы удержаться в своей памяти. Он сказал: \"Посланник Аллаха (мир ему и благословение Аллаха) был величественным и внушающим почтение. Его лицо сияло подобно луне в ночь полнолуния. Он был чуть выше среднего роста, но не был высотником, и ниже того, чтобы быть худощавым. Голова его была крупной, волосы — волнистыми. Если его челка распадалась, он разделял её, если же нет, то его волосы не спускались ниже мочек ушей, когда он отпускал их. Он отличался светлым цветом кожи, широким лбом и густыми изогнутыми бровями, которые сходились, но не срастались; между ними была вена, которая пульсировала, когда он гневался. Переносица его была слегка изогнутой, и исходило от него сияние, поэтому тот, кто не вглядывался в него пристально, мог подумать, что он высокомерен. Борода его была густой, щеки — гладкими, рот — широким, а между зубами его была щель. Вдоль груди до пупка тянулась тонкая линия волос. Его шея, по своей чистоте и белизне, напоминала шею статуи из чистого серебра. Он был сложен гармонично, плотно, с ровными животом и грудью. Грудь его была широкой, плечи — массивными. Он отличался крепким телосложением, а кожа на открытых участках тела сияла. Между яремной впадиной и пупком шла полоска волос, подобная проведенной черте, а грудь и живот, помимо этого, были гладкими. Волосы покрывали его предплечья, плечи и верхнюю часть груди. Его предплечья были длинными, ладони — широкими, а кисти рук и ступни — крепкими. Его конечности были длинными и пропорциональными, а своды его стоп были глубокими, так что вода не задерживалась на них. Когда он шел, он ступал твердо и решительно, слегка наклоняясь вперед. Он ступал мягко и быстро, как будто спускался с возвышенности. Когда он поворачивался, то поворачивался всем телом. Взгляд его был опущенным, и он смотрел на землю чаще, чем в небо, а большую часть времени он созерцал. Он шел позади своих сподвижников и первым приветствовал того, кого встречал\"»."
+  },
+  {
+    "db_id": 42269,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Description of the Messenger of Allah",
+      "ru": "Книга об описании внешности Посланника Аллаха"
+    },
+    "hadith_number": 3,
+    "arabic": "حَدَّثَنَا أَبُو مُوسَى مُحَمَّدُ بْنُ الْمُثَنَّى، حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، حَدَّثَنَا شُعْبَةُ، عَنْ سِمَاكِ بْنِ حَرْبٍ، قَالَ‏:‏ سَمِعْتُ جَابِرَ بْنَ سَمُرَةَ، يَقُولُ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم ضَلِيعَ الْفَمِ، أَشْكَلَ الْعَيْنِ، مَنْهُوسَ الْعَقِبِ‏.‏",
+    "english_translation": "Simak ibn Harb said:\n\"I heard Jabir ibn Samura say: \"Allah’s Messenger (Allah bless him and give him peace) was dali al-fam, ashkal al-'ain, manhus al-'aqib.\" Shu'ba said: \"I asked Simak: ‘What is dali al-fam?\" He replied:\"[It means] endowed with a grand and impressive mouth.\" I asked: \"What is ashkal al 'ain?\" He replied: \"[It means] long in the slit of the eye.\" I asked: \"What is manhus al-'aqib?\" He said: \"[It means] endowed with a lean heel.\"",
+    "russian_translation": "Посланник Аллаха, да благословит его Аллах и приветствует, обладал широким ртом, глазами с красноватыми прожилками и тонкими пятками."
+  },
+  {
+    "db_id": 42270,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Description of the Messenger of Allah",
+      "ru": "Книга об описании внешности Посланника Аллаха"
+    },
+    "hadith_number": 5,
+    "arabic": "حَدَّثَنَا هَنَّادُ بْنُ السَّرِيِّ، قَالَ‏:‏ حَدَّثَنَا عَبْثَرُ بْنُ الْقَاسِمِ، عَنْ أَشْعَثَ يَعْنِي ابْنَ سَوَّارٍ، عَنْ أَبِي إِسْحَاقَ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ‏:‏ رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم، فِي لَيْلَةٍ إِضْحِيَانٍ، وَعَلَيْهِ حُلَّةٌ حَمْرَاءُ، فَجَعَلْتُ أَنْظُرُ إِلَيْهِ وَإِلَى الْقَمَرِ، فَلَهُوَ عِنْدِي أَحْسَنُ مِنَ الْقَمَرِ‏.‏",
+    "english_translation": "Jabir ibn Samura said:\n\"I saw Allah’s Messenger (Allah bless him and give him peace) on a cloudless night, and he was wearing a red suit of clothes, so I started looking at him as well as at the moon, for he is indeed more beautiful, in my opinion, than the moon!\"",
+    "russian_translation": "Джабир ибн Самура рассказывал: «Я видел Посланника Аллаха, мир ему и благословение Аллаха, в безоблачную лунную ночь, и на нем был красный костюм. Я принялся смотреть то на него, то на луну, и он казался мне прекраснее, чем луна»."
+  },
+  {
+    "db_id": 42271,
+    "book_number": 1,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي خَلْقِ رَسُولِ اللهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Description of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава об описании внешности Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 1,
+    "arabic": "حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، حَدَّثَنَا حُمَيْدُ بْنُ عَبْدِ الرَّحْمَنِ الرُّؤَاسِيُّ، عَنْ زُهَيْرٍ، عَنْ أَبِي إِسْحَاقَ، قَالَ‏:‏ سَأَلَ رَجُلٌ الْبَرَاءَ بْنَ عَازِبٍ‏:‏ أَكَانَ وَجْهُ رَسُولِ اللهِ صلى الله عليه وسلم مِثْلَ السَّيْفِ‏؟‏ قَالَ‏:‏ لا، بَلْ مِثْلَ الْقَمَرِ‏.‏",
+    "english_translation": "Abu Ishaq said:\nA man asked al-Bara’ ibn 'Azib: \"Was the face of Allah’s Messenger (Allah bless him and give him peace) like the sword?\" He said: \"No, it was rather like the moon!\"",
+    "russian_translation": "Абу Исхак передал, что один человек спросил аль-Бару ибн Азиба: «Было ли лицо Посланника Аллаха (мир ему и благословение Аллаха) подобно мечу?» Он ответил: «Нет, оно было подобно луне»."
+  },
+  {
+    "db_id": 42272,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خَلْقِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "The Chapter on the Physical Description of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о физическом облике Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 2,
+    "arabic": "حَدَّثَنَا أَبُو دَاوُدَ الْمَصَاحِفِيُّ سُلَيْمَانُ بْنُ سَلْمٍ، قَالَ‏:‏ حَدَّثَنَا النَّضْرُ بْنُ شُمَيْلٍ، عَنْ صَالِحِ بْنِ أَبِي الأَخْضَرِ، عَنِ ابْنِ شِهَابٍ، عَنْ أَبِي سَلَمَةَ، عَنْ أَبِي هُرَيْرَةَ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم أَبْيَضَ كَأَنَّمَا صِيغَ مِنْ فِضَّةٍ، رَجِلَ الشَّعْرِ‏.‏",
+    "english_translation": "Abu Huraira (may Allah be well pleased with him) said:\n\"Allah’s Messenger (Allah bless him and give him peace) was white, as if he were fashioned from silver, with loosely curled hair.\"",
+    "russian_translation": "Со слов Абу Хурайры передается, что он сказал: «Посланник Аллаха, да благословит его Аллах и приветствует, был белокожим, словно он был изваян из серебра, с слегка волнистыми волосами»."
+  },
+  {
+    "db_id": 42273,
+    "book_number": 33,
+    "book_name": {
+      "ar": "باب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "The Chapter on the Physical Description of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава об описании облика Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 328,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ أَخْبَرَنِي اللَّيْثُ بْنُ سَعْدٍ، عَنْ أَبِي الزُّبَيْرِ، عَنْ جَابِرِ بْنِ عَبْدِ اللهِ، أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، قَالَ‏:‏ عُرِضَ عَلَيَّ الأَنْبِيَاءُ، فَإِذَا مُوسَى عَلَيْهِ السَّلامُ، ضَرْبٌ مِنَ الرِّجَالِ، كَأَنَّهُ مِنْ رِجَالِ شَنُوءَةَ، وَرَأَيْتُ عِيسَى بْنَ مَرْيَمَ عَلَيْهِ السَّلامُ، فَإِذَا أَقْرَبُ مَنْ رَأَيْتُ بِهِ شَبَهًا عُرْوَةُ بْنُ مَسْعُودٍ، وَرَأَيْتُ إِبْرَاهِيمَ عَلَيْهِ السَّلامُ، فَإِذَا أَقْرَبُ مَنْ رَأَيْتُ بِهِ شَبَهًا صَاحِبُكُمْ، يَعْنِي نَفْسَهُ، وَرَأَيْتُ جِبْرِيلَ عَلَيْهِ السَّلامُ، فَإِذَا أَقْرَبُ مَنْ رَأَيْتُ بِهِ شَبَهًا دِحْيَةُ‏.‏",
+    "english_translation": "On the authority of Jabir ibn ‘Abdi’llah, that Allah’s Messenger said (Allah bless him and give him peace):\n\"The Prophets were presented to me, and there was Moses (peace be upon him), a specimen of the men of distinction, as if he were among the men of pure lineage and manly virtue [shanu’a]. I also saw Jesus the son of Mary (peace be upon him), and the nearest I have seen in resemblance to him is 'Urwa ibn Mas’ud. I also saw Abraham (peace be upon him), and the nearest I have seen in resemblance to him is your Companion (meaning himself). I also saw Gabriel (peace be upon him), and the nearest I have seen in resemblance to him is Dihya.\"",
+    "russian_translation": "Сообщается со слов Джабира ибн ‘Абдуллаха, что Посланник Аллаха (мир ему и благословение Аллаха) сказал: «Мне были представлены пророки. И я увидел Мусу (мир ему), который был статным мужчиной, словно один из людей племени шану’а. Я увидел ‘Ису ибн Марьям (мир ему), и наиболее похожим из тех, кого я видел на него, был ‘Урва ибн Мас‘уд. Я увидел Ибрахима (мир ему), и наиболее похожим из тех, кого я видел на него, был ваш сподвижник — то есть он сам. И я увидел Джибриля (мир ему), и наиболее похожим из тех, кого я видел на него, был Дихья»."
+  },
+  {
+    "db_id": 42274,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Description of the Messenger of Allah",
+      "ru": "Книга об описании внешности Посланника Аллаха"
+    },
+    "hadith_number": 8,
+    "arabic": "حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، وَمُحَمَّدُ بْنُ بَشَّارٍ، الْمَعْنَى وَاحِدٌ، قَالا‏:‏ أَخْبَرَنَا يَزِيدُ بْنُ هَارُونَ، عَنْ سَعِيدٍ الْجُرَيْرِيِّ، قَالَ‏:‏ سَمِعْتُ أَبَا الطُّفَيْلِ، يَقُولُ‏:‏ رَأَيْتُ النَّبِيَّ صلى الله عليه وسلم وَمَا بَقِيَ عَلَى وَجْهِ الأَرْضِ أَحَدٌ رَآهُ غَيْرِي، قُلْتُ‏:‏ صِفْهُ لِي، قَالَ‏:‏ كَانَ أَبْيَضَ، مَلِيحًا، مُقَصَّدًا‏.‏",
+    "english_translation": "Sa'id al-Jariri said:\n'I heard Abu Tufail say: \"I saw the Prophet (Allah bless him and give him peace), and there is no one left on the face of the earth who has seen him, apart from me.\" I said: \"Describe him for me!\" He said: \"He was white, handsome, of medium size.\"",
+    "russian_translation": "Передает Саид аль-Джурайри: «Я слышал, как Абу ат-Туфайль сказал: Я видел Пророка, да благословит его Аллах и приветствует, и на земле больше не осталось никого, кто видел бы его, кроме меня. Я попросил: Опиши его мне! Он ответил: Он был белокожим, красивым и среднего телосложения»"
+  },
+  {
+    "db_id": 42275,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خُلُقِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Physical Description of the Messenger of Allah",
+      "ru": "Глава о физическом описании Посланника Аллаха"
+    },
+    "hadith_number": 32,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، قَالَ‏:‏ حَدَّثَنَا إِبْرَاهِيمُ بْنُ الْمُنْذِرِ الْحِزَامِيُّ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الْعَزِيزِ بْنُ أَبِي ثَابِتٍ الزُّهْرِيُّ، قَالَ‏:‏ حَدَّثَنِي إِسْمَاعِيلُ بْنُ إِبْرَاهِيمَ ابْنُ أَخِي مُوسَى بْنِ عُقْبَةَ، عَنْ مُوسَى بْنِ عُقْبَةَ، عَنْ كُرَيْبٍ، عَنِ ابْنِ عَبَّاسٍ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم أَفْلَجَ الثَّنِيَّتَيْنِ، إِذَا تَكَلَّمَ رُئِيَ كَالنُّورِ يَخْرُجُ مِنْ بَيْنِ ثَنَايَاهُ‏.‏",
+    "english_translation": "Ibn 'Abbas said:\nAllah’s Messenger (Allah bless him and give him peace) had a gap between the medial pair of teeth. When he spoke, it seemed as if light were emerging from between his middle teeth.\"",
+    "russian_translation": "Ибн Аббас рассказывал: «У Посланника Аллаха, да благословит его Аллах и приветствует, были слегка расставленные передние зубы. Когда он говорил, казалось, что свет исходит из промежутка между ними»."
+  },
+  {
+    "db_id": 42276,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خَاتَمِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Seal of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о печати пророчества Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 23,
+    "arabic": "حَدَّثَنَا أَبُو رَجَاءٍ قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا حَاتِمُ بْنُ إِسْمَاعِيلَ، عَنِ الْجَعْدِ بْنِ عَبْدِ الرَّحْمَنِ، قَالَ‏:‏ سَمِعْتُ السَّائِبَ بْنَ يَزِيدَ، يَقُولُ‏:‏ ذَهَبَتْ بِي خَالَتِي إِلَى النَّبِيِّ صلى الله عليه وسلم، فَقَالَتْ‏:‏ يَا رَسُولَ اللهِ، إِنَّ ابْنَ أُخْتِي وَجِعٌ فَمَسَحَ رَأْسِي وَدَعَا لِي بِالْبَرَكَةِ، وَتَوَضَّأَ، فَشَرِبْتُ مِنْ وَضُوئِهِ، وَقُمْتُ خَلْفَ ظَهْرِهِ، فَنَظَرْتُ إِلَى الْخَاتَمِ بَيْنَ كَتِفَيْهِ، فَإِذَا هُوَ مِثْلُ زِرِّ الْحَجَلَةِ‏.‏",
+    "english_translation": "As-Sa’ib ibn Yazid said:\n‘My maternal aunt took me to the Prophet (Allah bless him and give him peace), and she said; \"O Messenger of Allah, my sister's son is in pain!\" He therefore stroked my head (Allah bless him and give him peace) and supplicated blessing for my sake. He performed the minor ritual ablution. I drank from his ablution water and stood behind his back, whereupon I observed the Seal between his shoulders, and lo and behold, it was like the button of the bridal canopy!\"’",
+    "russian_translation": "Передает ас-Саиб ибн Язид: «Моя тетя по матери привела меня к Пророку, да благословит его Аллах и приветствует, и сказала: О Посланник Аллаха, сын моей сестры болен. Тогда он погладил мою голову и попросил для меня благословения. Затем он совершил омовение, я выпил воды из его остатков, а затем встал у него за спиной и увидел печать пророчества между его лопатками, которая была подобна яйцу куропатки»."
+  },
+  {
+    "db_id": 42277,
+    "book_number": 1,
+    "book_name": {
+      "ar": "باب ما جاء في خاتم رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Seal of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о печати пророчества Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 16,
+    "arabic": "حَدَّثَنَا سَعِيدُ بْنُ يَعْقُوبَ الطَّالْقَانِيُّ، قَالَ‏:‏ حدَّثَنَا أَيُّوبُ بْنُ جَابِرٍ، عَنْ سِمَاكِ بْنِ حَرْبٍ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ‏:‏ رَأَيْتُ الْخَاتَمَ بَيْنَ كَتِفَيْ رَسُولِ اللهِ صلى الله عليه وسلم، غُدَّةً حَمْرَاءَ، مِثْلَ بَيْضَةِ الْحَمَامَةِ‏.‏",
+    "english_translation": "Jabir ibn Samura said:\n\"I saw the Seal between the shoulders of Allah’s Messenger (Allah bless him and give him peace) as a red swelling like the egg of the dove.\"",
+    "russian_translation": "Джабир ибн Самура передал: «Я видел печать пророчества между лопатками Посланника Аллаха, да благословит его Аллах и приветствует, представлявшую собой красное уплотнение размером с голубиное яйцо»."
+  },
+  {
+    "db_id": 42278,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خَاتَمِ النُّبُوَّةِ",
+      "en": "Chapter on the Seal of Prophethood",
+      "ru": "Глава о печати пророчества"
+    },
+    "hadith_number": 32,
+    "arabic": "حَدَّثَنَا أَبُو مُصْعَبٍ الْمَديَنِيُّ، قَالَ‏:‏ حَدَّثَنَا يُوسُفُ بْنُ الْمَاجِشُونِ، عَنْ أَبِيهِ، عَنْ عَاصِمِ بْنِ عُمَرَ بْنِ قَتَادَةَ، عَنْ جَدَّتِهِ رُمَيْثَةَ، قَالَتْ‏:‏ سَمِعْتُ رَسُولَ اللهِ صلى الله عليه وسلم، وَلَوْ أَشَاءُ أَنْ أُقَبِّلَ الْخَاتَمَ الَّذِي بَيْنَ كَتِفَيْهِ مِنْ قُرْبِهِ لَفَعَلْتُ، يَقُولُ لِسَعْدِ بْنِ مُعَاذٍ يَوْمَ مَاتَ‏:‏ اهْتَزَّ لَهُ عَرْشُ الرَّحْمَنِ‏.‏",
+    "english_translation": "Rumaitha said:\n\"I heard Allah’s Messenger (Allah bless him and give him peace)- and if I wished to kiss the seal between his shoulders, I would do so because of his nearness— say to Sa'd ibn Mu'adh on the day he died: \"The Throne of the All-Merciful was shaken on his account!\"",
+    "russian_translation": "Румайда передала: «Я слышала, как Посланник Аллаха, да благословит его Аллах и приветствует, говорил о Са‘де ибн Му‘азе в день его смерти: «Трон Милостивого содрогнулся из-за него». И если бы я захотела поцеловать печать между его лопатками, то сделала бы это из-за его близости»."
+  },
+  {
+    "db_id": 42279,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خَاتَمِ النُّبُوَّةِ",
+      "en": "Chapter on the Seal of Prophethood",
+      "ru": "Глава о печати пророчества"
+    },
+    "hadith_number": 15,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ عَبْدَةَ الضَّبِّيُّ، وَعَلِيُّ بْنُ حُجْرٍ، وَغَيْرُ وَاحِدٍ، قَالُوا‏:‏ حَدَّثَنَا عِيسَى بْنُ يُونُسَ، عَنْ عُمَرَ بْنِ عَبْدِ اللهِ مَوْلَى غُفْرَةَ، قَالَ‏:‏ حَدَّثَنِي إِبْرَاهِيمُ بْنُ مُحَمَّدٍ مِنْ وَلَدِ عَلِيِّ بْنِ أَبِي طَالِبٍ، قَالَ‏:‏ كَانَ عَلِيٌّ، إِذَا وَصَفَ رَسُولَ اللهِ صلى الله عليه وسلم فَذَكَرَ الْحَدِيثَ بِطُولِهِ، وَقَالَ‏:‏ بَيْنَ كَتِفَيْهِ خَاتَمُ النُّبُوَّةِ، وَهُوَ خَاتَمُ النَّبِيِّينَ‏.‏",
+    "english_translation": "Ibrahim ibn Muhammad, one of the offspring of 'Ali ibn Abi Talib, told me:\n\"When 'Ali described Allah’s Messenger (Allah bless him and give him peace)— then he related the tradition in full—he said: 'Between his shoulders was the Seal of Prophethood, for he is the Seal of the Prophets'.\"",
+    "russian_translation": "Ибрахим ибн Мухаммад, один из потомков Али ибн Абу Талиба, рассказывал: «Когда Али описывал Посланника Аллаха, да благословит его Аллах и приветствует» — и он привел хадис целиком — «он сказал: Между его лопаток находилась Печать пророчества, ибо он — Печать пророков»."
+  },
+  {
+    "db_id": 42280,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خَاتَمِ النُّبُوَّةِ",
+      "en": "Chapter on the Seal of Prophethood",
+      "ru": "Глава о печати пророчества"
+    },
+    "hadith_number": 24,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا أَبُو عَاصِمٍ، قَالَ‏:‏ حَدَّثَنَا عَزْرَةُ بْنُ ثَابِتٍ، قَالَ‏:‏ حَدَّثَنِي عِلْبَاءُ بْنُ أَحْمَرَ الْيَشْكُرِيُّ، قَالَ‏:‏ حَدَّثَنِي أَبُو زَيْدٍ عَمْرُو بْنُ أَخْطَبَ الأَنْصَارِيُّ، قَالَ‏:‏ قَالَ لِي رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ يَا أَبَا زَيْدٍ، ادْنُ مِنِّي فَامْسَحْ ظَهْرِي، فَمَسَحْتُ ظَهْرَهُ، فَوَقَعَتْ أَصَابِعِي عَلَى الْخَاتَمِ قُلْتُ‏:‏ وَمَا الْخَاتَمُ‏؟‏ قَالَ‏:‏ شَعَرَاتٌ مُجْتَمِعَاتٌ‏.‏",
+    "english_translation": "Abu Zaid 'Amr ibn Akhtab al-Ansari told me:\n\"Allah’s Messenger (Allah bless him and give him peace) said to me: ‘O Abu Zaid, come close to me and stroke my back!’ I duly stroked his back, whereupon my fingers touched the Seal. I said: ‘What is the Seal?’ He said; ‘Intertwined hairs.’\"",
+    "russian_translation": "Передает Абу Зейд Амр ибн Ахтаб аль-Ансари: «Однажды Посланник Аллаха, да благословит его Аллах и приветствует, сказал мне: О Абу Зейд, подойди ближе и погладь мою спину. Я погладил его спину, и мои пальцы коснулись Печати. Я спросил: Что это за Печать? Он ответил: Это пучок сросшихся волос»"
+  },
+  {
+    "db_id": 42281,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خَاتَمِ النُّبُوَّةِ",
+      "en": "Chapter on the Seal of Prophethood",
+      "ru": "Глава о печати пророчества"
+    },
+    "hadith_number": 232,
+    "arabic": "حَدَّثَنَا أَبُو عَمَّارٍ الْحُسَيْنُ بْنُ حُرَيْثٍ الْخُزَاعِيُّ، قَالَ‏:‏ حَدَّثَنَا عَلِيُّ بْنُ حُسَيْنِ بْنِ وَاقِدٍ، حَدَّثَنِي أَبِي، قَالَ‏:‏ حَدَّثَنِي عَبْدُ اللهِ بْنُ بُرَيْدَةَ، قَالَ‏:‏ سَمِعْتُ أَبِي بُرَيْدَةَ، يَقُولُ‏:‏ جَاءَ سَلْمَانُ الْفَارِسِيُّ إِلَى رَسُولِ اللهِ صلى الله عليه وسلم، حِينَ قَدِمَ الْمَدِينَةَ بِمَائِدَةٍ عَلَيْهَا رُطَبٌ، فَوَضَعَهَا بَيْنَ يَدَيْ رَسُولِ اللهِ صلى الله عليه وسلم، فَقَالَ‏:‏ يَا سَلْمَانُ مَا هَذَا‏؟‏ فَقَالَ‏:‏ صَدَقَةٌ عَلَيْكَ، وَعَلَى أَصْحَابِكَ، فَقَالَ‏:‏ ارْفَعْهَا، فَإِنَّا لا نَأْكُلُ الصَّدَقَةَ، قَالَ‏:‏ فَرَفَعَهَا، فَجَاءَ الْغَدَ بِمِثْلِهِ، فَوَضَعَهُ بَيْنَ يَدَيْ رَسُولِ اللهِ صلى الله عليه وسلم، فَقَالَ‏:‏ مَا هَذَا يَا سَلْمَانُ‏؟‏ فَقَالَ‏:‏ هَدِيَّةٌ لَكَ، فَقَالَ رَسُولُ اللهِ صلى الله عليه وسلم لأَصْحَابِهِ‏:‏ ابْسُطُوا ثُمَّ نَظَرَ إِلَى الْخَاتَمِ عَلَى ظَهْرِ رَسُولِ اللهِ صلى الله عليه وسلم، فَآمَنَ بِهِ، وَكَانَ لِلْيَهُودِ فَاشْتَرَاهُ رَسُولُ اللهِ صلى الله عليه وسلم، بِكَذَا وَكَذَا دِرْهَمًا عَلَى أَنْ يَغْرِسَ لَهُمْ نَخْلا، فَيَعْمَلَ سَلْمَانُ فِيهِ، حَتَّى تُطْعِمَ، فَغَرَسَ رَسُولُ اللهِ صلى الله عليه وسلم، النَّخلَ إِلا نَخْلَةً وَاحِدَةً، غَرَسَهَا عُمَرُ فَحَمَلَتِ النَّخْلُ مِنْ عَامِهَا، وَلَمْ تَحْمِلْ نَخْلَةٌ، فَقَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ مَا شَأْنُ هَذِهِ النَّخْلَةِ‏؟‏ فَقَالَ عُمَرُ‏:‏ يَا رَسُولَ اللهِ، أَنَا غَرَسْتُهَا، فَنَزَعَهَا رَسُولُ اللهِ صلى الله عليه وسلم، فَغَرَسَهَا فَحَمَلَتْ مِنْ عَامِهَا‏.‏",
+    "english_translation": "Abu Buraida said:\n\"Salman al-Farisi brought Allah’s Messenger (Allah bless him and give him peace), when he reached Medina, a table with ripe dates upon it, and he placed it in front of Allah’s Messenger (Allah bless him and give him peace), so he said: ‘O Salman, what is this?’ He replied: A charitable gift for you and for your Companions’ ‘Take it away,’ said the Prophet, ‘for we will not eat a charitable gift.’ He therefore took it away. Then he came the next day with the like of it, and placed it in front of Allah’s Messenger (Allah bless him and give him peace), who said: ‘What is this, O Salman?’ He replied: ‘A present for you,’ so Allah’s Messenger (Allah bless him and give him peace) said to his Companions: ‘Spread out!’ Then Salman looked at the Seal on the back of Allah’s Messenger (Allah bless him and give him peace), so he believed in him. He was a slave of the Jews, however, so Allah’s Messenger (Allah bless him and give him peace) purchased his freedom at such-and-such a price of silver coin, on condition that he [the Prophet] would plant date palms for them, and Salman would work on them until they bore edible fruit. Allah’s Messenger (Allah bless him and give him peace) then planted the date palms, apart from one date palm that 'Umar planted. The date palms then bore their annual crop, but one date palm did not bear fruit, so Allah’s Messenger said (Allah bless him and give him peace): ‘What is the matter with this date palm?’ 'Umar said: ‘O Messenger of Allah, I planted it!’ Allah’s Messenger (Allah bless him and give him peace) therefore uprooted it and replanted it, so it bore its annual crop.\"",
+    "russian_translation": "Сообщается, что Абу Бурайда сказал: «Когда Посланник Аллаха, да благословит его Аллах и приветствует, прибыл в Медину, Салман аль-Фариси принес ему поднос со спелыми финиками и поставил перед ним. Пророк спросил: «О Салман, что это?» Он ответил: «Это садака для тебя и твоих сподвижников». Пророк сказал: «Забирай, ибо мы не едим садаку». Он убрал поднос. На следующий день он пришел снова с подобным угощением, поставил перед Посланником Аллаха, да благословит его Аллах и приветствует, и тот спросил: «Что это, о Салман?» Он ответил: «Это подарок для тебя». Тогда Посланник Аллаха, да благословит его Аллах и приветствует, сказал своим сподвижникам: «Угощайтесь». Затем Салман посмотрел на печать пророчества на спине Посланника Аллаха, да благословит его Аллах и приветствует, и уверовал в него. Салман принадлежал иудеям, и Посланник Аллаха, да благословит его Аллах и приветствует, выкупил его за определенное количество дирхамов, с условием, что он посадит для них финиковые пальмы, и Салман будет ухаживать за ними, пока они не дадут плоды. Посланник Аллаха, да благословит его Аллах и приветствует, посадил все пальмы, кроме одной, которую посадил Умар. Пальмы дали урожай в тот же год, кроме той единственной. Посланник Аллаха, да благословит его Аллах и приветствует, спросил: «Что случилось с этой пальмой?» Умар ответил: «О Посланник Аллаха, это я посадил ее». Тогда Посланник Аллаха, да благословит его Аллах и приветствует, вырвал ее и посадил заново, и она принесла плоды в тот же год»."
+  },
+  {
+    "db_id": 42282,
+    "book_number": 2,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي خَاتَمِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Seal of the Messenger of Allah (pbuh)",
+      "ru": "Глава о печати пророчества Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 19,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا بِشْرُ بْنُ الْوَضَّاحِ، قَالَ‏:‏ حَدَّثَنَا أَبُو عَقِيلٍ الدَّوْرَقِيُّ، عَنْ أَبِي نَضْرَةَ الْعَوَقِيِّ، قَالَ‏:‏ سَأَلْتُ أَبَا سَعِيدٍ الْخُدْرِيَّ، عَنْ خَاتَمِ رَسُولِ اللهِ صلى الله عليه وسلم يَعْنِي خَاتَمَ النُّبُوَّةِ، فَقَالَ‏:‏ كَانَ فِي ظَهْرِهِ بَضْعَةٌ نَاشِزَةٌ‏.‏",
+    "english_translation": "Abu Nadra al-'Awaqi said:\n\"I asked Sa'id al-Khudri about the Seal of Allah's Messenger (Allah bless him and give him peace), meaning the Seal of Prophethood, so he said: ‘It was a protrusion of skin on his back.\"",
+    "russian_translation": "Абу Надра аль-Аваки рассказывал: «Я спросил Абу Саида аль-Худри о печати Посланника Аллаха, да благословит его Аллах и приветствует, имея в виду печать пророчества. Он ответил: „Это был выступающий нарост кожи на его спине“»"
+  },
+  {
+    "db_id": 42283,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خَاتَمِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "The Chapter on the Seal of the Prophet (SAW)",
+      "ru": "Глава о печати пророчества"
+    },
+    "hadith_number": 16,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ الْمِقْدَامِ أَبُو الأَشْعَثِ الْعِجْلِيُّ الْبَصْرِيُّ، قَالَ‏:‏ أَخْبَرَنَا حَمَّادُ بْنُ زَيْدٍ، عَنْ عَاصِمٍ الأَحْوَلِ، عَنْ عَبْدِ اللهِ بْنِ سَرْجِسَ، قَالَ‏:‏ أَتَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم وَهُوَ فِي نَاسٍ مِنْ أَصْحَابِهِ، فَدُرْتُ هَكَذَا مِنْ خَلْفِهِ، فَعَرَفَ الَّذِي أُرِيدُ، فَأَلْقَى الرِّدَاءَ عَنْ ظَهْرِهِ، فَرَأَيْتُ مَوْضِعَ الْخَاتَمِ عَلَى كَتِفَيْهِ، مِثْلَ الْجُمْعِ حَوْلَهَا خِيلانٌ، كَأَنَّهَا ثَآلِيلُ، فَرَجَعْتُ حَتَّى اسْتَقْبَلْتُهُ، فَقُلْتُ‏:‏ غَفَرَ اللَّهُ لَكَ يَا رَسُولَ اللهِ، فَقَالَ‏:‏ وَلَكَ فَقَالَ الْقَوْمُ‏:‏ أَسْتَغْفَرَ لَكَ رَسُولُ اللهِ صلى الله عليه وسلم‏؟‏ فَقَالَ‏:‏ نَعَمْ، وَلَكُمْ، ثُمَّ تَلا هَذِهِ الآيَةَ ﴿وَاسْتَغْفِرْ لِذَنْبِكَ وَلِلْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ﴾",
+    "english_translation": "'Abdullah ibn Sarjis [al-MuzanI] said:\n\"I came to Allah’s Messenger (Allah bless him and give him peace), while he was among a group of his Companions, so I circled like this behind him. He understood what I wanted, so he threw the cloak off his back. I thus saw the place of the Seal on his shoulders, like a clenched fist surrounded by moles, as if they were warts. I came around to face him, and I said: 'May Allah forgive you, O Messenger of Allah!' He said: ‘And you,' so the people exclaimed: 'Allah’s Messenger (Allah bless him and give him peace) has asked forgiveness for you!' He said: 'Yes, and also for you!' Then he recited this Quranic verse: 'And ask forgiveness for your sin, and for the believing men and the believing women [was'tagh'fir li-dhanbika wa li’l mu'minina wal-mu’minat].\"(Q.47:19).\"’",
+    "russian_translation": "Абдулла ибн Сарджис рассказывал: «Я пришел к Посланнику Аллаха, да благословит его Аллах и приветствует, когда он находился среди своих сподвижников, и обошел его сзади. Он понял, чего я хочу, и сбросил накидку со своей спины. Я увидел место печати пророчества на его лопатках — она была похожа на сжатый кулак, окруженный родинками, напоминающими бородавки. Затем я обошел его, встал перед ним и сказал: «Да простит тебя Аллах, о Посланник Аллаха!» Он ответил: «И тебя». Люди спросили: «Посланник Аллаха просил прощения для тебя?» Он ответил: «Да, и для вас». Затем он прочел следующий аят: «Проси прощения за свой грех и за верующих мужчин и верующих женщин» (47:19)»."
+  },
+  {
+    "db_id": 42284,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في شعر رسول الله صلى الله عليه وسلم",
+      "en": "The Book About the Hair of the Messenger of Allah (pbuh)",
+      "ru": "Книга о волосах Посланника Аллаха (мир ему и благословение)"
+    },
+    "hadith_number": 27,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ أَخْبَرَنَا إِسْمَاعِيلُ بْنُ إِبْرَاهِيمَ، عَنْ حُمَيْدٍ، عَنْ أنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ كَانَ شَعَرُ رَسُولِ اللهِ صلى الله عليه وسلم إِلَى نِصْفِ أُذُنَيْهِ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"The hair of Allah’s Messenger (Allah bless him and give him peace) came down to the middle of his ears.\"",
+    "russian_translation": "Анас ибн Малик передал: «Волосы Посланника Аллаха (мир ему и благословение) доходили до середины его ушей»."
+  },
+  {
+    "db_id": 42285,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Grooming of the Messenger of Allah (pbuh)",
+      "ru": "Глава о том, как Посланник Аллаха (мир ему и благословение Аллаха) расчесывал волосы"
+    },
+    "hadith_number": 32,
+    "arabic": "حَدَّثَنَا هَنَّادُ بْنُ السَّرِيِّ، قَالَ‏:‏ أَخْبَرَنَا عَبْدُ الرَّحْمَنِ بْنُ أَبِي الزِّنَادِ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ كُنْتُ أَغْتَسِلُ أَنَا وَرَسُولُ اللهِ صلى الله عليه وسلم مِنْ إِنَاءٍ وَاحِدٍ، وَكَانَ لَهُ شَعَرٌ فَوْقَ الْجُمَّةِ، وَدُونَ الْوَفْرَةِ‏.‏",
+    "english_translation": "'A’isha said:\n\"I used to perform the major ritual ablution, I and Allah’s Messenger (Allah bless him and give him peace) from a single basin, and he had hair above the shoulder level and below the earlobes.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Я совершала полное омовение вместе с Посланником Аллаха, мир ему и благословение Аллаха, из одного сосуда, а его волосы достигали уровня ниже мочек ушей, но выше плеч»."
+  },
+  {
+    "db_id": 42286,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خَلق رسول الله صلى الله عليه وسلم",
+      "en": "The Book of the Description of the Messenger of Allah, peace be upon him",
+      "ru": "Книга об описании Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 1,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا أَبُو قَطَنٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي إِسْحَاقَ، عَنِ الْبَرَاءِ بْنِ عَازِبٍ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم مَرْبُوعًا، بَعِيدَ مَا بَيْنَ الْمِنْكَبَيْنِ، وَكَانَتْ جُمَّتُهُ تَضْرِبُ شَحْمَةَ أُذُنَيْهِ‏.‏",
+    "english_translation": "Al-Bara’ ibn 'Azib said:\n\"Allah’s Messenger (Allah bless him and give him peace) was of medium height, broad-shouldered, and the hair of his head touched the lobes of his ears.\"",
+    "russian_translation": "Передают со слов аль-Бара ибн Азиба, что он сказал: «Посланник Аллаха, да благословит его Аллах и приветствует, был среднего роста, широкоплечим, а его волосы доходили до мочек его ушей»."
+  },
+  {
+    "db_id": 42287,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي شَعْرِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Hair of the Messenger of Allah, peace be upon him",
+      "ru": "Глава о волосах Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 31,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا وَهْبُ بْنُ جَرِيرِ بْنِ حَازِمٍ، قَالَ‏:‏ حَدَّثَنِي أَبِي، عَنْ قَتَادَةَ، قَالَ‏:‏ قُلْتُ لأَنَسٍ‏:‏ كَيْفَ كَانَ شَعَرُ رَسُولِ اللهِ صلى الله عليه وسلم‏؟‏ قَالَ‏:‏ لَمْ يَكُنْ بِالْجَعْدِ، وَلا بِالسَّبْطِ، كَانَ يَبْلُغُ شَعَرُهُ شَحْمَةَ أُذُنَيْهِ‏.‏",
+    "english_translation": "Qatada said:\n\"I said to Anas: ‘How was the hair of Allah’s Messenger (Allah bless him and give him peace)?' He replied: 'It was neither crisply curled nor lank. His hair used to reach the lobes of his ears'.\"",
+    "russian_translation": "Катада рассказывал: «Я спросил Анаса: „Какими были волосы Посланника Аллаха, мир ему и благословение Аллаха?“ Он ответил: „Они не были ни сильно вьющимися, ни прямыми, и достигали мочек его ушей“»."
+  },
+  {
+    "db_id": 42288,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on how the Messenger of Allah combed his hair",
+      "ru": "Глава о том, как Посланник Аллаха причесывал свои волосы"
+    },
+    "hadith_number": 26,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ يَحْيَى بْنِ أَبِي عُمَرَ الْمَكِّيُّ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ بْنُ عُيَيْنَةَ، عَنِ ابْنِ أَبِي نَجِيحٍ، عَنْ مُجَاهِدٍ، عَنْ أُمِّ هَانِئٍ بِنْتِ أَبِي طَالِبٍ، قَالَتْ‏:‏ قَدِمَ رَسُولُ اللهِ صلى الله عليه وسلم مَكَّةَ قَدْمَةً، وَلَهُ أَرْبَعُ غَدَائِرَ‏.‏",
+    "english_translation": "Umm Hani bint 'Ali ibn Talib said:\n\"Allah’s Messenger (Allah bless him and give him peace) arrived boldly at Mecca, and he had four braids of hair.\"",
+    "russian_translation": "Передают со слов Умм Хани бинт Абу Талиб, что она сказала: «Когда Посланник Аллаха прибыл в Мекку, у него было четыре косы»."
+  },
+  {
+    "db_id": 42289,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي شَعْرِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Hair of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о волосах Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 2,
+    "arabic": "حَدَّثَنَا سُوَيْدُ بْنُ نَصْرٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ اللهِ بْنُ الْمُبَارَكِ، عَنْ مَعْمَرٍ، عَنْ ثَابِتٍ الْبُنَانِيِّ، عَنْ أَنَسٍ‏:‏ أَنَّ شَعَرَ رَسُولِ اللهِ صلى الله عليه وسلم، كَانَ إِلَى أَنْصَافِ أُذُنَيْهِ‏.‏",
+    "english_translation": "Anas said:\n\"The hair of Allah’s Messenger (Allah bless him and give him peace) was down to the middle parts of his ears.\"",
+    "russian_translation": "Анас передал: «Волосы Посланника Аллаха, да благословит его Аллах и приветствует, доходили до середины его ушей»."
+  },
+  {
+    "db_id": 42290,
+    "book_number": 3,
+    "book_name": {
+      "ar": "باب ما جاء في ترجل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter: Regarding the combing of the hair of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о том, как Посланник Аллаха (мир ему и благословение Аллаха) расчесывал волосы"
+    },
+    "hadith_number": 30,
+    "arabic": "حَدَّثَنَا سُوَيْدُ بْنُ نَصْرٍ ، حَدَّثَنَا عَبْدُ اللَّهِ بْنُ الْمُبَارَكِ ، عَنْ يُونُسَ بْنِ يَزِيدَ ، عَنِ الزُّهْرِيِّ ، قَالَ : حَدَّثَنَا عُبَيْدُ اللَّهِ بْنُ عَبْدِ اللَّهِ بْنِ عُتْبَةَ ، عَنِ ابْنِ عَبَّاسٍ :\n\" أَنَّ رَسُولَ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ كَانَ يُسْدِلُ شَعْرَهُ ، وَكَانَ الْمُشْرِكُونَ يَفْرِقُونَ رُءُوسَهُمْ ، وَكَانَ أَهْلُ الْكِتَابِ يُسْدِلُونَ رُءُوسَهُمْ ، وَكَانَ يُحِبُّ مُوَافَقَةَ أَهْلِ الْكِتَابِ فِيمَا لَمْ يُؤْمَرْ فِيهِ بِشَيْءٍ ، ثُمَّ فَرَقَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ رَأْسَهُ \"\n.",
+    "english_translation": "Ibn 'Abbas said:\n\"Allah’s Messenger(Allah bless him and give him peace) used to let his hair hang down [over his face], whereas the polytheists used to part the hair of their heads. The People of the Scripture also used to let the hair of their heads hang down, and he used favor emulating the People of the Scripture with respect to things about which nothing was commanded, but Allah’s Messenger (Allah bless him and give him peace) then parted the hair of his head.\"",
+    "russian_translation": "Ибн Аббас передал: «Посланник Аллаха (мир ему и благословение Аллаха) сначала опускал волосы на лоб, а многобожники разделяли их пробором. Люди Писания же опускали свои волосы, и Пророк (мир ему и благословение Аллаха) предпочитал подражать людям Писания в том, относительно чего ему не было дано прямого повеления. Однако впоследствии Посланник Аллаха (мир ему и благословение Аллаха) стал разделять волосы пробором»."
+  },
+  {
+    "db_id": 42291,
+    "book_number": 2,
+    "book_name": {
+      "ar": "باب ما جاء في ترجل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on how the Messenger of Allah, may Allah bless him and grant him peace, combed his hair",
+      "ru": "Глава о том, как Посланник Аллаха, да благословит его Аллах и приветствует, расчесывал свои волосы"
+    },
+    "hadith_number": 31,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، عَنْ إِبْرَاهِيمَ بْنِ نَافِعٍ الْمَكِّيِّ، عَنِ ابْنِ أَبِي نَجِيحٍ، عَنْ مُجَاهِدٍ، عَنْ أُمِّ هَانِئٍ، قَالَتْ‏:‏ رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم ذَا ضَفَائِرَ أَرْبَعٍ‏.‏",
+    "english_translation": "Umm Hani said:\n\"I saw Allah’s Messenger (Allah bless him and give him peace) with four braids of hair.\"",
+    "russian_translation": "Передают от Умм Хани, что она сказала: «Я видела Посланника Аллаха, да благословит его Аллах и приветствует, с четырьмя косами»."
+  },
+  {
+    "db_id": 42292,
+    "book_number": 3,
+    "book_name": {
+      "ar": "باب ما جاء في ترجيل شعر رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Combing of the Hair of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о том, как Посланник Аллаха (мир ему и благословение Аллаха) расчесывал волосы"
+    },
+    "hadith_number": 29,
+    "arabic": "حدثنا إسحاق بن موسى الأنصاري، حدثنا مَعْن بن عيسى، حدثنا مالك بن أنس، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ كُنْتُ أُرَجِّلُ رَأْسَ رَسُولِ اللَّهِ صلى الله عليه وسلم وَأَنَا حَائِضٌ‏.‏",
+    "english_translation": "A’isha said:\n\"I used to comb the hair of Allah’s Messenger (Allah bless him and give him peace) while I was menstruating.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Я расчесывала волосы Посланника Аллаха, мир ему и благословение Аллаха, когда у меня были месячные»."
+  },
+  {
+    "db_id": 42293,
+    "book_number": 2,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on How the Messenger of Allah (peace be upon him) Combed His Hair",
+      "ru": "Глава о том, как Посланник Аллаха (мир ему и благословение Аллаха) расчесывал свои волосы"
+    },
+    "hadith_number": 33,
+    "arabic": "حَدَّثَنَا يُوسُفُ بْنُ عِيسَى، قَالَ‏:‏ حَدَّثَنَا وَكِيعٌ، قَالَ‏:‏ حَدَّثَنَا الرَّبِيعُ بْنُ صَبِيحٍ، عَنْ يَزِيدَ بْنِ أَبَانَ هُوَ الرَّقَاشِيُّ، عَنْ أَنَسِ بْنِ مَالِكٍ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم يُكْثِرُ دَهْنَ رَأْسِهِ وَتَسْرِيحَ لِحْيَتِهِ، وَيُكْثِرُ الْقِنَاعَ حَتَّى كَأَنَّ ثَوْبَهُ، ثَوْبُ زَيَّاتٍ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"Allah’s Messenger (Allah bless him and give him peace) made a frequent practice of oiling his head and combing his beard, and he often wore the head veil, so it was as if his robe was the robe of an oil dealer.\"",
+    "russian_translation": "Анас ибн Малик передал: «Посланник Аллаха, да благословит его Аллах и приветствует, часто умащал голову маслом и расчесывал бороду. Он также часто прикрывал голову платком, из-за чего его одежда походила на одежду торговца маслом»."
+  },
+  {
+    "db_id": 42294,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on how the Messenger of Allah (peace be upon him) combed his hair",
+      "ru": "Глава о том, как Посланник Аллаха (мир ему и благословение Аллаха) расчесывал свои волосы"
+    },
+    "hadith_number": 32,
+    "arabic": "حَدَّثَنَا هَنَّادُ بْنُ السَّرِيِّ، قَالَ‏:‏ حَدَّثَنَا أَبُو الأَحْوَصِ، عَنِ الأَشْعَثِ بْنِ أَبِي الشَّعْثَاءِ، عَنْ أَبِيهِ، عَنْ مَسْرُوقٍ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ إِنْ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم لَيُحِبُّ التَّيَمُّنَ فِي طُهُورِهِ إِذَا تَطَهَّرَ، وَفِي تَرَجُّلِهِ إِذَا تَرَجَّلَ، وَفِي انْتِعَالِهِ إِذَا انْتَعَلَ‏.‏",
+    "english_translation": "'A’isha said:\n\"Allah’s Messenger (Allah bless him and give him peace) used to love tayammun [beginning with his right hand, his right side and his right foot] in his ritual purification when he purified himself, in his combing when he combed his hair, and putting on his shoes when he donned them.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Посланнику Аллаха, мир ему и благословение Аллаха, нравилось начинать с правой стороны во всём: когда он совершал омовение, когда расчесывал волосы и когда надевал обувь»."
+  },
+  {
+    "db_id": 42295,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Combing of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о том, как Посланник Аллаха (мир ему и благословение Аллаха) расчесывал свои волосы"
+    },
+    "hadith_number": 33,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ، عَنْ هِشَامِ بْنِ حَسَّانَ، عَنِ الْحَسَنِ، عَنْ عَبْدِ اللهِ بْنِ مُغَفَّلٍ، قَالَ‏:‏ نَهَى رَسُولُ اللهِ صلى الله عليه وسلم عنِ التَّرَجُّلِ، إِلا غِبًّا‏.‏",
+    "english_translation": "'Abdullah ibn Mughaffal said:\n\"Allah’s Messenger (Allah bless him and give him peace) forbade combing except at intervals.\"",
+    "russian_translation": "Передают со слов Абдуллы ибн Мугаффаля, что Посланник Аллаха (мир ему и благословение Аллаха) запрещал расчесываться слишком часто, разрешая делать это лишь время от времени."
+  },
+  {
+    "db_id": 42296,
+    "book_number": 3,
+    "book_name": {
+      "ar": "باب ما جاء في ترجل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Combing of the Hair of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о том, как Посланник Аллаха, да благословит его Аллах и приветствует, расчесывал волосы"
+    },
+    "hadith_number": 33,
+    "arabic": "حَدَّثَنَا الْحَسَنُ بْنُ عَرَفَةَ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ السَّلامِ بْنُ حَرْبٍ، عَنْ يَزِيدَ بْنِ أَبِي خَالِدٍ، عَنْ أَبِي الْعَلاءِ الأَوْدِيِّ، عَنْ حُمَيْدِ بْنِ عَبْدِ الرَّحْمَنِ، عَنْ رَجُلٍ مِنْ أَصْحَابِ النَّبِيِّ صلى الله عليه وسلم‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم، كَانَ يَتَرَجَّلُ غِبًّا‏.‏",
+    "english_translation": "Humaid ibn 'Abd ar-Rahman relates on the authority of a man from among the Companions of the Prophet (Allah bless him and give him peace):\n\"The Prophet (Allah bless him and give him peace) used to comb his hair at intervals.\"",
+    "russian_translation": "Сообщается со слов одного из сподвижников Пророка, да благословит его Аллах и приветствует, что Посланник Аллаха, да благословит его Аллах и приветствует, имел обыкновение расчесывать волосы время от времени."
+  },
+  {
+    "db_id": 42297,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خِضَابِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Dyeing of the Messenger of Allah (may Allah bless him and give him peace)",
+      "ru": "Глава о том, что передается относительно окрашивания волос Посланником Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 32,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ أَخْبَرَنَا أَبُو دَاوُدَ، قَالَ‏:‏ أَخْبَرَنَا هَمَّامٌ، عَنْ قَتَادَةَ، قَالَ‏:‏ قُلْتُ لأَنَسِ بْنِ مَالِكٍ‏:‏ هَلْ خَضَبَ رَسُولُ اللهِ صلى الله عليه وسلم‏؟‏ قَالَ‏:‏ لَمْ يَبْلُغْ ذَلِكَ، إِنَّمَا كَانَ شَيْبًا فِي صُدْغَيْهِ وَلَكِنْ أَبُو بَكْرٍ، خَضَبَ بِالْحِنَّاءِ وَالْكَتَمِ‏.‏",
+    "english_translation": "Qatada reports that he said:\n‘I said to Anas ibn Malik: \"Did Allah’s Messenger (Allah bless him and give him peace) dye his hair?\" He replied: ‘He did not get to that, for he was grayed only in the hair covering his temples, but Abu Bakr (may Allah the Exalted be well pleased with him) dyed his hair with henna and a herbal mixture called katam.\"",
+    "russian_translation": "Катада рассказывал: «Я спросил Анаса ибн Малика: „Красил ли Посланник Аллаха, да благословит его Аллах и приветствует, свои волосы?“ Он ответил: „До этого дело не дошло, ибо седина была лишь на его висках. Однако Абу Бакр окрашивал свои волосы хной и катмом“»."
+  },
+  {
+    "db_id": 42298,
+    "book_number": 2,
+    "book_name": {
+      "ar": "باب ما جاء في شيب رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Grey Hairs of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о седине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 33,
+    "arabic": "حَدَّثَنَا إِسْحَاقُ بْنُ مَنْصُورٍ، وَيَحْيَى بْنُ مُوسَى، قَالا‏:‏ حَدَّثَنَا عَبْدُ الرَّزَّاقِ، عَنْ مَعْمَرٍ، عَنْ ثَابِتٍ، عَنْ أَنَسٍ، قَالَ‏:‏ مَا عَدَدْتُ فِي رَأْسِ رَسُولِ اللهِ صلى الله عليه وسلم وَلِحْيَتِهِ، إِلا أَرْبَعَ عَشْرَةَ شَعَرَةً بَيْضَاءَ‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"On the head of Allah’s Messenger (Allah bless him and give him peace) and his beard, I counted only fourteen white hairs.\"",
+    "russian_translation": "Анас ибн Малик передал: «Я насчитал на голове и в бороде Посланника Аллаха, да благословит его Аллах и приветствует, всего четырнадцать седых волос»."
+  },
+  {
+    "db_id": 42299,
+    "book_number": 2,
+    "book_name": {
+      "ar": "باب ما جاء في شيب رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Gray Hair of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о седине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 33,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ أَخْبَرَنَا أَبُو دَاوُدَ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ سِمَاكِ بْنِ حَرْبٍ، قَالَ‏:‏ سَمِعْتُ جَابِرَ بْنَ سَمُرَةَ، وَقَدْ سُئِلَ عَنْ شَيْبِ رَسُولِ اللهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّم، فَقَالَ‏:‏ كَانَ إِذَا دَهَنَ رَأْسَهُ لَمْ يُرَ مِنْهُ شَيْبٌ، وَإِذَا لَمْ يَدْهِنْ رُئِيَ مِنْهُ شَيْءٌ‏.‏",
+    "english_translation": "Jabir ibn Samura was asked about the grayness of Allah’s Messenger (Allah bless him and give him peace), so he said:\n\"When he oiled his head, no grayness was visible, and when he did not apply oil, some was visible.\"",
+    "russian_translation": "Джабир ибн Самура, когда его спросили о седине Посланника Аллаха, да благословит его Аллах и приветствует, ответил: «Когда он умащал голову маслом, седина не была видна, а когда не умащал, она была заметна»"
+  },
+  {
+    "db_id": 42300,
+    "book_number": 2,
+    "book_name": {
+      "ar": "باب ما جاء في شيب رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Grey Hairs of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о седине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 28,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ عَمْرِو بْنِ الْوَلِيدِ الْكِنْدِيُّ الْكُوفِيُّ، قَالَ‏:‏ حَدَّثَنَا يَحْيَى بْنُ آدَمَ، عَنْ شَرِيكٍ، عَنْ عُبَيْدِ اللهِ بْنِ عُمَرَ، عَنْ نَافِعٍ، عَنْ عَبْدِ اللهِ بْنِ عُمَرَ، قَالَ‏:‏ إِنَّمَا كَانَ شَيْبُ رَسُولِ اللهِ صلى الله عليه وسلم نَحْوًا مِنْ عِشْرِينَ شَعَرَةً بَيْضَاءَ‏.‏",
+    "english_translation": "'Abdullah ibn 'Umar said:\n\"The hoariness of Allah’s Messenger (Allah bless him and give him peace) was merely about twenty white hairs.\"",
+    "russian_translation": "Абдаллах ибн Умар сказал: «Седина Посланника Аллаха, да благословит его Аллах и приветствует, насчитывала всего около двадцати белых волосков»."
+  },
+  {
+    "db_id": 42301,
+    "book_number": 31,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي شَيْبِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related concerning the grey hair of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о том, что передается о седине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 26,
+    "arabic": "حَدَّثَنَا أَبُو كُرَيْبٍ مُحَمَّدُ بْنُ الْعَلاءِ، قَالَ‏:‏ حَدَّثَنَا مُعَاوِيَةُ بْنُ هِشَامٍ، عَنْ شَيْبَانَ، عَنْ أَبِي إِسْحَاقَ، عَنْ عِكْرِمَةَ، عَنِ ابْنِ عَبَّاسٍ، قَالَ‏:‏ قَالَ أَبُو بَكْرٍ‏:‏ يَا رَسُولَ اللهِ، قَدْ شِبْتَ، قَالَ‏:‏ شَيَّبَتْنِي هُودٌ، وَالْوَاقِعَةُ، وَالْمُرْسَلاتُ، وَعَمَّ يَتَسَاءَلُونَ، وَإِذَا الشَّمْسُ كُوِّرَتْ‏.‏",
+    "english_translation": "Ibn Abbas said:\nAbu Bakr said: \"O Messenger of Allah, you have grayed!\" He said: 'I have been made gray-haired by Hud (Al-Qur'an; 11)), the calamity (Al-Qur'an; 56)), the winds sent forth (Al-Qur'an; 77)). what will they question one another about?’ (Al-Qur'an; 74)). and ‘when the sun is overthrown’ (Al-Qur'an; 81)'.\"",
+    "russian_translation": "Передают со слов Ибн Аббаса, что Абу Бакр сказал: «О Посланник Аллаха, ты поседел». На что он ответил: «Меня состарили суры «Худ», «аль-Ваки‘а», «аль-Мурсалят», «‘Амма» (ан-Наба’) и «Иза-ш-шамсу куввират» (ат-Таквир)»."
+  },
+  {
+    "db_id": 42302,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي شَيْبِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Graying of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о седине Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 32,
+    "arabic": "حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ بِشْرٍ، عَنْ عَلِيِّ بْنِ صَالِحٍ، عَنْ أَبِي إِسْحَاقَ، عَنْ أَبِي جُحَيْفَةَ، قَالَ‏:‏ قَالُوا‏:‏ يَا رَسُولَ اللهِ، نَرَاكَ قَدْ شِبْتَ، قَالَ‏:‏ قَدْ شَيَّبَتْنِي هُودٌ وَأَخَوَاتُهَا‏.‏",
+    "english_translation": "Abu Juhaifa said:\n\"O Messenger of Allah we notice that you have turned gray!’ He said: ‘The [Sura of] Hud and its sisters have caused me to turn gray!’\"",
+    "russian_translation": "Передают со слов Абу Джухайфы, что люди спросили: «О Посланник Аллаха, мы видим, что ты поседел». На что он ответил: «Меня состарили сура „Худ“ и её подобные»."
+  },
+  {
+    "db_id": 42303,
+    "book_number": 2,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي شَيْبِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Graying of the Hair of the Messenger of Allah (pbuh)",
+      "ru": "Глава о седине Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 31,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ حَدَّثَنَا شُعَيْبُ بْنُ صَفْوَانَ، عَنْ عَبْدِ الْمَلِكِ بْنِ عُمَيْرٍ، عَنِ إِيَادِ بْنِ لَقِيطٍ الْعِجْلِيِّ، عَنْ أَبِي رِمْثَةَ التَّيْمِيِّ، تَيْمِ الرَّبَابِ، قَالَ‏:‏ أَتَيْتُ النَّبِيَّ صلى الله عليه وسلم، وَمَعِي ابْنٌ لِي، قَالَ‏:‏ فَأَرَيْتُهُ، فَقُلْتُ لَمَّا رَأَيْتُهُ‏:‏ هَذَا نَبِيُّ اللهِ صلى الله عليه وسلم وَعَلَيْهِ ثَوْبَانِ أَخْضَرَانِ، وَلَهُ شَعَرٌ قَدْ عَلاهُ الشَّيْبُ، وَشَيْبُهُ أَحْمَرُ‏.‏",
+    "english_translation": "Abu’r-Rimtha at-Taimi (the servant of ar-Rabab) said:\n\"I came to the Prophet (Allah bless him and give him peace) with a son of mine, who said: 'So I was shown him, and I said when I saw him: ‘This is Allah’s Prophet (Allah bless him and give him peace). He is wearing two green garments, and he has hair that is topped with grayness, and its grayness is reddish'.\"",
+    "russian_translation": "Абу ар-Римса ат-Тайми, из племени ар-Рабаб, рассказывал: «Я пришел к Пророку (мир ему и благословение Аллаха) вместе со своим сыном. Когда я увидел его, я сказал: „Это Пророк Аллаха (мир ему и благословение Аллаха)“. На нем были два зеленых одеяния, а его волосы были тронуты сединой, причем седина его отливала краснотой»."
+  },
+  {
+    "db_id": 42304,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في خلق رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Creation of the Messenger of Allah (pbuh)",
+      "ru": "Глава о внешнем облике Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 3,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا سُرَيْجُ بْنُ النُّعْمَانِ، قَالَ‏:‏ حَدَّثَنَا حَمَّادُ بْنُ سَلَمَةَ، عَنْ سِمَاكِ بْنِ حَرْبٍ، قَالَ‏:‏ قِيلَ لِجَابِرِ بْنِ سَمُرَةَ‏:‏ أَكَانَ فِي رَأْسِ رَسُولِ اللهِ صلى الله عليه وسلم شَيْبٌ‏؟‏ قَالَ‏:‏ لَمْ يَكُنْ فِي رَأْسِ رَسُولِ اللهِ صلى الله عليه وسلم، شَيْبٌ إِلا شَعَرَاتٌ فِي مَفْرِقِ رَأْسِهِ، إِذَا ادَّهَنَ وَارَاهُنَّ الدُّهْنُ‏.‏",
+    "english_translation": "Jabir ibn Samura was asked:\n\"Was there any grayness of the head of Allah’s Messenger (Allah bless him and give him peace)?\" He replied: \"There was no grayness on the head of Allah’s Messenger (Allah bless him and give him peace), except some hairs in the part of his hair when he applied oil and the oil made them visible.\"",
+    "russian_translation": "Передают со слов Джабира ибн Самуры, что его спросили: «Была ли седина на голове Посланника Аллаха, да благословит его Аллах и приветствует?» Он ответил: «На голове Посланника Аллаха, да благословит его Аллах и приветствует, не было седины, за исключением нескольких волос на проборе, которые скрывались, когда он умащался маслом»."
+  },
+  {
+    "db_id": 42305,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي شَيْبِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Graying of the Messenger of Allah, peace be upon him",
+      "ru": "Глава о седине Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 33,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ ، قَالَ : حَدَّثَنَا هُشَيْمٌ ، قَالَ : حَدَّثَنَا عَبْدُ الْمَلِكِ بْنُ عُمَيْرٍ ، عَنِ إِيَادِ بْنِ لَقِيطٍ ، قَالَ : أَخْبَرَنِي أَبُو رِمْثَةَ ، قَالَ : أَتَيْتُ رَسُولَ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مَعَ ابْنٍ لِي ، فَقَالَ : \" ابْنُكَ هَذَا ؟ \" فَقُلْتُ : نَعَمْ, أَشْهَدُ بِهِ ، قَالَ : \" لا يَجْنِي عَلَيْكَ ، وَلا تَجْنِي عَلَيْهِ \" ، قَالَ : وَرَأَيْتُ الشَّيْبَ أَحْمَرَ ، قَالَ أَبُو عِيسَى : هَذَا أَحْسَنُ شَيْءٍ رُوِيَ فِي هَذَا الْبَابِ ، وَأَفْسَرُ لأَنَّ الرِّوَايَاتِ الصَّحِيحَةَ أَنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ لَمْ يَبْلُغِ الشَّيْبَ. وَأَبُو رِمْثَةَ اسْمُهُ : رِفَاعَةُ بْنُ يَثْرِبِيٍّ التَّيْمِيُّ.",
+    "english_translation": "Abu Rimtha informed:\n\"I came to the Prophet (Allah bless him and give him peace) with a son of mine, so he said; ‘Is this your son?’ I said: ‘Yes, I acknowledge him!’ He said: ‘He must not harm you, and you must not harm him!’ I also noticed that the grayness of his hair was reddish.\"",
+    "russian_translation": "Сообщается, что Абу Римса сказал: «Я пришел к Посланнику Аллаха, мир ему и благословение Аллаха, вместе с моим сыном. Он спросил: „Это твой сын?“ Я ответил: „Да, и я свидетельствую об этом“. Тогда Пророк сказал: „Он не причинит тебе вреда, и ты не причинишь ему вреда“. А еще я заметил, что его седина была красноватого оттенка»."
+  },
+  {
+    "db_id": 42306,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي خِضَابِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: Regarding the Dye of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается относительно окрашивания волос Посланником Аллаха (да благословит его Аллах и приветствует)"
+    },
+    "hadith_number": 43,
+    "arabic": "حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، قَالَ‏:‏ حَدَّثَنَا أَبِي، عَنْ شَرِيكٍ، عَنْ عُثْمَانَ بْنِ مَوْهَبٍ، قَالَ‏:‏ سُئِلَ أَبُو هُرَيْرَةَ‏:‏ هَلْ خَضَبَ رَسُولُ اللهِ صلى الله عليه وسلم‏؟‏ قَالَ‏:‏ نَعَمْ‏.‏ قال أبو عيسى: وروى أبو عوانة هذا الحديث عن عثمان بن عبد الله بن موهب فقال عن أم سلمة",
+    "english_translation": "Abu Huraira was asked:\n\"Did Allah’s Messenger (Allah bless him and give him peace) dye [his hair]?\" He said: \"Yes!\"",
+    "russian_translation": "Усмана ибн Маухаба спросили: «Красил ли Посланник Аллаха (да благословит его Аллах и приветствует) свои волосы?» Он ответил: «Да»."
+  },
+  {
+    "db_id": 42307,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on how the Messenger of Allah (may Allah bless him and grant him peace) groomed his hair",
+      "ru": "Глава о том, как Посланник Аллаха, да благословит его Аллах и приветствует, расчесывал свои волосы"
+    },
+    "hadith_number": 32,
+    "arabic": "حَدَّثَنَا إِبْرَاهِيمُ بْنُ هَارُونَ، قَالَ‏:‏ أَنْبَأَنَا النَّضْرُ بْنُ زُرَارَةَ، عَنْ أَبِي جَنَابٍ، عَنْ إِيَادِ بْنِ لَقِيطٍ، عَنِ الْجَهْدَمَةِ، امْرَأَةِ بِشْرِ ابْنِ الْخَصَاصِيَّةِ، قَالَتْ‏:‏ أَنَا رَأَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم يَخْرُجُ مِنْ بَيْتِهِ يَنْفُضُ رَأْسَهُ وَقَدِ اغْتَسَلَ، وَبِرَأْسِهِ رَدْعٌ مِنْ حِنَّاءٍ أَوْ قَالَ‏:‏ رَدْغٌ شَكَّ فِي هَذَا الشَّيْخُ‏.‏",
+    "english_translation": "Al-Jahdama, the wife of Bishr ibn al- Khasasiyya, said:\n\"I saw Allah’s Messenger (Allah bless him and give him peace) come out of his house shaking his head, for he had performed the major ritual ablution, and on his head there was some trace of henna.\" (Or he said: saffron. The Shaikh doubted this.)",
+    "russian_translation": "Аль-Джахдама, жена Бишра ибн аль-Хасасия, рассказывала: «Я видела, как Посланник Аллаха, да благословит его Аллах и приветствует, вышел из своего дома, отряхивая голову, так как он совершил полное омовение, и на его волосах были следы хны» (или же она сказала: «шалфея» — в этом передатчик выразил сомнение)."
+  },
+  {
+    "db_id": 42308,
+    "book_number": 3,
+    "book_name": {
+      "ar": "باب ما جاء في خضاب رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Dyeing of the Messenger of Allah",
+      "ru": "Глава о том, что передается относительно окрашивания волос Посланником Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 36,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ عَبْدِ الرَّحْمَنِ، قَالَ‏:‏ حَدَّثَنَا عَمْرُو بْنُ عَاصِمٍ، قَالَ‏:‏ حَدَّثَنَا حَمَّادُ بْنُ سَلَمَةَ، قَالَ‏:‏ حَدَّثَنَا حُمَيْدٌ، عَنْ أَنَسٍ، قَالَ‏:‏ رَأَيْتُ شَعَرَ رَسُولِ اللهِ صلى الله عليه وسلم مَخْضُوبًا‏.‏",
+    "english_translation": "Humaid told us that Anas said:\n\"I saw the hair of Allah’s Messenger (Allah bless him and give him peace)dyed.\"",
+    "russian_translation": "Анас сказал: «Я видел волосы Посланника Аллаха, да благословит его Аллах и приветствует, окрашенными»."
+  },
+  {
+    "db_id": 42309,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي شَعْرِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Hair of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о волосах Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 32,
+    "arabic": "قَالَ حَمَّادٌ : وَأَخْبَرَنَا عَبْدُ اللَّهِ بْنُ مُحَمَّدِ بْنِ عَقِيلٍ قَالَ : رَأَيْتُ شَعْرَ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ عِنْدَ أَنَسِ بْنِ مَالِكٍ مَخْضُوبًا",
+    "english_translation": "Hammad said:\n'Abdullah ibn Muhammad ibn 'Uqail also informed us: \"I saw the hair of Allah’s Messenger (Allah bless him and give him peace) dyed in the presence of Anas ibn Malik.\"",
+    "russian_translation": "Хаммад сказал: «Абдулла ибн Мухаммад ибн Акиль сообщил нам: Я видел волосы Посланника Аллаха, да благословит его Аллах и приветствует, которые были окрашены, у Анаса ибн Малика»."
+  },
+  {
+    "db_id": 42310,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي كُحْلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related concerning the kohl of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о сурьме Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 56,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ حُمَيْدٍ الرَّازِيُّ، قَالَ‏:‏ حَدَّثَنَا أَبُو دَاوُدَ الطَّيَالِسِيُّ، عَنْ عَبَّادِ بْنِ مَنْصُورٍ، عَنْ عِكْرِمَةَ، عَنِ ابْنِ عَبَّاسٍ، أَنَّ النَّبِيَّ صلى الله عليه وسلم، قَالَ‏:‏ اكْتَحِلُوا بِالإِثْمِدِ، فَإِنَّهُ يَجْلُو الْبَصَرَ، وَيُنْبِتُ الشَّعْرَ وَزَعَمَ أَنَّ النَّبِيَّ صلى الله عليه وسلم، كَانَتْ لَهُ مُكْحُلَةٌ يَكْتَحِلُ مِنْهَا كُلَّ لَيْلَةٍ، ثَلاثَةً فِي هَذِهِ، وَثَلاثَةً فِي هَذِهِ‏.‏",
+    "english_translation": "Ibn 'Abbas reported that the Prophet said (Allah bless him and give him peace):\n\"Color the edges of the eyelids with antimony [ithmid], for it clears the vision and makes the eyelashes grow!\" He also maintained that the Prophet (Allah bless him and give him peace) had a kohl jar from which he used to apply kohl to his eyelashes every night, three times in this [eye],and three times in that.",
+    "russian_translation": "Ибн Аббас передал, что Пророк, да благословит его Аллах и приветствует, сказал: «Пользуйтесь сурьмой исмид, ибо она проясняет зрение и способствует росту волос». Также он утверждал, что у Пророка, да благословит его Аллах и приветствует, был сосуд для сурьмы, из которого он подводил глаза каждую ночь: три раза этим глазом и три раза — этим."
+  },
+  {
+    "db_id": 42311,
+    "book_number": 3,
+    "book_name": {
+      "ar": "باب ما جاء في كحل رسول الله صلى الله عليه وسلم",
+      "en": "Chapter: Regarding the Kohl of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава: О сурьме Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 65,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ الصَّبَّاحِ الْهَاشِمِيُّ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا عُبَيْدُ اللهِ بْنُ مُوسَى، قَالَ‏:‏ حَدَّثَنَا إِسْرَائِيلُ، عَنْ عَبَّادِ بْنِ مَنْصُورٍ ‏(‏ح‏)‏ وَحَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ حَدَّثَنَا يَزِيدُ بْنُ هَارُونَ، قَالَ‏:‏ حَدَّثَنَا عَبَّادُ بْنُ مَنْصُورٍ، عَنْ عِكْرِمَةَ، عَنِ ابْنِ عَبَّاسٍ، قَالَ‏:‏ كَانَّ رَسُولُ اللهِ صلى الله عليه وسلم يَكْتَحِلُ قَبْلَ أَنْ يَنَامَ بِالإِثْمِدِ، ثَلاثًا فِي كُلِّ عَيْنٍ، وَقَالَ يَزِيدُ بْنُ هَارُونَ، فِي حَدِيثِهِ‏:‏ إِنَّ النَّبِيَّ صلى الله عليه وسلم، كَانَتْ لَهُ مُكْحُلَةٌ يَكْتَحِلُ مِنْهَا عِنْدَ النَّوْمِ، ثَلاثًا فِي كُلِّ عَيْنٍ‏.‏",
+    "english_translation": "Ibn 'Abbas said:\n\"Allah’s Messenger (Allah bless him and give him peace) used to color the edges of his eyelids with antimony before going to sleep, three times in each eye. Yazid ibn Harun also said in his tradition: \"The Prophet (Allah bless him and give him peace) had a kohl jar from which he used to apply kohl to his eyelashes before going to sleep, three times in each eye.\"",
+    "russian_translation": "Ибн Аббас передал: «Посланник Аллаха, мир ему и благословение Аллаха, подводил сурьмой глаза перед сном, по три раза каждый глаз». Язид ибн Харун в своей версии хадиса также сказал: «У Пророка, мир ему и благословение Аллаха, была сурьмяница, из которой он подводил глаза перед сном, по три раза каждый глаз»."
+  },
+  {
+    "db_id": 42312,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Grooming of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о том, как Посланник Аллаха (да благословит его Аллах и приветствует) приводил в порядок свои волосы"
+    },
+    "hadith_number": 43,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ يَزِيدَ، عَنْ مُحَمَّدِ بْنِ إِسْحَاقَ، عَنْ مُحَمَّدِ بْنِ الْمُنْكَدِرِ، عَنْ جَابِرٍ هُوَ ابْنُ عَبْدِ اللهِ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ عَلَيْكُمْ بِالإِثْمِدِ عِنْدَ النَّوْمِ، فَإِنَّهُ يَجْلُو الْبَصَرَ، وَيُنْبِتُ الشَّعْرَ‏.‏",
+    "english_translation": "Jabir (i.e. Ibn Abdillah) said:\n\"Allah’s Messenger said (Allah bless him and give him peace): \"You must apply antimony before going to sleep, for it clears the vision and makes the eyelashes grow.\"",
+    "russian_translation": "Джабир ибн Абдаллах передал, что Посланник Аллаха (да благословит его Аллах и приветствует) сказал: «Пользуйтесь сурьмой перед сном, ибо она проясняет зрение и способствует росту волос»."
+  },
+  {
+    "db_id": 42313,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَاب مَا جَاءَ فِي تَرَجُّلِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter: What has been related regarding the Prophet's (peace be upon him) grooming",
+      "ru": "Глава о том, что передается относительно ухода за собой Пророка, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 43,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا بِشْرُ بْنُ الْمُفَضَّلِ، عَنْ عَبْدِ اللهِ بْنِ عُثْمَانَ بْنِ خُثَيْمٍ، عَنْ سَعِيدِ بْنِ جُبَيْرٍ، عَنِ ابْنِ عَبَّاسٍ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ إِنَّ خَيْرَ أَكْحَالِكُمُ الإِثْمِدُ، يَجْلُو الْبَصَرَ، وَيُنْبِتُ الشَّعْرَ‏.‏",
+    "english_translation": "Ibn \"Abbas said:\n\"Allah’s Messenger said (Allah bless him and give him peace): 'The best of your eye salves is antimony, for it clears the vision and makes the eyelashes grow.'\"",
+    "russian_translation": "Ибн Аббас передал, что Посланник Аллаха, да благословит его Аллах и приветствует, сказал: «Лучшей сурьмой для вас является исмид, ибо он проясняет зрение и способствует росту волос»"
+  },
+  {
+    "db_id": 42314,
+    "book_number": 4,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي كُحْلِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been said about the kohl of the Messenger of Allah, peace and blessings of Allah be upon him",
+      "ru": "Глава о сурьме Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 37,
+    "arabic": "حَدَّثَنَا إِبْرَاهِيمُ بْنُ الْمُسْتَمِرِّ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا أَبُو عَاصِمٍ، عَنْ عُثْمَانَ بْنِ عَبْدِ الْمَلِكِ، عَنْ سَالِمٍ، عَنِ ابْنِ عُمَرَ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ عَلَيْكُمْ بِالإِثْمِدِ، فَإِنَّهُ يَجْلُو الْبَصَرَ، وَيُنْبِتُ الشَّعْرَ‏.‏",
+    "english_translation": "Ibn 'Umar said:\n\"You must apply antimony, for it clears the vision and makes the eyelashes grow.\"",
+    "russian_translation": "Ибн Умар передал, что Посланник Аллаха, мир ему и благословение Аллаха, сказал: «Вам следует использовать сурьму, ибо она проясняет зрение и способствует росту волос»."
+  },
+  {
+    "db_id": 42315,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي قَمِيصِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related regarding the shirt of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о том, что передается о рубахе Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 1,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ حُمَيْدٍ الرَّازِيُّ، قَالَ‏:‏ حَدَّثَنَا الْفَضْلُ بْنُ مُوسَى، وَأَبُو تُمَيْلَةَ، وَزَيْدُ بْنُ حُبَابٍ، عَنْ عَبْدِ الْمُؤْمِنِ بْنِ خَالِدٍ، عَنْ عَبْدِ اللهِ بْنِ بُرَيْدَةَ، عَنْ أُمِّ سَلَمَةَ، قَالَتْ‏:‏ كَانَ أَحَبَّ الثِّيَابِ إِلَى رَسُولِ اللهِ صلى الله عليه وسلم الْقَمِيصُ‏.‏",
+    "english_translation": "Umm ul Mu'mineen Umm Salama said:\n\"The apparel dearest to Allah’s Messenger (Allah bless him and give him peace) was the shirt [qamis].\"",
+    "russian_translation": "Сообщается, что Умм Салама сказала: «Самой любимой одеждой для Посланника Аллаха (мир ему и благословение Аллаха) была рубаха (камис)»."
+  },
+  {
+    "db_id": 42316,
+    "book_number": 1,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي قَمِيصِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related concerning the shirt of the Messenger of Allah (peace and blessings of Allah be upon him)",
+      "ru": "Глава о том, что передается о рубахе Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 1,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ حَدَّثَنَا الْفَضْلُ بْنُ مُوسَى، عَنْ عَبْدِ الْمُؤْمِنِ بْنِ خَالِدٍ، عَنْ عَبْدِ اللهِ بْنِ بُرَيْدَةَ، عَنْ أُمِّ سَلَمَةَ، قَالَتْ‏:‏ كَانَ أَحَبَّ الثِّيَابِ إِلَى رَسُولِ اللهِ صلى الله عليه وسلم الْقَمِيصُ‏.‏",
+    "english_translation": "Umm Salama said:\n\"The apparel dearest to Allah’s Messenger (Allah bless him and give him peace) was the shirt.\"",
+    "russian_translation": "Сообщается, что Умм Саляма сказала: «Самой любимой одеждой для Посланника Аллаха, да благословит его Аллах и приветствует, была рубаха»."
+  },
+  {
+    "db_id": 42317,
+    "book_number": 1,
+    "book_name": {
+      "ar": "كتاب ما جاء في قميص رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Shirt of the Messenger of Allah",
+      "ru": "Глава о рубахе Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 1,
+    "arabic": "حَدَّثَنَا زِيَادُ بْنُ أَيُّوبَ الْبَغْدَادِيُّ، قَالَ‏:‏ حَدَّثَنَا أَبُو تُمَيْلَةَ، عَنْ عَبْدِ الْمُؤْمِنِ بْنِ خَالِدٍ، عَنْ عَبْدِ اللهِ بْنِ بُرَيْدَةَ، عَنْ أَمِّهِ، عَنْ أُمِّ سَلَمَةَ، قَالَتْ‏:‏ كَانَ أَحَبَّ الثِّيَابِ إِلَى رَسُولِ اللهِ صلى الله عليه وسلم يَلْبَسُهُ، الْقَمِيصُ‏.‏",
+    "english_translation": "Umm Salama said:\n\"The apparel dearest to Allah’s Messenger (Allah bless him and give him peace) was the shirt he used to wear.\"",
+    "russian_translation": "Сообщается от Умм Саламы, что она сказала: «Самой любимой одеждой, которую носил Посланник Аллаха, мир ему и благословение Аллаха, была рубаха»."
+  },
+  {
+    "db_id": 42318,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي قَمِيصِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Shirt of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о рубахе Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 3,
+    "arabic": "حَدَّثَنَا عَبْدُ اللهِ بْنُ مُحَمَّدِ بْنِ الْحَجَّاجِ، قَالَ‏:‏ حَدَّثَنَا مُعَاذُ بْنُ هِشَامٍ، قَالَ‏:‏ حَدَّثَنِي أَبِي، عَنْ بُدَيْلٍ يَعْنِي ابْنَ مَيْسَرَةَ الْعُقَيْلِيَّ، عَنْ شَهْرِ بْنِ حَوْشَبٍ، عَنْ أَسْمَاءَ بِنْتِ يَزِيدَ، قَالَتْ‏:‏ كَانَ كُمُّ قَمِيصِ رَسُولِ اللهِ صلى الله عليه وسلم إِلَى الرُّسْغِ‏.‏",
+    "english_translation": "Asma bint Yazid said:\n\"The sleeve of the shirt of Allah’s Messenger (Allah bless him and give him peace) extended to the wrist.\"",
+    "russian_translation": "Асма бинт Язид передала: «Рукав рубахи Посланника Аллаха, мир ему и благословение Аллаха, доходил до запястья»."
+  },
+  {
+    "db_id": 42319,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في خاتم رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Seal of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о печати Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 154,
+    "arabic": "حَدَّثَنَا أَبُو عَمَّارٍ الْحُسَيْنُ بْنُ حُرَيْثٍ، قَالَ‏:‏ حَدَّثَنَا أَبُو نُعَيْمٍ، قَالَ‏:‏ حَدَّثَنَا زُهَيْرٌ، عَنْ عُرْوَةَ بْنِ عَبْدِ اللهِ بْنِ قُشَيْرٍ، عَنْ مُعَاوِيَةَ بْنِ قُرَّةَ، عَنْ أَبِيهِ، قَالَ‏:‏ أَتَيْتُ رَسُولَ اللهِ صلى الله عليه وسلم فِي رَهْطٍ مِنْ مُزَيْنَةَ لِنُبَايِعَهُ، وَإِنَّ قَمِيصَهُ لَمُطْلَقٌ، أَوْ قَالَ‏:‏ زِرُّ قَمِيصِهِ مُطْلَقٌ قَالَ‏:‏ فَأَدْخَلْتُ يَدِي فِي جَيْبِ قَمِيصِهِ، فَمَسَسْتُ الْخَاتَمَ‏.‏",
+    "english_translation": "Mu'awiya ibn Qurra reported that his father said:\n\"I came to Allah’s Messenger (Allah bless him and give him peace) in a group of fewer than ten men from the Muzaina tribe, so that we might pay homage to him, and his shirt was set loose (or: \"the button of his shirt was set loose\"), so I inserted my hand in the breast of his shirt and I touched the Seal.\"",
+    "russian_translation": "Муавия ибн Курра передал со слов своего отца: «Я пришел к Посланнику Аллаха, да благословит его Аллах и приветствует, с группой людей из племени Музайна, чтобы присягнуть ему на верность. Его рубаха была расстегнута — или он сказал: „Пугица его рубахи была расстегнута“ — и я просунул руку в вырез его рубахи и коснулся Печати»"
+  }
+]

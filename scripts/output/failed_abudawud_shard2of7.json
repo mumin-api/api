@@ -1,0 +1,9 @@
+[
+  {
+    "db_id": 1707,
+    "error": "Unexpected non-whitespace character after JSON at position 468 (line 11 column 1)",
+    "raw_response": "{\n  \"book_number\": 2,\n  \"book_name\": {\n    \"ar\": \"كتاب الصلاة\",\n    \"en\": \"The Book of Prayer (Kitab Al-Salat)\",\n    \"ru\": \"Книга молитвы\"\n  },\n  \"hadith_number\": 1512,\n  \"russian_translation\": \"Сообщается со слов Аиши, да будет доволен ею Аллах, что когда пророк, да благословит его Аллах и приветствует, завершал молитву словами приветствия (таслим), он говорил: «О Аллах, Ты — Ас-Салям (Мирный), и от Тебя — мир. Благословен Ты, о Обладатель величия и щедрости»\"\n}\n``",
+    "model": "gemini-3.1-flash-lite-preview",
+    "timestamp": "2026-03-24T09:18:18.817Z"
+  }
+]

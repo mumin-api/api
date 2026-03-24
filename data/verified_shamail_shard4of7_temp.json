@@ -1,0 +1,743 @@
+[
+  {
+    "db_id": 42494,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَمَثُّلِ النَّبِيِّ صلى الله عليه وسلم بِالشِّعْرِ",
+      "en": "Chapter: What has been related regarding the Prophet (ﷺ) quoting poetry",
+      "ru": "Глава о том, что передается о чтении Пророком (мир ему и благословение Аллаха) стихов"
+    },
+    "hadith_number": 232,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ حَدَّثَنَا شَرِيكٌ، عَنِ الْمِقْدَامِ بْنِ شُرَيْحٍ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ قِيلَ لَهَا‏:‏ هَلْ كَانَ النَّبِيُّ صلى الله عليه وسلم، يَتَمَثَّلُ بِشَيْءٍ مِنَ الشِّعْرِ‏؟‏ قَالَتْ‏:‏ كَانَ يَتَمَثَّلُ بِشِعْرِ ابْنِ رَوَاحَةَ، وَيَتَمَثَّلُ بِقَوْلِهِ‏:‏ يَأْتِيكَ بِالأَخْبَارِ مَنْ لَمْ تُزَوَّدِ‏.‏",
+    "english_translation": "'A’isha (may Allah be well pleased with her) said that she was asked:\n\"Was Allah’s Messenger (Allah bless him and give him peace) used to imitating any form of poetry?\" She said: \"He used to imitate the poetry of Ibn Rawaha, and he would imitate his saying: \"You will be brought the news by someone whom you have not furnished with travel provisions.\"",
+    "russian_translation": "Сообщается, что Аишу спросили: «Бывало ли так, что Пророк, да благословит его Аллах и приветствует, приводил стихи?» Она ответила: «Он цитировал стихи Ибн Равахи и приводил его слова: \"Принесет тебе вести тот, кого ты не снабдил в дорогу\"»."
+  },
+  {
+    "db_id": 42495,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي شِعْرِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Poetry of the Messenger of Allah",
+      "ru": "Глава о том, что передается о поэзии Посланника Аллаха"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ الثَّوْرِيُّ، عَنْ عَبْدِ الْمَلِكِ بْنِ عُمَيْرٍ، قَالَ‏:‏ حَدَّثَنَا أَبُو سَلَمَةَ، عَنْ أَبِي هُرَيْرَةَ، قَالَ‏:‏ قَالَ رَسُولُ اللهِ صلى الله عليه وسلم‏:‏ إِنَّ أَصْدَقَ كَلِمَةٍ قَالَهَا الشَّاعِرُ، كَلِمَةُ لَبِيدٍ‏:‏ أَلا كُلُّ شَيْءٍ مَا خَلا اللَّهَ بَاطِلٌ، وَكَادَ أُمَيَّةُ بْنُ أَبِي الصَّلْتِ أَنْ يُسْلِمَ‏.‏",
+    "english_translation": "Abu Huraira said (may Allah be well pleased with him):\n\"Allah’s Messenger said (Allah bless him and give him peace): ‘The most truthful saying spoken by a poet is the saying of Labid: Everything but Allah is surely futile,’ and [the poet] Umayya ibn Abi’s-Salt almost embraced Islam.’\"",
+    "russian_translation": "Посланник Аллаха (да благословит его Аллах и приветствует) сказал: «Самые правдивые слова, сказанные поэтом — это слова Лабида: „Знайте, что всё, кроме Аллаха — суета“, и Умайя ибн Абу ас-Сальт был близок к тому, чтобы принять ислам»."
+  },
+  {
+    "db_id": 42496,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في تواضع رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Humility of the Messenger of Allah (pbuh)",
+      "ru": "Глава о смирении Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 234,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنِ الأَسْوَدِ بْنِ قَيْسٍ، عَنْ جُنْدُبِ بْنِ سُفْيَانَ الْبَجَلِيِّ، قَالَ‏:‏ أَصَابَ حَجَرٌ أُصْبُعَ رَسُولِ اللهِ صلى الله عليه وسلم فَدَمِيَتْ، فَقَالَ‏:‏ هَلْ أَنْتِ إِلا أُصْبُعٌ دَمِيتِ وَفِي سَبِيلِ اللهِ مَا لَقِيتِ‏.‏ حَدَّثَنَا ابْنُ أَبِي عُمَرَ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ بْنُ عُيَيْنَةَ، عَنِ الأَسْوَدِ بْنِ قَيْسٍ، عَنْ جُنْدُبِ بْنِ عَبْدِ اللهِ الْبَجَلِيِّ، نَحْوَهُ‏.‏‏",
+    "english_translation": "Jundub ibn Sufyan al-Bajali said:\n\"A stone hit the finger of Allah’s Messenger (Allah bless him and give him peace), causing it to bleed, so he said [in poetic verse]: 'Are you nothing but a finger that has bled without having suffered in Allah’s cause?'\"",
+    "russian_translation": "Джундуб ибн Суфьян аль-Баджали передал: «Камень поразил палец Посланника Аллаха, мир ему и благословение Аллаха, и он начал кровоточить. Тогда Пророк сказал: „Ведь ты всего лишь палец, что истек кровью, но ведь это случилось на пути Аллаха“»."
+  },
+  {
+    "db_id": 42497,
+    "book_number": 32,
+    "book_name": {
+      "ar": "كتاب في شجاعة رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Bravery of the Messenger of Allah",
+      "ru": "Глава о храбрости Посланника Аллаха"
+    },
+    "hadith_number": 332,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا يَحْيَى بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ الثَّوْرِيُّ، قَالَ‏:‏ أَنْبَأَنَا أَبُو إِسْحَاقَ، عَنِ الْبَرَاءِ بْنِ عَازِبٍ، قَالَ‏:‏ قَالَ لَهُ رَجُلٌ‏:‏ أَفَرَرْتُمْ عَنْ رَسُولِ اللهِ صلى الله عليه وسلم يَا أَبَا عُمَارَةَ‏؟‏ فَقَالَ‏:‏ لا وَاللَّهِ مَا وَلَّى رَسُولُ اللهِ صلى الله عليه وسلم، وَلَكِنْ وَلَّى سَرَعَانُ النَّاسِ، تَلَقَّتْهُمْ هَوَازِنُ بِالنَّبْلِ، وَرَسُولُ اللهِ صلى الله عليه وسلم، عَلَى بَغْلَتِهِ، وَأَبُو سُفْيَانَ بْنُ الْحَارِثِ بْنِ عَبْدِ الْمُطَّلِبِ آخِذٌ بِلِجَامِهَا، وَرَسُولُ اللهِ يَقُولُ‏:‏ أَنَا النَّبِيُّ لا كَذِبْ أَنَا ابْنُ عَبْدِ الْمُطَّلِبْ‏.‏",
+    "english_translation": "Al-Bara’ ibn 'Azib reported that:\nA man said to him: \"Did you all flee from Allah’s Messenger (Allah bless him and give him peace), O Abu 'Umara?\" He replied: \"No, by Allah! Allah’s Messenger (Allah bless him and give him peace) did not retreat, but those who were hasty retreated, being assailed by the arrows of the Hawazin. Allah’s Messenger (Allah bless him and give him peace) was mounted on his female mule, while Abu Sufyan ibn al-Harith ibn 'Abd al-Muttalib was holding its bridle, and Allah’s Messenger (Allah bless him and give him peace) was saying [in poetic verse]: 'I am the Prophet, no lie! I am the son of 'Abd al-Muttalib!'\"",
+    "russian_translation": "Аль-Бара ибн Азиб рассказывал: «Один человек спросил его: “О Абу ‘Умара, неужели вы обратились в бегство от Посланника Аллаха (да благословит его Аллах и приветствует)?” Он ответил: “Нет, клянусь Аллахом! Посланник Аллаха (да благословит его Аллах и приветствует) не отступил, но побежали поспешные люди, когда племя хавазин встретило их градом стрел. Посланник Аллаха (да благословит его Аллах и приветствует) был верхом на своей муле, а Абу Суфьян ибн аль-Харис ибн ‘Абд аль-Мутталиб держал её за узду. Посланник Аллаха (да благословит его Аллах и приветствует) повторял: “Я — Пророк, и в этом нет лжи! Я — сын ‘Абд аль-Мутталиба!”»"
+  },
+  {
+    "db_id": 42498,
+    "book_number": 33,
+    "book_name": {
+      "ar": "باب ما جاء في شعر رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Poetry of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о стихах Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا إِسْحَاقُ بْنُ مَنْصُورٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّزَّاقِ، قَالَ‏:‏ حَدَّثَنَا جَعْفَرُ بْنُ سُلَيْمَانَ، قَالَ‏:‏ حَدَّثَنَا ثَابِتٌ، عَنْ أَنَسٍ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم دَخَلَ مَكَّةَ فِي عُمْرَةِ الْقَضَاءِ، وَابْنُ رَوَاحَةَ يَمْشِي بَيْنَ يَدَيْهِ، وَهُوَ يَقُولُ‏:‏ خَلُّوا بَنِي الْكُفَّارِ عَنْ سَبِيلِهِ الْيَوْمَ نَضْرِبُكُمْ عَلَى تَنْزِيلِهِ ضَرْبًا يُزِيلُ الْهَامَ عَنْ مَقِيلِهِ وَيُذْهِلُ الْخَلِيلَ عَنْ خَلِيلِهِ فَقَالَ لَهُ عُمَرُ‏:‏ يَا ابْنَ رَوَاحَةَ، بَيْنَ يَدِي رَسُولِ اللهِ صلى الله عليه وسلم، وَفِي حَرَمِ اللهِ تَقُولُ الشِّعْرَ، فَقَالَ صلى الله عليه وسلم‏:‏ خَلِّ عَنْهُ يَا عُمَرُ، فَلَهِيَ أَسْرَعُ فِيهِمْ، مِنْ نَضْحِ النَّبْلِ‏.‏",
+    "english_translation": "Anas said:\n\"The Prophet (Allah bless him and give him peace) entered Mecca during the Visitation of Fulfillment ['Umrat al- Qada'], and Ibn Rawaha walked in front of him, saying [in poetic verse]: \"Clear away from his path, O sons of the unbelievers! Today we shall prevent you from bringing it to a halt, with a blow that removes the owls from its way station, and distracts the bosom friend from his bosom friend!\" 'Umar then said: \"O Ibn Rawaha, you dare to utter poetry before Allah’s Messenger (Allah bless him and give him peace) and in Allah’s Sanctuary!\" But he said (Allah bless him and give him peace): \"Leave him alone, O 'Umar, for it will strike them down more quickly than a shower of arrows!’\"",
+    "russian_translation": "Анас рассказывал, что Пророк (мир ему и благословение Аллаха) вошел в Мекку во время «Умрат аль-Када» (возместительного паломничества), а Ибн Раваха шел перед ним и декламировал стихи: «О сыны неверных, освободите путь ему! Сегодня мы сразим вас за ниспослание его, ударом, что сбивает головы с их мест и заставляет лучшего друга забыть о своем друге». Тогда Умар сказал ему: «О Ибн Раваха, неужели ты читаешь стихи перед Посланником Аллаха (мир ему и благословение Аллаха) и в запретной святыне Аллаха?» Но Пророк (мир ему и благословение Аллаха) сказал: «Оставь его, о Умар! Воистину, эти слова ранят их быстрее, чем град стрел»."
+  },
+  {
+    "db_id": 42499,
+    "book_number": 34,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي كَلامِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Speech of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается о речи Посланника Аллаха ﷺ"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ حَدَّثَنَا شَرِيكٌ، عَنْ سِمَاكِ بْنِ حَرْبٍ، عَنْ جَابِرِ بْنِ سَمُرَةَ، قَالَ‏:‏ جَالَسْتُ النَّبِيَّ صلى الله عليه وسلم، أَكْثَرَ مِنْ مِائَةِ مَرَّةٍ، وَكَانَ أَصْحَابُهُ يَتَنَاشَدُونَ الشِّعْرَ، وَيَتَذَاكَرُونَ أَشْيَاءَ مِنْ أَمْرِ الْجَاهِلِيَّةِ، وَهُوَ سَاكِتٌ وَرُبَّمَا تَبَسَّمَ مَعَهُمْ‏.‏",
+    "english_translation": "Jabir ibn Samura said:\n‘I sat with the Prophet (Allah bless him and give him peace) more than one hundred times, and his Companions used to recite poetry to one another. They would also reminisce over things relating to the pagan era [al-jahiliyya], while he was silent and sometimes even smiled with them.’\"",
+    "russian_translation": "Джабир ибн Самура рассказывал: «Я сидел с Пророком ﷺ более ста раз. Его сподвижники читали друг другу стихи и вспоминали события времен невежества (джахилийи), а он хранил молчание и порой лишь улыбался вместе с ними»."
+  },
+  {
+    "db_id": 42500,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في شعر رسول الله صلى الله عليه وسلم",
+      "en": "Chapter: What has been related regarding the poetry of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о том, что передается о поэзии Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 233,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ حَدَّثَنَا شَرِيكٌ، عَنْ عَبْدِ الْمَلِكِ بْنِ عُمَيْرٍ، عَنْ أَبِي سَلَمَةَ، عَنْ أَبِي هُرَيْرَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم، قَالَ‏:‏ أَشْعَرُ كَلِمَةٍ تَكَلَّمَتْ بِهَا الْعَرَبُ كَلِمَةُ لَبِيدٍ‏:‏ أَلا كُلُّ شَيْءٍ مَا خَلا اللَّهَ بَاطِلٌ‏.‏",
+    "english_translation": "Abu Huraira said:\n\"As the Prophet said (Allah bless him and give him peace):‘The most poetic saying spoken by the Arabs is the saying of Labid: \"Everything but Allah is surely futile!'\"",
+    "russian_translation": "Самое правдивое слово, сказанное арабами — это слова Лабида: «Знайте же, что всё, кроме Аллаха — тщетно»."
+  },
+  {
+    "db_id": 42501,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي شِعْرِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Poetry of the Prophet (Allah bless him and give him peace)",
+      "ru": "Глава о поэзии, которую слушал Посланник Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 232,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا مَرْوَانُ بْنُ مُعَاوِيَةَ، عَنْ عَبْدِ اللهِ بْنِ عَبْدِ الرَّحْمَنِ الطَّائِفِيِّ، عَنْ عَمْرِو بْنِ الشَّرِيدِ، عَنْ أَبِيهِ، قَالَ‏:‏ كُنْتُ رِدْفَ النَّبِيِّ صلى الله عليه وسلم، فَأَنْشَدْتُهُ مِائَةَ قَافِيَةٍ مِنْ قَوْلِ أُمَيَّةَ بْنِ أَبِي الصَّلْتِ الثَّقَفِيِّ، كُلَّمَا أَنْشَدْتُهُ بَيْتًا، قَالَ لِيَ النَّبِيُّ صلى الله عليه وسلم‏:‏ هِيهْ حَتَّى أَنْشَدْتُهُ مِائَةً يَعْنِي بَيْتًا، فَقَالَ النَّبِيُّ صلى الله عليه وسلم‏:‏ إِنْ كَادَ لَيُسْلِمُ‏.‏",
+    "english_translation": "'Amr ibn ash-Sharid reported that his father said:\n\"As I rode behind the Prophet (Allah bless him and give him peace), I recited to him a hundred poetic verses, composed by Umayya ibn Abi’s-Salt. Whenever I recited a verse to him, the Prophet (Allah bless him and give him peace) said to me: \"Recite more!\" until I had recited a hundred, meaning verses,to him.\"’ The Prophet (Allah bless him and give him peace) therefore said: 'He was surely near to embracing Islam!'\"",
+    "russian_translation": "Амр ибн аш-Шарид передал со слов своего отца: «Я ехал верхом позади Пророка, да благословит его Аллах и приветствует, и прочел ему сто стихотворных строк Умайи ибн Аби-с-Сальта ас-Сакафи. Всякий раз, когда я читал ему стих, Пророк, да благословит его Аллах и приветствует, говорил мне: “Продолжай!” — пока я не прочел сто строк. Затем Пророк, да благословит его Аллах и приветствует, сказал: “Он был близок к тому, чтобы принять ислам”»."
+  },
+  {
+    "db_id": 42502,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في شعر رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on what has been said regarding the poetry of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается относительно поэзии Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا إِسْمَاعِيلُ بْنُ مُوسَى الْفَزَارِيُّ، وَعَلِيُّ بْنُ حُجْرٍ، وَالْمَعْنَى وَاحِدٌ، قَالا‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ أَبِي الزِّنَادِ، عَنْ هِشَامِ بْنِ عُرْوَةَ، عَنْ أَبِيهِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم يَضَعُ لِحَسَّانَ بْنِ ثَابِتٍ مِنْبَرًا فِي الْمَسْجِدِ يَقُومُ عَلَيْهِ قَائِمًا يُفَاخِرُ عَنْ رَسُولِ اللهِ صلى الله عليه وسلم أَوْ قَالَ‏:‏ يُنَافِحُ عَنْ رَسُولِ اللهِ صلى الله عليه وسلم وَيَقُولُ صلى الله عليه وسلم‏:‏ إِنَّ اللَّهَ يُؤَيِّدُ حَسَّانَ بِرُوحِ الْقُدُسِ، مَا يُنَافِحُ أَوْ يُفَاخِرُ عَنْ رَسُولِ اللهِ صلى الله عليه وسلم‏.‏ حَدَّثَنَا إِسْمَاعِيلُ بْنُ مُوسَى، وَعَلِيُّ بْنُ حُجْرٍ، قَالا‏:‏ حَدَّثَنَا ابْنُ أَبِي الزِّنَادِ، عَنْ أَبِيهِ، عَنْ عُرْوَةَ، عَنْ عَائِشَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم، مِثْلَهُ‏.",
+    "english_translation": "'A’isha said:\n\"Allah’s Messenger (Allah bless him and give him peace) used to set up a pulpit in the mosque for Hassan ibn Thabit. He would stand upright upon it, paying tribute to Allah’s Messenger (Allah bless him and give him peace)’ or: ‘defending Allah’s Messenger (Allah bless him and give him peace).’ He would say (Allah bless him and give him peace): \"Allah (Exalted is He) supports Hassan with the Spirit of Holiness, when he defends or pays tribute to Allah’s Messenger (Allah bless him and give him peace)!'\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Посланник Аллаха (мир ему и благословение Аллаха) устанавливал для Хассана ибн Сабита минбар в мечети, на который тот вставал, чтобы воздавать хвалу Посланнику Аллаха (мир ему и благословение Аллаха)» — или же она сказала: «...защищать Посланника Аллаха (мир ему и благословение Аллаха)». И Пророк (мир ему и благословение Аллаха) говорил: «Поистине, Аллах поддерживает Хассана Духом Святым, когда он защищает Посланника Аллаха или воздает ему хвалу»."
+  },
+  {
+    "db_id": 42503,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي حَدِيثِ خُرَافَةَ",
+      "en": "Chapter: What has been narrated regarding the tale of Khurafa",
+      "ru": "Глава о рассказах Хурафы"
+    },
+    "hadith_number": 323,
+    "arabic": "حَدَّثَنَا الْحَسَنُ بْنُ صَبَّاحٍ الْبَزَّارُ، قَالَ‏:‏ حَدَّثَنَا أَبُو النَّضْرِ، قَالَ‏:‏ حَدَّثَنَا أَبُو عَقِيلٍ الثَّقَفِيُّ عَبْدُ اللهِ بْنُ عَقِيلٍ، عَنْ مُجَالِدٍ، عَنِ الشَّعْبِيِّ، عَنْ مَسْرُوقٍ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ حَدَّثَ رَسُولُ اللهِ صلى الله عليه وسلم، ذَاتَ لَيْلَةٍ نِسَاءَهُ حَدِيثًا، فَقَالَتِ امْرَأَةٌ مِنْهُنَّ‏:‏ كَأَنَّ الْحَدِيثَ حَدِيثُ خُرَافَةَ، فَقَالَ‏:‏ أَتَدْرُونَ مَا خُرَافَةُ‏؟‏ إِنَّ خُرَافَةَ كَانَ رَجُلا مِنْ عُذْرَةَ، أَسَرَتْهُ الْجِنُّ فِي الْجَاهِلِيَّةِ، فَمَكَثَ فِيهِمْ دَهْرًا، ثُمَّ رَدُّوهُ إِلَى الإِنْسِ، فَكَانَ يُحَدِّثُ النَّاسَ بِمَا رَأَى فِيهِمْ مِنَ الأَعَاجِيبِ، فَقَالَ النَّاسُ‏:‏ حَدِيثُ خُرَافَةَ‏.‏",
+    "english_translation": "'Ai'sha said:\n\"Allah’s Messenger (Allah bless him and give him peace) told his wives a story one night, and one of them said: \"It sounds like a fable of Khurafa!\" He said: \"Do you know what that means? Khurafa was a man from [the Yemenite tribe of] 'Udhra. The jinn captured him in the pagan era [al-jahiliyya], so he stayed with them for a long time, then they returned him to his people. He used to tell the people about the marvels that he saw among them, so the people said: ‘The fable of Khurafa.'\"",
+    "russian_translation": "Сообщается, что Аиша сказала: «Однажды ночью Посланник Аллаха ﷺ рассказывал своим женам историю, и одна из них сказала: „Это похоже на сказки Хурафы“. Он спросил: „Знаете ли вы, кто такой Хурафа? Хурафа был мужчиной из племени Узра. В эпоху джахилии его похитили джинны, и он пробыл у них долгое время, а затем они вернули его людям. Он же рассказывал людям о тех чудесах, что видел среди джиннов, и с тех пор люди говорят: «Сказки Хурафы“». (Шималь аль-Мухаммадия, 323)"
+  },
+  {
+    "db_id": 42505,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي دُعَاءِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ عِنْدَ النَّوْمِ",
+      "en": "Chapter on the Supplication of the Messenger of Allah (ﷺ) at Sleep",
+      "ru": "Глава о том, что пришло относительно мольбы Посланника Аллаха (ﷺ) перед сном"
+    },
+    "hadith_number": 242,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، قَالَ‏:‏ حَدَّثَنَا إِسْرَائِيلُ، عَنْ أَبِي إِسْحَاقَ، عَنْ عَبْدِ اللهِ بْنِ يَزِيدَ، عَنِ الْبَرَاءِ بْنِ عَازِبٍ، أَنَّ النَّبِيَّ صلى الله عليه وسلم، كَانَ إِذَا أَخَذَ مَضْجَعَهُ وَضَعَ كَفَّهُ الْيُمْنَى تَحْتَ خَدِّهِ الأَيْمَنِ، وَقَالَ‏:‏ رَبِّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ‏.‏ حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ، قَالَ‏:‏ حَدَّثَنَا إِسْرَائِيلُ، عَنْ أَبِي إِسْحَاقَ، عَنْ أَبِي عُبَيْدَةَ، عَنْ عَبْدِ اللهِ، مِثْلَهُ وَقَالَ‏:‏ يَوْمَ تَجْمَعُ عِبَادَكَ‏.‏",
+    "english_translation": "Al-Bara’ ibn 'Azib said:\n\"When the Prophet (Allah bless him and give him peace) lay down to sleep, he placed the palm of his right hand under his right cheek and said: ‘O my Lord, preserve me from Your torment on the day when You resurrect Your servants!'\"",
+    "russian_translation": "Аль-Бара ибн Азиб передал, что когда Пророк (да благословит его Аллах и приветствует) ложился спать, он клал правую ладонь под правую щеку и говорил: «Господи, защити меня от Твоего наказания в тот день, когда Ты воскресишь Своих рабов!»"
+  },
+  {
+    "db_id": 42506,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا يَقُولُ إِذَا أَوَى إِلَى فِرَاشِهِ",
+      "en": "Chapter: What he would say when he went to his bed",
+      "ru": "Глава о том, что говорил Пророк, когда ложился в постель"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّزَّاقِ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، عَنْ عَبْدِ الْمَلِكِ بْنِ عُمَيْرٍ، عَنْ رِبْعِيِّ بْنِ حِرَاشٍ، عَنْ حُذَيْفَةَ، قَالَ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم إِذَا أَوَى إِلَى فِرَاشِهِ، قَالَ‏:‏ اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا، وَإِذَا اسْتَيْقَظَ، قَالَ‏:‏ الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانًا بَعْدَمَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ‏.‏",
+    "english_translation": "Hudhaifa said:\n\"When the Prophet (Allah bless him and give him peace) went to his mattress, he would say: ‘O Allah, in Your Name I shall die and live,’ and when he woke up, he would say: ‘Praise be to Allah, who has revived us after He caused us to die, and to Him is the resurrection!'\"",
+    "russian_translation": "Хузайфа рассказывал: «Когда Пророк, да благословит его Аллах и приветствует, ложился в свою постель, он говорил: О Аллах, с именем Твоим я умру и оживу. А когда он просыпался, он говорил: Хвала Аллаху, который оживил нас после того, как умертвил нас, и к Нему предстоит воскрешение»"
+  },
+  {
+    "db_id": 42507,
+    "book_number": 38,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي دُعَاءِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ عِنْدَ مَنَامِهِ",
+      "en": "Chapter on what has been related about the supplication of the Messenger of Allah (may Allah bless him and grant him peace) when he went to sleep",
+      "ru": "Глава о том, что передается о мольбе Посланника Аллаха, да благословит его Аллах и приветствует, перед сном"
+    },
+    "hadith_number": 339,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا الْمُفَضَّلُ بْنُ فَضَالَةَ، عَنْ عُقَيْلٍ، أُرَاهُ عَنِ الزُّهْرِيِّ، عَنْ عُرْوَةَ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، إِذَا أَوَى إِلَى فِرَاشِهِ كُلَّ لَيْلَةٍ جَمَعَ كَفَّيْهِ فَنَفَثَ فِيهِمَا، وَقَرَأَ فِيهِمَا‏:‏ قُلْ هُوَ اللَّهُ أَحَدٌ وَ قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ وَ قُلْ أَعُوذُ بِرَبِّ النَّاسِ، ثُمَّ مَسَحَ بِهِمَا مَا اسْتَطَاعَ مِنْ جَسَدِهِ، يَبْدَأُ بِهِمَا رَأْسَهُ وَوَجْهَهُ وَمَا أَقْبَلَ مِنْ جَسَدِهِ، يَصْنَعُ ذَلِكَ ثَلاثَ مَرَّاتٍ‏.‏",
+    "english_translation": "'A’isha said:\n\"When Allah’s Messenger (Allah bless him and give him peace) went to his mattress each night, he joined the palms of his hands, then breathed into them and recited into them: \"Say: ‘He is Allah, One [qul Huwa'llahu Ahad]!' (Al-Qur'an;112:1), and: \"Say: ‘I take refuge with the Lord of the Daybreak [qul a'udhu bi-Rabbil-falaq]!' (Al-Qur'an;113:1), and: \"Say: ‘I take refuge with the Lord of humankind [qul a'udhu bi-Rabbi’n-nas]!' (Al-Qur'an;114:1), Then he passed them over as much of his body as he could, beginning with his head and his face and the front of his body, doing that three times.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Каждую ночь, когда Посланник Аллаха, да благословит его Аллах и приветствует, ложился в свою постель, он соединял ладони, слегка дул на них и читал в них суры «Скажи: Он — Аллах Единый», «Скажи: Прибегаю к защите Господа рассвета» и «Скажи: Прибегаю к защите Господа людей». Затем он проводил ладонями по всему телу, до которого мог дотянуться, начиная с головы, лица и передней части туловища. Он проделывал это трижды»."
+  },
+  {
+    "db_id": 42508,
+    "book_number": 8,
+    "book_name": {
+      "ar": "باب ما جاء في نوم رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Sleep of the Messenger of Allah (pbuh)",
+      "ru": "Глава о сне Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 113,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ، عَنْ سَلَمَةَ بْنِ كُهَيلٍ، عَنْ كُرَيْبٍ، عَنِ ابْنِ عَبَّاسٍ‏:‏ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، نَامَ حَتَّى نَفَخَ، وَكَانَ إِذَا نَامَ نَفَخَ، فَأَتَاهُ بِلالٌ فَآذَنَهُ بِالصَّلاةِ، فَقَامَ وَصَلَّى وَلَمْ يَتَوَضَّأْ وَفِي الْحَدِيثِ قِصَّةٌ‏.‏",
+    "english_translation": "Ibn 'Abbas said:\n\"Allah’s Messenger (Allah bless him and give him peace) slept until he gasped for breath, and he had gasped for breath while he was sleeping, so Bilal came to him and called him to the ritual prayer, whereupon he got up and performed the ritual prayer, and he did not perform the minor ritual ablution. And there is a story behind this tradition.\"",
+    "russian_translation": "Ибн Аббас передал: «Посланник Аллаха, мир ему и благословение Аллаха, спал так крепко, что было слышно его дыхание, а он всегда издавал звуки, когда спал. Затем пришел Билял и возвестил его о молитве, и он встал и совершил молитву, не совершив омовения». В этом хадисе содержится и иная история."
+  },
+  {
+    "db_id": 42509,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا يَقُولُ الرَّجُلُ إِذَا أَوَى إِلَى فِرَاشِهِ",
+      "en": "Chapter: What a person says when they go to their bed",
+      "ru": "Глава о том, что следует говорить, ложась в постель"
+    },
+    "hadith_number": 236,
+    "arabic": "حَدَّثَنَا إِسْحَاقُ بْنُ مَنْصُورٍ، قَالَ‏:‏ حَدَّثَنَا عَفَّانُ، قَالَ‏:‏ حَدَّثَنَا حَمَّادُ بْنُ سَلَمَةَ، عَنْ ثَابِتٍ، عَنْ أَنَسِ بْنِ مَالِكٍ، أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، كَانَ إِذَا أَوَى إِلَى فِرَاشِهِ، قَالَ‏:‏ الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَكَفَانَا وَآوَانَا، فَكَمْ مِمَّنْ لا كَافِيَ لَهُ وَلا مُؤْوِي‏.‏",
+    "english_translation": "Anas ibn Malik said:\n\"When Allah’s Messenger (Allah bless him and give him peace) went to his mattress, he would say: ‘Praise be to Allah, who has fed us and quenched our thirst, and has sufficed us and sheltered us, for how many there are without a provider of sufficiency and without a provider of shelter!'\"",
+    "russian_translation": "Анас ибн Малик передал, что когда Посланник Аллаха, да благословит его Аллах и приветствует, ложился в свою постель, он говорил: «Хвала Аллаху, Который накормил нас, напоил нас, избавил нас от нужды и предоставил нам кров, ведь сколь много тех, у кого нет ни кормильца, ни того, кто предоставил бы им кров»."
+  },
+  {
+    "db_id": 42510,
+    "book_number": 31,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي نَوْمِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Sleep of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о том, как спал Посланник Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 234,
+    "arabic": "حَدَّثَنَا الْحُسَيْنُ بْنُ مُحَمَّدٍ الْجُرَيْرِيُّ، قَالَ‏:‏ حَدَّثَنَا سُلَيْمَانُ بْنُ حَرْبٍ، قَالَ‏:‏ حَدَّثَنَا حَمَّادُ بْنُ سَلَمَةَ، عَنْ حُمَيْدٍ، عَنْ بَكْرِ بْنِ عَبْدِ اللهِ الْمُزَنِيِّ، عَنْ عَبْدِ اللهِ بْنِ رَبَاحٍ، عَنْ أَبِي قَتَادَةَ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم، كَانَ إِذَا عَرَّسَ بِلَيْلٍ اضْطَجَعَ عَلَى شِقِّهِ الأَيْمَنِ، وَإِذَا عَرَّسَ قُبَيْلَ الصُّبْحِ نَصَبَ ذِرَاعَهُ، وَوَضَعَ رَأْسَهُ عَلَى كَفِّهِ‏.‏",
+    "english_translation": "Abu Qatada said:\n\"When the Prophet (Allah bless him and give him peace) alighted for rest at night, he would recline on his right side, and when he alighted for rest shortly before the morning, he would raise his forearm and place his head on the palm of his hand.\"",
+    "russian_translation": "Абу Катада передал: «Когда Пророк, да благословит его Аллах и приветствует, останавливался на ночлег, он ложился на правый бок, а если останавливался на отдых перед самым рассветом, то приподнимал предплечье и клал голову на ладонь»."
+  },
+  {
+    "db_id": 42511,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في عبادة رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Worship of the Messenger of Allah (pbuh)",
+      "ru": "Глава о поклонении Посланника Аллаха (мир ему и благословение)"
+    },
+    "hadith_number": 234,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، وَبِشْرُ بْنُ مُعَاذٍ، قَالا‏:‏ حَدَّثَنَا أَبُو عَوَانَةَ، عَنْ زِيَادِ بْنِ عِلاقَةَ، عَنِ الْمُغِيرَةِ بْنِ شُعْبَةَ، قَالَ‏:‏ صَلَّى رَسُولُ اللهِ صلى الله عليه وسلم، حَتَّى انْتَفَخَتْ قَدَمَاهُ، فَقِيلَ لَهُ‏:‏ أَتَتَكَلَّفُ هَذَا، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ‏؟‏ قَالَ‏:‏ أَفَلا أَكُونُ عَبْدًا شَكُورًا‏.‏",
+    "english_translation": "Al-Mughira ibn Shu'ba said (may Allah be well pleased with him):\n\"Allah’s Messenger (Allah bless him and give him peace) performed the ritual prayer until his feet became swollen, so he was asked: 'Must you burden yourself with this, when Allah has already forgiven you your former and your latter sins?' He replied: 'Shall I not be a thankful servant?'\"",
+    "russian_translation": "Сообщается, что аль-Мугира ибн Шу‘ба (да будет доволен им Аллах) сказал: «Посланник Аллаха (мир ему и благословение Аллаха) совершал молитву так долго, что его стопы опухли. Ему сказали: «Зачем ты подвергаешь себя такому бремени, ведь Аллах уже простил тебе твои прежние и последующие грехи?». На что он ответил: «Разве я не должен быть благодарным рабом?»"
+  },
+  {
+    "db_id": 42512,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في عبادة رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Worship of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о поклонении Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 272,
+    "arabic": "حَدَّثَنَا أَبُو عَمَّارٍ الْحُسَيْنُ بْنُ حُرَيْثٍ، قَالَ‏:‏ حَدَّثَنَا الْفَضْلُ بْنُ مُوسَى، عَنْ مُحَمَّدِ بْنِ عَمْرٍو، عَنْ أَبِي سَلَمَةَ، عَنْ أَبِي هُرَيْرَةَ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، يُصَلِّي حَتَّى تَرِمَ قَدَمَاهُ، قَالَ‏:‏ فَقِيلَ لَهُ‏:‏ أَتَفْعَلُ هَذَا وَقَدْ جَاءَكَ أَنَّ اللَّهَ تَعَالَى قَدْ غَفَرَ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ‏؟‏ قَالَ‏:‏ أَفَلا أَكُونُ عَبْدًا شَكُورًا‏.‏",
+    "english_translation": "Abu Huraira said (may Allah be well pleased with him):\n\"Allah’s Messenger (Allah bless him and give him peace) used to perform the ritual prayer until his feet had begun to swell, so he was asked: 'Must you do this, when it has come to you that Allah has already forgiven you your former and your latter sins?’ He replied: 'Shall I not be a thankful servant?'\"",
+    "russian_translation": "Абу Хурайра передал: «Посланник Аллаха, да благословит его Аллах и приветствует, совершал молитву до тех пор, пока его стопы не начинали опухать. Ему сказали: «Неужели ты делаешь это, хотя тебе пришла весть, что Аллах Всевышний простил тебе все твои прошлые и будущие грехи?» Он ответил: «Разве не подобает мне быть благодарным рабом?»"
+  },
+  {
+    "db_id": 42513,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في تواضع رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Humility of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о смирении Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 272,
+    "arabic": "حَدَّثَنَا عِيسَى بْنُ عُثْمَانَ بْنِ عِيسَى بْنِ عَبْدِ الرَّحْمَنِ الرَّمْلِيُّ، قَالَ‏:‏ حَدَّثَنَا عَمِّي يَحْيَى بْنُ عِيسَى الرَّمْلِيُّ، عَنِ الأَعْمَشِ، عَنْ أَبِي صَالِحٍ، عَنْ أَبِي هُرَيْرَةَ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم يَقُومُ يُصَلِّي حَتَّى تَنْتَفِخَ قَدَمَاهُ فَيُقَالُ لَهُ‏:‏ يَا رَسُولَ اللهِ، تَفْعَلُ هَذَا وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ‏؟‏، قَالَ‏:‏ أَفَلا أَكُونُ عَبْدًا شَكُورًا‏.‏",
+    "english_translation": "It is also reported from Abu Huraira, may Allah be well pleased with him that:\nAllah’s Messenger (Allah bless him and give him peace) used to stand performing the ritual prayer until his feet had begun to swell, so he would be asked: \"O Messenger of Allah, must you do this, when Allah has already forgiven you your former and your latter sins?\" He replied: \"Shall I not be a thankful servant?\"",
+    "russian_translation": "Сообщается, что Абу Хурайра сказал: «Посланник Аллаха, да благословит его Аллах и приветствует, вставал на молитву и выстаивал её так долго, что его ступни начинали отекать. Ему говорили: „О Посланник Аллаха, зачем ты делаешь это, ведь Аллах уже простил тебе твои прошлые и будущие грехи?“ На что он отвечал: „Разве не подобает мне быть благодарным рабом?“»"
+  },
+  {
+    "db_id": 42514,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاةِ رَسُولِ اللهِ صلى الله عليه وسلم بِاللَّيْلِ",
+      "en": "Chapter on the Night Prayer of the Messenger of Allah (pbuh)",
+      "ru": "Глава о ночной молитве Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 238,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي إِسْحَاقَ، عَنِ الأَسْوَدِ بْنِ يَزِيدَ، قَالَ‏:‏ سَأَلْتُ عَائِشَةَ، عَنْ صَلاةِ رَسُولِ اللهِ صلى الله عليه وسلم بِاللَّيْلِ‏؟‏ فَقَالَتْ‏:‏ كَانَ يَنَامُ أَوَّلَ اللَّيْلِ ثُمَّ يَقُومُ، فَإِذَا كَانَ مِنَ السَّحَرِ أَوْتَرَ، ثُمَّ أَتَى فِرَاشَهُ، فَإِذَا كَانَ لَهُ حَاجَةٌ أَلَمَّ بِأَهْلِهِ، فَإِذَا سَمِعَ الأَذَانَ وَثَبَ، فَإِنْ كَانَ جُنُبًا أَفَاضَ عَلَيْهِ مِنَ الْمَاءِ، وَإِلا تَوَضَّأَ وَخَرَجَ إِلَى الصَّلاةِ‏.‏",
+    "english_translation": "Al-Aswad ibn Yazid said:\n\"I asked 'A'sha (may Allah be well pleased with her) about the nighttime ritual prayer of Allah’s Messenger (Allah bless him and give him peace), so she said: ‘He used to sleep at the beginning of the night. Then he would get up, and when it was the time before daybreak, he performed a witr [a ritual prayer with an odd number of cycles]. Then he came to his mattress, and if he had a need, he had sexual intercourse with his wife. When he heard the call to prayer, he sprang up, and if he was in a state of major ritual impurity, he poured water over himself, and if not, he performed the minor ritual ablution and went out to the ritual prayer.\"",
+    "russian_translation": "Аль-Асвад ибн Язид рассказывал: «Я спросил Аишу о ночной молитве Посланника Аллаха (мир ему и благословение Аллаха), и она ответила: „Он спал в начале ночи, а затем вставал. Когда наступало время перед рассветом, он совершал витр, после чего возвращался на свое ложе. Если у него возникала нужда, он вступал в близость со своей супругой, а когда слышал призыв к молитве, то вскакивал. Если он находился в состоянии полового осквернения, то омывался водой, а если нет — совершал малое омовение и выходил на молитву“»."
+  },
+  {
+    "db_id": 42515,
+    "book_number": 23,
+    "book_name": {
+      "ar": "كِتَابُ صَلَاةِ رَسُولِ اللهِ صلى الله عليه وسلم فِي اللَّيْلِ",
+      "en": "The Book of the Night Prayer of the Messenger of Allah (may Allah bless him and give him peace)",
+      "ru": "Книга о ночной молитве Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 314,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، عَنْ مَالِكِ بْنِ أَنَسٍ ‏(‏ح‏)‏ وَحَدَّثَنَا إِسْحَاقُ بْنُ مُوسَى الأَنْصَارِيُّ، قَالَ‏:‏ حَدَّثَنَا مَعْنٌ، عَنْ مَالِكٍ، عَنْ مَخْرَمَةَ بْنِ سُلَيْمَانَ، عَنْ كُرَيْبٍ، عَنِ ابْنِ عَبَّاسٍ، أَنَّهُ أَخْبَرَهُ، أَنَّهُ بَاتَ عِنْدَ مَيْمُونَةَ وَهِيَ خَالَتُهُ، قَالَ‏:‏ فَاضْطَجَعْتُ فِي عَرْضِ الْوِسَادَةِ، وَاضْطَجَعَ رَسُولُ اللهِ صلى الله عليه وسلم فِي طُولِهَا، فَنَامَ رَسُولُ اللهِ صلى الله عليه وسلم، حَتَّى إِذَا انْتَصَفَ اللَّيْلُ أَوْ قَبْلَهُ بِقَلِيلٍ أَوْ بَعْدَهُ بِقَلِيلٍ، فَاسْتَيْقَظَ رَسُولُ اللهِ صلى الله عليه وسلم، فَجَعَلَ يَمْسَحُ النَّوْمَ عَنْ وَجْهِهِ، ثُمَّ قَرَأَ الْعَشْرَ الآيَاتِ الْخَوَاتِيمَ مِنْ سُورَةِ آلِ عِمْرَانَ، ثُمَّ قَامَ إِلَى شَنٍّ مُعَلَّقٍ فَتَوَضَّأَ مِنْهَا، فَأَحْسَنَ الْوُضُوءَ، ثُمَّ قَامَ يُصَلِّي، قَالَ عَبْدُ اللهِ بْنُ عَبَّاسٍ‏:‏ فَقُمْتُ إِلَى جَنْبِهِ فَوَضَعَ رَسُولُ اللهِ صلى الله عليه وسلم، يَدَهُ الْيُمْنَى عَلَى رَأْسِي ثُمَّ أَخَذَ بِأُذُنِي الْيُمْنَى، فَفَتَلَهَا فَصَلَّى رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، ثُمَّ رَكْعَتَيْنِ، قَالَ مَعْنٌ‏:‏ سِتَّ مَرَّاتٍ ثُمَّ أَوْتَرَ، ثُمَّ اضْطَجَعَ حَتَّى جَاءَهُ الْمُؤَذِّنُ، فَقَامَ فَصَلَّى رَكْعَتَيْنِ خَفِيفَتَيْنِ، ثُمَّ خَرَجَ فَصَلَّى الصُّبْحَ‏.‏",
+    "english_translation": "Ibn 'Abbas informed him that he spent the night in the home of Maimuna, his maternal aunt and he said:\n\"I reclined across the cushion and Allah’s Messenger (Allah bless him and give him peace) reclined lengthwise, whereupon Allah’s Messenger (Allah bless him and give him peace) slept until the middle of the night, or a little while before or after it. Allah’s Messenger (Allah bless him and give him peace) then woke up, wiped the sleep off his face, and recited the final ten verses of the Sura of the Family of ‘Imran [Al 'Imran]. Then he approached a suspended waterskin, performed the minor ritual ablution and performed it well, after which he performed the ritual prayer.\" Abdullah ibn 'Abbas said: \"I got up and stood by his side, whereupon Allah’s Messenger (Allah bless him and give him peace) placed his right hand on my head, gripped my right ear and twisted it. After this he performed two cycles of ritual prayer, then two more cycles, then two more cycles, then two more cycles, then two more cycles, then two more cycles..\" He (Ma'an) said: \"... six times, after which he performed an odd-numbered cycle. Then he reclined until the muezzin came to him, whereupon he got up and performed two abbreviated cycles. Then he went out and performed the early-morning ritual prayer\".",
+    "russian_translation": "Сообщается, что Ибн Аббас (да будет доволен Аллах им и его отцом) сказал: «Я заночевал у Маймуны, которая приходилась мне тетей по матери. Я лег поперек подушки, а Посланник Аллаха (мир ему и благословение Аллаха) лег вдоль нее. Посланник Аллаха (мир ему и благословение Аллаха) спал до тех пор, пока не прошла половина ночи — или немного меньше, или немного больше. Затем Посланник Аллаха (мир ему и благословение Аллаха) проснулся, стал протирать лицо от сна и прочитал десять последних аятов суры Аль 'Имран. Затем он подошел к подвешенному меху с водой, совершил омовение, причем сделал это наилучшим образом, после чего встал на молитву». Абдулла ибн Аббас добавил: «Я встал рядом с ним, и Посланник Аллаха (мир ему и благословение Аллаха) положил свою правую руку мне на голову, взял меня за правое ухо и потянул его. Затем он совершил два ракаата молитвы, потом еще два, потом еще два, потом еще два, потом еще два, и еще два», — добавил Маан: «То есть шесть раз. Затем он совершил витр, после чего прилег, пока не пришел муэдзин. Тогда он встал, совершил два легких ракаата, вышел и совершил утреннюю молитву»."
+  },
+  {
+    "db_id": 42516,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاَةِ رَسُولِ اللَّهِ صلى الله عليه وسلم بِاللَّيْلِ",
+      "en": "Chapter: The Prayer of the Messenger of Allah (ﷺ) at Night",
+      "ru": "Глава о том, что передается относительно ночной молитвы Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 237,
+    "arabic": "حَدَّثَنَا أَبُو كُرَيْبٍ مُحَمَّدُ بْنُ الْعَلاءِ، قَالَ‏:‏ حَدَّثَنَا وَكِيعٌ، عَنْ شُعْبَةَ، عَنْ أَبِي جَمْرَةَ، عَنِ ابْنِ عَبَّاسٍ، قَالَ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم يُصَلِّي مِنَ اللَّيْلِ ثَلاثَ عَشْرَةَ رَكْعَةً‏.‏",
+    "english_translation": "Ibn 'Abbas said:\n\"The Prophet (Allah bless him and give him peace) used to perform thirteen cycles of ritual prayer during the night.\"",
+    "russian_translation": "Ибн Аббас рассказывал: «Пророк, да благословит его Аллах и приветствует, совершал ночью тринадцать ракаатов молитвы»."
+  },
+  {
+    "db_id": 42517,
+    "book_number": 19,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاَةِ رَسُولِ اللَّهِ صلى الله عليه وسلم فِي الضُّحَى",
+      "en": "Chapter on what is mentioned regarding the Duha prayer of the Messenger of Allah",
+      "ru": "Глава о том, что передается относительно молитвы духа Посланника Аллаха"
+    },
+    "hadith_number": 226,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا أَبُو عَوَانَةَ، عَنْ قَتَادَةَ، عَنْ زُرَارَةَ بْنِ أَوْفَى، عَنْ سَعْدِ بْنِ هِشَامٍ، عَنْ عَائِشَةَ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم كَانَ إِذَا لَمْ يُصَلِّ بِاللَّيْلِ، مَنَعَهُ مِنْ ذَلِكَ النَّوْمُ، أَوْ غَلَبَتْهُ عَيْنَاهُ، صَلَّى مِنَ النَّهَارِ ثِنْتَيْ عَشْرَةَ رَكْعَةً‏.‏",
+    "english_translation": "A’isha said:\n\"If the Prophet (Allah bless him and give him peace) did not perform the ritual prayer during the night, because sleep had prevented him, or his eyes had been too weary, during the daytime, he would perform twelve cycles of ritual prayer during the daytime.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Если Пророк, да благословит его Аллах и приветствует, не совершал ночную молитву из-за того, что его одолевал сон или же его глаза смыкались, он совершал двенадцать ракятов молитвы днем»."
+  },
+  {
+    "db_id": 42518,
+    "book_number": 19,
+    "book_name": {
+      "ar": "باب ما جاء في صلاة رسول الله صلى الله عليه وسلم بالليل",
+      "en": "Chapter on the Night Prayer of the Messenger of Allah, peace be upon him",
+      "ru": "Глава о ночной молитве Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 235,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْعَلاءِ، قَالَ‏:‏ حَدَّثَنَا أَبُو أُسَامَةَ، عَنْ هِشَامٍ يَعْنِي ابْنَ حَسَّانَ، عَنْ مُحَمَّدِ بْنِ سِيرِينَ، عَنْ أَبِي هُرَيْرَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم، قَالَ‏:‏ إِذَا قَامَ أَحَدُكُمْ مِنَ اللَّيْلِ فَلْيَفْتَتِحْ صَلاتَهُ بِرَكْعَتَيْنِ خَفِيفَتَيْنِ‏.‏",
+    "english_translation": "Abu Huraira said:\n\"The Prophet said (Allah bless him and give him peace): 'If one of you gets up during the night, let him begin his ritual prayer with two abbreviated cycles.'\"",
+    "russian_translation": "Когда кто-либо из вас встанет ночью, пусть начинает свою молитву двумя краткими ракятами"
+  },
+  {
+    "db_id": 42519,
+    "book_number": 2,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاَةِ رَسُولِ اللهِ صلى الله عليه وسلم بِاللَّيْلِ",
+      "en": "Chapter on the Night Prayer of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о ночной молитве Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 31,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، عَنْ مَالِكِ بْنِ أَنَسٍ ‏(‏ح‏)‏ وَحَدَّثَنَا إِسْحَاقُ بْنُ مُوسَى، قَالَ‏:‏ حَدَّثَنَا مَعْنٌ، قَالَ‏:‏ حَدَّثَنَا مَالِكٌ، عَنْ عَبْدِ اللهِ بْنِ أَبِي بَكْرٍ، عَنْ أَبِيهِ، أَنَّ عَبْدَ اللهِ بْنَ قَيْسِ بْنِ مَخْرَمَةَ أَخْبَرَهُ، عَنْ زَيْدِ بْنِ خَالِدٍ الْجُهَنِيِّ، أَنَّهُ قَالَ‏:‏ لأَرْمُقَنَّ صَلاةَ النَّبِيِّ صلى الله عليه وسلم، فَتَوَسَّدْتُ عَتَبَتَهُ، أَوْ فُسْطَاطَهُ فَصَلَّى رَسُولُ اللهِ صلى الله عليه وسلم، رَكْعَتَيْنِ خَفِيفَتَيْنِ، ثُمَّ صَلَّى رَكْعَتَيْنِ طَوِيلَتَيْنِ، طَوِيلَتَيْنِ، طَوِيلَتَيْنِ، ثُمَّ صَلَّى رَكْعَتَيْنِ وَهُمَا دَونَ اللَّتَيْنِ قَبْلَهُمَا، ثُمَّ صَلَّى رَكْعَتَيْنِ وَهُمَا دُونَ اللَّتَيْنِ قَبْلَهُمَا، ثُمَّ صَلَّى رَكْعَتَيْنِ وَهُمَا دُونَ اللَّتَيْنِ قَبْلَهُمَا، ثُمَّ صَلَّى رَكْعَتَيْنِ وَهُمَا دُونَ اللَّتَيْنِ قَبْلَهُمَا، ثُمَّ أَوْتَرَ فَذَلِكَ ثَلاثَ عَشْرَةَ رَكْعَةً‏.‏",
+    "english_translation": "Zaid ibn Khalid al-jahuhani said:\n\"Determined to contemplate the ritual prayer of the Prophet (Allah bless him and give him peace) intently, for I laid my head on his doorstep or [the entrance to] his hair tent. Allah’s Messenger (Allah bless him and give him peace) then performed two brisk cycles of ritual prayer. After this he performed two long, long, long cycles. Then he performed two cycles that were shorter than the two before them. Then he performed two cycles that were shorter than the two that were before them. Then he performed two cycles that were shorter than the two that preceded them. Then he performed two cycles that were shorter than the two that were before them. Finally he performed a single-numbered cycle, which added up to a total of thirteen cycles.\"",
+    "russian_translation": "Зейд ибн Халид аль-Джухани сказал: «Я решил внимательно понаблюдать за тем, как совершает молитву Пророк, да благословит его Аллах и приветствует, и прилег у порога его дома или у входа в его палатку. Посланник Аллаха, да благословит его Аллах и приветствует, совершил два легких ракаата, затем совершил два очень, очень, очень длинных ракаата. Затем он совершил два ракаата, которые были короче предыдущих. Затем он совершил два ракаата, которые были короче предыдущих. Затем он совершил два ракаата, которые были короче предыдущих. Затем он совершил два ракаата, которые были короче предыдущих. Затем он совершил витр, и в сумме получилось тринадцать ракаатов»."
+  },
+  {
+    "db_id": 42520,
+    "book_number": 31,
+    "book_name": {
+      "ar": "باب ما جاء في صلاة رسول الله صلى الله عليه وسلم في الليل",
+      "en": "Chapter on how the Messenger of Allah, peace and blessings of Allah be upon him, prayed at night",
+      "ru": "Глава о ночной молитве Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 217,
+    "arabic": "حَدَّثَنَا إِسْحَاقُ بْنُ مُوسَى، قَالَ‏:‏ حَدَّثَنَا مَعْنٌ، قَالَ‏:‏ حَدَّثَنَا مَالِكٌ، عَنْ سَعِيدِ بْنِ أَبِي سَعِيدٍ الْمَقْبُرِيِّ، عَنْ أَبِي سَلَمَةَ بْنِ عَبْدِ الرَّحْمَنِ، أَنَّهُ أَخْبَرَهُ أَنَّهُ سَأَلَ عَائِشَةَ، كَيْفَ كَانَتْ صَلاةُ رَسُولِ اللهِ صلى الله عليه وسلم فِي رَمَضَانَ‏؟‏ فَقَالَتْ‏:‏ مَا كَانَ رَسُولُ اللهِ صلى الله عليه وسلم لِيَزِيدَ فِي رَمَضَانَ وَلا فِي غَيْرِهِ عَلَى إِحْدَى عَشْرَةَ رَكْعَةً، يُصَلِّي أَرْبَعًا، لا تَسْأَلْ عَنْ حُسْنِهِنَّ، وَطُولِهِنَّ، ثُمَّ يُصَلِّي أَرْبَعًا لا تَسْأَلْ عَنْ حُسْنِهِنَّ وَطُولِهِنَّ، ثُمَّ يُصَلِّي ثَلاثًا، قَالَتْ عَائِشَةُ‏:‏ قُلْتُ‏:‏ يَا رَسُولَ اللهِ، أَتَنَامُ قَبْلَ أَنْ تُوتِرَ‏؟‏ فَقَالَ‏:‏ يَا عَائِشَةُ، إِنَّ عَيْنَيَّ تَنَامَانِ، وَلا يَنَامُ قَلْبِي‏.‏",
+    "english_translation": "Abu Salama ibn 'Abd ar-Rahman asked 'A’isha (may Allah the Exalted be well pleased with her):\n\"How was the ritual prayer of Allah’s Messenger (Allah bless him and give him peace) during Ramadan?\" so she said: \"Neither in Ramadan nor in any other month would Allah’s Messenger (Allah bless him and give him peace) add to the total of eleven cycles of [nighttime] ritual prayer. He would perform four — do not ask about their excellence or their length — then he would perform four — do not ask about their excellence or their length — and then he would perform three.\" ‘A'isha said (may Allah the Exalted be well pleased with her): \"I said: ‘O Messenger of Allah, do you sleep before you perform the odd-numbered ritual prayer [witr]?' He said: ‘O 'A'isha, my eyes may sleep, but my heart does not sleep!’\"",
+    "russian_translation": "Абу Салама ибн Абд ар-Рахман сообщил, что он спросил Аишу: «Как молился Посланник Аллаха, да благословит его Аллах и приветствует, в рамадане?». Она ответила: «Ни в рамадане, ни в иное время Посланник Аллаха, да благословит его Аллах и приветствует, не совершал больше одиннадцати ракятов. Он совершал четыре ракята, и не спрашивай об их совершенстве и продолжительности, затем совершал еще четыре, и не спрашивай об их совершенстве и продолжительности, а затем совершал три». Аиша добавила: «Я спросила: О Посланник Аллаха, спишь ли ты перед тем, как совершить витр?». Он ответил: «О Аиша, мои глаза спят, но мое сердце не спит»."
+  },
+  {
+    "db_id": 42521,
+    "book_number": 8,
+    "book_name": {
+      "ar": "باب ما جاء في صلاة رسول الله صلى الله عليه وسلم بالليل",
+      "en": "Chapter on the Night Prayer of the Messenger of Allah, peace and blessings of Allah be upon him",
+      "ru": "Глава о ночной молитве Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 105,
+    "arabic": "حَدَّثَنَا إِسْحَاقُ بْنُ مُوسَى، قَالَ‏:‏ حَدَّثَنَا مَعْنٌ، قَالَ‏:‏ حَدَّثَنَا مَالِكٌ، عَنِ ابْنِ شِهَابٍ، عَنْ عُرْوَةَ، عَنْ عَائِشَةَ‏:‏ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، كَانَ يُصَلِّي مِنَ اللَّيْلِ إِحْدَى عَشْرَةَ رَكْعَةً، يُوتِرُ مِنْهَا بِوَاحِدَةٍ، فَإِذَا فَرَغَ مِنْهَا، اضْطَجَعَ عَلَى شِقِّهِ الأَيْمَنِ‏.‏",
+    "english_translation": "'A’isha said (may Allah be well pleased with her):\n\"Allah’s Messenger (Allah bless him and give him peace) used to perform eleven cycles of ritual prayer during the night, making one of them odd-numbered [witr], and when he had finished, he would recline on his right side.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Посланник Аллаха, мир ему и благословение Аллаха, совершал одиннадцать ракятов ночной молитвы, завершая их одним нечетным ракятом, а закончив молитву, он ложился на правый бок»."
+  },
+  {
+    "db_id": 42522,
+    "book_number": 33,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي مِشْيَةِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ",
+      "en": "Chapter on the Manner of the Prophet's Walking",
+      "ru": "Глава об описании походки Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 124,
+    "arabic": "حَدَّثَنَا ابْنُ أَبِي عُمَرَ، قَالَ‏:‏ حَدَّثَنَا مَعْنٌ، عَنْ مَالِكٍ، عَنِ ابْنِ شِهَابٍ، نَحْوَهُ ‏(‏ح‏)‏ وَحَدَّثَنَا قُتَيْبَةُ، عَنْ مَالِكٍ، عَنِ ابْنِ شِهَابٍ، نَحْوَهُ‏.‏",
+    "english_translation": "Two other chains have narrations similar to the previous one.",
+    "russian_translation": "Ибн Аби Умар передал нам, что Ма’н передал от Малика, а тот от Ибн Шихаба нечто подобное. Также Кутайба передал нам от Малика, а тот от Ибн Шихаба нечто подобное"
+  },
+  {
+    "db_id": 42523,
+    "book_number": 19,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي صَلاةِ رَسُولِ اللهِ صلى الله عليه وسلم بِاللَّيْلِ",
+      "en": "Chapter: What has been related regarding the night prayer of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается относительно ночной молитвы Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 286,
+    "arabic": "حَدَّثَنَا هَنَّادٌ، قَالَ‏:‏ حَدَّثَنَا أَبُو الأَحْوَصِ، عَنِ الأَعْمَشِ، عَنِ إِبْرَاهِيمَ، عَنِ الأَسْوَدِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، يُصَلِّي مِنَ اللَّيْلِ تِسْعَ رَكَعَاتٍ‏.‏ حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا يَحْيَى بْنُ آدَمَ، قَالَ‏:‏ حَدَّثَنَا سُفْيَانُ الثَّوْرِيُّ، عَنِ الأَعْمَشِ، نَحْوَهُ‏.‏",
+    "english_translation": "'A’isha said:\n\"Allah’s Messenger (Allah bless him and give him peace) used to perform nine cycles of ritual prayer during the night.\"",
+    "russian_translation": "Передают со слов Аиши, да будет доволен ею Аллах, что она сказала: «Посланник Аллаха, да благословит его Аллах и приветствует, совершал девять ракятов ночной молитвы»."
+  },
+  {
+    "db_id": 42524,
+    "book_number": 6,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلَاةِ رَسُولِ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي التَّطَوُّعِ",
+      "en": "Chapter on the Voluntary Prayer of the Prophet (saws)",
+      "ru": "Глава о дополнительных молитвах Пророка, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 257,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ عَمْرِو بْنِ مُرَّةَ، عَنْ أَبِي حَمْزَةَ، رَجُلٍ مِنَ الأَنْصَارِ، عَنْ رَجُلٍ مِنْ بَنِي عَبْسٍ، عَنْ حُذَيْفَةَ بْنِ الْيَمَانِ، أَنَّهُ صَلَّى مَعَ النَّبِيِّ صلى الله عليه وسلم مِنَ اللَّيْلِ، قَالَ‏:‏ فَلَمَّا دَخَلَ فِي الصَّلاةِ، قَالَ‏:‏ اللَّهُ أَكْبَرُ ذُو الْمَلَكُوتِ وَالْجَبَرُوتِ، وَالْكِبْرِيَاءِ وَالْعَظَمَةِ، قَالَ‏:‏ ثُمَّ قَرَأَ الْبَقَرَةَ، ثُمَّ رَكَعَ رُكُوعَهُ نَحْوًا مِنْ قِيَامِهِ، وَكَانَ يَقُولُ‏:‏ سُبْحَانَ رَبِّيَ الْعَظِيمِ، سُبْحَانَ رَبِّيَ الْعَظِيمِ ثُمَّ رَفَعَ رَأْسَهُ، فَكَانَ قِيَامُهُ نَحْوًا مِنْ رُكُوعِهِ، وَكَانَ يَقُولُ‏:‏ لِرَبِّيَ الْحَمْدُ، لِرَبِّيَ الْحَمْدُ ثُمَّ سَجَدَ، فَكَانَ سُجُودُهُ نَحْوًا مِنْ قِيَامِهِ، وَكَانَ يَقُولُ‏:‏ سُبْحَانَ رَبِّيَ الأَعْلَى، سُبْحَانَ رَبِّيَ الأَعْلَى ثُمَّ رَفَعَ رَأْسَهُ، فَكَانَ مَا بَيْنَ السَّجْدَتَيْنِ نَحْوًا مِنَ السُّجُودِ، وَكَانَ يَقُولُ‏:‏ رَبِّ اغْفِرْ لِي، رَبِّ اغْفِرْ لِي حَتَّى قَرَأَ الْبَقَرَةَ، وَآلَ عِمْرَانَ، وَالنِّسَاءَ، وَالْمَائِدَةَ، أَوِ الأَنْعَامَ، شُعْبَةُ الَّذِي شَكَّ فِي الْمَائِدَةِ، وَالأَنْعَامِ‏.‏",
+    "english_translation": "Hudhaifa ibn al-Yaman (may Allah be well pleased with him) performed the ritual prayer with the Prophet (Allah bless him and give him peace) during the night, and he said:\n\"When he entered into the ritual prayer, he said: ‘Allah is Supremely Great [Allahu Akbar], the Lord of power [jabarut], sovereignty [malakut], magnificence [kibriya’] and sublimity ['azama]! Then he recited the Sura of the Cow [al-Baqara]. Then he bowed down, and he bowed for approximately as long as he had stood erect, saying: ‘Glory be to my Lord, the Almighty! Glory be to my Lord, the Almighty!’ Then he raised his head, and he stood erect for approximately as long as he had bowed, saying: ‘To my Lord belongs the praise! To my Lord belongs the praise!’ Then he prostrated himself, and he prostrated for approximately as long as he had stood erect, saying: ‘Glory be to my Lord, the Most High! Glory be to my Lord, the Most High!’ Then he raised his head, and the pause between the two prostrations was approximately as long as the prostrations. During the pause he said: ‘My Lord, forgive me! My Lord, forgive me,’ until he recited the Suras of the Cow [al-Baqara], the Family of Imran [Al 'Imran], Women [an-Nisa’] and the Table Spread [al-Maida], or Cattle [al-An'am].\" According to Abu 'Isa: \"Shu'ba is the one who entertained doubts about [the Qur’anic Suras] al-Ma'ida and al- Anam.\"",
+    "russian_translation": "Хузайфа ибн аль-Яман, да будет доволен им Аллах, совершил ночную молитву вместе с Пророком, да благословит его Аллах и приветствует. Он сказал: «Когда он вступил в молитву, он произнес: Аллаху Акбар, Владыка царства и могущества, величия и гордости. Затем он прочитал суру Аль-Бакара, после чего совершил поясной поклон, который по длительности был равен его стоянию. Во время поклона он говорил: Слава моему Господу Великому! Слава моему Господу Великому! Затем он выпрямился, и его стояние после поясного поклона длилось примерно столько же, сколько сам поклон. Он говорил: Господу моему хвала! Господу моему хвала! Затем он совершил земной поклон, который длился примерно столько же, сколько его стояние, и говорил при этом: Слава моему Господу Всевышнему! Слава моему Господу Всевышнему! Затем он поднял голову, и сидение между двумя земными поклонами длилось примерно столько же, сколько и сами поклоны. В это время он говорил: Господь мой, прости меня! Господь мой, прости меня! И он прочитал в той молитве суры Аль-Бакара, Али Имран, Ан-Ниса, а также Аль-Маида или Аль-Анам — Шу‘ба сомневался относительно Аль-Маида и Аль-Анам»."
+  },
+  {
+    "db_id": 42525,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في قيام رسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Night Prayer of the Messenger of Allah",
+      "ru": "Глава о ночной молитве Посланника Аллаха"
+    },
+    "hadith_number": 218,
+    "arabic": "حَدَّثَنَا أَبُو بَكْرٍ مُحَمَّدُ بْنُ نَافِعٍ الْبَصْرِيُّ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الصَّمَدِ بْنُ عَبْدِ الْوَارِثِ، عَنِ إِسْمَاعِيلَ بْنِ مُسْلِمٍ الْعَبْدِيِّ، عَنْ أَبِي الْمُتَوَكِّلِ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ قَامَ رَسُولُ اللهِ صلى الله عليه وسلم بِآيَةٍ مِنَ الْقُرْآنِ لَيْلَةً‏.‏",
+    "english_translation": "'A’isha said (may Allah be well pleased with her):\n\"Allah’s Messenger (Allah bless him and give him peace) spent one whole night reciting a verse from the Qur’an.\" Commentary: The aayah is the last aayah of Surah Maa-idah:In tu-adh-dhib-hum fa-innahum 'ibaaduk. Wa in tagh-fir lahum fa-innaka antal azizul hakim.Translation: \"If Thou punish them, lo! they are Thy slaves, and if Thou forgive them, (lo! the are Thy slaves).Lo! Thou, only Thou, art Mighty, the wise\".Surah Maa-idah, 118.The Being that possesses great power, if He wills, He may forgive the criminal. The One that is all Wise, there is Wisdom and benefit in every act of His. The reason for Sayyidina Rasulullah Sallallahu 'Alayhi Wasallam reciting this aayah while standing and also in the ruku and sajdah, and repeating it many times, is to bring to mind the two attributes of Allah, namely the attributes of justice and forgiveness. The whole scene on the day of qiyaamah will be of these two things. It is stated that Imaam Aa'zam Abu Hanifah RA. also recited the following aayah the whole night:Wamtaazul yauma ayyuhal mujrimun.Translation: \"But avaunt ye, O ye guilty, this day!\" Surah Yaseen, 58.In this aayah too the scene of qiyaamah is portrayed. That today the sinners should separate and distinguish themselves. What a severe and nerve-chilling command this is. Today they are together with the pious and holy people and benefiting from the barakaat (blessings) they receive, but at this moment the sinners will be separated from them. May the Most Merciful Allah with His Grace keep those pious souls under His shadow, otherwise it is really a time for great trials.",
+    "russian_translation": "Передают со слов Аиши, да будет доволен ею Аллах, что Посланник Аллаха, да благословит его Аллах и приветствует, простоял всю ночь, повторяя один аят из Корана."
+  },
+  {
+    "db_id": 42526,
+    "book_number": 3,
+    "book_name": {
+      "ar": "باب ما جاء في صلاة رسول الله صلى الله عليه وسلم بالليل",
+      "en": "Chapter on the Night Prayer of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о ночной молитве Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 31,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا سُلَيْمَانُ بْنُ حَرْبٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنِ الأَعْمَشِ، عَنْ أَبِي وَائِلٍ، عَنْ عَبْدِ اللهِ بْنِ مَسْعُودٍ، قَالَ‏:‏ صَلَّيْتُ لَيْلَةً مَعَ رَسُولِ اللهِ صلى الله عليه وسلم فَلَمْ يَزَلْ قَائِمًا حَتَّى هَمَمْتُ بِأَمْرِ سُوءٍ قِيلَ لَهُ‏:‏ وَمَا هَمَمْتَ بِهِ‏؟‏ قَالَ‏:‏ هَمَمْتُ أَنْ أَقْعُدَ وَأَدَعَ النَّبِيَّ صلى الله عليه وسلم‏.‏ حَدَّثَنَا سُفْيَانُ بْنُ وَكِيعٍ، قَالَ‏:‏ حَدَّثَنَا جَرِيرٌ، عَنِ الأَعْمَشِ، نَحْوَهُ‏.‏",
+    "english_translation": "'Abdullah said:\n\"I performed the ritual prayer one night with Allah’s Messenger (All^ bless him and give him peace), and he remained standing until I almost did something bad.\" He was asked: \"What did you almost do?\" He replied: \"I nearly sat down and left the Prophet (Allah bless him and give him peace) in the lurch!\"",
+    "russian_translation": "Абдуллах (ибн Мас‘уд) сказал: «Однажды ночью я совершал молитву вместе с Посланником Аллаха, да благословит его Аллах и приветствует, и он стоял так долго, что я едва не совершил дурной поступок». Его спросили: «А что же ты хотел сделать?» Он ответил: «Я помышлял о том, чтобы сесть, оставив Пророка, да благословит его Аллах и приветствует»."
+  },
+  {
+    "db_id": 42527,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَاب مَا جَاءَ فِي صَلاةِ رَسُولِ اللَّهِ صلى الله عليه وسلم فِي التَّطَوُّعِ",
+      "en": "Chapter on the voluntary prayers of the Messenger of Allah (pbuh)",
+      "ru": "Глава о добровольных молитвах Посланника Аллаха, мир ему и благословение Аллаха"
+    },
+    "hadith_number": 352,
+    "arabic": "حَدَّثَنَا إِسْحَاقُ بْنُ مُوسَى الأَنْصَارِيُّ، قَالَ‏:‏ حَدَّثَنَا مَعْنٌ، قَالَ‏:‏ حَدَّثَنَا مَالِكٌ، عَنْ أَبِي النَّضْرِ، عَنْ أَبِي سَلَمَةَ، عَنْ عَائِشَةَ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم كَانَ يُصَلِّي جَالِسًا، فَيَقْرَأُ وَهُوَ جَالِسٌ، فَإِذَا بَقِيَ مِنْ قِرَاءَتِهِ قَدْرُ مَا يَكُونُ ثَلاثِينَ أَوْ أَرْبَعِينَ آيَةً، قَامَ فَقَرَأَ وَهُوَ قَائِمٌ، ثُمَّ رَكَعَ وَسَجَدَ، ثُمَّ صَنَعَ فِي الرَّكْعَةِ الثَّانِيَةِ مِثْلَ ذَلِكَ‏.‏",
+    "english_translation": "'A’isha said (may Allah be well pleased with her):\n\"The Prophet (Allah bless him and give him peace) used to perform the ritual prayer sitting down, so he would also recite the Qur’an while he was seated. If the amount of his recitation remaining was thirty or forty verses, he would rise and recite standing up, and then he would bow and prostrate. Then he would do likewise in the second cycle.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Пророк, мир ему и благословение Аллаха, совершал добровольную молитву сидя, и во время сидения он читал Коран. Когда же из его чтения оставалось около тридцати или сорока аятов, он вставал, дочитывал их стоя, затем совершал поясной и земной поклоны. Точно так же он поступал и во втором ракаате»."
+  },
+  {
+    "db_id": 42528,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في صلاة رسول الله صلى الله عليه وسلم في التطوع",
+      "en": "The Chapter on the Voluntary Prayer of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о добровольных молитвах Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 272,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا هُشَيْمٌ، قَالَ‏:‏ حَدَّثَنَا خَالِدٌ الْحَذَّاءُ، عَنْ عَبْدِ اللهِ بْنِ شَقِيقٍ، قَالَ‏:‏ سَأَلْتُ عَائِشَةَ، عَنْ صَلاةِ رَسُولِ اللهِ صلى الله عليه وسلم، عَنْ تَطَوُّعِهِ، فَقَالَتْ‏:‏ كَانَ يُصَلِّي لَيْلا طَوِيلا قَائِمًا، وَلَيْلا طَوِيلا قَاعِدًا، فَإِذَا قَرَأَ وَهُوَ قَائِمٌ رَكَعَ وَسَجَدَ وَهُوَ قَائِمٌ، وَإِذَا قَرَأَ وَهُوَ جَالِسٌ رَكَعَ وَسَجَدَ وَهُوَ جَالِسٌ‏.‏",
+    "english_translation": "'Abdullah ibn Shaqiq said:\n\"I asked 'A’isha (may Allah be well pleased with her) about the voluntary ritual prayers of Allah’s Messenger (Allah bless him and give him peace), and she said: ‘He used to spend a long night performing the ritual prayer while standing, and a long night while sitting, so if he recited the Qur’an while standing, he would bow and prostrate from a standing position, and if he recited while sitting, he would bow and prostrate from a sitting position.\"",
+    "russian_translation": "Абдулла ибн Шакик рассказывал: «Я спросил Аишу, да будет доволен ею Аллах, о добровольных молитвах Посланника Аллаха, мир ему и благословение Аллаха. Она ответила: „Он проводил долгую часть ночи в молитве стоя, а долгую часть ночи — сидя. Если он читал Коран стоя, то совершал поясной и земной поклоны стоя, а если читал сидя, то совершал поясной и земной поклоны сидя“»."
+  },
+  {
+    "db_id": 42529,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاَةِ رَسُولِ اللهِ صلى الله عليه وسلم فِي التَّطَوُّعِ قَاعِدًا",
+      "en": "Chapter on the voluntary prayer of the Messenger of Allah, may Allah bless him and grant him peace, while sitting",
+      "ru": "Глава о том, как Посланник Аллаха, да благословит его Аллах и приветствует, совершал дополнительные молитвы сидя"
+    },
+    "hadith_number": 232,
+    "arabic": "حَدَّثَنَا إِسْحَاقُ بْنُ مُوسَى الأَنْصَارِيُّ، قَالَ‏:‏ حَدَّثَنَا مَعْنٌ، قَالَ‏:‏ حَدَّثَنَا مَالِكٌ، عَنِ ابْنِ شِهَابٍ، عَنِ السَّائِبِ بْنِ يَزِيدَ، عَنِ الْمُطَّلِبِ بْنِ أَبِي وَدَاعَةَ، عَنْ حَفْصَةَ، زَوْجِ النَّبِيِّ صلى الله عليه وسلم، قَالَتْ‏:‏ كَانَ رَسُولُ اللهِ يُصَلِّي فِي سُبْحَتِهِ قَاعِدًا، وَيَقْرَأُ بِالسُّورَةِ وَيُرَتِّلُهَا، حَتَّى تَكُونَ أَطْوَلَ مِنْ أَطْوَلَ مِنْهَا‏.‏",
+    "english_translation": "Hafsa, the wife of the Prophet (Allah bless him and give him peace), said:\n\"Allah’s Messenger (Allah bless him and give him peace) used to perform voluntary ritual prayer sitting down, and he would recite the Sura and pronounce it slowly, so that it would seem to be longer than one that was actually longer than it.\"",
+    "russian_translation": "Хафса, жена Пророка, да благословит его Аллах и приветствует, передала: «Посланник Аллаха, да благословит его Аллах и приветствует, совершал добровольную молитву сидя, и читал суру, произнося её слова отчётливо и размеренно, так что она казалась длиннее, чем та, которая была длиннее её на самом деле»."
+  },
+  {
+    "db_id": 42530,
+    "book_number": 38,
+    "book_name": {
+      "ar": "بَاب مَا جَاءَ فِي صَلاةِ رَسُولِ اللَّهِ صلى الله عليه وسلم فِي التَّطَوُّعِ",
+      "en": "Chapter on the voluntary prayer of the Messenger of Allah, peace and blessings be upon him",
+      "ru": "Глава о дополнительных молитвах Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 331,
+    "arabic": "حَدَّثَنَا الْحَسَنُ بْنُ مُحَمَّدٍ الزَّعْفَرَانِيُّ، قَالَ‏:‏ حَدَّثَنَا الْحَجَّاجُ بْنُ مُحَمَّدٍ، عَنِ ابْنِ جُرَيْجٍ، قَالَ‏:‏ أَخْبَرَنِي عُثْمَانُ بْنُ أَبِي سُلَيْمَانَ، أَنَّ أَبَا سَلَمَةَ بْنَ عَبْدِ الرَّحْمَنِ أَخْبَرَهُ، أَنَّ عَائِشَةَ أَخْبَرَتْهُ، أَنَّ النَّبِيَّ صلى الله عليه وسلم، لَمْ يَمُتْ، حَتَّى كَانَ أَكْثَرُ صَلاتِهِ وَهُوَ جَالِسٌ‏.‏",
+    "english_translation": "A’isha said (may Allah be well pleased with her):\n\"By the time the Prophet (Allah bless him and give him peace) died, he was performing most of his ritual prayers from a sitting position.\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Посланник Аллаха, да благословит его Аллах и приветствует, не скончался до тех пор, пока большинство своих молитв не стал совершать сидя»."
+  },
+  {
+    "db_id": 42531,
+    "book_number": 8,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَطَوُّعِ النَّبِيِّ صلى الله عليه وسلم",
+      "en": "Chapter on the Voluntary Prayers of the Prophet (ﷺ)",
+      "ru": "Глава о дополнительных молитвах Пророка (ﷺ)"
+    },
+    "hadith_number": 268,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا إِسْمَاعِيلُ بْنُ إِبْرَاهِيمَ، قَالَ‏:‏ حَدَّثَنَا أَيُّوبَ، عَنْ نَافِعٍ، عَنِ ابْنِ عُمَرَ، قَالَ‏:‏ صَلَّيْتُ مَعَ النَّبِيِّ صلى الله عليه وسلم، رَكْعَتَيْنِ قَبْلَ الظُّهْرِ، وَرَكْعَتَيْنِ بَعْدَهَا، وَرَكْعَتَيْنِ بَعْدَ الْمَغْرِبِ فِي بَيْتِهِ، وَرَكْعَتَيْنِ بَعْدَ الْعِشَاءِ فِي بَيْتِهِ‏.‏",
+    "english_translation": "Ibn ‘'Umar said (may Allah be well pleased with him and his father):\n\"I performed two cycles of ritual prayer with Allah’s Messenger (Allah bless him and give him peace) before the noon prayer, and two cycles after it, and two cycles after the sunset prayer in his house, and two cycles after the evening prayer in his house.\"",
+    "russian_translation": "Ибн Умар, да будет доволен Аллах ими обоими, рассказывал: «Я совершил вместе с Посланником Аллаха, да благословит его Аллах и приветствует, два ракаата до полуденной молитвы, два ракаата после неё, два ракаата после закатной молитвы у него дома и два ракаата после ночной молитвы у него дома»."
+  },
+  {
+    "db_id": 42532,
+    "book_number": 3,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاَةِ رَسُولِ اللهِ صلى الله عليه وسلم بِالنَّهَارِ",
+      "en": "What has been reported concerning the prayer of the Messenger of Allah (saws) during the day",
+      "ru": "О молитве Посланника Аллаха, мир ему и благословение Аллаха, в дневное время"
+    },
+    "hadith_number": 305,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا إِسْمَاعِيلُ بْنُ إِبْرَاهِيمَ، قَالَ‏:‏ حَدَّثَنَا أَيُّوبُ، عَنْ نَافِعٍ، عَنِ ابْنِ عُمَرَ، قَالَ‏:‏ حَدَّثَتْنِي حَفْصَةُ‏:‏ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، كَانَ يُصَلِّي رَكْعَتَيْنِ حِينَ يَطْلُعُ الْفَجْرُ وَيُنَادِي الْمُنَادِي، قَالَ أَيُّوبُ‏:‏ وَأُرَاهُ، قَالَ‏:‏ خَفِيفَتَيْنِ‏.‏",
+    "english_translation": "Ibn 'Umar said (may Allah be well pleased with him and his father):\n\"Hafsa said: 'Allah’s Messenger (Allah bless him and give him peace) used to perform two cycles of ritual prayer when the dawn was rising, and the caller [to prayer] was calling'. And Ayyub said, \"I think he described the two prayer cycles as abbreviated.\"",
+    "russian_translation": "Ибн Умар передал: «Хафса рассказала мне, что когда наступал рассвет и муэдзин призывал к утренней молитве, Посланник Аллаха, мир ему и благословение Аллаха, совершал два коротких ракята». Айюб добавил: «Мне кажется, он сказал: «очень коротких»."
+  },
+  {
+    "db_id": 42533,
+    "book_number": 8,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاَةِ رَسُولِ اللهِ صلى الله عليه وسلم التَّطَوُّعِ",
+      "en": "Chapter on the voluntary prayers of the Messenger of Allah",
+      "ru": "Глава о добровольных молитвах Посланника Аллаха"
+    },
+    "hadith_number": 265,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا مَرْوَانُ بْنُ مُعَاوِيَةَ الْفَزَارِيُّ، عَنْ جَعْفَرِ بْنِ بُرْقَانَ، عَنْ مَيْمُونِ بْنِ مِهْرَانَ، عَنِ ابْنِ عُمَرَ، قَالَ‏:‏ حَفِظْتُ مِنْ رَسُولِ اللهِ صلى الله عليه وسلم، ثَمَانِيَ رَكَعَاتٍ‏:‏ رَكْعَتَيْنِ قَبْلَ الظُّهْرِ، وَرَكْعَتَيْنِ بَعْدَهَا، وَرَكْعَتَيْنِ بَعْدَ الْمَغْرِبِ، وَرَكْعَتَيْنِ بَعْدَ الْعِشَاءِ، قَالَ ابْنُ عُمَرَ‏:‏ وَحَدَّثَتْنِي حَفْصَةُ بِرَكْعَتَيِ الْغَدَاةِ، وَلَمْ أَكُنْ أَرَاهُمَا مِنَ النَّبِيِّ صلى الله عليه وسلم‏.‏",
+    "english_translation": "Ibn 'Umar said (may Allah be well pleased with him and his father):\n\"I recall eight cycles performed by Allah’s Messenger (Allah bless him and give him peace): two cycles before the noon prayer and two cycles after it, two cycles after the sunset prayer, and two cycles after the evening prayer.\" Ibn ‘Umar said: \"Hafsa also told me about the two cycles of the early-morning prayer [al-ghad], but I did not see them performed by the Prophet (Allah bless him and give him peace).\"",
+    "russian_translation": "Ибн Умар сказал: «Я запомнил от Посланника Аллаха, мир ему и благословение Аллаха, восемь ракаатов: два ракаата до полуденной молитвы (зухр) и два после неё, два ракаата после закатной молитвы (магриб) и два ракаата после ночной молитвы (иша)». Ибн Умар также добавил: «Хафса рассказала мне о двух ракаатах утренней молитвы (фаджр), которые я не видел сам у Пророка, мир ему и благословение Аллаха»."
+  },
+  {
+    "db_id": 42534,
+    "book_number": 8,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي تَطَوُّعِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been narrated regarding the voluntary prayers of the Messenger of Allah (ﷺ)",
+      "ru": "Глава о том, что передается о дополнительных молитвах Посланника Аллаха ﷺ"
+    },
+    "hadith_number": 272,
+    "arabic": "حَدَّثَنَا أَبُو سَلَمَةَ يَحْيَى بْنُ خَلَفٍ، قَالَ‏:‏ حَدَّثَنَا بِشْرُ بْنُ الْمُفَضَّلِ، عَنْ خَالِدٍ الْحَذَّاءِ، عَنْ عَبْدِ اللهِ بْنِ شَقِيقٍ، قَالَ‏:‏ سَأَلتُ عَائِشَةَ، عَنْ صَلاةِ النَّبِيِّ صلى الله عليه وسلم، قَالَتْ‏:‏ كَانَ يُصَلِّي قَبْلَ الظُّهْرِ رَكْعَتَيْنِ وَبَعْدَهَا رَكْعَتَيْنِ، وَبَعْدَ الْمَغْرِبِ رَكْعَتَيْنِ، وَبَعْدَ الْعِشَاءِ رَكْعَتَيْنِ، وَقَبْلَ الْفَجْرِ ثِنْتَيْنِ‏.‏",
+    "english_translation": "Abdullah ibn Shaqiq said:\n\"I asked 'A’isha (may Allah be well pleased with her) about the ritual prayer of Allah’s Messenger (Allah bless him and give him peace), and she said: 'He used to perform two cycles of ritual prayer before the noon prayer and two cycles after it, two cycles after the sunset prayer, two cycles after the evening prayer, and two before the dawn prayer.’\"",
+    "russian_translation": "Абдаллах ибн Шакик рассказывал: «Я спросил Аишу (да будет доволен ею Аллах) о добровольных молитвах Посланника Аллаха (мир ему и благословение Аллаха), и она ответила: «Он совершал два ракята перед полуденной молитвой и два ракята после нее, два ракята после закатной молитвы, два ракята после ночной молитвы и два ракята перед утренней молитвой»."
+  },
+  {
+    "db_id": 42535,
+    "book_number": 8,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاةِ رَسُولِ اللهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ بِالنَّهَارِ التَّطَوُّعِ",
+      "en": "Chapter on the voluntary daytime prayer of the Messenger of Allah",
+      "ru": "Глава о дополнительных дневных молитвах Посланника Аллаха"
+    },
+    "hadith_number": 251,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي إِسْحَاقَ، قَالَ‏:‏ سَمِعْتُ عَاصِمَ بْنَ ضَمْرَةَ، يَقُولُ‏:‏ سَأَلْنَا عَلِيًّا، عَنْ صَلاةِ رَسُولِ اللهِ صلى الله عليه وسلم مِنَ النَّهَارِ، فَقَالَ‏:‏ إِنَّكُمْ لا تُطِيقُونَ ذَلِكَ، قَالَ‏:‏ فَقُلْنَا‏:‏ مِنْ أَطَاقَ ذَلِكَ مِنَّا صَلَّى، فَقَالَ‏:‏ كَانَ إِذَا كَانَتِ الشَّمْسُ مِنْ هَهُنَا كَهَيْئَتِهَا مِنْ هَهُنَا عِنْدَ الْعَصْرِ صَلَّى رَكْعَتَيْنِ، وَإِذَا كَانَتِ الشَّمْسُ مِنْ هَهُنَا، كَهَيْئَتِهَا مِنْ هَهُنَا عِنْدَ الظُّهْرِ صَلَّى أَرْبَعًا، وَيُصَلِّي قَبْلَ الظُّهْرِ أَرْبَعًا، وَبَعْدَهَا رَكْعَتَيْنِ، وَقَبْلَ الْعَصْرِ أَرْبَعًا، يَفْصِلُ بَيْنَ كُلِّ رَكْعَتَيْنِ بِالتَّسْلِيمِ عَلَى الْمَلائِكَةِ الْمُقَرَّبِينَ وَالنَّبِيِّينَ، وَمَنْ تَبِعَهُمْ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ‏.‏",
+    "english_translation": "'Asim ibn Damra said:\n\"We asked 'Ali (may Allah ennoble his countenance) about the ritual prayer of Allah’s Messenger (Allah bless him and give him peace) in the daytime, and he said: ‘You would be incapable of that,’ so we said: Anyone of us who is capable of that will perform it!’ He therefore said: ‘When the sun was from over here [pointing eastward], like its appearance from over here [pointing westward], at the time of the afternoon prayer, he used to perform two cycles of ritual prayer, and when the sun was from over here, like its appearance from over here, at the time of the midday prayer, he would perform four. He would also perform four cycles before the midday prayer and two after it, and four before the afternoon prayer, separating each pair of cycles with the salutation of peace upon the angels drawn near, and upon the Prophets and the believers and Muslims who follow them'.\"",
+    "russian_translation": "Передают от Асима ибн Дамры: «Мы спросили Али (да почтит Аллах его лик) о добровольных дневных молитвах Посланника Аллаха, да благословит его Аллах и приветствует, на что он ответил: «Вы не сможете совершать их». Мы сказали: «Кто из нас сможет, тот будет совершать». Тогда он сказал: «Когда солнце находилось там, где оно бывает во время послеполуденной молитвы (аср), он совершал два ракята. А когда солнце находилось там, где оно бывает во время полуденной молитвы (зухр), он совершал четыре ракята. Он также совершал четыре ракята до полуденной молитвы и два ракята после неё, а перед послеполуденной молитвой совершал четыре ракята, разделяя каждые два ракята приветствием (таслимом) ангелам, приближенным к Аллаху, пророкам, а также верующим и мусульманам, которые последовали за ними»."
+  },
+  {
+    "db_id": 42536,
+    "book_number": 8,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاةِ الضُّحَى لِرَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related regarding the Prophet's (peace be upon him) mid-morning prayer",
+      "ru": "Глава о том, что передается о молитве духа Пророка, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 298,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا أَبُو دَاوُدَ الطَّيَالِسِيُّ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ يَزِيدَ الرِّشْكِ، قَالَ‏:‏ سَمِعْتُ مُعَاذَةَ، قَالَتْ‏:‏ قُلْتُ لِعَائِشَةَ‏:‏ أَكَانَ النَّبِيُّ صلى الله عليه وسلم يُصَلِّي الضُّحَى‏؟‏ قَالَتْ‏:‏ نَعَمْ، أَرْبَعَ رَكَعَاتٍ، وَيَزِيدُ مَا شَاءَ اللَّهُ عَزَّ وَجَلَّ‏.‏",
+    "english_translation": "Mu'adha said:\n\"I asked ‘A'isha (may Allah the Exalted be well pleased with her): \"Did the Prophet (Allah bless him and give him peace) perform the mid-morning ritual prayer?\" She said: \"Yes, four cycles, and he used to add whatever Allah wished (Almighty and Glorious is He).\"",
+    "russian_translation": "Му‘аза передала: «Я спросила ‘Аишу, да будет доволен ею Аллах: „Совершал ли Пророк, да благословит его Аллах и приветствует, молитву духа?“ Она ответила: „Да, четыре рака‘ата, а иногда и больше, сколько было угодно Всемогущему и Великому Аллаху“»."
+  },
+  {
+    "db_id": 42537,
+    "book_number": 8,
+    "book_name": {
+      "ar": "باب ما جاء في صلاة الضحى",
+      "en": "Chapter on the mid-morning (Duha) prayer",
+      "ru": "Глава о совершении молитвы ад-Духа"
+    },
+    "hadith_number": 331,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنِي حَكِيمُ بْنُ مُعَاوِيَةَ الزِّيَادِيُّ، قَالَ‏:‏ حَدَّثَنَا زِيَادُ بْنُ عُبَيْدِ اللهِ بْنِ الرَّبِيعِ الزِّيَادِيُّ، عَنْ حُمَيْدٍ الطَّوِيلِ، عَنْ أَنَسِ بْنِ مَالِكٍ‏:‏ أَنَّ النَّبِيَّ صلى الله عليه وسلم، كَانَ يُصَلِّي الضُّحَى سِتَّ رَكَعَاتٍ‏.‏",
+    "english_translation": "Anas ibn Maik said:\n\"The Prophet (Allah bless him and give him peace) used to perform the mid-morning ritual prayer in six cycles.\"",
+    "russian_translation": "Анас ибн Малик передал, что Пророк, да благословит его Аллах и приветствует, совершал молитву ад-Духа в шесть ракаатов."
+  },
+  {
+    "db_id": 42538,
+    "book_number": 15,
+    "book_name": {
+      "ar": "بابُ مَا جَاءَ فِي صَلاةِ الضُّحَى",
+      "en": "Chapter: What has been related regarding the Duha Prayer",
+      "ru": "Глава: О том, что передается относительно молитвы духа"
+    },
+    "hadith_number": 234,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ جَعْفَرٍ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ عَمْرِو بْنِ مُرَّةَ، عَنْ عَبْدِ الرَّحْمَنِ بْنِ أَبِي لَيْلَى، قَالَ‏:‏ مَا أَخْبَرَنِي أَحَدٌ، أَنَّهُ رَأَى النَّبِيَّ صلى الله عليه وسلم يُصَلِّي الضُّحَى إِلا أُمُّ هَانِئٍ، فَإِنَّهَا حَدَّثَتْ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم، دَخَلَ بَيْتَهَا يَوْمَ فَتْحِ مَكَّةَ فَاغْتَسَلَ فَسَبَّحَ ثَمَانِيَ رَكَعَاتٍ مَا رَأَيْتُهُ صلى الله عليه وسلم، صَلَّى صَلاةً قَطُّ أَخَفَّ مِنْهَا، غَيْرَ أَنَّهُ كَانَ يُتِمُّ الرُّكُوعَ وَالسُّجُودَ‏.‏",
+    "english_translation": "'Abd ar-Rahman ibn Abi Laila said:\n\"I have never heard anyone mention seeing the Prophet (Allah bless him and give him peace) performing the mid¬morning ritual prayer except Umm Hani (may Allah the Exalted be well pleased with her). \"She related that Allah’s Messenger (Allah bless him and give him peace) entered her house on the Day of the Conquest of Mecca, whereupon he performed the major ritual ablution and glorified Allah in eight cycles. I never saw him (Allah bless him and give him peace) perform a ritual prayer in a more abbreviated form than that, even though he completed the bowing [ruku] and the prostration [sujud]!\"",
+    "russian_translation": "Абд ар-Рахман ибн Абу Лайла рассказывал: «Никто не рассказывал мне о том, что видел, как Пророк, да благословит его Аллах и приветствует, совершал молитву духа, кроме Умм Хани. Она передала, что в день взятия Мекки Посланник Аллаха, да благословит его Аллах и приветствует, вошел в ее дом, совершил полное омовение и помолился восемь ракятов. Я никогда не видела, чтобы он совершал молитву быстрее, чем эту, хотя он и совершал поясные и земные поклоны в совершенстве»."
+  },
+  {
+    "db_id": 42539,
+    "book_number": 34,
+    "book_name": {
+      "ar": "باب ما جاء في صلاة الضحى",
+      "en": "Chapter on the Mid-Morning (Duha) Prayer",
+      "ru": "Глава о молитве духа"
+    },
+    "hadith_number": 296,
+    "arabic": "حدثنا ابن أبي عمر ‏,‏ حدثنا وكيع، حدثنا كهمس بن الحسن، عن عبد الله بن شقيق قال‏:‏ قلت لعائشة‏:‏ أكان النبي صلى الله عليه وسلم يصلي الضحى‏؟‏ قالت‏:‏لا إلا يجىء من مغيبه‏.‏",
+    "english_translation": "'Abdu’llah ibn Shaqiq said:\n\"I asked 'A'isha (may Allah the Exalted be well pleased with her): ‘Was the Prophet (Allah bless him and give him peace) used to performing the mid-morning ritual prayer?’ She said: ‘No, except when he was coming back from an absence.'\"",
+    "russian_translation": "Передают со слов Абдуллаха ибн Шакика, что он спросил Аишу: «Совершал ли Пророк, да благословит его Аллах и приветствует, молитву духа?» Она ответила: «Нет, за исключением тех случаев, когда он возвращался из поездки»."
+  },
+  {
+    "db_id": 42540,
+    "book_number": 8,
+    "book_name": {
+      "ar": "باب ما جاء في صلاة الضحى لرسول الله صلى الله عليه وسلم",
+      "en": "Chapter on the Duha prayer of the Messenger of Allah, may Allah bless him and grant him peace",
+      "ru": "Глава о совершении Пророком (да благословит его Аллах и приветствует) молитвы ад-Духа"
+    },
+    "hadith_number": 226,
+    "arabic": "حَدَّثَنَا زِيَادُ بْنُ أَيُّوبَ الْبَغْدَادِيُّ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ رَبِيعَةَ، عَنْ فُضَيْلِ بْنِ مَرْزُوقٍ، عَنْ عَطِيَّةَ، عَنْ أَبِي سَعِيدٍ الْخُدْرِيِّ، قَالَ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم، يُصَلِّي الضُّحَى حَتَّى نَقُولَ‏:‏ لا يَدَعُهَا، وَيَدَعُهَا حَتَّى نَقُولَ‏:‏ لا يُصَلِّيهَا‏.‏",
+    "english_translation": "Abi Sa'id al-Khudri said (may Allah the Exalted be well pleased with him):\n\"The Prophet (Allah bless him and give him peace) would perform the mid-morning ritual prayer so often that we would say: \"He does not omit it,\" and he would omit it so often that we would say: \"He does not perform it!\"",
+    "russian_translation": "Абу Саид аль-Худри, да будет доволен им Аллах, рассказывал: «Пророк (да благословит его Аллах и приветствует) совершал молитву ад-Духа так часто, что мы начинали говорить: „Он никогда ее не оставляет“, — и оставлял ее так часто, что мы говорили: „Он никогда ее не совершает“»."
+  },
+  {
+    "db_id": 42541,
+    "book_number": 32,
+    "book_name": {
+      "ar": "باب ما جاء في صلاة الضحى",
+      "en": "Chapter on what has been reported regarding the Duha prayer",
+      "ru": "Глава о том, что передается относительно молитвы духа"
+    },
+    "hadith_number": 286,
+    "arabic": "حَدَّثَنَا أَحْمَدُ بْنُ مَنِيعٍ، عَنْ هُشَيْمٍ، قَالَ‏:‏ حَدَّثَنَا عُبَيْدَةُ، عَنِ إِبْرَاهِيمَ، عَنْ سَهْمِ بْنِ مِنْجَابٍ، عَنْ قَرْثَعٍ الضَّبِّيِّ، أَوْ عَنْ قَزَعَةَ، عَنْ قَرْثَعٍ، عَنْ أَبِي أَيُّوبَ الأَنْصَارِيِّ، أَنَّ النَّبِيَّ صلى الله عليه وسلم، كَانَ يُدْمِنُ أَرْبَعَ رَكَعَاتٍ عِنْدَ زَوَالِ الشَّمْسِ، فَقُلْتُ‏:‏ يَا رَسُولَ اللهِ، إِنَّكَ تُدْمِنُ هَذِهِ الأَرْبَعَ رَكَعَاتٍ عِنْدَ زَوَالِ الشَّمْسِ، فَقَالَ‏:‏ إِنَّ أَبْوَابَ السَّمَاءِ تُفْتَحُ عِنْدَ زَوَالِ الشَّمْسِ فَلا تُرْتَجُ حَتَّى تُصَلَّى الظُّهْرُ، فَأُحِبُّ أَنْ يَصْعَدَ لِي فِي تِلْكَ السَّاعَةِ خَيْرٌ، قُلْتُ‏:‏ أَفِي كُلِّهِنَّ قِرَاءَةٌ‏؟‏ قَالَ‏:‏ نَعَمْ قُلْتُ‏:‏ هَلْ فِيهِنَّ تَسْلِيمٌ فَاصِلٌ‏؟‏ قَالَ‏:‏ لا‏.‏ حدثنا أَحْمَدُ بْنُ مَنِيعٍ، قَالَ‏:‏ حَدَّثَنَا أَبُو مُعَاوِيَةَ، قَالَ‏:‏ حَدَّثَنَا عُبَيْدَةُ، عَنِ إِبْرَاهِيمَ، عَنْ سَهْمِ بْنِ مِنْجَابٍ، عَنْ قَزَعَةَ، عَنْ قَرْثَعٍ، عَنْ أَبِي أَيُّوبَ الأَنْصَارِيِّ، عَنِ النَّبِيِّ صلى الله عليه وسلم، نَحْوَهُ‏.‏",
+    "english_translation": "Abu Ayyub al-Ansari said (may Allah the Exalted be well pleased with him):\n\"The Prophet (Allah bless him and give him peace) used to devote himself to four cycles [of ritual prayer] at high noon, so I said: ‘O Messenger of Allah, you devote yourself to these four cycles at high noon!’ He explained: ‘The gates of heaven are opened at high noon, then they are unlocked until the midday ritual prayer is performed, so I love to have a good deed ascend on my behalf during that time!’ I said: ‘Is there a Qur’anic recitation in each of them [the four cycles]?’ He said: ‘Yes!’ I said: ‘Do they contain a separating salutation of peace?’ He said: ‘No!'\" Another chain reports a similar narration.",
+    "russian_translation": "Передают со слов Абу Айюба аль-Ансари, да будет доволен им Аллах, что Пророк, да благословит его Аллах и приветствует, постоянно совершал четыре ракаата молитвы в то время, когда солнце начинало склоняться к зениту. Я спросил: «О Посланник Аллаха, ты постоянно совершаешь эти четыре ракаата именно при склонении солнца?» Он ответил: «Поистине, врата небес открываются, когда солнце склоняется к зениту, и они не закрываются до тех пор, пока не будет совершена полуденная молитва (зухр). И я хочу, чтобы в этот час для меня вознеслось благое деяние». Я спросил: «Следует ли читать Коран в каждом из них?» Он ответил: «Да». Я спросил: «Есть ли между ними разделительное приветствие (таслим)?» Он ответил: «Нет»."
+  },
+  {
+    "db_id": 42542,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاةِ رَسُولِ اللهِ صلى الله عليه وسلم فِي النَّهَارِ تَطَوُّعًا",
+      "en": "Chapter on the Voluntary Prayers of the Messenger of Allah (may Allah bless him and grant him peace) during the day",
+      "ru": "Глава о добровольных молитвах Посланника Аллаха, да благословит его Аллах и приветствует, совершаемых днем"
+    },
+    "hadith_number": 307,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ الْمُثَنَّى، قَالَ‏:‏ حَدَّثَنَا أَبُو دَاوُدَ، قَالَ‏:‏ حَدَّثَنَا مُحَمَّدُ بْنُ مُسْلِمِ بْنِ أَبِي الْوَضَّاحِ، عَنْ عَبْدِ الْكَرِيمِ الْجَزَرِيِّ، عَنْ مُجَاهِدٍ، عَنْ عَبْدِ اللهِ بْنِ السَّائِبِ، أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم كَانَ يُصَلِّي أَرْبَعًا بَعْدَ أَنْ تَزُولَ الشَّمْسُ قَبْلَ الظُّهْرِ وَقَالَ‏:‏ إِنَّهَا سَاعَةٌ تُفْتَحُ فِيهَا أَبْوَابُ السَّمَاءِ، فَأُحِبُّ أَنْ يَصْعَدَ لِي فِيهَا عَمَلٌ صَالِحٌ‏.‏",
+    "english_translation": "'Abdu’llah ibn as-Sa’ib said:\n\"Allah’s Messenger (Allah bless him and give him peace) used to perform four cycles of ritual prayer after the sun had passed its zenith before the noon prayer, and he said: 'It is a time in which the gates of heaven are opened, so I love to have a righteous deed ascend for me then!'\"",
+    "russian_translation": "Сообщается, что Абдуллах ибн ас-Саиб сказал: «Посланник Аллаха, да благословит его Аллах и приветствует, совершал четыре рак‘ата молитвы после того, как солнце начинало склоняться к западу, перед полуденной молитвой (зухр). И он говорил: «Это время, когда открываются врата небес, и мне хочется, чтобы в это время вознеслось мое благое дело»."
+  },
+  {
+    "db_id": 42543,
+    "book_number": 8,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاةِ رَسُولِ اللَّهِ صلى الله عليه وسلم فِي التَّطَوُّعِ",
+      "en": "Chapter on the Voluntary Prayer of the Messenger of Allah (pbuh)",
+      "ru": "Глава о добровольных молитвах Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 283,
+    "arabic": "حَدَّثَنَا أَبُو سَلَمَةَ يَحْيَى بْنُ خَلَفٍ، قَالَ‏:‏ حَدَّثَنَا عُمَرُ بْنُ عَلِيٍّ الْمُقَدَّمِيُّ، عَنْ مِسْعَرِ بْنِ كِدَامٍ، عَنْ أَبِي إِسْحَاقَ، عَنْ عَاصِمِ بْنِ ضَمْرَةَ، عَنْ عَلِيٍّ، أَنَّهُ كَانَ يُصَلِّي قَبْلَ الظُّهْرِ أَرْبَعًا، وَذَكَرَ أَنَّ رَسُولَ اللهِ صلى الله عليه وسلم كَانَ يُصَلِّيهَا عِنْدَ الزَّوَالِ وَيَمُدُّ فِيهَا‏.‏",
+    "english_translation": "‘Ali said:\n\"He used to perform four cycles of ritual prayer before noon\", and he mentioned that Allah’s Messenger (Allah bless him and give him peace) used to perform them at the time of the sun's zenith, and he used to prolong them.",
+    "russian_translation": "Передают со слов Али, что он совершал четыре ракаата молитвы перед полуденной (зухр) молитвой, и он упомянул, что Посланник Аллаха, да благословит его Аллах и приветствует, совершал их во время зенита и удлинял их."
+  },
+  {
+    "db_id": 42544,
+    "book_number": 32,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَلاةِ رَسُولِ اللهِ صلى الله عليه وسلم فِي التَّطَوُّعِ",
+      "en": "Chapter: Regarding the Voluntary Prayer of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о добровольной молитве Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 257,
+    "arabic": "حَدَّثَنَا عَبَّاسٌ الْعَنْبَرِيُّ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، عَنْ مُعَاوِيَةَ بْنِ صَالِحٍ، عَنِ الْعَلاءِ بْنِ الْحَارِثِ، عَنْ حَرَامِ بْنِ مُعَاوِيَةَ، عَنْ عَمِّهِ عَبْدِ اللهِ بْنِ سَعْدٍ، قَالَ‏:‏ سَأَلْتُ رَسُولَ اللهِ صلى الله عليه وسلم عَنِ الصَّلاةِ فِي بَيْتِي وَالصَّلاةِ فِي الْمَسْجِدِ، قَالَ‏:‏ قَدْ تَرَى مَا أَقْرَبَ بَيْتِي مِنَ الْمَسْجِدِ، فَلأَنْ أُصَلِّيَ فِي بَيْتِي أَحَبُّ إِلَيَّ مِنْ أَنْ أُصَلِّيَ فِي الْمَسْجِدِ، إِلا أَنْ تَكُونَ صَلاةً مَكْتُوبَةً‏.‏",
+    "english_translation": "Abdu’llah ibn Sa'd said:\n\"I asked Allah’s Messenger (Allah bless him and give him peace) about performing the ritual prayer in my home, and performing it in the mosque.\" He said: \"You may notice how near my home is to the mosque. I prefer praying at home over praying in the mosque, except in the case of a prescribed ritual prayer.\"",
+    "russian_translation": "Абдуллах ибн Сад рассказывал: «Я спросил Посланника Аллаха (мир ему и благословение Аллаха) о совершении молитвы дома и в мечети». Он ответил: «Ты видишь, как близок мой дом к мечети, но совершать молитву у себя дома для меня предпочтительнее, чем в мечети, если только это не обязательная молитва»."
+  },
+  {
+    "db_id": 42545,
+    "book_number": 19,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَوْمِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Fasting of the Messenger of Allah (peace be upon him)",
+      "ru": "Глава о посте Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 204,
+    "arabic": "حَدَّثَنَا قُتَيْبَةُ بْنُ سَعِيدٍ، قَالَ‏:‏ حَدَّثَنَا حَمَّادُ بْنُ زَيْدٍ، عَنْ أَيُّوبَ، عَنْ عَبْدِ اللهِ بْنِ شَقِيقٍ، قَالَ‏:‏ سَأَلْتُ عَائِشَةَ، عَنْ صِيَامِ رَسُولِ اللهِ صلى الله عليه وسلم، قَالَتْ‏:‏ كَانَ يَصُومُ حَتَّى نَقُولَ قَدْ صَامَ، وَيُفْطِرُ حَتَّى نَقُولَ قَدْ أَفْطَرَ قَالَتْ‏:‏ وَمَا صَامَ رَسُولُ اللهِ صلى الله عليه وسلم، شَهْرًا كَامِلا مُنْذُ قَدِمَ الْمَدِينَةَ إِلا رَمَضَانَ‏.‏",
+    "english_translation": "Abdullah ibn Shaqiq said:\n\"I asked 'A'isha (may Allah the Exalted be well pleased with her) about the fasting of Allah’s Messenger (Allah bless him and give him peace). She said: \"He used to fast until we would say: ‘He has fasted,’ and he used to break fast until we would say: ‘He has broken fast.’\" She also said: \"Allah’s Messenger (Allah bless him and give him peace) did not fast for a whole month after arriving in Medina, with the exception of Ramadan.’",
+    "russian_translation": "Абдуллах ибн Шакик рассказывал: «Я спросил Аишу (да будет доволен ею Аллах) о посте Посланника Аллаха (мир ему и благословение Аллаха). Она ответила: «Он постился так часто, что мы говорили: „Он будет поститься постоянно“, — и он прерывал пост так часто, что мы говорили: „Он больше не будет поститься“. И она добавила: «С тех пор как Посланник Аллаха (мир ему и благословение Аллаха) прибыл в Медину, он не постился целый месяц, кроме месяца Рамадан»."
+  },
+  {
+    "db_id": 42546,
+    "book_number": 15,
+    "book_name": {
+      "ar": "باب مَا جَاءَ فِي صَوْمِ رَسُولِ اللَّهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Fasting of the Messenger of Allah (saws)",
+      "ru": "Глава о посте Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 213,
+    "arabic": "حَدَّثَنَا عَلِيُّ بْنُ حُجْرٍ، قَالَ‏:‏ حَدَّثَنَا إِسْمَاعِيلُ بْنُ جَعْفَرٍ، عَنْ حُمَيْدٍ، عَنْ أَنَسِ بْنِ مَالِكٍ، أَنَّهُ سُئِلَ عَنْ صَوْمِ النَّبِيِّ صلى الله عليه وسلم، فَقَالَ‏:‏ كَانَ يَصُومُ مِنَ الشَّهْرِ حَتَّى نَرَى أَنْ لا يُرِيدَ أَنْ يُفْطِرَ مِنْهُ، وَيُفْطِرُ مِنْهُ حَتَّى نَرَى أَنْ لا يُرِيدَ أَنْ يَصُومَ مِنْهُ شَيْئًا وَكُنْتَ لا تَشَاءُ أَنْ تَرَاهُ مِنَ اللَّيْلِ مُصَلِّيًا إِلا رَأَيْتَهُ مُصَلِّيًا، وَلا نَائِمًا إِلا رَأَيْتَهُ نَائِمًا‏.‏",
+    "english_translation": "Humaid ibn Anas ibn Malik reported that he was asked about the fasting of the Prophet (Allah bless him and give him peace), so he said:\n\"He used to fast during the month until we would assume that he did not intend to break fast during it, and he used to break fast until we would assume that he did not intend to fast during any of it. You would not wish to assume that he was performing the ritual prayer during the night, unless you saw him performing the ritual prayer, nor that he was sleeping, unless you saw him sleeping.\"",
+    "russian_translation": "Передают со слов Анаса ибн Малика, что его спросили о посте Пророка (да благословит его Аллах и приветствует), на что он ответил: «Он постился в течение месяца так, что нам начинало казаться, будто он не намерен прерывать пост вовсе, а затем не постился так, что нам начиналось казаться, будто он вообще не намерен поститься в этом месяце. И если бы ты пожелал увидеть его молящимся ночью, ты обязательно увидел бы его молящимся, а если бы пожелал увидеть его спящим, ты обязательно увидел бы его спящим»."
+  },
+  {
+    "db_id": 42547,
+    "book_number": 21,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَوْمِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter on the Fasting of the Messenger of Allah (may Allah bless him and grant him peace)",
+      "ru": "Глава о посте Посланника Аллаха (мир ему и благословение Аллаха)"
+    },
+    "hadith_number": 196,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا أَبُو دَاوُدَ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ أَبِي بِشْرٍ، قَالَ‏:‏ سَمِعْتُ سَعِيدَ بْنَ جُبَيْرٍ، عَنِ ابْنِ عَبَّاسٍ، قَالَ‏:‏ كَانَ النَّبِيُّ صلى الله عليه وسلم يَصُومُ حَتَّى نَقُولَ مَا يُرِيدُ أَنْ يُفْطِرَ مِنْهُ، وَيُفْطِرُ حَتَّى نَقُولَ مَا يُرِيدُ أَنْ يَصُومَ مِنْهُ، وَمَا صَامَ شَهْرًا كَامِلا مُنْذُ قَدِمَ الْمَدِينَةَ إِلا رَمَضَانَ‏.‏",
+    "english_translation": "Ibn Abbas said:\n\"The Prophet (Allah bless him and give him peace) used to fast until we would say: \"He does not intend to break fast [during the month],\" and he used to break fast until we would say: \"He does not intend to fast during it.\" He did not fast for a whole month after arriving in Medina, with the exception of Ramadan.\"",
+    "russian_translation": "Ибн Аббас передал: «Пророк, да благословит его Аллах и приветствует, постился так часто, что мы начинали говорить: Он не намерен прерывать пост, а когда он не постился, мы говорили: Он не намерен поститься вовсе. Он никогда не постился целый месяц после прибытия в Медину, за исключением месяца Рамадан»."
+  },
+  {
+    "db_id": 42548,
+    "book_number": 24,
+    "book_name": {
+      "ar": "كتاب ما جاء في صوم رسول الله صلى الله عليه وسلم",
+      "en": "The Book on the Fasting of the Messenger of Allah",
+      "ru": "Книга о посте Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 204,
+    "arabic": "حَدَّثَنَا مُحَمَّدُ بْنُ بَشَّارٍ، قَالَ‏:‏ حَدَّثَنَا عَبْدُ الرَّحْمَنِ بْنُ مَهْدِيٍّ، عَنْ سُفْيَانَ، عَنْ مَنْصُورٍ، عَنْ سَالِمِ بْنِ أَبِي الْجَعْدِ، عَنْ أَبِي سَلَمَةَ، عَنْ أُمِّ سَلَمَةَ، قَالَتْ‏:‏ مَا رَأَيْتُ النَّبِيَّ صلى الله عليه وسلم يَصُومُ شَهْرَيْنِ مُتَتَابِعَيْنِ إِلا شَعْبَانَ وَرَمَضَانَ قَالَ أَبُو عِيسَى‏:‏ هَذَا إِسنَادٌ صَحِيحٌ وَهَكَذَا، قَالَ‏:‏ عَنْ أَبِي سَلَمَةَ، عَنْ أُمِّ سَلَمَةَ وَرَوَى هَذَا الْحَدِيثَ غَيْرُ وَاحِدٍ، عَنْ أَبِي سَلَمَةَ، عَنْ عَائِشَةَ، عَنِ النَّبِيِّ صلى الله عليه وسلم، وَيُحْتَمَلُ أَنْ يَكُونَ أَبُو سَلَمَةَ بْنُ عَبْدِ الرَّحْمَنِ قَدْ رَوَى الْحَدِيثَ عَنْ عَائِشَةَ، وَأُمِّ سَلَمَةَ جَمِيعًا، عَنِ النَّبِيِّ صلى الله عليه وسلم‏.‏",
+    "english_translation": "Umm Salama said:\n\"I did not see the Prophet fast (Allah bless him and give him peace) for two consecutive months, other than Sha'ban and Ramadan.\"",
+    "russian_translation": "Сообщается, что Умм Салама сказала: «Я не видела, чтобы Пророк, да благословит его Аллах и приветствует, постился два месяца подряд, кроме Шаабана и Рамадана»."
+  },
+  {
+    "db_id": 42549,
+    "book_number": 27,
+    "book_name": {
+      "ar": "كتاب الصوم",
+      "en": "The Book of Fasting",
+      "ru": "Книга о посте"
+    },
+    "hadith_number": 204,
+    "arabic": "حَدَّثَنَا هَنَّادٌ، قَالَ‏:‏ حَدَّثَنَا عَبْدَةُ، عَنْ مُحَمَّدِ بْنِ عَمْرٍو، قَالَ‏:‏ حَدَّثَنَا أَبُو سَلَمَةَ، عَنْ عَائِشَةَ، قَالَتْ‏:‏ لَمْ أَرَ رَسُولَ اللهِ صلى الله عليه وسلم، يَصُومُ فِي شَهْرٍ أَكْثَرَ مِنْ صِيَامِهِ لِلَّهِ فِي شَعْبَانَ، كَانَ يَصُومُ شَعْبَانَ إِلا قَلِيلا، بَلْ كَانَ يَصُومُهُ كُلَّهُ‏.‏",
+    "english_translation": "'A’isha said:\n\"I did not see Allah’s Messenger (Allah bless him and give him peace) fast in any month more than his fasting for Allah’s sake in Sha'ban. He used to keep fast through all but a little of Sha'ban; no indeed, he used to keep fast through all of it!\"",
+    "russian_translation": "Сообщается, что Аиша, да будет доволен ею Аллах, сказала: «Я никогда не видела, чтобы Посланник Аллаха, да благословит его Аллах и приветствует, постился в каком-либо месяце больше, чем в месяце шаабан. Он постился почти весь шаабан, нет, он постился в нём полностью»."
+  },
+  {
+    "db_id": 42550,
+    "book_number": 27,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَوْمِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related concerning the Fasting of the Messenger of Allah",
+      "ru": "Глава о том, что передается относительно поста Посланника Аллаха"
+    },
+    "hadith_number": 197,
+    "arabic": "حَدَّثَنَا الْقَاسِمُ بْنُ دِينَارٍ الْكُوفِيُّ، قَالَ‏:‏ حَدَّثَنَا عُبَيْدُ اللهِ بْنُ مُوسَى، وَطَلْقُ بْنُ غَنَّامٍ، عَنْ شَيْبَانَ، عَنْ عَاصِمٍ، عَنْ زِرِّ بْنُ حُبَيْشٍ، عَنْ عَبْدِ اللهِ، قَالَ‏:‏ كَانَ رَسُولُ اللهِ صلى الله عليه وسلم، يَصُومُ مِنْ غُرَّةِ كُلِّ شَهْرٍ ثَلاثَةَ أَيَامٍ، وَقَلَّمَا كَانَ يُفْطِرُ يَوْمَ الْجُمُعَةِ‏.‏",
+    "english_translation": "'Abdu’llah said:\n\"Allah’s Messenger (Allah bless him and give him peace) used to fast three days at the beginning of every month, and he would seldom break fast on Friday, the Day of the Congregation [jumuah].\"",
+    "russian_translation": "Абдуллах ибн Мас‘уд рассказывал: «Посланник Аллаха ﷺ постился по три дня в начале каждого месяца и редко оставлял пост в пятницу»."
+  },
+  {
+    "db_id": 42551,
+    "book_number": 23,
+    "book_name": {
+      "ar": "بَابُ مَا جَاءَ فِي صَوْمِ رَسُولِ اللهِ صلى الله عليه وسلم",
+      "en": "Chapter: What has been related regarding the Fasting of the Messenger of Allah",
+      "ru": "Глава о посте Посланника Аллаха, да благословит его Аллах и приветствует"
+    },
+    "hadith_number": 204,
+    "arabic": "حَدَّثَنَا مَحْمُودُ بْنُ غَيْلانَ، قَالَ‏:‏ حَدَّثَنَا أَبُو دَاوُدَ، قَالَ‏:‏ حَدَّثَنَا شُعْبَةُ، عَنْ يَزِيدَ الرِّشْكِ، قَالَ‏:‏ سَمِعْتُ مُعَاذَةَ، قَالَتْ‏:‏ قُلْتُ لِعَائِشَةَ‏:‏ أَكَانَ رَسُولُ اللهِ صلى الله عليه وسلم، يَصُومُ ثَلاثَةَ أَيَّامٍ مِنْ كُلِّ شَهْرٍ‏؟‏ قَالَتْ‏:‏ نَعَمْ قُلْتُ‏:‏ مِنْ أَيِّهِ كَانَ يَصُومُ‏؟‏ قَالَتْ‏:‏ كَانَ لا يُبَالِي مِنْ أَيِّهِ صَامَ‏.‏ قَالَ أَبُو عِيسَى : يَزِيدُ الرِّشْكُ هُوَ يَزِيدُ الضُّبَعِيُّ الْبَصْرِيُّ, وَهُوَ ثِقَةٌ رَوَى عَنْهُ شُعْبَةُ ، وَعَبْدُ الْوَارِثِ بْنُ سَعِيدٍ ، وَحَمَّادُ بْنُ زَيْدٍ ، وَإِسْمَاعِيلُ بْنُ إِبْرَاهِيمَ ، وَغَيْرُ وَاحِدٍ مِنَ الأَئِمَةِ ، وَهُوَ يَزِيدُ الْقَاسِمُ, وَيُقَالُ : الْقَسَّامُ ، وَالرِّشْكُ بِلُغَةِ أَهْلِ الْبَصْرَةِ, هُوَ الْقَسَّامُ.",
+    "english_translation": "Mu'adha said:\n\"I said to 'A'sha: \"Was Allah’s Messenger (Allah bless him and give him peace) used to fasting three days out of every month?\" She said; \"Yes!\" I said: \"Which days did he fast?\" She said: \"He was not concerned about which days he fasted.\"",
+    "russian_translation": "Сообщается, что Му‘аза сказала: «Я спросила ‘Аишу: „Постился ли Посланник Аллаха, да благословит его Аллах и приветствует, по три дня каждый месяц?“ Она ответила: „Да“. Я спросила: „В какие дни он постился?“ Она сказала: „Его не заботило, в какие именно дни месяца он постился“»."
+  }
+]
