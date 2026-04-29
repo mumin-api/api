@@ -18,11 +18,12 @@ export class GdprController {
         private consentService: ConsentService,
     ) { }
 
+    @Public()
     @Get('consent')
     @UseGuards(UnifiedAuthGuard)
     @ApiOperation({ summary: 'Get current cookie consent state' })
-    async getConsent(@CurrentUser() user: AuthenticatedUser) {
-        return this.consentService.getConsent(user.userId, user.apiKeyId);
+    async getConsent(@CurrentUser() user?: AuthenticatedUser) {
+        return this.consentService.getConsent(user?.userId, user?.apiKeyId);
     }
 
     @Put('consent')
